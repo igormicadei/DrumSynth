@@ -55,13 +55,33 @@ drumsynth/
     └── library.py         SampleLibrary
 ```
 
-The checked-in training assets live outside the Python package in `data/`.
-`data/samples/` contains slugified drum and cymbal WAVs, while
-`data/metadata/library.json` and the per-instrument JSON files describe the
-SFZ-derived velocity ranges and round-robin layers. Run
-`python tools/import_samples.py <DrumModalSynth-data>` to reproduce the
-normalization. Missing SFZ references are reported in `library.json`; no
-placeholder sample is created.
+### The sample library is generated, not curated
+
+Training assets live outside the Python package in `data/`, and every file in
+it is produced by `tools/import_samples.py` from the vendor library — including
+`data/file_tree.txt`. Nothing there is hand-edited, so a manifest can never
+drift from the files it describes, and re-running reproduces the same output
+byte for byte.
+
+Two properties are load-bearing and have regression tests:
+
+* **One manifest is one physical drum.** The instrument key is the whole folder
+  chain below the family root, not its first element. Keyed on the first
+  element, `Toms_Stereo/Tom1..Tom4` collapses into one instrument — four
+  different drums sharing one `DrumParams`, which is the thing ARCHITECTURE.md
+  §7.4 exists to prevent.
+* **A re-run leaves nothing behind.** Manifests from a previous naming scheme
+  are deleted, and sample directories from one are reported (`--prune` removes
+  them). A stale manifest is indistinguishable from a real one and points at
+  sample directories that no longer exist.
+
+`tests/test_data_integrity.py` checks the committed manifests against
+`data/file_tree.txt`: every row resolves to a file that exists, paths are
+relative to the manifest, source paths carry no drive letters, velocity bands
+are internally consistent, and no manifest spans two source instruments. It
+needs no audio, so it runs anywhere.
+
+See [DATA.md](DATA.md) for what the library actually contains.
 
 Dependency direction is one-way: `synth` and `scoring` both depend on `core`
 and on nothing else; `samples` depends on `scoring` for analysis. The
@@ -173,7 +193,7 @@ chunks regardless of `control_period`.
 
 ## Testing
 
-122 tests, ~50 s. Four files:
+290 tests, ~46 s. Six files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
 
 * `tests/test_synth.py` — superposition, decay accuracy, tension behaviour, and
   the `ModalBank` ↔ `ModeResonator` equivalence.
@@ -182,6 +202,10 @@ chunks regardless of `control_period`.
 * `tests/test_samples.py` — quality gates, velocity calibration, splits.
 * `tests/test_integration.py` — the full path, plus the architecture's §2
   measurements reproduced from a render, plus the guard rails.
+* `tests/test_import_samples.py` — the SFZ importer, on miniature source trees
+  with the same folder shapes as the real library.
+* `tests/test_data_integrity.py` — the committed manifests against
+  `data/file_tree.txt`. Skipped when a checkout has no imported library.
 
 The tests that matter most are the ones pinning claims that are easy to break
 by accident:

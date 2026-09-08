@@ -68,6 +68,29 @@ class SampleRecord:
         }
 
 
+def render_file_tree(root: Path) -> str:
+    """Box-drawing listing of the imported library.
+
+    The WAVs are far too large to commit, so this listing is what stands in for
+    them: it is the record of which files the import actually produced, and it
+    is generated here rather than by hand so it cannot drift from the manifests.
+    """
+    lines = [root.name]
+
+    def walk(directory: Path, prefix: str) -> None:
+        entries = sorted(
+            directory.iterdir(), key=lambda item: (item.is_file(), item.name)
+        )
+        for index, entry in enumerate(entries):
+            last = index == len(entries) - 1
+            lines.append(f"{prefix}{'┗' if last else '┣'} {entry.name}")
+            if entry.is_dir():
+                walk(entry, prefix + "┃ ")
+
+    walk(root, " ")
+    return "\n".join(lines) + "\n"
+
+
 def slugify(value: str) -> str:
     """Return a deterministic lowercase filename/directory slug."""
     value = value.replace("&", " and ").lower()
@@ -75,26 +98,40 @@ def slugify(value: str) -> str:
     return value or "unknown"
 
 
+#: Source folder names that should be renamed on the way in.
+INSTRUMENT_ALIASES: dict[str, str] = {"kik stereo": "kick"}
+
+
 def _family_and_instrument(
     source: Path, samples_root: Path
 ) -> tuple[str, str, int | None]:
+    """Split a source path into (family, instrument slug, round-robin index).
+
+    The instrument is the WHOLE folder chain below the family root, not just
+    its first element. That distinction is load-bearing: the toms live at
+    ``Toms_Stereo/Tom1/RR1/...``, and keying on the first folder alone collapses
+    four physically different drums into one instrument called ``toms-stereo``.
+
+    A `SampleSet` is deliberately single-drum, because `f_static` and `t60`
+    belong to a specific physical drum — so a manifest holding Tom1 through
+    Tom4 is not a naming inconvenience, it is a manifest the fitter must not be
+    handed. See docs/ARCHITECTURE.md §7.4.
+    """
     parts = list(source.relative_to(samples_root).parts)
     family_root = parts.pop(0)
     family = "cymbals" if "cymbal" in family_root.lower() else "drums"
+
     rr = None
-    if parts and re.fullmatch(r"rr\d+", parts[-2], re.IGNORECASE):
+    if len(parts) >= 2 and re.fullmatch(r"rr\d+", parts[-2], re.IGNORECASE):
         rr = int(re.search(r"\d+", parts[-2]).group())
         parts.pop(-2)
+
     folders = [
         re.sub(r"\s*\(samples\)", "", item, flags=re.IGNORECASE) for item in parts[:-1]
     ]
-    if family == "drums":
-        instrument = folders[0] if folders else source.stem
-        if instrument.lower().replace("_", " ").strip() == "kik stereo":
-            instrument = "kick"
-    else:
-        instrument = "-".join(folders) if folders else source.stem
-    return family, slugify(instrument), rr
+    instrument = "-".join(folders) if folders else source.stem
+    alias = instrument.lower().replace("_", " ").strip()
+    return family, slugify(INSTRUMENT_ALIASES.get(alias, instrument)), rr
 
 
 def parse_sfz(path: Path, data_root: Path) -> list[Region]:
@@ -162,8 +199,17 @@ def collect_regions(data_root: Path) -> tuple[list[Region], list[dict]]:
 
 
 def import_library(
-    source: Path, destination: Path, sample_root: Path | None = None
+    source: Path,
+    destination: Path,
+    sample_root: Path | None = None,
+    prune: bool = False,
 ) -> dict:
+    """Copy the library and write its manifests.
+
+    `prune` also deletes sample directories left behind by an earlier run under
+    a different naming scheme. It is off by default because it removes files
+    from the destination mirror, and reporting them is enough to act on.
+    """
     source = source.resolve()
     destination = destination.resolve()
     sample_root = sample_root or destination / "data" / "samples"
@@ -201,6 +247,7 @@ def import_library(
                 record.to_dict(metadata_root, source)
             )
     manifests = {}
+    written: set[str] = {"library.json"}
     for (family, instrument), entries in sorted(grouped.items()):
         manifest = {
             "schema_version": 1,
@@ -218,6 +265,7 @@ def import_library(
         manifests[f"{family}/{instrument}"] = manifest_path.relative_to(
             destination
         ).as_posix()
+        written.add(manifest_path.name)
     inventory = [
         {
             "path": record.destination.relative_to(destination / "data").as_posix(),
@@ -238,6 +286,27 @@ def import_library(
             library_entries[record.instrument].append(
                 record.to_dict(metadata_root, source)
             )
+    # Anything left over is from a previous run under a different naming scheme.
+    # Left in place it is indistinguishable from a real manifest, and it points
+    # at sample directories that no longer exist.
+    stale = sorted(
+        item.name for item in metadata_root.glob("*.json") if item.name not in written
+    )
+    for name in stale:
+        (metadata_root / name).unlink()
+
+    # Sample directories from an earlier scheme are the same hazard: they hold
+    # real audio under a name nothing maps to any more.
+    current = {record.destination.parent.resolve() for record in records.values()}
+    stale_dirs = sorted(
+        item.relative_to(sample_root).as_posix()
+        for item in sample_root.glob("*/*")
+        if item.is_dir() and item.resolve() not in current
+    )
+    if prune:
+        for name in stale_dirs:
+            shutil.rmtree(sample_root / name)
+
     library = {
         "schema_version": 1,
         "sr": 44100,
@@ -252,9 +321,15 @@ def import_library(
             "wav": len(all_wavs),
             "mapped_wav": sum(item["mapped"] for item in inventory),
         },
+        "stale_manifests_removed": stale,
+        "stale_sample_dirs": stale_dirs,
+        "stale_sample_dirs_pruned": bool(prune),
     }
     (metadata_root / "library.json").write_text(
         json.dumps(library, indent=2) + "\n", encoding="utf-8"
+    )
+    (destination / "data" / "file_tree.txt").write_text(
+        render_file_tree(destination / "data"), encoding="utf-8"
     )
     return library
 
@@ -265,11 +340,40 @@ def main() -> None:
     parser.add_argument(
         "--destination", type=Path, default=Path.cwd(), help="DrumSynth repository"
     )
+    parser.add_argument(
+        "--prune",
+        action="store_true",
+        help="delete sample directories left over from an earlier run",
+    )
     args = parser.parse_args()
-    result = import_library(args.source, args.destination)
+    result = import_library(args.source, args.destination, prune=args.prune)
     counts = result["source_counts"]
+    unmapped = counts["wav"] - counts["mapped_wav"]
     print(f"copied {counts['wav']} WAV files; {counts['mapped_wav']} have SFZ metadata")
-    print(f"unresolved SFZ references: {len(result['missing_mappings'])}")
+    print(f"instruments: {len(result['manifests'])}")
+    if unmapped:
+        print(
+            f"copied but unmapped (no SFZ region references them): {unmapped} — "
+            "stored for later, not fitting data"
+        )
+    if result["missing_mappings"]:
+        print(
+            f"unresolved SFZ references (mapping points at a file that is not "
+            f"there): {len(result['missing_mappings'])}"
+        )
+    if result["stale_manifests_removed"]:
+        print(
+            "removed stale manifests from an earlier run: "
+            + ", ".join(result["stale_manifests_removed"])
+        )
+    if result["stale_sample_dirs"]:
+        verb = "removed" if result["stale_sample_dirs_pruned"] else "left in place"
+        print(
+            f"sample directories from an earlier run ({verb}): "
+            + ", ".join(result["stale_sample_dirs"])
+        )
+        if not result["stale_sample_dirs_pruned"]:
+            print("  re-run with --prune to delete them")
 
 
 if __name__ == "__main__":

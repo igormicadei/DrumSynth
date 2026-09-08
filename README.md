@@ -133,19 +133,26 @@ ignored:
 
 ## Sample handling
 
-The repository includes the normalized DrumModalSynth library under `data/`.
-WAVs are stored in slugified `data/samples/drums/` and
-`data/samples/cymbals/` trees; JSON manifests under `data/metadata/` contain
-only mappings for files that exist, plus an inventory for every copied WAV.
-The repeatable conversion command is implemented in
-`tools/import_samples.py`.
+The normalized DrumModalSynth library lives under `data/` — 3614 WAVs across 14
+membrane drums and 15 cymbals, with slugified names and JSON manifests. The
+audio itself is gitignored (3.5 GB); `data/file_tree.txt` is the generated
+record of what the import produced, and the integrity tests check the manifests
+against it without needing a single WAV. Re-populate `data/samples/` with:
 
-SFZ velocity regions are represented by `velocity_low`, `velocity_high`, and
-`velocity_ranges`. The compatibility `velocity` value is their midpoint and
-`velocity_is_exact` is false, so range-mapped layers are not mistaken for
-recorded exact MIDI labels. Round-robin layers are retained as
-`round_robin`/`take`. Cymbals are stored for future support but are not
-implicitly treated as membrane-drum fitting data.
+```bash
+python tools/import_samples.py <path-to-DrumModalSynth/data>
+```
+
+Velocity in this library is an SFZ *range*, not a recorded label, so every row
+carries `velocity_low`/`velocity_high` and `velocity_is_exact: false`. The
+`velocity` field is the band midpoint and exists only for code written against
+a plain label — it is not a measurement, and the calibration must not treat it
+as one. Round-robin layers are alternate recordings of the same band, which is
+what `take` means, so both are kept.
+
+[docs/DATA.md](docs/DATA.md) has the per-drum table, and the two things that are
+genuinely missing: 20 SFZ regions pointing at files that were never recorded,
+and 276 WAVs no region references. Neither was papered over.
 
 Velocity is not a property of the drum. `f_static` and `t60` are the drum;
 `gain`, noise `level` and `contact_time` are the hit. One `DrumParams` per drum,
@@ -216,6 +223,8 @@ python examples/03_check_a_library.py      # quality gates on a demo session
   design, and what was done about it.
 * [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md) — module map, the fast-path
   derivation, performance, and what the tests actually pin.
+* [docs/DATA.md](docs/DATA.md) — the imported sample library: what is in it,
+  how velocity is represented, and what is missing.
 
 ## Not built yet
 

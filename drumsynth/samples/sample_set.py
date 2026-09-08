@@ -40,6 +40,13 @@ class SampleSet:
     #: usable window is shorter than that cannot fit it.
     EXPECTED_SLOWEST_T60: float = 2.3
 
+    #: Full MIDI controller range. A set that stops short of either end has no
+    #: evidence there, and the fitted velocity curve extrapolates rather than
+    #: interpolates — which is the harder question and the one more likely to
+    #: be wrong. Reported when the shortfall exceeds CONTROLLER_MARGIN.
+    CONTROLLER_RANGE: tuple[float, float] = (1.0, 127.0)
+    CONTROLLER_MARGIN: float = 8.0
+
     # -- construction ---------------------------------------------------------
 
     @classmethod
@@ -199,10 +206,25 @@ class SampleSet:
                 + " — investigate the session, do not fit around it"
             )
 
+        low, high = self.velocity_range()
+        covered_low, covered_high = self.controller_coverage()
+        controller_low, controller_high = SampleSet.CONTROLLER_RANGE
+        if covered_low - controller_low > SampleSet.CONTROLLER_MARGIN:
+            issues.append(
+                f"nothing recorded below v{covered_low:.0f}; the velocity curve "
+                "extrapolates at the quiet end"
+            )
+        if controller_high - covered_high > SampleSet.CONTROLLER_MARGIN:
+            issues.append(
+                f"nothing recorded above v{covered_high:.0f} of "
+                f"{controller_high:.0f}; the velocity curve extrapolates at the loud "
+                "end — which is also where the drum is most nonlinear and where a "
+                "hard hit's glide and damping stop behaving like the soft ones"
+            )
+
         coverage = self.velocity_coverage(n_bins)
         empty = np.flatnonzero(coverage == 0)
         if empty.size:
-            low, high = self.velocity_range()
             width = (high - low) / n_bins if n_bins else 0.0
             gaps = ", ".join(
                 f"v{low + index * width:.0f}-{low + (index + 1) * width:.0f}"
@@ -289,6 +311,26 @@ class SampleSet:
         velocities = [sample.velocity for sample in self.samples]
         return (float(min(velocities)), float(max(velocities)))
 
+    def controller_coverage(self) -> tuple[float, float]:
+        """The controller range the set actually spans.
+
+        Uses each sample's mapped velocity BAND where one exists, not its label.
+        A range-mapped layer labelled v120 may cover up to v122, and the
+        question here is which controller values have evidence behind them —
+        not where the band midpoints happen to fall.
+        """
+        if not self.samples:
+            return (0.0, 0.0)
+        lows = [
+            sample.velocity_low if sample.velocity_low is not None else sample.velocity
+            for sample in self.samples
+        ]
+        highs = [
+            sample.velocity_high if sample.velocity_high is not None else sample.velocity
+            for sample in self.samples
+        ]
+        return (float(min(lows)), float(max(highs)))
+
     def velocity_coverage(self, n_bins: int = 8) -> np.ndarray:
         """Sample count per velocity bin.
 
@@ -336,7 +378,8 @@ class SampleSet:
         low, high = self.velocity_range()
         lines = [
             f"SampleSet {self.drum!r}: {len(self.samples)} samples, "
-            f"v{low:.0f}-v{high:.0f}, sr={self.sr}",
+            f"v{low:.0f}-v{high:.0f} (covers v{self.controller_coverage()[0]:.0f}-"
+            f"v{self.controller_coverage()[1]:.0f}), sr={self.sr}",
             f"  coverage: {self.velocity_coverage().tolist()}",
             f"  longest usable window: {self.longest_usable_duration():.2f}s",
         ]
