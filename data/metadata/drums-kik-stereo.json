@@ -1,0 +1,5640 @@
+{
+  "schema_version": 1,
+  "family": "drums",
+  "drum": "kik-stereo",
+  "sr": 44100,
+  "samples": [
+    {
+      "path": "samples/drums/kik-stereo/rr1-01-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/01_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-01-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/01_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-01-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/01_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-01-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/01_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-01-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/01_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-01-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/01_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-01-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/01_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-01-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/01_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-02-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/02_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-02-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/02_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-02-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/02_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-02-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/02_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-02-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/02_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-02-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/02_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-02-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/02_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-02-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/02_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-03-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/03_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-03-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/03_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-03-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/03_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-03-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/03_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-03-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/03_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-03-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/03_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-03-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/03_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-03-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/03_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-04-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/04_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-04-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/04_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-04-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/04_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-04-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/04_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-04-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/04_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-04-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/04_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-04-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/04_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-04-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/04_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-05-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/05_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-05-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/05_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-05-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/05_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-05-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/05_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-05-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/05_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-05-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/05_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-05-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/05_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-05-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/05_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-06-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/06_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-06-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/06_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-06-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/06_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-06-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/06_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-06-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/06_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-06-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/06_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-06-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/06_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-06-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/06_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-07-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/07_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-07-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/07_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-07-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/07_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-07-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/07_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-07-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/07_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-07-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/07_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-07-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/07_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-07-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/07_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-08-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/08_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-08-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/08_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-08-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/08_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-08-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/08_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-08-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/08_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-08-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/08_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-08-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/08_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-08-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/08_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-09-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/09_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-09-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/09_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-09-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/09_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-09-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/09_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-09-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/09_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-09-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/09_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-09-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/09_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-09-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/09_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-10-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/10_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-10-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/10_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-10-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/10_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-10-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/10_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-10-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/10_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-10-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/10_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-10-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/10_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-10-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/10_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-11-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/11_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-11-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/11_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-11-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/11_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-11-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/11_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-11-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/11_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-11-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/11_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-11-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/11_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-11-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/11_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-12-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/12_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-12-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/12_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-12-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/12_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-12-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/12_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-12-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/12_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-12-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/12_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-12-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/12_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-12-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/12_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-13-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/13_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-13-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/13_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-13-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/13_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-13-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/13_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-13-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/13_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-13-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/13_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-13-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/13_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-13-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/13_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-14-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/14_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-14-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/14_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-14-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/14_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-14-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/14_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-14-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/14_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-14-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/14_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-14-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/14_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-14-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/14_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-15-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/15_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-15-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/15_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-15-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/15_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-15-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/15_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-15-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/15_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-15-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/15_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-15-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/15_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-15-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/15_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-16-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/16_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-16-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/16_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-16-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/16_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-16-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/16_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-16-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/16_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-16-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/16_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-16-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/16_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-16-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/16_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-17-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/17_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-17-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/17_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-17-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/17_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-17-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/17_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-17-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/17_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-17-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/17_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-17-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/17_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-17-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/17_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-18-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/18_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-18-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/18_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-18-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/18_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-18-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/18_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-18-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/18_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-18-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/18_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-18-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/18_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-18-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/18_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-19-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/19_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-19-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/19_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-19-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/19_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-19-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/19_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-19-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/19_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-19-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/19_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-19-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/19_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-19-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/19_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-20-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/20_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-20-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/20_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-20-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/20_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-20-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/20_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-20-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/20_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-20-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/20_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-20-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/20_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-20-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/20_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-21-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/21_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-21-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/21_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-21-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/21_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-21-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/21_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-21-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/21_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-21-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/21_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-21-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/21_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-21-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/21_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-22-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/22_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-22-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/22_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-22-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/22_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-22-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/22_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-22-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/22_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-22-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/22_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-22-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/22_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-22-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/22_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-23-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/23_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-23-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/23_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-23-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/23_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-23-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/23_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-23-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/23_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-23-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/23_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-23-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/23_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-23-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/23_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-24-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/24_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-24-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/24_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-24-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/24_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-24-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/24_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-24-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/24_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-24-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/24_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-24-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/24_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-24-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/24_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-25-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/25_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-25-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/25_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-25-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/25_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-25-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/25_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-25-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/25_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-25-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/25_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-25-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/25_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-25-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/25_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-26-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/26_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-26-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/26_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-26-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/26_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-26-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/26_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-26-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/26_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-26-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/26_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-26-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/26_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-26-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/26_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-27-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/27_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-27-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/27_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-27-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/27_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-27-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/27_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-27-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/27_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-27-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/27_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-27-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/27_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-27-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/27_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-28-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/28_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-28-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/28_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-28-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/28_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-28-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/28_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-28-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/28_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-28-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/28_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-28-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/28_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-28-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/28_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-29-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/29_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-29-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/29_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-29-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/29_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-29-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/29_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-29-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/29_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-29-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/29_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-29-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/29_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-29-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/29_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-30-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/30_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-30-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/30_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-30-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/30_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-30-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/30_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-30-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/30_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-30-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/30_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-30-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/30_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-30-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/30_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-31-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/31_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-31-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/31_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-31-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/31_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-31-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/31_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-31-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/31_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-31-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/31_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-31-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/31_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-31-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/31_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr1-32-kik-stereo-rr1.wav",
+      "drum": "kik-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR1/32_Kik_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr2-32-kik-stereo-rr2.wav",
+      "drum": "kik-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR2/32_Kik_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr3-32-kik-stereo-rr3.wav",
+      "drum": "kik-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR3/32_Kik_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr4-32-kik-stereo-rr4.wav",
+      "drum": "kik-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR4/32_Kik_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr5-32-kik-stereo-rr5.wav",
+      "drum": "kik-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR5/32_Kik_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr6-32-kik-stereo-rr6.wav",
+      "drum": "kik-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR6/32_Kik_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr7-32-kik-stereo-rr7.wav",
+      "drum": "kik-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR7/32_Kik_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    },
+    {
+      "path": "samples/drums/kik-stereo/rr8-32-kik-stereo-rr8.wav",
+      "drum": "kik-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "C:/Projetos/DrumModalSynth/data/Samples/SMDrum Stereo (Samples)/Kik_Stereo/RR8/32_Kik_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_kick.sfz"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1416 @@
+{
+  "schema_version": 1,
+  "family": "drums",
+  "drum": "smd-snr-str-hyb2",
+  "sr": 44100,
+  "samples": [
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-01-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/01_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-01-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/01_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-02-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/02_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-02-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/02_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-03-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/03_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-03-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/03_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-04-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/04_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-04-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 13.5,
+      "velocity_low": 12.0,
+      "velocity_high": 15.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          15.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/04_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-05-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/05_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-05-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 17.5,
+      "velocity_low": 16.0,
+      "velocity_high": 19.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          16.0,
+          19.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/05_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-06-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/06_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-06-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 21.5,
+      "velocity_low": 20.0,
+      "velocity_high": 23.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          20.0,
+          23.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/06_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-07-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/07_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-07-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 25.5,
+      "velocity_low": 24.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          24.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/07_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-08-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/08_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-08-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 29.5,
+      "velocity_low": 28.0,
+      "velocity_high": 31.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          31.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/08_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-09-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/09_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-09-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 33.5,
+      "velocity_low": 32.0,
+      "velocity_high": 35.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          32.0,
+          35.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/09_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-10-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/10_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-10-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 37.5,
+      "velocity_low": 36.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          36.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/10_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-11-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/11_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-11-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 41.5,
+      "velocity_low": 40.0,
+      "velocity_high": 43.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          43.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/11_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-12-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/12_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-12-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 45.5,
+      "velocity_low": 44.0,
+      "velocity_high": 47.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          44.0,
+          47.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/12_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-13-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/13_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-13-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 49.5,
+      "velocity_low": 48.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          48.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/13_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-14-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/14_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-14-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 53.5,
+      "velocity_low": 52.0,
+      "velocity_high": 55.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          55.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/14_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-15-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/15_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-15-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 57.5,
+      "velocity_low": 56.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          56.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/15_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-16-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/16_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-16-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/16_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-17-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/17_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-17-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/17_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-18-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/18_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-18-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 69.5,
+      "velocity_low": 68.0,
+      "velocity_high": 71.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          71.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/18_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-19-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/19_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-19-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 73.5,
+      "velocity_low": 72.0,
+      "velocity_high": 75.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          72.0,
+          75.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/19_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-20-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/20_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-20-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 77.5,
+      "velocity_low": 76.0,
+      "velocity_high": 79.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          76.0,
+          79.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/20_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-21-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/21_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-21-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 81.5,
+      "velocity_low": 80.0,
+      "velocity_high": 83.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          80.0,
+          83.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/21_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-22-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/22_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-22-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 85.5,
+      "velocity_low": 84.0,
+      "velocity_high": 87.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          84.0,
+          87.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/22_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-23-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/23_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-23-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 89.5,
+      "velocity_low": 88.0,
+      "velocity_high": 91.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          88.0,
+          91.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/23_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-24-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/24_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-24-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 93.5,
+      "velocity_low": 92.0,
+      "velocity_high": 95.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          92.0,
+          95.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/24_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-25-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/25_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-25-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 97.5,
+      "velocity_low": 96.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          96.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/25_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-26-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/26_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-26-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/26_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-27-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/27_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-27-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/27_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-28-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/28_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-28-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/28_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-29-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/29_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-29-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/29_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-30-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/30_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-30-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/30_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-31-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/31_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-31-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/31_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr1-32-snr-hyb2-rr1.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR1/32_Snr_HyB2_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/smd-snr-str-hyb2/rr2-32-snr-hyb2-rr2.wav",
+      "drum": "smd-snr-str-hyb2",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/SMD_Snr_Str_HyB2 (Samples)/RR2/32_Snr_HyB2_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snarehy2.sfz"
+      ]
+    }
+  ]
+}

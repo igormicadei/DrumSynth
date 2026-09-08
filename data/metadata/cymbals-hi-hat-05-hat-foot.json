@@ -1,0 +1,5464 @@
+{
+  "schema_version": 1,
+  "family": "cymbals",
+  "drum": "hi-hat-05-hat-foot",
+  "sr": 44100,
+  "samples": [
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-01-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 2.5,
+      "velocity_low": 1.0,
+      "velocity_high": 4.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          4.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/01_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-01-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 2.5,
+      "velocity_low": 1.0,
+      "velocity_high": 4.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          4.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/01_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-01-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 2.5,
+      "velocity_low": 1.0,
+      "velocity_high": 4.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          4.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/01_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-01-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 2.5,
+      "velocity_low": 1.0,
+      "velocity_high": 4.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          4.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/01_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-01-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 2.5,
+      "velocity_low": 1.0,
+      "velocity_high": 4.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          4.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/01_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-01-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 2.5,
+      "velocity_low": 1.0,
+      "velocity_high": 4.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          4.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/01_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-01-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 2.5,
+      "velocity_low": 1.0,
+      "velocity_high": 4.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          4.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/01_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-01-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 2.5,
+      "velocity_low": 1.0,
+      "velocity_high": 4.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          4.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/01_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-02-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 6.5,
+      "velocity_low": 5.0,
+      "velocity_high": 8.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          5.0,
+          8.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/02_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-02-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 6.5,
+      "velocity_low": 5.0,
+      "velocity_high": 8.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          5.0,
+          8.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/02_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-02-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 6.5,
+      "velocity_low": 5.0,
+      "velocity_high": 8.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          5.0,
+          8.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/02_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-02-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 6.5,
+      "velocity_low": 5.0,
+      "velocity_high": 8.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          5.0,
+          8.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/02_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-02-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 6.5,
+      "velocity_low": 5.0,
+      "velocity_high": 8.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          5.0,
+          8.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/02_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-02-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 6.5,
+      "velocity_low": 5.0,
+      "velocity_high": 8.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          5.0,
+          8.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/02_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-02-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 6.5,
+      "velocity_low": 5.0,
+      "velocity_high": 8.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          5.0,
+          8.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/02_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-02-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 6.5,
+      "velocity_low": 5.0,
+      "velocity_high": 8.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          5.0,
+          8.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/02_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-03-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 10.5,
+      "velocity_low": 9.0,
+      "velocity_high": 12.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          9.0,
+          12.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/03_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-03-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 10.5,
+      "velocity_low": 9.0,
+      "velocity_high": 12.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          9.0,
+          12.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/03_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-03-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 10.5,
+      "velocity_low": 9.0,
+      "velocity_high": 12.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          9.0,
+          12.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/03_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-03-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 10.5,
+      "velocity_low": 9.0,
+      "velocity_high": 12.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          9.0,
+          12.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/03_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-03-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 10.5,
+      "velocity_low": 9.0,
+      "velocity_high": 12.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          9.0,
+          12.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/03_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-03-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 10.5,
+      "velocity_low": 9.0,
+      "velocity_high": 12.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          9.0,
+          12.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/03_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-03-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 10.5,
+      "velocity_low": 9.0,
+      "velocity_high": 12.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          9.0,
+          12.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/03_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-03-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 10.5,
+      "velocity_low": 9.0,
+      "velocity_high": 12.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          9.0,
+          12.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/03_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-04-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 14.5,
+      "velocity_low": 13.0,
+      "velocity_high": 16.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          13.0,
+          16.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/04_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-04-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 14.5,
+      "velocity_low": 13.0,
+      "velocity_high": 16.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          13.0,
+          16.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/04_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-04-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 14.5,
+      "velocity_low": 13.0,
+      "velocity_high": 16.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          13.0,
+          16.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/04_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-04-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 14.5,
+      "velocity_low": 13.0,
+      "velocity_high": 16.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          13.0,
+          16.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/04_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-04-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 14.5,
+      "velocity_low": 13.0,
+      "velocity_high": 16.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          13.0,
+          16.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/04_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-04-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 14.5,
+      "velocity_low": 13.0,
+      "velocity_high": 16.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          13.0,
+          16.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/04_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-04-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 14.5,
+      "velocity_low": 13.0,
+      "velocity_high": 16.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          13.0,
+          16.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/04_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-04-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 14.5,
+      "velocity_low": 13.0,
+      "velocity_high": 16.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          13.0,
+          16.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/04_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-05-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 18.5,
+      "velocity_low": 17.0,
+      "velocity_high": 20.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          17.0,
+          20.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/05_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-05-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 18.5,
+      "velocity_low": 17.0,
+      "velocity_high": 20.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          17.0,
+          20.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/05_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-05-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 18.5,
+      "velocity_low": 17.0,
+      "velocity_high": 20.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          17.0,
+          20.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/05_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-05-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 18.5,
+      "velocity_low": 17.0,
+      "velocity_high": 20.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          17.0,
+          20.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/05_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-05-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 18.5,
+      "velocity_low": 17.0,
+      "velocity_high": 20.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          17.0,
+          20.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/05_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-05-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 18.5,
+      "velocity_low": 17.0,
+      "velocity_high": 20.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          17.0,
+          20.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/05_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-05-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 18.5,
+      "velocity_low": 17.0,
+      "velocity_high": 20.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          17.0,
+          20.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/05_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-05-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 18.5,
+      "velocity_low": 17.0,
+      "velocity_high": 20.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          17.0,
+          20.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/05_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-06-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 22.5,
+      "velocity_low": 21.0,
+      "velocity_high": 24.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          21.0,
+          24.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/06_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-06-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 22.5,
+      "velocity_low": 21.0,
+      "velocity_high": 24.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          21.0,
+          24.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/06_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-06-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 22.5,
+      "velocity_low": 21.0,
+      "velocity_high": 24.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          21.0,
+          24.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/06_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-06-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 22.5,
+      "velocity_low": 21.0,
+      "velocity_high": 24.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          21.0,
+          24.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/06_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-06-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 22.5,
+      "velocity_low": 21.0,
+      "velocity_high": 24.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          21.0,
+          24.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/06_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-06-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 22.5,
+      "velocity_low": 21.0,
+      "velocity_high": 24.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          21.0,
+          24.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/06_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-06-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 22.5,
+      "velocity_low": 21.0,
+      "velocity_high": 24.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          21.0,
+          24.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/06_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-06-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 22.5,
+      "velocity_low": 21.0,
+      "velocity_high": 24.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          21.0,
+          24.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/06_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-07-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 26.5,
+      "velocity_low": 25.0,
+      "velocity_high": 28.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          25.0,
+          28.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/07_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-07-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 26.5,
+      "velocity_low": 25.0,
+      "velocity_high": 28.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          25.0,
+          28.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/07_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-07-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 26.5,
+      "velocity_low": 25.0,
+      "velocity_high": 28.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          25.0,
+          28.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/07_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-07-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 26.5,
+      "velocity_low": 25.0,
+      "velocity_high": 28.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          25.0,
+          28.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/07_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-07-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 26.5,
+      "velocity_low": 25.0,
+      "velocity_high": 28.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          25.0,
+          28.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/07_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-07-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 26.5,
+      "velocity_low": 25.0,
+      "velocity_high": 28.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          25.0,
+          28.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/07_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-07-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 26.5,
+      "velocity_low": 25.0,
+      "velocity_high": 28.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          25.0,
+          28.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/07_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-07-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 26.5,
+      "velocity_low": 25.0,
+      "velocity_high": 28.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          25.0,
+          28.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/07_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-08-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 31.0,
+      "velocity_low": 29.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          29.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/08_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-08-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 31.0,
+      "velocity_low": 29.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          29.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/08_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-08-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 31.0,
+      "velocity_low": 29.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          29.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/08_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-08-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 31.0,
+      "velocity_low": 29.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          29.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/08_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-08-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 31.0,
+      "velocity_low": 29.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          29.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/08_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-08-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 31.0,
+      "velocity_low": 29.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          29.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/08_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-08-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 31.0,
+      "velocity_low": 29.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          29.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/08_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-08-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 31.0,
+      "velocity_low": 29.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          29.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/08_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-09-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/09_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-09-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/09_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-09-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/09_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-09-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/09_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-09-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/09_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-09-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/09_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-09-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/09_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-09-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/09_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-10-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/10_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-10-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/10_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-10-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/10_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-10-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/10_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-10-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/10_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-10-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/10_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-10-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/10_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-10-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/10_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-11-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 43.5,
+      "velocity_low": 42.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/11_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-11-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 43.5,
+      "velocity_low": 42.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/11_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-11-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 43.5,
+      "velocity_low": 42.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/11_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-11-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 43.5,
+      "velocity_low": 42.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/11_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-11-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 43.5,
+      "velocity_low": 42.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/11_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-11-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 43.5,
+      "velocity_low": 42.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/11_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-11-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 43.5,
+      "velocity_low": 42.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/11_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-11-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 43.5,
+      "velocity_low": 42.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/11_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-12-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 47.5,
+      "velocity_low": 46.0,
+      "velocity_high": 49.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          49.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/12_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-12-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 47.5,
+      "velocity_low": 46.0,
+      "velocity_high": 49.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          49.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/12_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-12-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 47.5,
+      "velocity_low": 46.0,
+      "velocity_high": 49.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          49.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/12_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-12-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 47.5,
+      "velocity_low": 46.0,
+      "velocity_high": 49.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          49.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/12_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-12-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 47.5,
+      "velocity_low": 46.0,
+      "velocity_high": 49.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          49.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/12_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-12-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 47.5,
+      "velocity_low": 46.0,
+      "velocity_high": 49.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          49.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/12_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-12-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 47.5,
+      "velocity_low": 46.0,
+      "velocity_high": 49.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          49.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/12_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-12-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 47.5,
+      "velocity_low": 46.0,
+      "velocity_high": 49.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          49.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/12_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-13-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 51.5,
+      "velocity_low": 50.0,
+      "velocity_high": 53.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          50.0,
+          53.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/13_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-13-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 51.5,
+      "velocity_low": 50.0,
+      "velocity_high": 53.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          50.0,
+          53.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/13_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-13-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 51.5,
+      "velocity_low": 50.0,
+      "velocity_high": 53.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          50.0,
+          53.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/13_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-13-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 51.5,
+      "velocity_low": 50.0,
+      "velocity_high": 53.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          50.0,
+          53.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/13_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-13-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 51.5,
+      "velocity_low": 50.0,
+      "velocity_high": 53.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          50.0,
+          53.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/13_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-13-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 51.5,
+      "velocity_low": 50.0,
+      "velocity_high": 53.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          50.0,
+          53.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/13_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-13-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 51.5,
+      "velocity_low": 50.0,
+      "velocity_high": 53.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          50.0,
+          53.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/13_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-13-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 51.5,
+      "velocity_low": 50.0,
+      "velocity_high": 53.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          50.0,
+          53.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/13_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-14-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 55.5,
+      "velocity_low": 54.0,
+      "velocity_high": 57.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          54.0,
+          57.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/14_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-14-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 55.5,
+      "velocity_low": 54.0,
+      "velocity_high": 57.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          54.0,
+          57.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/14_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-14-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 55.5,
+      "velocity_low": 54.0,
+      "velocity_high": 57.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          54.0,
+          57.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/14_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-14-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 55.5,
+      "velocity_low": 54.0,
+      "velocity_high": 57.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          54.0,
+          57.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/14_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-14-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 55.5,
+      "velocity_low": 54.0,
+      "velocity_high": 57.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          54.0,
+          57.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/14_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-14-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 55.5,
+      "velocity_low": 54.0,
+      "velocity_high": 57.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          54.0,
+          57.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/14_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-14-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 55.5,
+      "velocity_low": 54.0,
+      "velocity_high": 57.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          54.0,
+          57.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/14_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-14-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 55.5,
+      "velocity_low": 54.0,
+      "velocity_high": 57.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          54.0,
+          57.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/14_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-15-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 59.5,
+      "velocity_low": 58.0,
+      "velocity_high": 61.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/15_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-15-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 59.5,
+      "velocity_low": 58.0,
+      "velocity_high": 61.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/15_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-15-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 59.5,
+      "velocity_low": 58.0,
+      "velocity_high": 61.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/15_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-15-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 59.5,
+      "velocity_low": 58.0,
+      "velocity_high": 61.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/15_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-15-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 59.5,
+      "velocity_low": 58.0,
+      "velocity_high": 61.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/15_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-15-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 59.5,
+      "velocity_low": 58.0,
+      "velocity_high": 61.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/15_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-15-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 59.5,
+      "velocity_low": 58.0,
+      "velocity_high": 61.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/15_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-15-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 59.5,
+      "velocity_low": 58.0,
+      "velocity_high": 61.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/15_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-16-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 63.5,
+      "velocity_low": 62.0,
+      "velocity_high": 65.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          62.0,
+          65.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/16_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-16-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 63.5,
+      "velocity_low": 62.0,
+      "velocity_high": 65.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          62.0,
+          65.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/16_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-16-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 63.5,
+      "velocity_low": 62.0,
+      "velocity_high": 65.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          62.0,
+          65.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/16_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-16-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 63.5,
+      "velocity_low": 62.0,
+      "velocity_high": 65.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          62.0,
+          65.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/16_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-16-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 63.5,
+      "velocity_low": 62.0,
+      "velocity_high": 65.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          62.0,
+          65.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/16_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-16-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 63.5,
+      "velocity_low": 62.0,
+      "velocity_high": 65.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          62.0,
+          65.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/16_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-16-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 63.5,
+      "velocity_low": 62.0,
+      "velocity_high": 65.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          62.0,
+          65.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/16_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-16-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 63.5,
+      "velocity_low": 62.0,
+      "velocity_high": 65.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          62.0,
+          65.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/16_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-17-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 68.0,
+      "velocity_low": 66.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          66.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/17_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-17-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 68.0,
+      "velocity_low": 66.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          66.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/17_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-17-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 68.0,
+      "velocity_low": 66.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          66.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/17_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-17-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 68.0,
+      "velocity_low": 66.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          66.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/17_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-17-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 68.0,
+      "velocity_low": 66.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          66.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/17_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-17-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 68.0,
+      "velocity_low": 66.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          66.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/17_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-17-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 68.0,
+      "velocity_low": 66.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          66.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/17_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-17-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 68.0,
+      "velocity_low": 66.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          66.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/17_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-18-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/18_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-18-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/18_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-18-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/18_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-18-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/18_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-18-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/18_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-18-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/18_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-18-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/18_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-18-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/18_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-19-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/19_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-19-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/19_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-19-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/19_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-19-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/19_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-19-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/19_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-19-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/19_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-19-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/19_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-19-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/19_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-20-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 80.5,
+      "velocity_low": 79.0,
+      "velocity_high": 82.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          82.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/20_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-20-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 80.5,
+      "velocity_low": 79.0,
+      "velocity_high": 82.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          82.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/20_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-20-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 80.5,
+      "velocity_low": 79.0,
+      "velocity_high": 82.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          82.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/20_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-20-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 80.5,
+      "velocity_low": 79.0,
+      "velocity_high": 82.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          82.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/20_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-20-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 80.5,
+      "velocity_low": 79.0,
+      "velocity_high": 82.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          82.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/20_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-20-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 80.5,
+      "velocity_low": 79.0,
+      "velocity_high": 82.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          82.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/20_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-20-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 80.5,
+      "velocity_low": 79.0,
+      "velocity_high": 82.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          82.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/20_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-20-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 80.5,
+      "velocity_low": 79.0,
+      "velocity_high": 82.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          82.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/20_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-21-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 84.5,
+      "velocity_low": 83.0,
+      "velocity_high": 86.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          83.0,
+          86.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/21_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-21-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 84.5,
+      "velocity_low": 83.0,
+      "velocity_high": 86.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          83.0,
+          86.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/21_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-21-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 84.5,
+      "velocity_low": 83.0,
+      "velocity_high": 86.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          83.0,
+          86.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/21_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-21-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 84.5,
+      "velocity_low": 83.0,
+      "velocity_high": 86.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          83.0,
+          86.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/21_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-21-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 84.5,
+      "velocity_low": 83.0,
+      "velocity_high": 86.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          83.0,
+          86.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/21_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-21-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 84.5,
+      "velocity_low": 83.0,
+      "velocity_high": 86.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          83.0,
+          86.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/21_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-21-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 84.5,
+      "velocity_low": 83.0,
+      "velocity_high": 86.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          83.0,
+          86.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/21_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-21-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 84.5,
+      "velocity_low": 83.0,
+      "velocity_high": 86.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          83.0,
+          86.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/21_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-22-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 88.5,
+      "velocity_low": 87.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          87.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/22_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-22-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 88.5,
+      "velocity_low": 87.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          87.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/22_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-22-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 88.5,
+      "velocity_low": 87.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          87.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/22_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-22-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 88.5,
+      "velocity_low": 87.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          87.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/22_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-22-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 88.5,
+      "velocity_low": 87.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          87.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/22_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-22-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 88.5,
+      "velocity_low": 87.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          87.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/22_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-22-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 88.5,
+      "velocity_low": 87.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          87.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/22_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-22-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 88.5,
+      "velocity_low": 87.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          87.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/22_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-23-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 92.5,
+      "velocity_low": 91.0,
+      "velocity_high": 94.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          94.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/23_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-23-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 92.5,
+      "velocity_low": 91.0,
+      "velocity_high": 94.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          94.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/23_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-23-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 92.5,
+      "velocity_low": 91.0,
+      "velocity_high": 94.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          94.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/23_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-23-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 92.5,
+      "velocity_low": 91.0,
+      "velocity_high": 94.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          94.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/23_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-23-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 92.5,
+      "velocity_low": 91.0,
+      "velocity_high": 94.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          94.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/23_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-23-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 92.5,
+      "velocity_low": 91.0,
+      "velocity_high": 94.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          94.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/23_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-23-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 92.5,
+      "velocity_low": 91.0,
+      "velocity_high": 94.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          94.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/23_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-23-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 92.5,
+      "velocity_low": 91.0,
+      "velocity_high": 94.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          94.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/23_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-24-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 97.0,
+      "velocity_low": 95.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          95.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/24_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-24-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 97.0,
+      "velocity_low": 95.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          95.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/24_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-24-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 97.0,
+      "velocity_low": 95.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          95.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/24_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-24-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 97.0,
+      "velocity_low": 95.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          95.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/24_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-24-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 97.0,
+      "velocity_low": 95.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          95.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/24_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-24-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 97.0,
+      "velocity_low": 95.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          95.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/24_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-24-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 97.0,
+      "velocity_low": 95.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          95.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/24_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-24-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 97.0,
+      "velocity_low": 95.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          95.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/24_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-25-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/25_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-25-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/25_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-25-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/25_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-25-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/25_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-25-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/25_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-25-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/25_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-25-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/25_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-25-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 101.5,
+      "velocity_low": 100.0,
+      "velocity_high": 103.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          103.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/25_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-26-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/26_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-26-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/26_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-26-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/26_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-26-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/26_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-26-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/26_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-26-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/26_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-26-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/26_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-26-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 105.5,
+      "velocity_low": 104.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          104.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/26_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-27-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/27_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-27-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/27_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-27-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/27_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-27-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/27_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-27-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/27_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-27-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/27_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-27-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/27_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-27-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/27_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-28-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/28_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-28-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/28_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-28-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/28_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-28-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/28_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-28-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/28_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-28-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/28_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-28-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/28_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-28-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/28_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-29-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/29_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-29-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/29_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-29-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/29_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-29-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/29_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-29-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/29_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-29-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/29_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-29-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/29_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-29-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/29_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-30-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/30_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-30-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/30_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-30-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/30_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-30-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/30_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-30-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/30_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-30-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/30_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-30-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/30_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-30-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/30_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr1-31-hat-foot-rr1.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR1/31_Hat_Foot_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr2-31-hat-foot-rr2.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR2/31_Hat_Foot_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr3-31-hat-foot-rr3.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR3/31_Hat_Foot_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr4-31-hat-foot-rr4.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR4/31_Hat_Foot_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr5-31-hat-foot-rr5.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "cymbals",
+      "round_robin": 5,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR5/31_Hat_Foot_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr6-31-hat-foot-rr6.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "cymbals",
+      "round_robin": 6,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR6/31_Hat_Foot_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr7-31-hat-foot-rr7.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "cymbals",
+      "round_robin": 7,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR7/31_Hat_Foot_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-05-hat-foot/rr8-31-hat-foot-rr8.wav",
+      "drum": "hi-hat-05-hat-foot",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "cymbals",
+      "round_robin": 8,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/05 Hat, Foot/RR8/31_Hat_Foot_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_foothat.sfz"
+      ]
+    }
+  ]
+}

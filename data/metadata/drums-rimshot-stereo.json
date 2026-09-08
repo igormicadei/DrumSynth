@@ -1,0 +1,888 @@
+{
+  "schema_version": 1,
+  "family": "drums",
+  "drum": "rimshot-stereo",
+  "sr": 44100,
+  "samples": [
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-01-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 7.0,
+      "velocity_low": 1.0,
+      "velocity_high": 13.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          13.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/01_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-01-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 7.0,
+      "velocity_low": 1.0,
+      "velocity_high": 13.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          13.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/01_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-01-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 7.0,
+      "velocity_low": 1.0,
+      "velocity_high": 13.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          13.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/01_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-01-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 7.0,
+      "velocity_low": 1.0,
+      "velocity_high": 13.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          13.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/01_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-02-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 20.0,
+      "velocity_low": 14.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          14.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/02_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-02-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 20.0,
+      "velocity_low": 14.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          14.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/02_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-02-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 20.0,
+      "velocity_low": 14.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          14.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/02_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-02-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 20.0,
+      "velocity_low": 14.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          14.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/02_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-03-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 33.0,
+      "velocity_low": 27.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/03_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-03-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 33.0,
+      "velocity_low": 27.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/03_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-03-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 33.0,
+      "velocity_low": 27.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/03_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-03-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 33.0,
+      "velocity_low": 27.0,
+      "velocity_high": 39.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          39.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/03_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-04-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 46.0,
+      "velocity_low": 40.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/04_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-04-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 46.0,
+      "velocity_low": 40.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/04_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-04-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 46.0,
+      "velocity_low": 40.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/04_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-04-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 46.0,
+      "velocity_low": 40.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          40.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/04_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-05-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 58.5,
+      "velocity_low": 53.0,
+      "velocity_high": 64.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          64.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/05_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-05-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 58.5,
+      "velocity_low": 53.0,
+      "velocity_high": 64.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          64.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/05_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-05-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 58.5,
+      "velocity_low": 53.0,
+      "velocity_high": 64.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          64.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/05_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-05-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 58.5,
+      "velocity_low": 53.0,
+      "velocity_high": 64.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          64.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/05_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-06-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 70.5,
+      "velocity_low": 65.0,
+      "velocity_high": 76.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          65.0,
+          76.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/06_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-06-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 70.5,
+      "velocity_low": 65.0,
+      "velocity_high": 76.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          65.0,
+          76.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/06_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-06-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 70.5,
+      "velocity_low": 65.0,
+      "velocity_high": 76.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          65.0,
+          76.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/06_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-06-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 70.5,
+      "velocity_low": 65.0,
+      "velocity_high": 76.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          65.0,
+          76.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/06_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-07-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 83.0,
+      "velocity_low": 77.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          77.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/07_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-07-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 83.0,
+      "velocity_low": 77.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          77.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/07_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-07-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 83.0,
+      "velocity_low": 77.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          77.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/07_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-07-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 83.0,
+      "velocity_low": 77.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          77.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/07_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-08-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 96.0,
+      "velocity_low": 90.0,
+      "velocity_high": 102.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          102.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/08_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-08-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 96.0,
+      "velocity_low": 90.0,
+      "velocity_high": 102.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          102.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/08_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-08-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 96.0,
+      "velocity_low": 90.0,
+      "velocity_high": 102.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          102.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/08_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-08-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 96.0,
+      "velocity_low": 90.0,
+      "velocity_high": 102.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          102.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/08_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-09-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 109.0,
+      "velocity_low": 103.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          103.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/09_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-09-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 109.0,
+      "velocity_low": 103.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          103.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/09_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-09-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 109.0,
+      "velocity_low": 103.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          103.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/09_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-09-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 109.0,
+      "velocity_low": 103.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          103.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/09_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr1-10-rimshot-stereo-rr1.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 121.5,
+      "velocity_low": 116.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR1/10_RimShot_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr2-10-rimshot-stereo-rr2.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 121.5,
+      "velocity_low": 116.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR2/10_RimShot_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr3-10-rimshot-stereo-rr3.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 121.5,
+      "velocity_low": 116.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR3/10_RimShot_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/rimshot-stereo/rr4-10-rimshot-stereo-rr4.wav",
+      "drum": "rimshot-stereo",
+      "velocity": 121.5,
+      "velocity_low": 116.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/RimShot_Stereo/RR4/10_RimShot_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_rimshot.sfz"
+      ]
+    }
+  ]
+}

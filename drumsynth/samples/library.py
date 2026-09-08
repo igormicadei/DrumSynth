@@ -100,11 +100,16 @@ class SampleLibrary:
 
     @classmethod
     def load_manifest(cls, path: str | Path) -> "SampleLibrary":
+        path = Path(path)
         data = json.loads(Path(path).read_text(encoding="utf-8"))
         library = cls(int(data.get("sr", Audio.DEFAULT_SR)))
         for drum, entries in data.get("drums", {}).items():
             sample_set = SampleSet(drum=drum, sr=library.sr)
             for entry in entries:
+                entry = dict(entry)
+                sample_path = Path(entry["path"])
+                if not sample_path.is_absolute():
+                    entry["path"] = str(path.parent / sample_path)
                 sample_set.add(Sample.from_dict(entry))
             library.add_set(sample_set)
         return library

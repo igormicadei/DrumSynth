@@ -55,6 +55,14 @@ drumsynth/
     └── library.py         SampleLibrary
 ```
 
+The checked-in training assets live outside the Python package in `data/`.
+`data/samples/` contains slugified drum and cymbal WAVs, while
+`data/metadata/library.json` and the per-instrument JSON files describe the
+SFZ-derived velocity ranges and round-robin layers. Run
+`python tools/import_samples.py <DrumModalSynth-data>` to reproduce the
+normalization. Missing SFZ references are reported in `library.json`; no
+placeholder sample is created.
+
 Dependency direction is one-way: `synth` and `scoring` both depend on `core`
 and on nothing else; `samples` depends on `scoring` for analysis. The
 synthesizer never imports the scorer, which keeps the input contract honest —

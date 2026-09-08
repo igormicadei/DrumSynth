@@ -30,6 +30,10 @@ class Sample:
     path: Path
     drum: str  # "floor_tom_16", "snare", "kick"
     velocity: float  # NOMINAL label as recorded (MIDI 0-127, or whatever you used)
+    velocity_low: float | None = None  # inclusive mapped lower bound, if known
+    velocity_high: float | None = None  # inclusive mapped upper bound, if known
+    velocity_is_exact: bool = True
+    velocity_ranges: list[tuple[float, float]] = field(default_factory=list)
 
     # -- optional metadata; seams for later, all ignored by the current fitter --
     articulation: str = "center"  # center | edge | rimshot | cross_stick | ...
@@ -37,6 +41,10 @@ class Sample:
     take: int = 0  # multiple takes at the same velocity
     tuning: str = ""  # session tuning label, if the drum was retuned
     notes: str = ""
+    family: str = "drums"  # drums | cymbals | other
+    round_robin: int | None = None
+    source_path: str = ""
+    source_mappings: list[str] = field(default_factory=list)
 
     # -- populated on load ----------------------------------------------------
     sr: int = Audio.DEFAULT_SR
@@ -210,11 +218,23 @@ class Sample:
             path=Path(data["path"]),
             drum=str(data["drum"]),
             velocity=float(data["velocity"]),
+            velocity_low=data.get("velocity_low"),
+            velocity_high=data.get("velocity_high"),
+            velocity_is_exact=bool(data.get("velocity_is_exact", True)),
+            velocity_ranges=[tuple(item) for item in data.get("velocity_ranges", [])],
             articulation=str(data.get("articulation", "center")),
             strike_position=data.get("strike_position"),
             take=int(data.get("take", 0)),
             tuning=str(data.get("tuning", "")),
             notes=str(data.get("notes", "")),
+            family=str(data.get("family", "drums")),
+            round_robin=(
+                int(data["round_robin"])
+                if data.get("round_robin") is not None
+                else None
+            ),
+            source_path=str(data.get("source_path", "")),
+            source_mappings=list(data.get("source_mappings", [])),
             sr=int(data.get("sr", Audio.DEFAULT_SR)),
             measured_energy_db=data.get("measured_energy_db"),
             velocity_normalized=data.get("velocity_normalized"),

@@ -1,0 +1,5992 @@
+{
+  "schema_version": 1,
+  "family": "drums",
+  "drum": "snare65-reg-stereo",
+  "sr": 44100,
+  "samples": [
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-01-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/01_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-01-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/01_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-01-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/01_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-01-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/01_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-01-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/01_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-01-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/01_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-01-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/01_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-01-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 2.0,
+      "velocity_low": 1.0,
+      "velocity_high": 3.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          3.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/01_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-02-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/02_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-02-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/02_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-02-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/02_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-02-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/02_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-02-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/02_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-02-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/02_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-02-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/02_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-02-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 5.5,
+      "velocity_low": 4.0,
+      "velocity_high": 7.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          4.0,
+          7.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/02_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-03-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/03_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-03-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/03_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-03-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/03_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-03-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/03_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-03-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/03_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-03-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/03_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-03-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/03_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-03-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 9.5,
+      "velocity_low": 8.0,
+      "velocity_high": 11.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          8.0,
+          11.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/03_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-04-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 13.0,
+      "velocity_low": 12.0,
+      "velocity_high": 14.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          14.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/04_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-04-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 13.0,
+      "velocity_low": 12.0,
+      "velocity_high": 14.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          14.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/04_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-04-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 13.0,
+      "velocity_low": 12.0,
+      "velocity_high": 14.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          14.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/04_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-04-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 13.0,
+      "velocity_low": 12.0,
+      "velocity_high": 14.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          14.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/04_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-04-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 13.0,
+      "velocity_low": 12.0,
+      "velocity_high": 14.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          14.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/04_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-04-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 13.0,
+      "velocity_low": 12.0,
+      "velocity_high": 14.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          14.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/04_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-04-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 13.0,
+      "velocity_low": 12.0,
+      "velocity_high": 14.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          14.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/04_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-04-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 13.0,
+      "velocity_low": 12.0,
+      "velocity_high": 14.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          12.0,
+          14.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/04_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-05-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 16.5,
+      "velocity_low": 15.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          15.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/05_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-05-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 16.5,
+      "velocity_low": 15.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          15.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/05_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-05-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 16.5,
+      "velocity_low": 15.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          15.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/05_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-05-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 16.5,
+      "velocity_low": 15.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          15.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/05_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-05-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 16.5,
+      "velocity_low": 15.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          15.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/05_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-05-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 16.5,
+      "velocity_low": 15.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          15.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/05_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-05-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 16.5,
+      "velocity_low": 15.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          15.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/05_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-05-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 16.5,
+      "velocity_low": 15.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          15.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/05_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-06-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 20.5,
+      "velocity_low": 19.0,
+      "velocity_high": 22.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          22.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/06_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-06-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 20.5,
+      "velocity_low": 19.0,
+      "velocity_high": 22.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          22.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/06_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-06-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 20.5,
+      "velocity_low": 19.0,
+      "velocity_high": 22.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          22.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/06_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-06-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 20.5,
+      "velocity_low": 19.0,
+      "velocity_high": 22.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          22.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/06_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-06-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 20.5,
+      "velocity_low": 19.0,
+      "velocity_high": 22.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          22.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/06_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-06-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 20.5,
+      "velocity_low": 19.0,
+      "velocity_high": 22.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          22.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/06_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-06-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 20.5,
+      "velocity_low": 19.0,
+      "velocity_high": 22.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          22.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/06_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-06-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 20.5,
+      "velocity_low": 19.0,
+      "velocity_high": 22.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          22.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/06_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-07-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 24.5,
+      "velocity_low": 23.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          23.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/07_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-07-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 24.5,
+      "velocity_low": 23.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          23.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/07_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-07-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 24.5,
+      "velocity_low": 23.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          23.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/07_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-07-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 24.5,
+      "velocity_low": 23.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          23.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/07_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-07-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 24.5,
+      "velocity_low": 23.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          23.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/07_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-07-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 24.5,
+      "velocity_low": 23.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          23.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/07_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-07-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 24.5,
+      "velocity_low": 23.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          23.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/07_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-07-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 24.5,
+      "velocity_low": 23.0,
+      "velocity_high": 26.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          23.0,
+          26.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/07_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-08-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 28.0,
+      "velocity_low": 27.0,
+      "velocity_high": 29.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          29.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/08_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-08-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 28.0,
+      "velocity_low": 27.0,
+      "velocity_high": 29.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          29.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/08_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-08-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 28.0,
+      "velocity_low": 27.0,
+      "velocity_high": 29.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          29.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/08_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-08-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 28.0,
+      "velocity_low": 27.0,
+      "velocity_high": 29.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          29.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/08_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-08-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 28.0,
+      "velocity_low": 27.0,
+      "velocity_high": 29.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          29.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/08_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-08-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 28.0,
+      "velocity_low": 27.0,
+      "velocity_high": 29.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          29.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/08_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-08-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 28.0,
+      "velocity_low": 27.0,
+      "velocity_high": 29.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          29.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/08_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-08-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 28.0,
+      "velocity_low": 27.0,
+      "velocity_high": 29.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          27.0,
+          29.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/08_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-09-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 31.5,
+      "velocity_low": 30.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          30.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/09_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-09-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 31.5,
+      "velocity_low": 30.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          30.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/09_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-09-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 31.5,
+      "velocity_low": 30.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          30.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/09_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-09-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 31.5,
+      "velocity_low": 30.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          30.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/09_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-09-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 31.5,
+      "velocity_low": 30.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          30.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/09_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-09-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 31.5,
+      "velocity_low": 30.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          30.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/09_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-09-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 31.5,
+      "velocity_low": 30.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          30.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/09_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-09-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 31.5,
+      "velocity_low": 30.0,
+      "velocity_high": 33.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          30.0,
+          33.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/09_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-10-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/10_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-10-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/10_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-10-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/10_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-10-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/10_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-10-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/10_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-10-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/10_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-10-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/10_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-10-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 35.5,
+      "velocity_low": 34.0,
+      "velocity_high": 37.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          34.0,
+          37.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/10_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-11-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/11_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-11-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/11_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-11-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/11_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-11-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/11_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-11-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/11_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-11-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/11_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-11-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/11_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-11-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 39.5,
+      "velocity_low": 38.0,
+      "velocity_high": 41.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          38.0,
+          41.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/11_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-12-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 43.0,
+      "velocity_low": 42.0,
+      "velocity_high": 44.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          44.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/12_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-12-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 43.0,
+      "velocity_low": 42.0,
+      "velocity_high": 44.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          44.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/12_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-12-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 43.0,
+      "velocity_low": 42.0,
+      "velocity_high": 44.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          44.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/12_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-12-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 43.0,
+      "velocity_low": 42.0,
+      "velocity_high": 44.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          44.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/12_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-12-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 43.0,
+      "velocity_low": 42.0,
+      "velocity_high": 44.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          44.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/12_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-12-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 43.0,
+      "velocity_low": 42.0,
+      "velocity_high": 44.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          44.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/12_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-12-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 43.0,
+      "velocity_low": 42.0,
+      "velocity_high": 44.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          44.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/12_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-12-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 43.0,
+      "velocity_low": 42.0,
+      "velocity_high": 44.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          42.0,
+          44.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/12_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-13-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 46.5,
+      "velocity_low": 45.0,
+      "velocity_high": 48.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          45.0,
+          48.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/13_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-13-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 46.5,
+      "velocity_low": 45.0,
+      "velocity_high": 48.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          45.0,
+          48.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/13_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-13-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 46.5,
+      "velocity_low": 45.0,
+      "velocity_high": 48.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          45.0,
+          48.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/13_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-13-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 46.5,
+      "velocity_low": 45.0,
+      "velocity_high": 48.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          45.0,
+          48.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/13_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-13-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 46.5,
+      "velocity_low": 45.0,
+      "velocity_high": 48.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          45.0,
+          48.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/13_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-13-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 46.5,
+      "velocity_low": 45.0,
+      "velocity_high": 48.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          45.0,
+          48.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/13_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-13-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 46.5,
+      "velocity_low": 45.0,
+      "velocity_high": 48.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          45.0,
+          48.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/13_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-13-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 46.5,
+      "velocity_low": 45.0,
+      "velocity_high": 48.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          45.0,
+          48.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/13_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-14-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 50.5,
+      "velocity_low": 49.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          49.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/14_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-14-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 50.5,
+      "velocity_low": 49.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          49.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/14_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-14-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 50.5,
+      "velocity_low": 49.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          49.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/14_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-14-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 50.5,
+      "velocity_low": 49.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          49.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/14_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-14-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 50.5,
+      "velocity_low": 49.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          49.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/14_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-14-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 50.5,
+      "velocity_low": 49.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          49.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/14_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-14-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 50.5,
+      "velocity_low": 49.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          49.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/14_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-14-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 50.5,
+      "velocity_low": 49.0,
+      "velocity_high": 52.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          49.0,
+          52.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/14_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-15-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 54.5,
+      "velocity_low": 53.0,
+      "velocity_high": 56.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          56.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/15_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-15-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 54.5,
+      "velocity_low": 53.0,
+      "velocity_high": 56.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          56.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/15_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-15-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 54.5,
+      "velocity_low": 53.0,
+      "velocity_high": 56.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          56.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/15_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-15-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 54.5,
+      "velocity_low": 53.0,
+      "velocity_high": 56.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          56.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/15_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-15-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 54.5,
+      "velocity_low": 53.0,
+      "velocity_high": 56.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          56.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/15_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-15-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 54.5,
+      "velocity_low": 53.0,
+      "velocity_high": 56.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          56.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/15_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-15-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 54.5,
+      "velocity_low": 53.0,
+      "velocity_high": 56.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          56.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/15_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-15-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 54.5,
+      "velocity_low": 53.0,
+      "velocity_high": 56.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          53.0,
+          56.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/15_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-16-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 58.0,
+      "velocity_low": 57.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          57.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/16_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-16-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 58.0,
+      "velocity_low": 57.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          57.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/16_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-16-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 58.0,
+      "velocity_low": 57.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          57.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/16_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-16-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 58.0,
+      "velocity_low": 57.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          57.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/16_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-16-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 58.0,
+      "velocity_low": 57.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          57.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/16_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-16-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 58.0,
+      "velocity_low": 57.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          57.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/16_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-16-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 58.0,
+      "velocity_low": 57.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          57.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/16_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-16-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 58.0,
+      "velocity_low": 57.0,
+      "velocity_high": 59.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          57.0,
+          59.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/16_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-17-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/17_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-17-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/17_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-17-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/17_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-17-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/17_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-17-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/17_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-17-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/17_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-17-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/17_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-17-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 61.5,
+      "velocity_low": 60.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          60.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/17_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-18-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/18_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-18-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/18_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-18-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/18_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-18-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/18_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-18-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/18_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-18-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/18_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-18-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/18_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-18-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 65.5,
+      "velocity_low": 64.0,
+      "velocity_high": 67.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          67.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/18_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-19-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 69.0,
+      "velocity_low": 68.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/19_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-19-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 69.0,
+      "velocity_low": 68.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/19_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-19-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 69.0,
+      "velocity_low": 68.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/19_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-19-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 69.0,
+      "velocity_low": 68.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/19_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-19-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 69.0,
+      "velocity_low": 68.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/19_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-19-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 69.0,
+      "velocity_low": 68.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/19_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-19-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 69.0,
+      "velocity_low": 68.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/19_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-19-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 69.0,
+      "velocity_low": 68.0,
+      "velocity_high": 70.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          68.0,
+          70.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/19_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-20-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/20_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-20-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/20_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-20-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/20_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-20-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/20_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-20-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/20_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-20-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/20_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-20-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/20_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-20-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 72.5,
+      "velocity_low": 71.0,
+      "velocity_high": 74.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          71.0,
+          74.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/20_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-21-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/21_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-21-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/21_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-21-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/21_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-21-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/21_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-21-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/21_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-21-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/21_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-21-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/21_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-21-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 76.5,
+      "velocity_low": 75.0,
+      "velocity_high": 78.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          75.0,
+          78.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/21_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-22-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 80.0,
+      "velocity_low": 79.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/22_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-22-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 80.0,
+      "velocity_low": 79.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/22_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-22-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 80.0,
+      "velocity_low": 79.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/22_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-22-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 80.0,
+      "velocity_low": 79.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/22_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-22-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 80.0,
+      "velocity_low": 79.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/22_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-22-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 80.0,
+      "velocity_low": 79.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/22_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-22-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 80.0,
+      "velocity_low": 79.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/22_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-22-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 80.0,
+      "velocity_low": 79.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          79.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/22_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-23-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 83.5,
+      "velocity_low": 82.0,
+      "velocity_high": 85.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          85.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/23_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-23-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 83.5,
+      "velocity_low": 82.0,
+      "velocity_high": 85.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          85.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/23_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-23-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 83.5,
+      "velocity_low": 82.0,
+      "velocity_high": 85.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          85.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/23_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-23-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 83.5,
+      "velocity_low": 82.0,
+      "velocity_high": 85.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          85.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/23_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-23-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 83.5,
+      "velocity_low": 82.0,
+      "velocity_high": 85.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          85.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/23_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-23-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 83.5,
+      "velocity_low": 82.0,
+      "velocity_high": 85.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          85.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/23_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-23-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 83.5,
+      "velocity_low": 82.0,
+      "velocity_high": 85.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          85.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/23_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-23-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 83.5,
+      "velocity_low": 82.0,
+      "velocity_high": 85.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          85.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/23_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-24-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 87.5,
+      "velocity_low": 86.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          86.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/24_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-24-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 87.5,
+      "velocity_low": 86.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          86.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/24_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-24-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 87.5,
+      "velocity_low": 86.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          86.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/24_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-24-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 87.5,
+      "velocity_low": 86.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          86.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/24_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-24-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 87.5,
+      "velocity_low": 86.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          86.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/24_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-24-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 87.5,
+      "velocity_low": 86.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          86.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/24_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-24-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 87.5,
+      "velocity_low": 86.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          86.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/24_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-24-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 87.5,
+      "velocity_low": 86.0,
+      "velocity_high": 89.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          86.0,
+          89.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/24_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-25-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 91.0,
+      "velocity_low": 90.0,
+      "velocity_high": 92.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          92.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/25_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-25-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 91.0,
+      "velocity_low": 90.0,
+      "velocity_high": 92.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          92.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/25_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-25-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 91.0,
+      "velocity_low": 90.0,
+      "velocity_high": 92.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          92.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/25_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-25-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 91.0,
+      "velocity_low": 90.0,
+      "velocity_high": 92.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          92.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/25_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-25-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 91.0,
+      "velocity_low": 90.0,
+      "velocity_high": 92.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          92.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/25_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-25-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 91.0,
+      "velocity_low": 90.0,
+      "velocity_high": 92.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          92.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/25_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-25-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 91.0,
+      "velocity_low": 90.0,
+      "velocity_high": 92.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          92.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/25_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-25-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 91.0,
+      "velocity_low": 90.0,
+      "velocity_high": 92.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          90.0,
+          92.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/25_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-26-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 94.5,
+      "velocity_low": 93.0,
+      "velocity_high": 96.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          93.0,
+          96.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/26_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-26-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 94.5,
+      "velocity_low": 93.0,
+      "velocity_high": 96.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          93.0,
+          96.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/26_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-26-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 94.5,
+      "velocity_low": 93.0,
+      "velocity_high": 96.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          93.0,
+          96.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/26_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-26-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 94.5,
+      "velocity_low": 93.0,
+      "velocity_high": 96.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          93.0,
+          96.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/26_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-26-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 94.5,
+      "velocity_low": 93.0,
+      "velocity_high": 96.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          93.0,
+          96.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/26_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-26-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 94.5,
+      "velocity_low": 93.0,
+      "velocity_high": 96.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          93.0,
+          96.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/26_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-26-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 94.5,
+      "velocity_low": 93.0,
+      "velocity_high": 96.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          93.0,
+          96.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/26_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-26-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 94.5,
+      "velocity_low": 93.0,
+      "velocity_high": 96.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          93.0,
+          96.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/26_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-27-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 98.5,
+      "velocity_low": 97.0,
+      "velocity_high": 100.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          97.0,
+          100.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/27_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-27-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 98.5,
+      "velocity_low": 97.0,
+      "velocity_high": 100.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          97.0,
+          100.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/27_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-27-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 98.5,
+      "velocity_low": 97.0,
+      "velocity_high": 100.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          97.0,
+          100.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/27_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-27-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 98.5,
+      "velocity_low": 97.0,
+      "velocity_high": 100.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          97.0,
+          100.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/27_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-27-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 98.5,
+      "velocity_low": 97.0,
+      "velocity_high": 100.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          97.0,
+          100.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/27_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-27-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 98.5,
+      "velocity_low": 97.0,
+      "velocity_high": 100.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          97.0,
+          100.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/27_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-27-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 98.5,
+      "velocity_low": 97.0,
+      "velocity_high": 100.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          97.0,
+          100.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/27_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-27-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 98.5,
+      "velocity_low": 97.0,
+      "velocity_high": 100.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          97.0,
+          100.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/27_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-28-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 102.5,
+      "velocity_low": 101.0,
+      "velocity_high": 104.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          101.0,
+          104.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/28_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-28-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 102.5,
+      "velocity_low": 101.0,
+      "velocity_high": 104.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          101.0,
+          104.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/28_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-28-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 102.5,
+      "velocity_low": 101.0,
+      "velocity_high": 104.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          101.0,
+          104.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/28_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-28-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 102.5,
+      "velocity_low": 101.0,
+      "velocity_high": 104.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          101.0,
+          104.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/28_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-28-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 102.5,
+      "velocity_low": 101.0,
+      "velocity_high": 104.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          101.0,
+          104.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/28_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-28-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 102.5,
+      "velocity_low": 101.0,
+      "velocity_high": 104.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          101.0,
+          104.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/28_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-28-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 102.5,
+      "velocity_low": 101.0,
+      "velocity_high": 104.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          101.0,
+          104.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/28_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-28-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 102.5,
+      "velocity_low": 101.0,
+      "velocity_high": 104.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          101.0,
+          104.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/28_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-29-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 106.0,
+      "velocity_low": 105.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          105.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/29_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-29-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 106.0,
+      "velocity_low": 105.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          105.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/29_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-29-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 106.0,
+      "velocity_low": 105.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          105.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/29_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-29-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 106.0,
+      "velocity_low": 105.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          105.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/29_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-29-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 106.0,
+      "velocity_low": 105.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          105.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/29_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-29-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 106.0,
+      "velocity_low": 105.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          105.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/29_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-29-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 106.0,
+      "velocity_low": 105.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          105.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/29_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-29-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 106.0,
+      "velocity_low": 105.0,
+      "velocity_high": 107.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          105.0,
+          107.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/29_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-30-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/30_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-30-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/30_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-30-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/30_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-30-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/30_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-30-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/30_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-30-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/30_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-30-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/30_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-30-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 109.5,
+      "velocity_low": 108.0,
+      "velocity_high": 111.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          108.0,
+          111.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/30_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-31-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/31_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-31-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/31_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-31-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/31_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-31-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/31_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-31-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/31_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-31-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/31_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-31-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/31_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-31-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 113.5,
+      "velocity_low": 112.0,
+      "velocity_high": 115.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          112.0,
+          115.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/31_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-32-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/32_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-32-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/32_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-32-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/32_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-32-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/32_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-32-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/32_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-32-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/32_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-32-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/32_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-32-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 117.5,
+      "velocity_low": 116.0,
+      "velocity_high": 119.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          116.0,
+          119.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/32_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-33-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/33_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-33-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/33_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-33-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/33_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-33-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/33_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-33-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/33_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-33-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/33_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-33-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/33_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-33-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 121.5,
+      "velocity_low": 120.0,
+      "velocity_high": 123.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          120.0,
+          123.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/33_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr1-34-snare65-reg-stereo-rr1.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "drums",
+      "round_robin": 1,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR1/34_Snare65_Reg_Stereo_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr2-34-snare65-reg-stereo-rr2.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "drums",
+      "round_robin": 2,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR2/34_Snare65_Reg_Stereo_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr3-34-snare65-reg-stereo-rr3.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "drums",
+      "round_robin": 3,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR3/34_Snare65_Reg_Stereo_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr4-34-snare65-reg-stereo-rr4.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "drums",
+      "round_robin": 4,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR4/34_Snare65_Reg_Stereo_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr5-34-snare65-reg-stereo-rr5.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 5,
+      "family": "drums",
+      "round_robin": 5,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR5/34_Snare65_Reg_Stereo_RR5.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr6-34-snare65-reg-stereo-rr6.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 6,
+      "family": "drums",
+      "round_robin": 6,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR6/34_Snare65_Reg_Stereo_RR6.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr7-34-snare65-reg-stereo-rr7.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 7,
+      "family": "drums",
+      "round_robin": 7,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR7/34_Snare65_Reg_Stereo_RR7.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    },
+    {
+      "path": "../samples/drums/snare65-reg-stereo/rr8-34-snare65-reg-stereo-rr8.wav",
+      "drum": "snare65-reg-stereo",
+      "velocity": 125.5,
+      "velocity_low": 124.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          124.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 8,
+      "family": "drums",
+      "round_robin": 8,
+      "source_path": "Samples/SMDrum Stereo (Samples)/Snare65_Reg_Stereo/RR8/34_Snare65_Reg_Stereo_RR8.wav",
+      "source_mappings": [
+        "smdrums_sfz_snare65reg.sfz"
+      ]
+    }
+  ]
+}

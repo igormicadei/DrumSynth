@@ -8,5 +8,5 @@ dist/
 venv/
 out/
 *.wav
-!tests/data/*.wav
+!data/metadata/**/*.json
 .DS_Store

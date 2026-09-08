@@ -1,0 +1,1240 @@
+{
+  "schema_version": 1,
+  "family": "cymbals",
+  "drum": "hi-hat-03-hat-open",
+  "sr": 44100,
+  "samples": [
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-01-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 5.0,
+      "velocity_low": 1.0,
+      "velocity_high": 9.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          9.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/01_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-01-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 5.0,
+      "velocity_low": 1.0,
+      "velocity_high": 9.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          9.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/01_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-01-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 5.0,
+      "velocity_low": 1.0,
+      "velocity_high": 9.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          9.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/01_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-01-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 5.0,
+      "velocity_low": 1.0,
+      "velocity_high": 9.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          9.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/01_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-02-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 14.0,
+      "velocity_low": 10.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          10.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/02_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-02-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 14.0,
+      "velocity_low": 10.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          10.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/02_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-02-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 14.0,
+      "velocity_low": 10.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          10.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/02_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-02-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 14.0,
+      "velocity_low": 10.0,
+      "velocity_high": 18.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          10.0,
+          18.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/02_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-03-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 23.0,
+      "velocity_low": 19.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/03_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-03-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 23.0,
+      "velocity_low": 19.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/03_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-03-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 23.0,
+      "velocity_low": 19.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/03_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-03-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 23.0,
+      "velocity_low": 19.0,
+      "velocity_high": 27.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          19.0,
+          27.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/03_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-04-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 32.0,
+      "velocity_low": 28.0,
+      "velocity_high": 36.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          36.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/04_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-04-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 32.0,
+      "velocity_low": 28.0,
+      "velocity_high": 36.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          36.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/04_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-04-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 32.0,
+      "velocity_low": 28.0,
+      "velocity_high": 36.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          36.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/04_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-04-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 32.0,
+      "velocity_low": 28.0,
+      "velocity_high": 36.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          28.0,
+          36.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/04_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-05-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 41.0,
+      "velocity_low": 37.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          37.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/05_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-05-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 41.0,
+      "velocity_low": 37.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          37.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/05_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-05-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 41.0,
+      "velocity_low": 37.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          37.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/05_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-05-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 41.0,
+      "velocity_low": 37.0,
+      "velocity_high": 45.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          37.0,
+          45.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/05_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-06-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 50.0,
+      "velocity_low": 46.0,
+      "velocity_high": 54.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          54.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/06_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-06-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 50.0,
+      "velocity_low": 46.0,
+      "velocity_high": 54.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          54.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/06_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-06-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 50.0,
+      "velocity_low": 46.0,
+      "velocity_high": 54.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          54.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/06_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-06-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 50.0,
+      "velocity_low": 46.0,
+      "velocity_high": 54.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          46.0,
+          54.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/06_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-07-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 59.0,
+      "velocity_low": 55.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          55.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/07_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-07-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 59.0,
+      "velocity_low": 55.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          55.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/07_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-07-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 59.0,
+      "velocity_low": 55.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          55.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/07_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-07-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 59.0,
+      "velocity_low": 55.0,
+      "velocity_high": 63.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          55.0,
+          63.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/07_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-08-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 68.0,
+      "velocity_low": 64.0,
+      "velocity_high": 72.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          72.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/08_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-08-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 68.0,
+      "velocity_low": 64.0,
+      "velocity_high": 72.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          72.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/08_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-08-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 68.0,
+      "velocity_low": 64.0,
+      "velocity_high": 72.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          72.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/08_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-08-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 68.0,
+      "velocity_low": 64.0,
+      "velocity_high": 72.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          64.0,
+          72.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/08_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-09-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 77.0,
+      "velocity_low": 73.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          73.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/09_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-09-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 77.0,
+      "velocity_low": 73.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          73.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/09_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-09-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 77.0,
+      "velocity_low": 73.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          73.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/09_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-09-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 77.0,
+      "velocity_low": 73.0,
+      "velocity_high": 81.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          73.0,
+          81.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/09_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-10-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 86.0,
+      "velocity_low": 82.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/10_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-10-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 86.0,
+      "velocity_low": 82.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/10_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-10-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 86.0,
+      "velocity_low": 82.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/10_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-10-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 86.0,
+      "velocity_low": 82.0,
+      "velocity_high": 90.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          82.0,
+          90.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/10_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-11-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 95.0,
+      "velocity_low": 91.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/11_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-11-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 95.0,
+      "velocity_low": 91.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/11_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-11-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 95.0,
+      "velocity_low": 91.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/11_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-11-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 95.0,
+      "velocity_low": 91.0,
+      "velocity_high": 99.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          91.0,
+          99.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/11_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-12-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 104.0,
+      "velocity_low": 100.0,
+      "velocity_high": 108.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          108.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/12_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-12-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 104.0,
+      "velocity_low": 100.0,
+      "velocity_high": 108.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          108.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/12_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-12-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 104.0,
+      "velocity_low": 100.0,
+      "velocity_high": 108.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          108.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/12_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-12-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 104.0,
+      "velocity_low": 100.0,
+      "velocity_high": 108.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          100.0,
+          108.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/12_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-13-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 113.0,
+      "velocity_low": 109.0,
+      "velocity_high": 117.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          109.0,
+          117.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/13_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-13-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 113.0,
+      "velocity_low": 109.0,
+      "velocity_high": 117.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          109.0,
+          117.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/13_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-13-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 113.0,
+      "velocity_low": 109.0,
+      "velocity_high": 117.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          109.0,
+          117.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/13_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-13-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 113.0,
+      "velocity_low": 109.0,
+      "velocity_high": 117.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          109.0,
+          117.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/13_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr1-14-hat-open-rr1.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 122.5,
+      "velocity_low": 118.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          118.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR1/14_Hat_Open_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr2-14-hat-open-rr2.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 122.5,
+      "velocity_low": 118.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          118.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR2/14_Hat_Open_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr3-14-hat-open-rr3.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 122.5,
+      "velocity_low": 118.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          118.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR3/14_Hat_Open_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/hi-hat-03-hat-open/rr4-14-hat-open-rr4.wav",
+      "drum": "hi-hat-03-hat-open",
+      "velocity": 122.5,
+      "velocity_low": 118.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          118.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Hi-Hat (Samples)/03 Hat, Open/RR4/14_Hat_Open_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_openhat.sfz"
+      ]
+    }
+  ]
+}

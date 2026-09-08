@@ -133,6 +133,20 @@ ignored:
 
 ## Sample handling
 
+The repository includes the normalized DrumModalSynth library under `data/`.
+WAVs are stored in slugified `data/samples/drums/` and
+`data/samples/cymbals/` trees; JSON manifests under `data/metadata/` contain
+only mappings for files that exist, plus an inventory for every copied WAV.
+The repeatable conversion command is implemented in
+`tools/import_samples.py`.
+
+SFZ velocity regions are represented by `velocity_low`, `velocity_high`, and
+`velocity_ranges`. The compatibility `velocity` value is their midpoint and
+`velocity_is_exact` is false, so range-mapped layers are not mistaken for
+recorded exact MIDI labels. Round-robin layers are retained as
+`round_robin`/`take`. Cymbals are stored for future support but are not
+implicitly treated as membrane-drum fitting data.
+
 Velocity is not a property of the drum. `f_static` and `t60` are the drum;
 `gain`, noise `level` and `contact_time` are the hit. One `DrumParams` per drum,
 always — a `SampleSet` is deliberately single-drum so nothing is tempted to

@@ -80,7 +80,13 @@ class SampleSet:
     @classmethod
     def _from_json(cls, path: Path) -> "SampleSet":
         data = json.loads(path.read_text(encoding="utf-8"))
-        samples = [Sample.from_dict(entry) for entry in data.get("samples", [])]
+        samples = []
+        for entry in data.get("samples", []):
+            entry = dict(entry)
+            sample_path = Path(entry["path"])
+            if not sample_path.is_absolute():
+                entry["path"] = str(path.parent / sample_path)
+            samples.append(Sample.from_dict(entry))
         sample_set = cls(
             drum=str(data.get("drum") or (samples[0].drum if samples else "")),
             sr=int(data.get("sr", Audio.DEFAULT_SR)),

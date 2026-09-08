@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "family": "cymbals",
+  "drum": "crash-china-cymbal",
+  "sr": 44100,
+  "samples": [
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr1-01-china-rr1.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 13.0,
+      "velocity_low": 1.0,
+      "velocity_high": 25.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          25.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR1/01_China_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr2-01-china-rr2.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 13.0,
+      "velocity_low": 1.0,
+      "velocity_high": 25.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          25.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR2/01_China_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr3-01-china-rr3.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 13.0,
+      "velocity_low": 1.0,
+      "velocity_high": 25.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          25.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR3/01_China_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr4-01-china-rr4.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 13.0,
+      "velocity_low": 1.0,
+      "velocity_high": 25.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          1.0,
+          25.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR4/01_China_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr1-02-china-rr1.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 38.5,
+      "velocity_low": 26.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          26.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR1/02_China_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr2-02-china-rr2.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 38.5,
+      "velocity_low": 26.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          26.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR2/02_China_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr3-02-china-rr3.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 38.5,
+      "velocity_low": 26.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          26.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR3/02_China_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr4-02-china-rr4.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 38.5,
+      "velocity_low": 26.0,
+      "velocity_high": 51.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          26.0,
+          51.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR4/02_China_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr1-03-china-rr1.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 64.0,
+      "velocity_low": 52.0,
+      "velocity_high": 76.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          76.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR1/03_China_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr2-03-china-rr2.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 64.0,
+      "velocity_low": 52.0,
+      "velocity_high": 76.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          76.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR2/03_China_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr3-03-china-rr3.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 64.0,
+      "velocity_low": 52.0,
+      "velocity_high": 76.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          76.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR3/03_China_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr4-03-china-rr4.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 64.0,
+      "velocity_low": 52.0,
+      "velocity_high": 76.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          52.0,
+          76.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR4/03_China_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr1-04-china-rr1.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 89.0,
+      "velocity_low": 77.0,
+      "velocity_high": 101.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          77.0,
+          101.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR1/04_China_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr2-04-china-rr2.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 89.0,
+      "velocity_low": 77.0,
+      "velocity_high": 101.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          77.0,
+          101.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR2/04_China_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr3-04-china-rr3.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 89.0,
+      "velocity_low": 77.0,
+      "velocity_high": 101.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          77.0,
+          101.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR3/04_China_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr4-04-china-rr4.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 89.0,
+      "velocity_low": 77.0,
+      "velocity_high": 101.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          77.0,
+          101.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR4/04_China_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr1-05-china-rr1.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 114.5,
+      "velocity_low": 102.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          102.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 1,
+      "family": "cymbals",
+      "round_robin": 1,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR1/05_China_RR1.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr2-05-china-rr2.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 114.5,
+      "velocity_low": 102.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          102.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 2,
+      "family": "cymbals",
+      "round_robin": 2,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR2/05_China_RR2.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr3-05-china-rr3.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 114.5,
+      "velocity_low": 102.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          102.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 3,
+      "family": "cymbals",
+      "round_robin": 3,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR3/05_China_RR3.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    },
+    {
+      "path": "../samples/cymbals/crash-china-cymbal/rr4-05-china-rr4.wav",
+      "drum": "crash-china-cymbal",
+      "velocity": 114.5,
+      "velocity_low": 102.0,
+      "velocity_high": 127.0,
+      "velocity_is_exact": false,
+      "velocity_ranges": [
+        [
+          102.0,
+          127.0
+        ]
+      ],
+      "articulation": "center",
+      "take": 4,
+      "family": "cymbals",
+      "round_robin": 4,
+      "source_path": "Samples/SMD Cymbals Stereo (Samples)/Crash (Samples)/China Cymbal (Samples)/RR4/05_China_RR4.wav",
+      "source_mappings": [
+        "smdrums_sfz_china.sfz"
+      ]
+    }
+  ]
+}
