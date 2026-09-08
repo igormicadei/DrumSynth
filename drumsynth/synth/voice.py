@@ -171,6 +171,42 @@ class DrumVoice:
             out[position:total] = self.render(total - position)
         return out
 
+    def set_monitor(self, mask: np.ndarray | None) -> None:
+        """Solo or mute individual modes while they ring. See ModalBank."""
+        self.modes.set_monitor_mask(mask)
+
+    def update_params(self, params: DrumParams) -> None:
+        """Adopt a new parameter set WITHOUT interrupting what is ringing.
+
+        This is what makes live editing worth having: a knob moved while the
+        drum is decaying changes the rest of that decay. Nothing is rebuilt
+        unless it actually changed — redesigning a noise band's filter resets
+        its state, which clicks, and it should not happen because a level
+        slider moved.
+
+        Mode order is identity here: mode i inherits mode i's state, so
+        reordering the list while playing reassigns ring state between
+        partials. Adding modes is safe (they start silent), removing them is
+        safe (their ring goes with them).
+        """
+        params.validate(self.sr)
+        previous, self.params = self.params, params
+
+        if params.modes != previous.modes:
+            self.modes.set_params(params.modes)
+        if params.noise != previous.noise:
+            self.noise.set_bands(params.noise)
+        if params.tension != previous.tension:
+            smoothed = self.tension.smoothed
+            self.tension = TensionTracker(
+                params.tension, self.sr, self.control_period
+            )
+            # Carry the energy estimate across, or the glide restarts from rest
+            # the moment k or tau is touched.
+            self.tension.smoothed = smoothed
+            self.tension.update(self.modes.energy)
+        self.output_gain = float(params.output_gain)
+
     def reset(self) -> None:
         """Clear all state. Does not touch params."""
         self.modes.reset()

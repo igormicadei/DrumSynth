@@ -7,6 +7,10 @@ dist/
 .venv/
 venv/
 out/
+.streamlit/secrets.toml
 *.wav
 !data/metadata/**/*.json
 .DS_Store
+# Streamlit agent skills (environment-specific symlinks)
+.agents/skills/developing-with-streamlit
+.claude/skills/developing-with-streamlit

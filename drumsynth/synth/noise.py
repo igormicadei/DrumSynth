@@ -140,6 +140,34 @@ class NoiseBank:
     def __getitem__(self, index: int) -> NoiseVoice:
         return self.voices[index]
 
+    def set_bands(self, bands: list[NoiseBand]) -> None:
+        """Replace the bands, carrying each voice's envelope across.
+
+        Only rebuilds a voice whose band edges actually moved — redesigning a
+        bandpass resets its filter state, which is an audible click if it
+        happens on every touch of a level slider.
+        """
+        voices: list[NoiseVoice] = []
+        for index, band in enumerate(bands):
+            existing = self.voices[index] if index < len(self.voices) else None
+            if (
+                existing is not None
+                and existing.band.f_low == band.f_low
+                and existing.band.f_high == band.f_high
+            ):
+                existing.band = band
+                existing.level = float(band.level)
+                existing.t60 = float(band.t60)
+                existing.env_coef = float(Decay.t60_to_coef(band.t60, existing.sr))
+                voices.append(existing)
+                continue
+
+            voice = NoiseVoice(band, self.sr, self._rng)
+            if existing is not None:
+                voice.env = existing.env  # keep the burst that is still running
+            voices.append(voice)
+        self.voices = voices
+
     def excite(self, amplitude: float) -> None:
         for voice in self.voices:
             voice.excite(amplitude)

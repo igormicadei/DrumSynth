@@ -25,6 +25,29 @@ pip install -e ".[dev]"
 pytest
 ```
 
+## The studio
+
+```bash
+pip install -e ".[studio]"
+streamlit run streamlit_app.py
+```
+
+A mixer for the parameters — one strip per mode, one per noise band, one master
+— with the audio running in a **separate process that never stops**. Strike the
+drum, and while it is still decaying, move a `t60` knob: the rest of *that*
+decay changes. Strike again and the new hit superposes onto what is left of the
+old one. S and M solo and mute individual partials live, so you can hear which
+ring belongs to which mode.
+
+Solo and mute are a monitoring mask applied at the mix, never a change to
+`gain`: muting through gain would only take effect on the next strike, and a
+sound designed while soloing would be silently wrong when saved.
+
+The engine talks JSON over a pipe (`drumsynth.live`), so a crash in the UI
+cannot glitch the audio and a stalled device cannot hang the UI. Its `null`
+sink runs the whole thing without a sound card, which is how the live path is
+tested in CI. See [docs/STUDIO.md](docs/STUDIO.md).
+
 Needs Python 3.10+, numpy and scipy. `soundfile` is optional but recommended —
 without it the stdlib `wave` fallback handles plain PCM only. `matplotlib` is
 needed only for the diagnostic plots in `ScoreReport`.
@@ -35,6 +58,8 @@ needed only for the diagnostic plots in `ScoreReport`.
 drumsynth.synth      DrumParams in, audio out
 drumsynth.scoring    two signals in, a ScoreCard out
 drumsynth.samples    a directory in, validated sample sets out
+drumsynth.live       an always-on audio process, driven over a pipe
+drumsynth.studio     the Streamlit mixer on top of it
 ```
 
 They are deliberately separable. The synthesizer does not import the scorer and
@@ -225,6 +250,8 @@ python examples/03_check_a_library.py      # quality gates on a demo session
   derivation, performance, and what the tests actually pin.
 * [docs/DATA.md](docs/DATA.md) — the imported sample library: what is in it,
   how velocity is represented, and what is missing.
+* [docs/STUDIO.md](docs/STUDIO.md) — the parameter mixer and the live audio
+  process behind it.
 
 ## Not built yet
 

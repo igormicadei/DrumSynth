@@ -165,6 +165,30 @@ because a component pinned at 0.0 gives an optimizer nothing to descend.
 Either way, `raw_error` carries the error in native units and is what you
 should actually read.
 
+### Live edits do not restart the ring
+
+`DrumVoice.update_params` adopts a new parameter set without clearing state,
+and rebuilds only what actually changed. That is what makes the studio worth
+having: a knob moved while the drum is decaying changes the rest of *that*
+decay. It works because of the same property that lets the tension feedback
+modulate frequency every control period — the coupled form keeps amplitude in
+(x, y) and frequency in a separate coefficient, so both can be retuned mid-ring.
+
+Rebuilding selectively matters: redesigning a noise band's bandpass resets its
+filter state, which clicks, and it must not happen because a level slider moved.
+
+`ModalBank.monitor_mask` is a per-mode output scale applied at the mix. It is a
+listening aid, not a drum parameter — not in `DrumParams`, never serialized,
+never seen by a fit. Muting through `gain` instead would only take effect on the
+next strike.
+
+### The audio process owns its own state
+
+All synthesizer mutation happens on the audio thread, which drains a deque of
+commands at the top of every block. No lock goes near the render call, because a
+lock held by the UI side is a dropout on the audio side. See
+[STUDIO.md](STUDIO.md).
+
 ### `MultiResolutionSTFTLoss` is reported, never totalled
 
 `ScoreCard.stft_loss` sits next to `total` and is excluded from it, per §6.5.
@@ -193,7 +217,7 @@ chunks regardless of `control_period`.
 
 ## Testing
 
-290 tests, ~46 s. Six files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
+340 tests, ~75 s. Eight files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
 
 * `tests/test_synth.py` — superposition, decay accuracy, tension behaviour, and
   the `ModalBank` ↔ `ModeResonator` equivalence.
@@ -206,6 +230,9 @@ chunks regardless of `control_period`.
   with the same folder shapes as the real library.
 * `tests/test_data_integrity.py` — the committed manifests against
   `data/file_tree.txt`. Skipped when a checkout has no imported library.
+* `tests/test_live.py` — the audio process end to end against the `null` sink:
+  strikes superposing, parameters changing mid-ring, monitoring, recording.
+* `tests/test_studio.py` — the Streamlit app through `AppTest`, in-process.
 
 The tests that matter most are the ones pinning claims that are easy to break
 by accident:
@@ -218,3 +245,5 @@ by accident:
 | `test_a_different_noise_seed_barely_moves_the_score` | noise compared statistically |
 | `test_scoring_stops_above_the_reference_noise_floor` | the reference's floor bounds both sides |
 | `test_the_attack_does_not_match_and_that_is_known` | finding #1 is not a regression |
+| `test_parameters_change_without_restarting_the_ring` | live edits keep the decay |
+| `test_solo_does_not_touch_the_gains` | monitoring is not a parameter |

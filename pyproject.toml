@@ -29,10 +29,17 @@ dependencies = [
 # stdlib `wave` fallback covers plain PCM only.
 audio = ["soundfile>=0.12"]
 plots = ["matplotlib>=3.7"]
+# Real-time output. Without it the live engine still runs its `null` sink,
+# which drives every meter and the whole command path with no sound card.
+live = ["sounddevice>=0.4"]
+# The parameter-editing UI.
+studio = ["streamlit>=1.50", "pandas>=2.0", "sounddevice>=0.4"]
 dev = [
     "pytest>=7.4",
     "soundfile>=0.12",
     "matplotlib>=3.7",
+    "streamlit>=1.50",
+    "pandas>=2.0",
 ]
 
 [project.urls]
@@ -40,6 +47,9 @@ Repository = "https://github.com/igormicadei/DrumSynth"
 
 [tool.setuptools.packages.find]
 include = ["drumsynth*"]
+
+[project.scripts]
+drumsynth-engine = "drumsynth.live.engine:EngineCLI.main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

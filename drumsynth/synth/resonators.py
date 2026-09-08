@@ -180,6 +180,15 @@ class ModalBank:
         self.x = np.zeros(len(modes), dtype=np.float64)
         self.y = np.zeros(len(modes), dtype=np.float64)
 
+        #: Per-mode output scaling, applied at the mix and nowhere else.
+        #:
+        #: A LISTENING AID, not a drum parameter. It is deliberately not part of
+        #: DrumParams, is never serialized, and never reaches a fit — its only
+        #: job is to let you solo one partial while the drum is ringing to hear
+        #: which mode a ring belongs to. Muting through `gain` instead would
+        #: only take effect on the next strike, because gain is excitation.
+        self.monitor_mask = np.ones(len(modes), dtype=np.float64)
+
         self._ratio = 0.0  # forces the first set_ratio to recompute
         self._w = np.zeros(len(modes), dtype=np.float64)
         self._eps = np.zeros(len(modes), dtype=np.float64)
@@ -209,7 +218,64 @@ class ModalBank:
         """Current (tension-shifted) frequency of every mode, in Hz."""
         return self._w * self.sr / (2.0 * np.pi)
 
+    def set_params(self, modes: list[Mode]) -> None:
+        """Replace the bank's parameters WITHOUT clearing its state.
+
+        This is the live-editing path: turning a mode's t60 knob while the drum
+        is ringing has to change how the rest of that ring decays, not restart
+        it. Because the coupled form keeps amplitude in (x, y) and frequency in
+        a separate coefficient, both can be retuned mid-ring — which is the
+        same property that lets the tension feedback modulate frequency every
+        control period.
+
+        Mode i keeps mode i's state. Added modes start silent; removed modes
+        take their state with them. Reordering the list therefore reassigns
+        state, so keep the order stable while playing.
+        """
+        if not modes:
+            raise ValueError("a modal bank needs at least one mode")
+        for mode in modes:
+            mode.validate(self.sr)
+
+        count = len(modes)
+        previous = len(self.f_static)
+        self.f_static = np.array([m.f_static for m in modes], dtype=np.float64)
+        self.gain = np.array([m.gain for m in modes], dtype=np.float64)
+        self.t60 = np.array([m.t60 for m in modes], dtype=np.float64)
+        self.r = np.maximum(
+            np.asarray(Decay.t60_to_coef(self.t60, self.sr), dtype=np.float64),
+            ModalBank.MIN_DECAY_COEF,
+        )
+
+        if count != previous:
+            keep = min(count, previous)
+            x, y = np.zeros(count), np.zeros(count)
+            x[:keep], y[:keep] = self.x[:keep], self.y[:keep]
+            self.x, self.y = x, y
+            mask = np.ones(count)
+            mask[:keep] = self.monitor_mask[:keep]
+            self.monitor_mask = mask
+
+        ratio, self._ratio = self._ratio, 0.0  # force the trig to recompute
+        self.set_ratio(ratio)
+
     # -- playing --------------------------------------------------------------
+
+    def set_monitor_mask(self, mask: np.ndarray | None) -> None:
+        """Solo/mute individual partials without touching the parameters."""
+        if mask is None:
+            self.monitor_mask = np.ones(len(self), dtype=np.float64)
+            return
+        values = np.asarray(mask, dtype=np.float64)
+        if len(values) != len(self):
+            raise ValueError(
+                f"monitor mask has {len(values)} entries, expected {len(self)}"
+            )
+        self.monitor_mask = values
+
+    @property
+    def is_monitoring_all(self) -> bool:
+        return bool(np.all(self.monitor_mask == 1.0))
 
     def excite(self, amplitude: float, gain_scale: np.ndarray | None = None) -> None:
         """x += amplitude * gain, for every mode at once.
@@ -228,7 +294,7 @@ class ModalBank:
         y = self.y - self._eps * x
         self.x = x = x * self.r
         self.y = y * self.r
-        return float(x.sum())
+        return float(np.dot(x, self.monitor_mask))
 
     def process(self, n: int, ratio: float | None = None) -> np.ndarray:
         """Advance `n` samples at a constant frequency ratio, return the mix.
@@ -245,6 +311,7 @@ class ModalBank:
         n = int(n)
         if n <= ModalBank.DIRECT_LIMIT:
             return np.array([self.step() for _ in range(n)], dtype=np.float64)
+
 
         r, eps = self.r, self._eps
         cos_w, sin_w = self._cos_w, self._sin_w
@@ -273,7 +340,11 @@ class ModalBank:
         self.x = decay_last * (a_x * cos_last + b_x * sin_last)
         self.y = decay_last * (a_y * cos_last + b_y * sin_last)
 
-        return out.sum(axis=0)
+        return (
+            out.sum(axis=0)
+            if self.is_monitoring_all
+            else self.monitor_mask @ out
+        )
 
     def process_modes(self, n: int, ratio: float | None = None) -> np.ndarray:
         """Same as `process` but returns one row per mode, without mixing.
@@ -310,6 +381,8 @@ class ModalBank:
         return float(np.max(self.amplitudes)) if len(self) else 0.0
 
     def reset(self) -> None:
+        """Clear the ring. Leaves the monitor mask alone — it is a view setting,
+        not state, and losing it on every reset would be maddening."""
         self.x[:] = 0.0
         self.y[:] = 0.0
         self.set_ratio(1.0)
