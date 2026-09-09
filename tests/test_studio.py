@@ -186,7 +186,17 @@ TRAINING = str(Path(__file__).resolve().parents[1] / "app_pages" / "training.py"
 
 
 @pytest.fixture
-def training():
+def empty_store(monkeypatch, tmp_path):
+    """Point the run store somewhere empty, so a developer's own `out/runs`
+    cannot change what these tests see."""
+    from drumsynth.fitting.runs import RunStore
+
+    monkeypatch.setenv(RunStore.ROOT_VARIABLE, str(tmp_path / "runs"))
+    return tmp_path / "runs"
+
+
+@pytest.fixture
+def training(empty_store):
     at = AppTest.from_file(TRAINING, default_timeout=TIMEOUT)
     at.run()
     assert not at.exception, at.exception[0].message if at.exception else ""
@@ -225,121 +235,145 @@ class TestTrainingPage:
         )
 
     def test_starts_idle(self, training):
-        assert [b.label for b in training.button] == ["Start training"]
+        assert "Start training" in [b.label for b in training.button]
+
+    def test_an_empty_store_says_so_rather_than_erroring(self, training):
+        assert any("no runs stored" in c.value for c in training.caption)
 
 
-class _FinishedRun:
-    """A `TrainingRun` that has already finished, so the result views can be
-    driven without a subprocess or a 3.5 GB sample library."""
-
-    def __init__(self, ready: dict, result: dict, scored: dict) -> None:
-        self.ready, self.result, self.scored = ready, result, scored
-        self.done = {"elapsed": result["elapsed"]}
-        self.error = None
-        self.steps: list[str] = ["stage 1", "stage 2", "stage 5"]
-        self.generations = [
-            {"generation": g["index"], "loss": g["loss"],
-             "best_loss": g["best_loss"], "elapsed": g["elapsed"]}
-            for g in result["generations"]
-        ]
-
-    is_running = False
-    finished = True
-    phase = "done"
-
-    def progress_fraction(self) -> float:
-        return 1.0
-
-    def stop(self) -> None:
-        pass
-
-    def stderr_tail(self, lines: int = 12) -> str:
-        return ""
+# =============================================================================
+# The report, over a stored run
+# =============================================================================
 
 
 @pytest.fixture(scope="module")
-def finished_fit():
-    """A real fit of a synthetic drum, serialized exactly the way the worker
-    serializes one."""
+def fitted_run(tmp_path_factory):
+    """A real fit of a synthetic drum, written to a real run directory.
+
+    The page reads finished runs back from disk rather than from the event
+    stream, so a stored run is what these tests have to provide — and testing
+    the read-back path is worth more than testing a stub of it."""
     from tests.test_fitting import SR, known_drum, velocity_layers
     from drumsynth.fitting import (
         DrumTrainer, FitEvaluator, TargetBuilder, TrainingSettings,
     )
+    from drumsynth.fitting.runs import RunStore
     from drumsynth.fitting.worker import FitWorker
 
+    root = tmp_path_factory.mktemp("runs")
     hits = velocity_layers(known_drum(), velocities=(45, 90, 127))
     target = TargetBuilder(SR, 0.8).from_audio("synthetic", hits)
     settings = TrainingSettings(seconds=0.8, max_layers=3, max_modes=10,
-                                generations=2, population=6, noise_bands=2)
+                                generations=2, population=6, noise_bands=2,
+                                device="cpu")
     result = DrumTrainer(settings, SR).run(target)
 
-    worker = FitWorker(settings, SR)
-    aggregate, cards = FitEvaluator(SR).score(result, target)
-    ready = {
-        "drum": target.drum,
-        "layers": [
-            {"velocity": layer.velocity,
-             "velocity_normalized": layer.velocity_normalized,
-             "source": layer.source}
-            for layer in target.layers
-        ],
-    }
-    scored = {
-        "total": aggregate.total,
-        "stft_loss": aggregate.stft_loss,
+    evaluator = FitEvaluator(SR)
+    aggregate, cards = evaluator.score(result, target)
+    layers = [
+        {"velocity": layer.velocity,
+         "generated": evaluator.render(result, layer.velocity_normalized, 0.8),
+         "reference": layer.audio}
+        for layer in target.layers
+    ]
+    summary = FitWorker(settings, SR)._summarize(result)
+    summary["settings"] = settings.to_dict()
+    score = {
+        "total": aggregate.total, "stft_loss": aggregate.stft_loss,
         "components": [c.to_dict() for c in aggregate.components],
         "warnings": aggregate.warnings,
-        "per_layer": [{"velocity": v, "total": card.total} for v, card in cards],
+        "per_layer": [{"velocity": v, "total": c.total} for v, c in cards],
         "report": aggregate.report(),
     }
-    return ready, worker._summarize(result), scored
+    directory = RunStore(root).save(
+        "synthetic", FitWorker._plain(summary), result.params,
+        FitWorker._plain(score), layers, SR)
+    return root, directory
 
 
 @pytest.fixture
-def finished(monkeypatch, finished_fit):
+def stored(monkeypatch, fitted_run):
+    """The page with one stored run and nothing running."""
     import streamlit as st
-    import drumsynth.fitting as fitting
+    from drumsynth.fitting.runs import RunStore
 
-    monkeypatch.setattr(
-        fitting, "TrainingRun", lambda *a, **k: _FinishedRun(*finished_fit)
-    )
-    # The page holds its handle in `st.cache_resource`, which outlives an
-    # AppTest run — without this it would keep the real subprocess handle an
-    # earlier test cached and the patch would do nothing.
+    root, _ = fitted_run
+    monkeypatch.setenv(RunStore.ROOT_VARIABLE, str(root))
     st.cache_resource.clear()
+    st.cache_data.clear()
     at = AppTest.from_file(TRAINING, default_timeout=TIMEOUT)
     at.run()
     assert not at.exception, at.exception[0].message if at.exception else ""
     yield at
     st.cache_resource.clear()
+    st.cache_data.clear()
 
 
 class TestTrainingReport:
-    def test_every_result_view_renders(self, finished):
-        """The report, the velocity table, the audio comparison and the handoff
-        into the live synth — the whole tail of the page, which no unit test
-        reaches because it only exists once a fit has finished."""
-        headers = [s.value for s in finished.subheader]
-        assert "Report" in headers
-        assert "Velocity table" in headers
-        assert "Generated against the sample" in headers
-        assert "Try it" in headers
+    def test_a_stored_run_is_openable(self, stored):
+        """Every fit is kept. A run takes minutes and produces a drum you
+        cannot judge in one listen, so the comparison that matters is against
+        the previous run — which needs the previous run to still exist."""
+        assert any(s.label == "Open a run" for s in stored.selectbox)
 
-    def test_setup_is_replaced_by_the_result(self, finished):
-        assert "Start training" not in [b.label for b in finished.button]
-        assert "Fit another drum" in [b.label for b in finished.button]
+    def test_every_result_view_renders(self, stored):
+        headers = [s.value for s in stored.subheader]
+        for expected in ("Velocity table", "Report", "Where the time went",
+                         "Generated against the sample", "Try it"):
+            assert expected in headers, headers
 
-    def test_stage_3_verdict_is_shown_either_way(self, finished):
-        text = " ".join([m.value for m in finished.success]
-                        + [m.value for m in finished.warning])
+    def test_the_comparison_shows_both_signals(self, stored):
+        """Two players and the four views. A report that only plays the
+        generated drum is not a comparison."""
+        # AppTest has no accessor for st.audio, so the players are checked by
+        # their headings; the tabs are what the four views hang off.
+        markdown = [m.value for m in stored.markdown]
+        assert "**Sample**" in markdown and "**Generated**" in markdown
+        labels = [t.label for t in stored.tabs]
+        for expected in ("Waveform", "Spectrum", "Decay", "Spectrogram"):
+            assert expected in labels, labels
+
+    def test_stage_3_verdict_is_shown_either_way(self, stored):
+        text = " ".join([m.value for m in stored.success]
+                        + [m.value for m in stored.warning])
         assert "Stage 3" in text
 
-    def test_the_fitted_drum_can_be_loaded_into_the_live_synth(self, finished):
-        for button in finished.button:
+    def test_the_fitted_drum_can_be_loaded_into_the_live_synth(self, stored):
+        for button in stored.button:
             if button.label == "Load into the live synth":
                 button.click().run()
                 break
         else:
-            pytest.fail("no handoff button")
-        assert not finished.exception
-        assert finished.session_state.params.modes
+            pytest.fail(f"no handoff button in {[b.label for b in stored.button]}")
+        assert not stored.exception
+        assert stored.session_state.params.modes
+
+
+class TestTrainedDrumsInTheSidebar:
+    def test_a_stored_fit_is_loadable_from_any_page(self, monkeypatch,
+                                                   fitted_run):
+        """The runs are on disk, not in this session's memory, so a session
+        that never ran a fit can still play one."""
+        import streamlit as st
+        from drumsynth.fitting.runs import RunStore
+
+        root, _ = fitted_run
+        monkeypatch.setenv(RunStore.ROOT_VARIABLE, str(root))
+        st.cache_resource.clear()
+
+        at = AppTest.from_file(APP, default_timeout=TIMEOUT)
+        at.run()
+        assert not at.exception, at.exception[0].message if at.exception else ""
+
+        picker = [s for s in at.sidebar.selectbox if s.label == "Fit"]
+        assert picker, [s.label for s in at.sidebar.selectbox]
+
+        for button in at.sidebar.button:
+            if button.label == "Load trained drum":
+                button.click().run()
+                break
+        else:
+            pytest.fail("no load button in the sidebar")
+        assert not at.exception
+        assert at.session_state.params.modes
+        st.cache_resource.clear()

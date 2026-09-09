@@ -232,11 +232,18 @@ streamlit run streamlit_app.py     # → the Training page
 Pick a drum, watch the stages, read the ScoreCard against the samples, and load
 the result straight into the live synth to play it.
 
+While it runs you get the current and best generation, the loss curve, and live
+GPU telemetry. When it finishes you get the ScoreCard, where the time went, and
+the generated drum beside the sample as waveform, spectrum, band decay and
+spectrogram — then it loads into the live engine so you can hit it. Every run is
+kept under `out/runs/` and reopenable.
+
 Stage 5 evaluates a whole generation in one batched call, which is what makes
 CUDA worth using for it:
 
 ```bash
 pip install torch --index-url https://download.pytorch.org/whl/cu121
+pip install nvidia-ml-py     # live GPU readings while it runs
 ```
 
 Then pick the device on the page, or pass `--device cuda` to the worker. Stages

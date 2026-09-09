@@ -173,6 +173,57 @@ batched STFT per velocity layer, and returns `S` losses. Nothing is sent to a
 process. On a 4-core container that alone took a 60-candidate generation from
 1.22 s to 0.91 s.
 
+### Why stage 5 used to do nothing
+
+A run reported this, and it is worth reading as a symptom:
+
+```
+gen  1  loss 11.106  best 11.106
+gen 10  loss 11.106  best 11.106
+gen 20  loss 11.106  best 11.106
+```
+
+Twenty generations, four decimal places of movement. That is not a converged
+search — it is a search on a basis that cannot represent the drum.
+
+`LinearVoiceBasis` is unit-gain per mode, so the gains it is built with matter
+for exactly one thing: the **tension trajectory**, which it captures from a real
+render and then freezes. `ratio = 1 + k * bank_energy`. Stage 5 was building its
+basis from `modal.modes`, whose gains come out of stage 1 as an ESPRIT
+by-product on no particular scale. Measured on a synthetic drum: those summed to
+**211** against a true **4.8**, which pinned the glide at `Tension.max_ratio` —
+a full octave — for the entire hit. Every mode in the basis rang up to an octave
+sharp, and no combination of the six parameters being searched could move it
+back.
+
+Two changes:
+
+* Stage 5 linearizes around the excitation the fit actually arrived at, per
+  layer, and **relinearizes once** around the answer the first pass found. On
+  the same drum, stage 5 went from flat at 8.28 dB to descending from 5.07 —
+  the range stage 2 was already reaching.
+* Stage 1 normalizes its amplitudes to unit bank energy, so the trap cannot fire
+  again from somewhere else.
+
+Two more guards came with it, because a search that can go wrong quietly is
+worse than one that fails:
+
+* **The reported loss is measured on a real render**, not on the basis. On one
+  run the basis said 4.99 dB where a real render of the same parameters said
+  5.18. Letting the approximation grade its own answer is how a fit comes to
+  look better than it is.
+* **Stage 5 never returns something worse than it was given.** It measures the
+  incoming stage-4 curve the same way, and keeps whichever is better. A
+  six-parameter search scored through an approximate basis can land somewhere
+  worse than it started, and handing that back as "refined" makes it a coin flip
+  the user pays a minute for.
+
+A flat generation chart is still possible and still means something specific:
+stage 5 searches **six numbers**, the velocity mapping, with the modes, the
+damping and the per-mode gain shape frozen by the stages before it. Flat means
+the remaining error is somewhere those six numbers cannot reach. The per-layer
+losses in the velocity table are where to look next.
+
 ### CUDA
 
 ```bash
@@ -194,6 +245,54 @@ of 1.1 dB.
 
 Stages 1-4 stay on the CPU. They are ESPRIT, band-decay regressions and an NNLS
 solve — LAPACK on small matrices, run once each, not something a GPU improves.
+
+#### "I installed the CUDA wheel and the GPU sits at 0%"
+
+Three things can be true, and the report separates them.
+
+**Stage 5 is most of the run, so it is not that the GPU part is small.**
+Measured on a 6-layer fit, 30 modes, 2.5 s hits, 20 generations:
+
+| stage | seconds | share |
+|---|---|---|
+| stage 1 — modes and damping | 8.8 | 1% |
+| stage 2 — excitation, pass 1 | 54.6 | 7% |
+| stage 2b — the glide | 61.0 | 8% |
+| stage 2 — excitation, pass 2 | 64.4 | 9% |
+| stages 3 and 4 | 0.0 | 0% |
+| **stage 5 — joint refinement** | **563.7** | **75%** |
+
+Every run reports its own version of this table under **Where the time went**.
+
+**The fit reports whether CUDA was actually used.** `torch.cuda.is_available()`
+says a device exists; it does not say a tensor ever reached it. Stage 5 records
+`torch.cuda.max_memory_allocated()` and the report says which of these happened:
+
+* *Stage 5 ran on CUDA and allocated N MiB* — it worked. A device that still
+  reads 0% in `nvidia-smi` is being sampled between kernels; NVML polls at about
+  a second and the utilization counter is a duty cycle, not a load average.
+* *The device was reported as CUDA but no tensor was ever allocated* — it ran on
+  the CPU. Check that the training subprocess uses the same interpreter as the
+  app (it inherits `sys.executable`) and that `torch` there is a cu-tagged wheel.
+* *Stage 5 ran on the CPU* — the picker resolved to CPU, which `auto` does
+  silently when torch reports no device. Pick **CUDA** explicitly and it will
+  raise instead, naming the reason.
+
+**Live telemetry while it runs.** The dashboard reads NVML directly through
+`pynvml` — device name, utilization, VRAM, temperature and power, sampled once a
+second:
+
+```bash
+pip install nvidia-ml-py
+```
+
+Without it the panel says so rather than showing zeros, which would be
+indistinguishable from an idle GPU.
+
+One more thing was fixed while chasing this: the population's gains were being
+built with a Python loop over candidates, sixty of them times six layers, which
+is 360 small numpy calls per generation that a GPU spends waiting for.
+`VelocityCurve.batch_gains` does it in one broadcast.
 
 > **Correcting an earlier claim.** An earlier version of this document said the
 > GPU "would not help", on the grounds that a single evaluation is a small,
@@ -277,6 +376,37 @@ spends its budget chasing one noise realization.
 
 ---
 
+## Every run is kept
+
+A fit takes minutes and produces a drum you cannot judge in one listen. The
+useful comparison is between runs — this drum at 20 modes against the same drum
+at 34, the fit before the tension stage was corrected against the one after —
+and that is impossible if each run overwrites the last.
+
+So a run is a directory:
+
+```
+out/runs/toms-stereo-tom3/2026-09-09T14-22-05/
+    run.json          settings, timings, warnings, the whole summary
+    params.json       the DrumParams, loadable by the live synth
+    score.json        the ScoreCard, per component and per layer
+    audio/            one generated WAV per velocity layer
+    reference/        the sample each was fitted against
+```
+
+The reference audio is stored, not just referenced, because re-rendering needs
+only the parameters but the *sample* needs the 3.5 GB library, which may not be
+where it was. A run directory is self-contained.
+
+`DRUMSYNTH_RUNS` overrides the root for both the app and the worker subprocess.
+
+**Past runs** on the Training page lists every one and opens any of them into
+the same report the fit produced. **Trained drums** in the sidebar loads any
+stored fit straight into the live engine, from any page and in a session that
+never ran a fit — press Strike and you are hearing it.
+
+---
+
 ## Reading a result
 
 The page shows, in order:
@@ -290,8 +420,24 @@ The page shows, in order:
 4. **The report** — the project's own `DrumScorer`, not a second opinion
    invented for the fitter, aggregated worst-component-first across every
    velocity.
-5. **Generated against the sample**, per velocity, as audio.
-6. **Load into the live synth** — the fitted drum in the running engine, so it
+5. **Stage 5 — the search**: the generation chart, what it started and ended
+   at, and the loss measured on a real render.
+6. **Where the time went**: seconds per stage, and whether CUDA was used.
+7. **Generated against the sample**, per velocity — both signals as audio, then
+   four views of the same pair:
+
+   | view | what it shows |
+   |---|---|
+   | **Waveform** | the min/max envelope of each, stacked, plus the level envelope in dB |
+   | **Spectrum** | magnitude averaged over the whole hit, log frequency — peaks that line up are modes the fit found, peaks in the sample with nothing under them are modes it missed |
+   | **Decay** | t60 per band, the quantity stage 1 fits its damping curve through |
+   | **Spectrogram** | both signals and their difference, on ONE shared dB scale |
+
+   Everything is level-matched first and drawn on one pair of axes. Two charts
+   side by side, each auto-scaled to its own maximum, is the most common way to
+   make a bad fit look fine.
+
+8. **Load into the live synth** — the fitted drum in the running engine, so it
    can be struck and edited on the Mixer page while it rings.
 
 A fit that scores well and **fails stage 3** is the case to be suspicious of.

@@ -23,6 +23,7 @@ from ..core.constants import Audio
 from ..live.protocol import Event
 from ..synth.params import DrumParams
 from .backend import DeviceChoice
+from .runs import RunStore
 from .targets import DrumCatalogue, FitTarget, TargetBuilder
 from .trainer import DrumTrainer, FitEvaluator, FitResult, TrainingSettings
 
@@ -121,19 +122,73 @@ class FitWorker:
             report=aggregate.report(),
         )
 
+        # Every run is kept, not just the last one. A fit takes minutes and
+        # produces a drum you cannot judge in one listen; the useful comparison
+        # is against the previous run, and that is impossible if each one
+        # overwrites its predecessor.
+        run_directory = None
+        try:
+            run_directory = self._store(result, target, aggregate, cards)
+        except Exception as error:                     # storage is not the fit
+            self.emit(FitEvent.PROGRESS,
+                      step=f"could not store this run: {type(error).__name__}: "
+                           f"{error}")
+
         if output is not None:
             output.parent.mkdir(parents=True, exist_ok=True)
             result.params.save(output)
-            self.emit(FitEvent.DONE, path=str(output.resolve()),
-                      elapsed=result.elapsed)
-        else:
-            self.emit(FitEvent.DONE, elapsed=result.elapsed)
+        self.emit(FitEvent.DONE, elapsed=result.elapsed,
+                  path=str(output.resolve()) if output is not None else None,
+                  run_directory=str(run_directory) if run_directory else None)
         return 0
+
+    def _store(self, result: FitResult, target: FitTarget,
+               aggregate, cards) -> Path:
+        """Write the run directory: summary, parameters, score, and the audio
+        of every layer beside the sample it was fitted to.
+
+        The audio matters more than it looks. Re-rendering needs only the
+        parameters, but the REFERENCE needs the 3.5 GB library, which may not
+        be where it was — so a run that stores both stays comparable after the
+        samples move."""
+        evaluator = FitEvaluator(self.sr, self.settings.control_period)
+        layers = []
+        for layer in target.layers[: self.settings.max_layers]:
+            layers.append({
+                "velocity": layer.velocity,
+                "generated": evaluator.render(
+                    result, layer.velocity_normalized, self.settings.seconds),
+                "reference": layer.audio,
+            })
+
+        summary = self._summarize(result)
+        summary.update({
+            "settings": self.settings.to_dict(),
+            "reference_velocity": target.reference.velocity,
+            "device": summary.get("device", self.settings.device),
+        })
+        score = {
+            "total": aggregate.total, "stft_loss": aggregate.stft_loss,
+            "components": [component.to_dict()
+                           for component in aggregate.components],
+            "warnings": aggregate.warnings,
+            "per_layer": [{"velocity": velocity, "total": card.total,
+                           "components": {c.name: c.value
+                                          for c in card.components}}
+                          for velocity, card in cards],
+            "report": aggregate.report(),
+        }
+        return RunStore().save(
+            drum=result.drum, summary=FitWorker._plain(summary),
+            params=result.params, score=FitWorker._plain(score),
+            layers=layers, sr=self.sr,
+        )
 
     def _summarize(self, result: FitResult) -> dict:
         return {
             "drum": result.drum,
             "elapsed": result.elapsed,
+            "timings": result.timings,
             "params": result.params.to_dict(),
             "modes": len(result.modal.modes),
             "tension": {"k": result.modal.tension.k, "tau": result.modal.tension.tau},
@@ -150,6 +205,7 @@ class FitWorker:
                  "elapsed": g.elapsed}
                 for g in result.generations
             ],
+            "stage5_loss": result.curve.loss,
             "mode_table": [
                 {"f_static": mode.f_static, "gain": mode.gain, "t60": mode.t60}
                 for mode in result.params.sorted_modes()

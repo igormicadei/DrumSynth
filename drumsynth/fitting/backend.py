@@ -151,7 +151,11 @@ class BatchLoss:
     #: hit is ~3.5 MB per candidate in float64 — a whole population of them is
     #: not something to allocate in one go on a laptop.
     CPU_CHUNK: int = 8
-    CUDA_CHUNK: int = 32
+    #: A whole population at once, usually. At the smallest FFT size a
+    #: four-second hit frames to (64, 2750, 256) — 169 MB in float32, plus a
+    #: complex64 transform of the same shape. Under a gigabyte, and it keeps
+    #: the device-to-host syncs down to one per resolution per layer.
+    CUDA_CHUNK: int = 64
 
     def __init__(self, basis: LinearVoiceBasis, target: SpectralTarget,
                  reference: np.ndarray, chunk: int = CPU_CHUNK) -> None:

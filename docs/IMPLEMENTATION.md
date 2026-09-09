@@ -66,6 +66,9 @@ drumsynth/
     ├── stages.py          ModalStage, ExcitationStage, TensionStage,
     │                      InspectionStage, VelocityCurveStage, JointStage
     ├── backend.py         Device, DeviceChoice, BatchLoss, TorchBatchLoss
+    ├── telemetry.py       GpuMonitor, TorchMemory       (NVML, and what CUDA used)
+    ├── comparison.py      Comparison                    (generated vs sample)
+    ├── runs.py            RunStore, RunRecord           (every fit, kept)
     ├── trainer.py         DrumTrainer, FitResult, FitEvaluator
     ├── worker.py          the subprocess entry point
     └── client.py          TrainingRun
@@ -267,7 +270,7 @@ chunks regardless of `control_period`.
 
 ## Testing
 
-396 tests, ~3 min. Nine files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
+415 tests, ~3 min. Nine files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
 
 * `tests/test_synth.py` — superposition, decay accuracy, tension behaviour, and
   the `ModalBank` ↔ `ModeResonator` equivalence.

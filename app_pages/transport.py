@@ -11,6 +11,7 @@ from pathlib import Path
 
 import streamlit as st
 
+from drumsynth.fitting.runs import RunStore
 from drumsynth.live.sinks import DeviceSink
 from drumsynth.studio import Meter, Studio
 
@@ -26,6 +27,8 @@ def render_transport(studio: Studio) -> None:
     _play_controls(studio)
     st.divider()
     _engine_settings(studio)
+    st.divider()
+    _trained_drums(studio)
     st.divider()
     _preset_controls(studio)
 
@@ -164,6 +167,53 @@ def _flam(studio: Studio, amplitude: float) -> None:
 @st.fragment(run_every="0.4s")
 def _live_meter(studio: Studio) -> None:
     Meter.render(studio)
+
+
+# -- trained drums ------------------------------------------------------------
+
+
+def _trained_drums(studio: Studio) -> None:
+    """Every stored fit, loadable into the running engine.
+
+    The point of a fit is to hit it. Loading one here rather than on the
+    Training page means it is reachable from any page and from a session that
+    never ran a fit at all — the runs are on disk, not in this session's
+    memory.
+    """
+    st.markdown("**Trained drums**")
+
+    runs = RunStore().list()
+    if not runs:
+        st.caption(
+            ":gray[no fits stored yet — the Training page writes one per run]")
+        return
+
+    labels = {
+        f"{run.drum} · {run.started[5:16].replace('T', ' ')}"
+        + (f" · {run.total:.3f}" if run.total == run.total else ""): run
+        for run in runs
+    }
+    chosen = labels[st.selectbox(
+        "Fit", list(labels), key="trained_pick",
+        help="Newest first. The number is the ScoreCard total — higher is closer "
+             "to the samples it was fitted to.",
+    )]
+
+    if st.button("Load trained drum", icon=":material/download:", width="stretch"):
+        try:
+            params = chosen.params()
+        except (OSError, ValueError) as error:
+            st.error(f"could not read that run: {error}", icon=":material/error:")
+            return
+        studio.params = params
+        studio.clear_widget_state()
+        studio.reset_monitor()
+        st.session_state.preset_name = params.name or chosen.drum
+        studio.sync()
+        st.rerun()
+
+    st.caption(f":gray[{len(runs)} stored · {chosen.modes} modes · "
+               f"fitted in {chosen.elapsed:.0f} s on {chosen.device}]")
 
 
 # -- presets ------------------------------------------------------------------

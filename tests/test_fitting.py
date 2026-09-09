@@ -39,6 +39,9 @@ from drumsynth.fitting import (
     VelocityCurveStage,
 )
 from drumsynth.fitting.backend import TorchBatchLoss
+from drumsynth.fitting.comparison import Comparison
+from drumsynth.fitting.stages import ModalFit
+from drumsynth.fitting.telemetry import GpuMonitor, TorchMemory
 from drumsynth.fitting.objective import LevelMatch
 from drumsynth.fitting.stages import ExcitationFit
 
@@ -645,6 +648,240 @@ class TestStageFiveUsesNoProcesses:
         finally:
             multiprocessing.Pool = original
         assert generations
+
+
+# =============================================================================
+# Stage 5 has to be linearized around the answer, not around stage 1
+# =============================================================================
+
+
+class TestJointStageLinearization:
+    def test_stage_1_gains_are_on_a_sane_scale(self):
+        """ESPRIT's amplitudes are a by-product, and stage 2 replaces every one
+        of them — but until it runs they are the only gains the modes carry.
+        Anything that builds a tension trajectory from them evaluates
+        `ratio = 1 + k * energy` at whatever scale the estimator happened to
+        return. Measured before this was normalized: 211 against a true 4.8."""
+        params = known_drum()
+        audio = render(params)
+        modal = ModalStage(SR, max_modes=14).run(audio, audio)
+        energy = sum(mode.gain**2 for mode in modal.modes)
+        assert energy == pytest.approx(1.0, abs=1e-6)
+
+    def test_the_search_does_not_return_something_worse(self):
+        """Stage 5 is a refinement. A six-parameter search scored through an
+        approximate basis can land somewhere worse than it started, and handing
+        that back as "refined" makes it a coin flip the user pays a minute for.
+        """
+        params = known_drum(k=0.12)
+        audio = render(params)
+        modal = ModalStage(SR, max_modes=12).run(audio, audio)
+        modal = ModalFit(modes=modal.modes, tension=Tension(k=0.12, tau=0.09),
+                         descriptors=modal.descriptors, notes=modal.notes,
+                         damping_anchors=modal.damping_anchors)
+        fit = ExcitationStage(SR, 64).run(
+            modal, audio, 100.0, 1.0, list(params.noise))
+        shape = fit.gains / (np.linalg.norm(fit.gains) or 1.0)
+        curve = _flat_curve(fit)
+        layers = [(1.0, audio)]
+
+        joint = JointStage(SR, 64)
+        incoming = joint.true_loss(modal, shape, curve, layers, list(params.noise))
+        refined, _ = joint.run(modal, shape, curve, layers, list(params.noise),
+                               generations=3, population=4)
+        assert refined.loss <= incoming + 1e-9
+
+    def test_the_reported_loss_is_measured_on_a_real_render(self):
+        """Not on the basis. The basis freezes a tension trajectory and is an
+        approximation of the engine; letting it grade its own answer is how a
+        fit comes to look better than it is."""
+        params = known_drum()
+        audio = render(params)
+        modal = ModalStage(SR, max_modes=12).run(audio, audio)
+        fit = ExcitationStage(SR, 64).run(
+            modal, audio, 100.0, 1.0, list(params.noise))
+        shape = fit.gains / (np.linalg.norm(fit.gains) or 1.0)
+        curve = _flat_curve(fit)
+
+        joint = JointStage(SR, 64)
+        refined, _ = joint.run(modal, shape, curve, [(1.0, audio)],
+                               list(params.noise), generations=2, population=4)
+        rendered = joint.true_loss(modal, shape, refined, [(1.0, audio)],
+                                   list(params.noise))
+        assert refined.loss == pytest.approx(rendered, abs=1e-9)
+
+
+class TestBatchedVelocityCurve:
+    def test_batch_gains_match_the_per_candidate_path(self):
+        """Stage 5 asks for these once per layer per generation. A Python loop
+        over sixty candidates times six layers is 360 small numpy calls that a
+        GPU spends waiting for."""
+        rng = np.random.default_rng(0)
+        freqs = np.geomspace(120, 9000, 20)
+        shape = np.abs(rng.normal(0.4, 0.2, 20))
+        band_shape = np.array([1.0, 0.5, 0.25])
+        vectors = np.column_stack([
+            rng.uniform(0.2, 2.0, 8), rng.uniform(0.5, 2.5, 8),
+            rng.uniform(0.0004, 0.004, 8), rng.uniform(-1.5, 0.4, 8),
+            rng.uniform(1e-4, 0.05, 8), rng.uniform(0.4, 3.0, 8)])
+
+        for velocity in (0.0, 0.4, 1.0):
+            loop = np.stack([
+                JointStage._curve_from(row, band_shape).gains(freqs, shape, velocity)
+                for row in vectors])
+            assert VelocityCurve.batch_gains(
+                vectors, freqs, shape, velocity) == pytest.approx(loop, abs=1e-12)
+
+            loop_levels = np.stack([
+                np.atleast_1d(
+                    JointStage._curve_from(row, band_shape).levels(velocity))
+                for row in vectors])
+            assert VelocityCurve.batch_levels(
+                vectors, band_shape, velocity) == pytest.approx(
+                    loop_levels, abs=1e-12)
+
+
+# =============================================================================
+# Telemetry, run storage, and the comparison
+# =============================================================================
+
+
+class TestGpuMonitor:
+    def test_no_gpu_is_a_reason_not_an_exception(self):
+        """Every failure mode ends the same way, because there is nothing a
+        caller can do about the difference between "pynvml is missing" and "the
+        driver is not loaded" except say which one it was."""
+        monitor = GpuMonitor()
+        assert isinstance(monitor.available, bool)
+        if not monitor.available:
+            assert monitor.reason
+            assert monitor.sample() == []
+        else:
+            for sample in monitor.sample():
+                assert sample.memory_total > 0
+                assert 0.0 <= sample.memory_fraction <= 1.0
+
+    def test_peak_vram_is_zero_without_cuda(self):
+        assert TorchMemory.peak_bytes() >= 0.0
+
+
+class TestRunStore:
+    @staticmethod
+    def _save(store, drum="demo", when=None):
+        params = known_drum()
+        audio = render(params, seconds=0.4)
+        return store.save(
+            drum=drum,
+            summary={"elapsed": 12.5, "modes": len(params.modes),
+                     "device": "cpu", "timings": {"stage 5": 9.0}},
+            params=params,
+            score={"total": 0.42, "stft_loss": 2.1},
+            layers=[{"velocity": 90.0, "generated": audio, "reference": audio}],
+            sr=SR, when=when,
+        )
+
+    def test_a_run_round_trips(self, tmp_path):
+        from drumsynth.fitting.runs import RunStore
+
+        store = RunStore(tmp_path)
+        directory = self._save(store)
+        record = store.read(directory)
+
+        assert record is not None
+        assert record.drum == "demo"
+        assert record.total == pytest.approx(0.42)
+        assert record.modes == len(known_drum().modes)
+        assert len(record.params().modes) == len(known_drum().modes)
+
+        generated, reference = record.audio(90.0, SR)
+        assert generated is not None and reference is not None
+        assert len(generated) == len(reference)
+
+    def test_runs_are_kept_not_overwritten(self, tmp_path):
+        """The comparison that matters is against the previous run, which
+        requires the previous run to still be there."""
+        from datetime import datetime
+        from drumsynth.fitting.runs import RunStore
+
+        store = RunStore(tmp_path)
+        self._save(store, when=datetime(2026, 1, 1, 10, 0, 0))
+        self._save(store, when=datetime(2026, 1, 1, 11, 0, 0))
+        runs = store.list()
+        assert len(runs) == 2
+        assert runs[0].started > runs[1].started       # newest first
+
+    def test_a_half_written_run_does_not_break_the_list(self, tmp_path):
+        from drumsynth.fitting.runs import RunStore
+
+        store = RunStore(tmp_path)
+        self._save(store)
+        (tmp_path / "demo" / "interrupted").mkdir(parents=True)
+        assert len(store.list()) == 1
+
+    def test_delete_refuses_paths_outside_the_store(self, tmp_path):
+        """This takes a path from a UI and `shutil.rmtree` does not ask twice."""
+        from drumsynth.fitting.runs import RunStore
+
+        store = RunStore(tmp_path / "runs")
+        outside = tmp_path / "somewhere-else"
+        outside.mkdir()
+        assert store.delete(outside) is False
+        assert outside.exists()
+
+    def test_the_root_can_be_set_by_environment(self, tmp_path, monkeypatch):
+        """The worker is a subprocess of the app and both have to agree on
+        where runs live."""
+        from drumsynth.fitting.runs import RunStore
+
+        monkeypatch.setenv(RunStore.ROOT_VARIABLE, str(tmp_path / "elsewhere"))
+        assert RunStore().root == tmp_path / "elsewhere"
+
+
+class TestComparison:
+    @staticmethod
+    @pytest.fixture(scope="class")
+    def pair():
+        params = known_drum()
+        return (render(params, seed=1),
+                render(DrumParams(
+                    modes=[Mode(m.f_static * 1.2, m.gain, m.t60)
+                           for m in params.modes],
+                    noise=params.noise, tension=params.tension), seed=2))
+
+    def test_level_is_matched_before_anything_is_compared(self, pair):
+        """Absolute level is a mic preamp setting. A comparison that lets it in
+        reports the gain staging instead of the drum."""
+        reference, generated = pair
+        quiet = Comparison(reference, generated * 0.01, SR)
+        loud = Comparison(reference, generated * 100.0, SR)
+        assert quiet.band_distance() == pytest.approx(
+            loud.band_distance(), abs=1e-6)
+
+    def test_the_spectrograms_share_one_scale(self, pair):
+        """Two images each auto-scaled to their own maximum look alike however
+        different they are."""
+        grams = Comparison(*pair, SR).spectrograms()
+        assert grams.vmax > grams.vmin
+        assert grams.reference_db.shape == grams.generated_db.shape
+        assert grams.difference_db == pytest.approx(
+            grams.generated_db - grams.reference_db)
+
+    def test_envelopes_are_in_db_against_a_shared_floor(self, pair):
+        envelopes = Comparison(*pair, SR).envelopes()
+        assert envelopes.reference_db.max() <= 0.0 + 1e-9
+        assert envelopes.reference_db.min() >= envelopes.floor_db - 1e-9
+        assert len(envelopes.times) == len(envelopes.generated_db)
+
+    def test_band_decays_drop_bands_neither_signal_reached(self, pair):
+        decays = Comparison(*pair, SR).band_decays()
+        assert len(decays.centres) == len(decays.reference_t60)
+        assert len(decays.centres) == len(decays.generated_t60)
+        assert np.all(decays.reference_t60 > 0)
+
+    def test_identical_audio_is_zero_distance(self):
+        audio = render(known_drum(), seed=5)
+        assert Comparison(audio, audio, SR).band_distance() == pytest.approx(
+            0.0, abs=1e-9)
 
 
 # =============================================================================

@@ -86,6 +86,7 @@ class FitResult:
     shape: np.ndarray                       # frozen per-mode gain shape
     reference_velocity: float
     elapsed: float = 0.0
+    timings: dict = field(default_factory=dict)     # seconds per stage
     settings: TrainingSettings = field(default_factory=TrainingSettings)
     warnings: list[str] = field(default_factory=list)
 
@@ -143,6 +144,19 @@ class DrumTrainer:
         settings = self.settings
         warnings = list(target.warnings)
 
+        # Where the time actually goes, per stage. This is not decoration: only
+        # stage 5 can run on a GPU, and "my GPU sits at 0%" is answered by the
+        # share of the run stage 5 occupies, which on most drums is small. A
+        # number beats a guess.
+        timings: dict[str, float] = {}
+        stage_started = [time.perf_counter()]
+
+        def mark(name: str) -> None:
+            now = time.perf_counter()
+            timings[name] = now - stage_started[0]
+            stage_started[0] = now
+            progress({"phase": "timing", "stage": name, "seconds": timings[name]})
+
         layers = target.layers[: settings.max_layers]
         if len(layers) < len(target.layers):
             warnings.append(
@@ -168,6 +182,7 @@ class DrumTrainer:
                   "tension_k": modal.tension.k, "tension_tau": modal.tension.tau,
                   "notes": modal.notes})
 
+        mark("stage 1 — modes and damping")
         bands = self._noise_bands(settings.noise_bands)
 
         # --- stage 2: excitation, per velocity, independently ---------------
@@ -253,6 +268,8 @@ class DrumTrainer:
         fits, shape = fit_layers(modal, "first")
         self._canonicalize(fits)
 
+        mark("stage 2 — excitation, pass 1")
+
         # --- the glide, now that the excitation scale is known ---------------
         tension_stage = TensionStage(self.sr, settings.control_period)
         tension, per_layer_k, tension_notes = tension_stage.run(
@@ -268,9 +285,12 @@ class DrumTrainer:
                   "glide_semitones": 12.0 * np.log2(1.0 + tension.k)
                   if tension.k > 0 else 0.0})
 
+        mark("stage 2b — the glide")
+
         if tension.k > 0:
             fits, shape = fit_layers(modal, "second", seed_fits=fits)
             self._canonicalize(fits)
+            mark("stage 2 — excitation, pass 2")
 
         progress({"phase": "stage2_done", "table": [fit.to_row() for fit in fits]})
 
@@ -287,6 +307,7 @@ class DrumTrainer:
         # --- stage 4: velocity becomes continuous ---------------------------
         curve = VelocityCurveStage().run(fits, progress=progress)
         progress({"phase": "stage4", "curve": curve.to_dict()})
+        mark("stages 3 and 4 — inspection and curves")
 
         # `shape` came out of the reference layer's free fit above: the part of
         # the excitation that velocity does NOT explain.
@@ -303,8 +324,9 @@ class DrumTrainer:
             progress=progress,
             seed=settings.seed,
         )
+        mark("stage 5 — joint refinement")
         progress({"phase": "stage5_done", "generations": len(generations),
-                  "loss": curve.loss})
+                  "loss": curve.loss, "timings": timings})
 
         params = self._assemble(modal, shape, curve, bands, reference, target.drum)
         result = FitResult(
@@ -312,7 +334,7 @@ class DrumTrainer:
             inspection=inspection, curve=curve, generations=generations,
             shape=shape, reference_velocity=reference.velocity_normalized,
             elapsed=time.perf_counter() - started, settings=settings,
-            warnings=warnings,
+            warnings=warnings, timings=timings,
         )
         progress({"phase": "done", "elapsed": result.elapsed})
         return result

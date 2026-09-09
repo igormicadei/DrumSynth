@@ -35,6 +35,7 @@ from ..synth.presets import DampingCurve
 from ..synth.params import DrumParams, Mode, NoiseBand, Tension
 from ..synth.voice import DrumVoice
 from .backend import Device, DeviceChoice, LossBackend
+from .telemetry import TorchMemory
 from .objective import LevelMatch, LinearVoiceBasis, SpectralTarget
 
 Progress = Callable[[dict], None]
@@ -214,6 +215,19 @@ class ModalStage:
         progress({"stage": 1, "step": "fitting the damping curve (band decays)"})
         damping, anchors = self._damping_from(loud, notes)
         t60s = np.asarray(damping(frequencies), dtype=float)
+
+        # The amplitudes ESPRIT returns are a by-product, not a measurement of
+        # the excitation, and stage 2 replaces every one of them. They are
+        # normalized to unit bank energy here anyway, because until stage 2 runs
+        # they are the only gains the modes carry — and anything that builds a
+        # tension trajectory from them gets `ratio = 1 + k * energy` evaluated
+        # at an energy two orders of magnitude too large. Measured: raw ESPRIT
+        # amplitudes summed to 211 against the true 4.8, which pinned the glide
+        # at `Tension.max_ratio` (an octave) for the whole hit. A basis built on
+        # that rings in the wrong place and no parameter can fix it.
+        amplitudes = np.asarray(amplitudes, dtype=float)
+        energy = float(np.sqrt(np.sum(amplitudes**2))) or 1.0
+        amplitudes = amplitudes / energy
 
         modes = [
             Mode(float(freq), float(max(amp, 1e-9)), float(np.clip(t60, 0.005, 12.0)))
@@ -1170,6 +1184,40 @@ class VelocityCurve:
             return raw
         return raw / norm * float(self.amplitude(velocity))
 
+    @staticmethod
+    def batch_gains(vectors: np.ndarray, freqs: np.ndarray, shape: np.ndarray,
+                    velocity: float) -> np.ndarray:
+        """`(S, 6)` candidate vectors -> `(S, modes)` gains, in one pass.
+
+        The same arithmetic as `gains`, done for a whole population at once.
+        Worth having as its own method rather than a loop: stage 5 asks for this
+        once per layer per generation, and a Python loop over sixty candidates
+        times six layers is 360 small numpy calls per generation, which on a GPU
+        run is dead time the device spends waiting for the interpreter.
+        """
+        vectors = np.atleast_2d(np.asarray(vectors, dtype=float))
+        strength = VelocityCurve.strength(velocity)
+
+        contact = np.clip(
+            vectors[:, 2] * strength ** vectors[:, 3], *ExcitationTiltModel.RANGE)
+        amplitude = vectors[:, 0] * strength ** vectors[:, 1]
+
+        cut = 1.0 / (np.pi * np.maximum(contact, 1e-6))            # (S,)
+        tilt = 1.0 / (1.0 + (np.asarray(freqs, float)[None, :] / cut[:, None]) ** 2)
+        raw = np.asarray(shape, float)[None, :] * tilt             # (S, modes)
+        norm = np.sqrt(np.sum(raw**2, axis=1))
+        scale = np.where(norm > 0, amplitude / np.maximum(norm, 1e-30), 1.0)
+        return raw * scale[:, None]
+
+    @staticmethod
+    def batch_levels(vectors: np.ndarray, band_shape: np.ndarray,
+                     velocity: float) -> np.ndarray:
+        """`(S, 6)` -> `(S, bands)` noise levels."""
+        vectors = np.atleast_2d(np.asarray(vectors, dtype=float))
+        strength = VelocityCurve.strength(velocity)
+        scale = vectors[:, 4] * strength ** vectors[:, 5]
+        return np.asarray(band_shape, float)[None, :] * scale[:, None]
+
     def to_dict(self) -> dict:
         return {
             "amplitude_scale": self.amplitude_scale,
@@ -1273,21 +1321,55 @@ class JointStage:
 
         device = device or DeviceChoice.resolve(DeviceChoice.CPU)
         freqs = np.array([mode.f_static for mode in modal.modes])
-        seed_params = DrumParams(
-            modes=modal.modes, noise=list(noise_bands), tension=modal.tension,
-            output_gain=1.0,
-        )
 
-        prepared = []
-        for velocity, reference in layers:
-            basis = LinearVoiceBasis.build(
-                seed_params, len(reference), self.sr, self.control_period
+        def linearize(velocity: float, reference: np.ndarray,
+                      around: VelocityCurve) -> LinearVoiceBasis:
+            """The basis for one layer, linearized around a real excitation.
+
+            This is not a detail. The basis is unit-gain per mode, so the gains
+            it is built with matter for exactly one thing — the tension
+            trajectory, which `LinearVoiceBasis` captures from a real render and
+            then freezes. `ratio = 1 + k * bank_energy`, so building it around
+            the wrong energy rings every mode at the wrong frequency for the
+            whole hit, and no combination of the six parameters being searched
+            can move it back.
+
+            It was built around `modal.modes` before, whose gains come out of
+            stage 1 and mean nothing. Measured on a synthetic drum: that pinned
+            the trajectory at `Tension.max_ratio` — an octave — and stage 5 sat
+            flat at 8.3 dB while stage 2 had already reached 4.5 dB on the same
+            layers. The same signature, flat at 11.1 dB, is what a real run
+            reported.
+            """
+            gains = np.asarray(around.gains(freqs, shape, velocity), dtype=float)
+            levels = np.atleast_1d(around.levels(velocity))
+            params = DrumParams(
+                modes=[
+                    Mode(mode.f_static, float(max(gain, 1e-12)), mode.t60)
+                    for mode, gain in zip(modal.modes, gains)
+                ],
+                noise=[
+                    NoiseBand(band.f_low, band.f_high, float(max(level, 0.0)),
+                              band.t60)
+                    for band, level in zip(noise_bands, levels)
+                ],
+                tension=modal.tension,
+                output_gain=1.0,
             )
-            prepared.append((
-                velocity,
-                LossBackend.build(
-                    basis, SpectralTarget(reference, self.sr), reference, device),
-            ))
+            return LinearVoiceBasis.build(
+                params, len(reference), self.sr, self.control_period)
+
+        def prepare(around: VelocityCurve) -> list:
+            return [
+                (velocity,
+                 LossBackend.build(linearize(velocity, reference, around),
+                                   SpectralTarget(reference, self.sr),
+                                   reference, device))
+                for velocity, reference in layers
+            ]
+
+        prepared = prepare(curve)
+        TorchMemory.reset()
         progress({"stage": 5, "step": f"stage 5 on {device}",
                   "device": device.kind, "backend": device.backend,
                   "device_detail": device.detail})
@@ -1324,13 +1406,10 @@ class JointStage:
             layer, rather than S of each. That is what makes a GPU worth
             anything here, and on the CPU it is still the faster arrangement.
             """
-            trials = [JointStage._curve_from(row, band_shape) for row in vectors]
             worst = np.zeros(len(vectors))
             for velocity, loss in prepared:
-                gains = np.stack([
-                    trial.gains(freqs, shape, velocity) for trial in trials])
-                levels = np.stack([
-                    np.atleast_1d(trial.levels(velocity)) for trial in trials])
+                gains = VelocityCurve.batch_gains(vectors, freqs, shape, velocity)
+                levels = VelocityCurve.batch_levels(vectors, band_shape, velocity)
                 worst = np.maximum(worst, loss.losses(gains, levels))
             return worst
 
@@ -1359,29 +1438,124 @@ class JointStage:
                       "elapsed": record.elapsed})
             return False
 
-        # `vectorized`, never `workers`. Handing scipy `workers=N` puts each
-        # candidate in its own process, which on Windows raises outright --
-        # `spawn` cannot pickle a closure -- and everywhere else pickles tens of
-        # megabytes of basis per task to save a few milliseconds of arithmetic.
-        # A vectorized objective evaluates the generation in one call instead,
-        # which is where the batching (and the GPU) pays off.
-        result = differential_evolution(
-            lambda x: population_loss(np.atleast_2d(x.T)),
-            bounds=bounds,
-            maxiter=max(1, generations),
-            popsize=max(4, population),
-            tol=1e-6,
-            seed=seed,
-            polish=True,
-            vectorized=True,
-            updating="deferred",
-            callback=on_generation,
-            x0=start,
-        )
+        def search(x0: np.ndarray, budget: int):
+            # `vectorized`, never `workers`. Handing scipy `workers=N` puts each
+            # candidate in its own process, which on Windows raises outright --
+            # `spawn` cannot pickle a closure -- and everywhere else pickles
+            # tens of megabytes of basis per task to save a few milliseconds of
+            # arithmetic. A vectorized objective evaluates the generation in one
+            # call instead, which is where the batching (and the GPU) pays off.
+            return differential_evolution(
+                lambda x: population_loss(np.atleast_2d(x.T)),
+                bounds=bounds,
+                maxiter=max(1, budget),
+                popsize=max(4, population),
+                tol=1e-6,
+                seed=seed,
+                polish=True,
+                vectorized=True,
+                updating="deferred",
+                callback=on_generation,
+                x0=x0,
+            )
+
+        # Two passes, for the same reason stage 2 runs two. The basis freezes a
+        # tension trajectory, and the trajectory depends on the excitation the
+        # search is changing; one relinearization around the answer the first
+        # pass found puts the modes where the refined drum actually rings. The
+        # second pass is cheap because it starts where the first one stopped.
+        first = max(1, int(generations))
+        second = max(1, first // 2)
+
+        # What stage 4 handed over, measured the same way the result will be.
+        # Stage 5 is a refinement and is not allowed to be a regression.
+        incoming = self.true_loss(modal, shape, curve, layers, noise_bands)
+        progress({"stage": 5, "step": "pass 1 of 2", "pass": 1,
+                  "generations": first, "incoming_loss": incoming})
+        result = search(start, first)
+
+        if modal.tension.k > 0:
+            refined = JointStage._curve_from(result.x, band_shape)
+            progress({"stage": 5, "step": "relinearizing around the refined "
+                                          "excitation", "pass": 2,
+                      "generations": second})
+            prepared = prepare(refined)
+            result = search(np.array([
+                float(np.clip(value, low, high))
+                for value, (low, high) in zip(result.x, bounds)
+            ]), second)
 
         refined = JointStage._curve_from(result.x, band_shape)
-        refined.loss = float(result.fun)
+
+        # The number reported is measured on a REAL render, not on the basis.
+        # The basis is an approximation with a frozen glide, and letting it
+        # report its own opinion of itself is how a fit gets to look better
+        # than it is: on one run the basis said 4.99 dB where a real render of
+        # the same parameters said 5.18.
+        refined.loss = self.true_loss(modal, shape, refined, layers, noise_bands)
+
+        # And having measured both honestly, keep the better one. A search over
+        # a six-parameter curve, scored through an approximate basis, can land
+        # somewhere worse than it began; handing that back as "refined" would
+        # make stage 5 a coin flip that the user pays a minute for.
+        if incoming <= refined.loss:
+            progress({"stage": 5, "step": "keeping stage 4's curve",
+                      "loss": incoming, "refined_loss": refined.loss,
+                      **self._device_report(device)})
+            kept = curve
+            kept.loss = incoming
+            return kept, history
+
+        progress({"stage": 5, "step": "stage 5 done", "loss": refined.loss,
+                  "basis_loss": float(result.fun), "incoming_loss": incoming,
+                  "improvement_db": incoming - refined.loss,
+                  **self._device_report(device)})
         return refined, history
+
+    @staticmethod
+    def _device_report(device: Device) -> dict:
+        """What the run ACTUALLY used, not what it was asked to use.
+
+        A peak allocation of zero after stage 5 means no tensor ever reached
+        the GPU, whatever the picker said — which is the one fact that
+        separates "CUDA is working and the device is simply idle between
+        kernels" from "this ran on the CPU".
+        """
+        peak = TorchMemory.peak_bytes()
+        return {
+            "device": device.kind,
+            "device_detail": device.detail,
+            "peak_vram_bytes": peak,
+            "used_cuda": bool(device.is_cuda and peak > 0),
+        }
+
+    def true_loss(self, modal: ModalFit, shape: np.ndarray, curve: VelocityCurve,
+                  layers: Sequence[tuple[float, np.ndarray]],
+                  noise_bands: Sequence[NoiseBand]) -> float:
+        """The worst layer's band distance, from a full render of each layer."""
+        freqs = np.array([mode.f_static for mode in modal.modes])
+        worst = 0.0
+        for velocity, reference in layers:
+            gains = np.asarray(curve.gains(freqs, shape, velocity), dtype=float)
+            levels = np.atleast_1d(curve.levels(velocity))
+            params = DrumParams(
+                modes=[
+                    Mode(mode.f_static, float(max(gain, 1e-12)), mode.t60)
+                    for mode, gain in zip(modal.modes, gains)
+                ],
+                noise=[
+                    NoiseBand(band.f_low, band.f_high, float(max(level, 0.0)),
+                              band.t60)
+                    for band, level in zip(noise_bands, levels)
+                ],
+                tension=modal.tension, output_gain=1.0,
+            )
+            audio = DrumVoice(params, self.sr, self.control_period,
+                              seed=0).render_hit(len(reference) / self.sr)
+            scale = LevelMatch.match_rms(audio, reference)
+            worst = max(worst, SpectralTarget(reference, self.sr).distance(
+                audio * scale))
+        return float(worst)
 
     @staticmethod
     def _curve_from(vector: np.ndarray, band_shape: np.ndarray) -> VelocityCurve:

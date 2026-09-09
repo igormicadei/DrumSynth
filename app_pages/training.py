@@ -19,12 +19,26 @@ import streamlit as st
 
 from drumsynth import AudioIO, DrumParams, DrumVoice
 from drumsynth.fitting import DeviceChoice, DrumCatalogue, TrainingRun
+from drumsynth.fitting.comparison import Comparison
+from drumsynth.fitting.runs import RunStore
+from drumsynth.fitting.telemetry import GpuMonitor
 from drumsynth.studio import Studio
+
+from app_pages import plots
 
 studio = Studio.bootstrap()
 st.session_state.setdefault("fit_output_dir", Path("out/fits"))
 
 st.title("Training")
+
+store = RunStore()
+
+
+@st.cache_resource(show_spinner=False)
+def _gpu() -> GpuMonitor:
+    """One NVML handle for the session. Opening it per rerun would be a
+    driver call every second."""
+    return GpuMonitor()
 
 catalogue = DrumCatalogue.available()
 if not catalogue:
@@ -143,6 +157,43 @@ def _setup() -> None:
 
 # -- live progress ------------------------------------------------------------
 
+def _gpu_panel() -> None:
+    """What the GPU is doing right now, from NVML.
+
+    This exists because "I installed the CUDA wheel and the GPU sits at 0%" is
+    not answerable from inside the fit. Two different things can be true — the
+    device is idle because stage 5 has not started, or because stage 5 is
+    running on the CPU — and only a live reading separates them. The report
+    below adds the other half: how much VRAM the fit actually allocated.
+    """
+    monitor = _gpu()
+    if not monitor.available:
+        st.caption(f":gray[GPU telemetry unavailable — {monitor.reason}]")
+        return
+
+    samples = monitor.sample()
+    if not samples:
+        st.caption(":gray[NVML started but reported no devices]")
+        return
+
+    for sample in samples:
+        with st.container(border=True):
+            st.markdown(f"**{sample.name}**")
+            with st.container(horizontal=True, gap="medium"):
+                st.metric("GPU", f"{sample.utilization:.0f}%")
+                st.metric(
+                    "VRAM",
+                    f"{sample.memory_used / 1024**3:.1f} / "
+                    f"{sample.memory_total / 1024**3:.1f} GiB",
+                )
+                if sample.temperature == sample.temperature:
+                    st.metric("Temp", f"{sample.temperature:.0f} °C")
+                if sample.power == sample.power:
+                    st.metric("Power", f"{sample.power:.0f} W")
+            st.progress(min(sample.memory_fraction, 1.0),
+                        text=f"VRAM {sample.memory_fraction:.0%}")
+
+
 @st.fragment(run_every="1s")
 def _progress() -> None:
     if run.ready is None and not run.is_running and run.error is None:
@@ -173,27 +224,48 @@ def _progress() -> None:
         if steps:
             st.caption(" · ".join(steps[-3:]))
 
-        if run.generations:
-            frame = pd.DataFrame(
-                {
-                    "loss (dB)": [g["loss"] for g in run.generations],
-                    "best (dB)": [g["best_loss"] for g in run.generations],
-                },
-                index=pd.Index(
-                    [g["generation"] for g in run.generations], name="generation"
-                ),
-            )
-            st.line_chart(frame, height=200)
-            latest = run.generations[-1]
-            with st.container(horizontal=True, gap="medium"):
-                st.metric("Generation", latest["generation"])
-                st.metric("Best loss", f"{latest['best_loss']:.2f} dB")
-                st.metric("Elapsed", f"{latest.get('elapsed', 0):.0f} s")
-        elif run.is_running:
-            st.caption(
-                ":gray[stage 5 has not started — stages 1 and 2 are direct "
-                "measurement and a closed-form solve, not a search]"
-            )
+        left, right = st.columns([3, 2], gap="medium")
+
+        with left:
+            if run.generations:
+                latest = run.generations[-1]
+                best = min(run.generations, key=lambda g: g["best_loss"])
+                first = run.generations[0]["best_loss"]
+                gained = first - latest["best_loss"]
+
+                with st.container(horizontal=True, gap="medium"):
+                    st.metric("Generation", latest["generation"], border=True)
+                    st.metric(
+                        "Best loss", f"{latest['best_loss']:.3f} dB",
+                        delta=f"{-gained:.3f} dB" if gained else None,
+                        delta_color="inverse", border=True,
+                        help="Lower is closer. The floor is about 1.1 dB — two "
+                             "renders of identical parameters with different "
+                             "noise seeds sit that far apart.",
+                    )
+                    st.metric("Best at", f"gen {best['generation']}", border=True,
+                              help="Where the best candidate was found. If this "
+                                   "stops moving, the search has converged.")
+                    st.metric("Stage 5 time", f"{latest.get('elapsed', 0):.0f} s",
+                              border=True)
+
+                st.altair_chart(plots.generation_chart(run.generations),
+                                width="stretch")
+                if gained <= 1e-3 and len(run.generations) > 4:
+                    st.caption(
+                        ":gray[Flat. Stage 5 only moves the velocity mapping — "
+                        "six numbers — with the modes and the per-mode shape "
+                        "frozen. A flat chart means the remaining error is "
+                        "somewhere it cannot reach, not that the fit is good.]"
+                    )
+            elif run.is_running:
+                st.caption(
+                    ":gray[stage 5 has not started — stages 1 and 2 are direct "
+                    "measurement and a closed-form solve, not a search]"
+                )
+
+        with right:
+            _gpu_panel()
 
 
 # -- results ------------------------------------------------------------------
@@ -277,66 +349,334 @@ def _report(result: dict, scored: dict) -> None:
         st.warning(warning, icon=":material/warning:")
 
 
-def _comparison(result: dict) -> None:
-    """The generated sound beside the sample it was fitted to."""
-    st.subheader("Generated against the sample")
-    params = DrumParams.from_dict(result["params"])
-    sr = st.session_state.engine_settings.sr
-
-    layers = (run.ready or {}).get("layers", [])
-    if not layers:
+def _stage_five(result: dict) -> None:
+    """The search, after the fact."""
+    st.subheader("Stage 5 — the search")
+    generations = result.get("generations") or []
+    if not generations:
+        st.caption(":gray[stage 5 did not run]")
         return
-    labels = {f"v{layer['velocity']:.0f}": layer for layer in layers}
-    picked = st.select_slider("Velocity", list(labels), key="fit_compare_v")
-    layer = labels[picked]
 
-    from drumsynth.fitting.trainer import FitResult  # noqa: F401  (typing only)
+    rows = [
+        {"generation": g["index"], "loss": g["loss"], "best_loss": g["best_loss"]}
+        for g in generations
+    ]
+    first, last = rows[0]["best_loss"], rows[-1]["best_loss"]
+    with st.container(horizontal=True, gap="medium"):
+        st.metric("Generations", len(rows), border=True)
+        st.metric("Started at", f"{first:.3f} dB", border=True)
+        st.metric("Ended at", f"{last:.3f} dB",
+                  delta=f"{last - first:+.3f} dB", delta_color="inverse",
+                  border=True)
+        st.metric("Reported loss", f"{result.get('stage5_loss', last):.3f} dB",
+                  border=True,
+                  help="Measured on a REAL render of the final parameters, not "
+                       "on the linearized basis the search used. The basis is "
+                       "an approximation, and letting it grade itself is how a "
+                       "fit comes to look better than it is.")
 
-    generated = DrumVoice(params, sr, 64, seed=0).render_hit(
-        result.get("seconds", 2.5) if isinstance(result.get("seconds"), float) else 2.5
+    st.altair_chart(plots.generation_chart(rows), width="stretch")
+    if abs(last - first) < 1e-3:
+        st.caption(
+            ":gray[Flat. Stage 5 searches SIX numbers — the velocity mapping — "
+            "with the modes, the damping and the per-mode gain shape frozen by "
+            "the stages before it. A flat chart means the remaining error is "
+            "somewhere those six numbers cannot reach, not that the fit is "
+            "good. The per-layer losses in the velocity table are where to "
+            "look next.]"
+        )
+
+
+def _timings(result: dict) -> None:
+    """Where the run's time went, per stage.
+
+    The reason this is in the report rather than a debug log: only stage 5 can
+    use a GPU, and "why is my GPU idle" is answered by the share of the run
+    stage 5 occupies together with the VRAM it actually allocated. Both are
+    here.
+    """
+    timings = result.get("timings") or {}
+    if not timings:
+        return
+
+    total = sum(timings.values()) or 1.0
+    frame = pd.DataFrame([
+        {"stage": name, "seconds": seconds, "share": 100.0 * seconds / total}
+        for name, seconds in timings.items()
+    ])
+    st.dataframe(
+        frame, width="stretch", hide_index=True,
+        column_config={
+            "seconds": st.column_config.NumberColumn("seconds", format="%.1f s"),
+            "share": st.column_config.ProgressColumn(
+                "share of the run", min_value=0.0, max_value=100.0,
+                format="%.0f%%"),
+        },
     )
+
+    device = str(result.get("device", "cpu"))
+    peak = float(result.get("peak_vram_bytes", 0.0) or 0.0)
+    stage5 = timings.get("stage 5 — joint refinement", 0.0) / total
+
+    if device == "cuda" and peak > 0:
+        st.success(
+            f"Stage 5 ran on CUDA and allocated {peak / 1024**2:.0f} MiB of "
+            f"VRAM. It was {stage5:.0%} of the run; the rest is stages 1-4, "
+            "which are LAPACK on small matrices and stay on the CPU.",
+            icon=":material/memory:",
+        )
+    elif device == "cuda":
+        st.warning(
+            "The device was reported as CUDA but no tensor was ever allocated "
+            "on it. Stage 5 ran on the CPU. Check that the training subprocess "
+            "uses the same interpreter as this app and that `torch` there is a "
+            "cu-tagged wheel.",
+            icon=":material/warning:",
+        )
+    else:
+        st.info(
+            f"Stage 5 ran on the CPU and was {stage5:.0%} of the run. Only "
+            "stage 5 can move to a GPU — stages 1-4 are ESPRIT, band-decay "
+            "regressions and an NNLS solve.",
+            icon=":material/info:",
+        )
+
+
+# =============================================================================
+# The comparison
+# =============================================================================
+
+
+@st.cache_data(show_spinner=False, max_entries=32)
+def _comparison_data(directory: str, velocity: float, sr: int) -> dict | None:
+    """Everything the comparison draws, from a stored run.
+
+    Cached on the run directory rather than on the audio, so flipping between
+    velocities and between runs is instant and re-reading a two-second WAV and
+    running four analyses is not repeated on every rerun.
+    """
+    record = RunStore().read(directory)
+    if record is None:
+        return None
+    generated, reference = record.audio(velocity, sr)
+    if generated is None or reference is None:
+        return None
+
+    comparison = Comparison(reference, generated, sr)
+    envelopes = comparison.envelopes()
+    return {
+        "generated": generated, "reference": reference,
+        "envelope": plots.envelope_chart(comparison),
+        "waveform": plots.waveform_chart(comparison),
+        "spectrum": plots.spectrum_chart(comparison),
+        "band_decay": plots.band_decay_chart(comparison),
+        "spectrograms": plots.spectrograms(comparison),
+        "band_distance": comparison.band_distance(),
+        "crest": (envelopes.reference_crest_db, envelopes.generated_crest_db),
+        "peak_ms": (envelopes.reference_peak_ms, envelopes.generated_peak_ms),
+    }
+
+
+def _comparison(record) -> None:
+    """The generated sound beside the sample, in every view that shows
+    something the ScoreCard cannot."""
+    st.subheader("Generated against the sample")
+    st.caption(
+        "Both signals are level-matched first — absolute level is a mic preamp "
+        "setting — and every pair is drawn on ONE pair of axes. Two charts side "
+        "by side, each auto-scaled, is the most common way to make a bad fit "
+        "look fine."
+    )
+
+    layers = record.layers()
+    if not layers:
+        st.caption(":gray[this run stored no audio]")
+        return
+
+    sr = int(record.summary.get("sr", st.session_state.engine_settings.sr))
+    labels = {f"v{layer['velocity']:.0f}": layer["velocity"] for layer in layers}
+    picked = labels[st.select_slider(
+        "Velocity", list(labels), key=f"cmp_v_{record.started}",
+        value=list(labels)[len(labels) // 2],
+    )]
+
+    data = _comparison_data(str(record.directory), float(picked), sr)
+    if data is None:
+        st.caption(":gray[audio for this layer is not on disk]")
+        return
+
+    with st.container(horizontal=True, gap="medium"):
+        st.metric("Band distance", f"{data['band_distance']:.2f} dB", border=True,
+                  help="The loss stage 5 minimizes, for this layer. The floor "
+                       "is about 1.1 dB.")
+        st.metric("Crest (sample)", f"{data['crest'][0]:.1f} dB", border=True)
+        st.metric("Crest (generated)", f"{data['crest'][1]:.1f} dB", border=True,
+                  help="Peak over RMS. A modal bank struck at cosine phase "
+                       "peaks on the first sample, so this runs high — "
+                       "finding #1 in docs/FINDINGS.md.")
+        st.metric("Peak at (sample)", f"{data['peak_ms'][0]:.1f} ms", border=True)
+        st.metric("Peak at (generated)", f"{data['peak_ms'][1]:.1f} ms",
+                  border=True)
+
     left, right = st.columns(2, gap="medium")
     with left:
-        st.markdown("**Generated**")
-        st.audio(AudioIO.normalize_peak(generated, -1.0), sample_rate=sr)
-    with right:
         st.markdown("**Sample**")
-        source = Path("data/samples")
-        st.caption(layer.get("source", ""))
-        found = list(source.rglob(layer.get("source", "___nope___")))
-        if found:
-            audio, file_sr = AudioIO.read(found[0], sr=sr)
-            st.audio(AudioIO.normalize_peak(audio, -1.0), sample_rate=sr)
-        else:
-            st.caption(":gray[sample audio not found on disk]")
+        st.audio(AudioIO.normalize_peak(data["reference"], -1.0), sample_rate=sr)
+    with right:
+        st.markdown("**Generated**")
+        st.audio(AudioIO.normalize_peak(data["generated"], -1.0), sample_rate=sr)
+
+    waveform, spectrum, decay, spectrogram = st.tabs(
+        ["Waveform", "Spectrum", "Decay", "Spectrogram"])
+
+    with waveform:
+        st.altair_chart(data["waveform"], width="stretch")
+        st.markdown("**Envelope**")
+        st.altair_chart(data["envelope"], width="stretch")
+        st.caption(
+            "The envelope is in dB. On a linear axis everything past the first "
+            "thirty milliseconds is a flat line at zero, and the decay is the "
+            "part of a drum that lasts two seconds."
+        )
+
+    with spectrum:
+        st.altair_chart(data["spectrum"], width="stretch")
+        st.caption(
+            "Averaged over the whole hit, not one frame: a single frame samples "
+            "the noise as much as the drum (§6.5). Peaks that line up are modes "
+            "the fit found; peaks in the sample with nothing under them are "
+            "modes it missed."
+        )
+
+    with decay:
+        st.altair_chart(data["band_decay"], width="stretch")
+        st.caption(
+            "t60 per band — the quantity stage 1 fits its damping curve "
+            "through, and the one that decides whether the drum rings for the "
+            "right length of time at each frequency."
+        )
+
+    with spectrogram:
+        grams = data["spectrograms"]
+        st.caption(
+            f"Log frequency, {grams['low_hz']:.0f} Hz to "
+            f"{grams['high_hz'] / 1000:.0f} kHz, over {grams['seconds']:.2f} s. "
+            f"Both images share one dB scale ({grams['vmin']:.0f} to "
+            f"{grams['vmax']:.0f} dB) — auto-scaling each one separately makes "
+            "any two drums look alike."
+        )
+        first, second = st.columns(2, gap="medium")
+        with first:
+            st.markdown("**Sample**")
+            st.image(grams["sample"], width="stretch")
+        with second:
+            st.markdown("**Generated**")
+            st.image(grams["generated"], width="stretch")
+        st.markdown("**Generated minus sample**")
+        st.image(grams["difference"], width=900)
+        st.caption(
+            ":gray[Dark is quieter than the sample, bright is louder, ±24 dB. "
+            "A horizontal bright line is a mode the fit put in the wrong place "
+            "or left ringing too long. Fine vertical striping is the noise "
+            "bank running on a different seed and is not a defect — §6.5.]"
+        )
 
 
-def _handoff(result: dict) -> None:
+def _handoff(record) -> None:
     st.subheader("Try it")
     st.caption(
         "Loads the fitted parameters into the live engine. Strike it, edit it "
-        "on the Mixer page while it rings, and save it when it is right."
+        "on the Mixer page while it rings, and save it when it is right. Every "
+        "stored fit is also in the sidebar's **Trained drums** list, from any "
+        "page and in any later session."
     )
-    params = DrumParams.from_dict(result["params"])
+    try:
+        params = record.params()
+    except (OSError, ValueError) as error:
+        st.error(f"could not read this run's parameters: {error}",
+                 icon=":material/error:")
+        return
+
     with st.container(horizontal=True, gap="small"):
         if st.button("Load into the live synth", icon=":material/graphic_eq:",
-                     type="primary"):
+                     type="primary", key=f"load_{record.started}"):
             studio.params = params
             studio.clear_widget_state()
             studio.reset_monitor()
-            st.session_state.preset_name = params.name or "fitted"
+            st.session_state.preset_name = params.name or record.drum
             studio.sync()
-            st.success("Loaded — open the Mixer page and press Strike.",
+            st.success("Loaded — press Strike in the sidebar.",
                        icon=":material/check:")
         st.download_button(
             "Download DrumParams JSON",
-            data=json.dumps(result["params"], indent=2),
-            file_name=f"{result['drum']}.json",
+            data=json.dumps(params.to_dict(), indent=2),
+            file_name=f"{record.drum}.json",
             mime="application/json",
             icon=":material/save:",
+            key=f"dl_{record.started}",
         )
-    if run.done and run.done.get("path"):
-        st.caption(f":gray[saved to {run.done['path']}]")
+    st.caption(f":gray[stored at {record.directory}]")
+
+
+def _run_report(record) -> None:
+    """The whole report for one stored run — the same view whether the fit
+    just finished or happened last week."""
+    result = record.summary
+    scored = record.score
+
+    _inspection(result)
+    st.divider()
+    st.subheader("Velocity table")
+    st.caption(
+        "Stage 2 fits the excitation at each velocity independently — "
+        "`gain[]`, noise `level[]` and the contact time — with `f_static` and "
+        "`t60` already frozen."
+    )
+    _velocity_table(result)
+
+    if scored:
+        st.divider()
+        _report(result, scored)
+
+    st.divider()
+    _stage_five(result)
+
+    st.divider()
+    st.subheader("Where the time went")
+    _timings(result)
+
+    st.divider()
+    _comparison(record)
+    st.divider()
+    _handoff(record)
+
+
+def _history() -> None:
+    """Every stored run, so two fits of the same drum can be compared."""
+    runs = store.list()
+    if not runs:
+        st.caption(":gray[no runs stored yet]")
+        return
+
+    st.caption(
+        f"{len(runs)} stored. Every fit is kept — a run takes minutes and "
+        "produces a drum you cannot judge in one listen, so the useful "
+        "comparison is against the previous one."
+    )
+    st.dataframe(
+        pd.DataFrame([record.to_row() for record in runs]),
+        width="stretch", hide_index=True,
+        column_config={
+            "score": st.column_config.NumberColumn(format="%.3f"),
+            "stft dB": st.column_config.NumberColumn(format="%.2f"),
+            "seconds": st.column_config.NumberColumn(format="%.0f s"),
+        },
+    )
+
+    labels = {record.label: record for record in runs}
+    chosen = labels[st.selectbox("Open a run", list(labels), key="run_pick")]
+    st.divider()
+    _run_report(chosen)
 
 
 # -- page ---------------------------------------------------------------------
@@ -346,27 +686,30 @@ if run.result is None:
 
 _progress()
 
-if run.result is not None:
-    st.divider()
-    _inspection(run.result)
-    st.divider()
-    st.subheader("Velocity table")
-    st.caption(
-        "Stage 2 fits the excitation at each velocity independently — "
-        "`gain[]`, noise `level[]` and the contact time — with `f_static` and "
-        "`t60` already frozen."
-    )
-    _velocity_table(run.result)
+# A finished run is read back from its stored directory rather than from the
+# event stream, so this is the same code path as opening an old run — and the
+# report cannot drift between "just finished" and "opened later".
+finished = None
+if run.done and run.done.get("run_directory"):
+    finished = store.read(run.done["run_directory"])
 
-    if run.scored is not None:
-        st.divider()
-        _report(run.result, run.scored)
-        st.divider()
-        _comparison(run.result)
-        st.divider()
-        _handoff(run.result)
-
+if finished is not None:
+    st.divider()
+    _run_report(finished)
     st.divider()
     if st.button("Fit another drum", icon=":material/refresh:"):
         _run_handle.clear()
         st.rerun()
+elif run.result is not None:
+    st.divider()
+    st.info("The fit finished but its run directory was not written — the "
+            "report below is from this session's events only.",
+            icon=":material/info:")
+    _inspection(run.result)
+    _velocity_table(run.result)
+    if run.scored is not None:
+        _report(run.result, run.scored)
+
+st.divider()
+with st.expander("Past runs", expanded=finished is None and run.result is None):
+    _history()
