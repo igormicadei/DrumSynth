@@ -243,8 +243,72 @@ kilobytes. CUDA computes in float32; measured against the float64 path on the
 same candidates the largest disagreement was **1e-6 dB**, against a loss floor
 of 1.1 dB.
 
-Stages 1-4 stay on the CPU. They are ESPRIT, band-decay regressions and an NNLS
-solve — LAPACK on small matrices, run once each, not something a GPU improves.
+Stages 2, 2b and 5 all take the device now — each has a batched inner loop and
+a torch path. Stages 1, 3 and 4 stay on the CPU: one ESPRIT, some band-decay
+regressions and a line fit, run once each on small matrices, and not something
+a GPU improves.
+
+CUDA computes the glide render in float32. The glide is a feedback loop over
+more than a thousand blocks, so that is worth checking rather than assuming:
+measured against the float64 path over a full 2.5-second hit, the worst
+relative error is 1e-3 — about 0.009 dB, against a loss floor of 1.1 dB and
+decision margins of 0.02.
+
+#### Every stage that can be batched, is
+
+Stage 5 was the first stage to have a batched inner loop, and for a while it
+was the only one that could use a GPU. Profiling the other two showed why, and
+what to do about it.
+
+**Stage 2b — the glide.** 7.7 seconds per layer, and **89% of it inside
+`ModalBank._advance`, called 77,549 times**. That is 1,723 calls per render —
+one per 64-sample control block — because `ratio = 1 + k * bank_energy` makes
+the frequency at block N depend on the state at block N-1. A glide render
+cannot be a matrix product.
+
+But the forty-eight grid candidates are independent *of each other*, even
+though none is independent of its own history. `BatchedGlideRender` steps them
+in lockstep: one state array shaped `(candidates, modes)`, one block at a time.
+**7.72 s → 3.70 s.**
+
+That is only 2.1×, and the reason is worth stating plainly: batching removes
+call overhead, not arithmetic. The work is `candidates × modes × samples` =
+48 × 23 × 110250 ≈ **244 million cosines and as many sines**, and it does not
+shrink. Measured: the render takes the same time at a control period of 64
+(1,723 blocks) and 512 (216 blocks), which says the loop is not the cost.
+
+Two things follow. The CPU win is the overhead. And 244 million independent
+transcendentals per layer is exactly what a GPU is for — so `BatchedGlideRender`
+has a torch path, and before the batching there was nothing here CUDA could
+have taken at all.
+
+**Stage 2 — the excitation.** 4.9 seconds per layer, **88% inside
+`SpectralTarget.distance`**, called 379 times. The coordinate descent's five
+probes per parameter are independent — the same candidate with one number moved
+— so they go to the loss as one batch. **4.87 s → 3.41 s**, identical result.
+
+Here too the arithmetic is unchanged: the same number of FFTs over the same
+signal. What the batching buys on the CPU is set-up; what it buys overall is
+that the loss now runs through `LossBackend`, which has a CUDA path.
+
+**Stages 1, 3 and 4 stay on the CPU and should.** Stage 1 is one ESPRIT and a
+handful of band-decay regressions, run once, on small matrices — 0.4 s of a
+42 s run. Stages 3 and 4 are an inspection and a line fit and do not register.
+
+The shape of a run changes accordingly. On a real tom at 40 modes and four
+layers:
+
+| stage | before | after |
+|---|---|---|
+| stage 2b — the glide | 40% | 13% |
+| stage 2 — excitation | 32% | 26% |
+| stage 5 — refinement | 28% | 41% |
+
+One thing that did **not** work, recorded because it looked obvious: fitting the
+glide on a shorter window. The glide settles within a few hundred milliseconds,
+so scoring 2.5 seconds of tail seems wasteful — but measured, a 0.6 s window
+picks a *different* k than the full one. The tail is where a wrong glide shows
+up as detuned partials. The window stays.
 
 #### "I installed the CUDA wheel and the GPU sits at 0%"
 

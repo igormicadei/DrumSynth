@@ -200,7 +200,13 @@ class DrumTrainer:
         # basis needs a frequency trajectory and there is not one yet; the
         # second re-runs with the fitted glide in place. The trajectory barely
         # moves once the gains are roughly right, so two passes is enough.
-        stage2 = ExcitationStage(self.sr, settings.control_period)
+        # One device for the whole run. Stages 1, 3 and 4 are LAPACK on small
+        # matrices and ignore it; stages 2, 2b and 5 all have batched inner
+        # loops now and all take it.
+        device = DeviceChoice.resolve(settings.device)
+        progress({"phase": "device", "device": device.kind,
+                  "backend": device.backend, "detail": device.detail})
+        stage2 = ExcitationStage(self.sr, settings.control_period, device=device)
 
         reference_position = min(target.reference_index, len(layers) - 1)
 
@@ -359,7 +365,8 @@ class DrumTrainer:
         mark("transients — measuring the decays")
 
         # --- the glide, now that the excitation scale is known ---------------
-        tension_stage = TensionStage(self.sr, settings.control_period)
+        tension_stage = TensionStage(self.sr, settings.control_period,
+                                     device=device)
         tension, per_layer_k, tension_notes = tension_stage.run(
             modal.modes, fits, [layer.audio for layer in layers], progress=progress
         )
@@ -412,7 +419,7 @@ class DrumTrainer:
             bands,
             generations=settings.generations,
             population=settings.population,
-            device=DeviceChoice.resolve(settings.device),
+            device=device,
             progress=progress,
             seed=settings.seed,
         )

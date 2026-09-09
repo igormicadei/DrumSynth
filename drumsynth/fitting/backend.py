@@ -188,7 +188,16 @@ class BatchLoss:
 
     def losses(self, gains: np.ndarray, levels: np.ndarray | None = None,
                ) -> np.ndarray:
-        batch = self.match_levels(self.render(gains, levels))
+        return self.audio_losses(self.render(gains, levels))
+
+    def audio_losses(self, batch: np.ndarray) -> np.ndarray:
+        """The same loss, for rows that were rendered elsewhere.
+
+        The glide grid cannot use the linearized basis — its whole point is
+        that the frequency trajectory differs per candidate — so it renders its
+        own batch and brings it here.
+        """
+        batch = self.match_levels(np.atleast_2d(np.asarray(batch, dtype=float)))
         total = np.zeros(len(batch))
         weight = 0.0
         for n_fft in self.target.fft_sizes:
@@ -280,7 +289,18 @@ class TorchBatchLoss(BatchLoss):
                 batch = batch + torch.as_tensor(
                     np.asarray(levels), dtype=self.dtype,
                     device=self.device) @ self.t_noise
+            return self._score(batch)
 
+    def audio_losses(self, batch: np.ndarray) -> np.ndarray:
+        torch = self.torch
+        with torch.no_grad():
+            return self._score(torch.as_tensor(
+                np.atleast_2d(np.asarray(batch)), dtype=self.dtype,
+                device=self.device))
+
+    def _score(self, batch):
+        torch = self.torch
+        with torch.no_grad():
             rms = torch.sqrt(torch.mean(batch**2, dim=1))
             scale = torch.where(
                 rms > 0, self.t_reference_rms / torch.clamp(rms, min=1e-30),

@@ -42,6 +42,7 @@ from drumsynth.fitting import (
 )
 from drumsynth.fitting.backend import TorchBatchLoss
 from drumsynth.fitting.comparison import Comparison
+from drumsynth.fitting.glide import BatchedGlideRender
 from drumsynth.fitting.stages import ModalFit
 from drumsynth.fitting.telemetry import GpuMonitor, TorchMemory
 from drumsynth.fitting.client import TrainingRun
@@ -789,6 +790,98 @@ class TestMissingAudio:
         sample_set = self._set(tmp_path, present=1, named=4)
         target = TargetBuilder(SR, 0.4).from_sample_set(sample_set)
         assert any("§8.2" in w for w in target.warnings)
+
+
+# =============================================================================
+# Rendering many glides at once
+# =============================================================================
+
+
+class TestBatchedGlideRender:
+    @staticmethod
+    def _grid():
+        return [Tension(k=k, tau=tau)
+                for k in (0.0, 0.05, 0.13, 0.4)
+                for tau in (0.04, 0.09, 0.24)]
+
+    def test_it_matches_the_engine_sample_for_sample(self):
+        """This is a reimplementation of `ModalBank._advance` with a candidate
+        axis in front, so the only thing that makes it safe is that it agrees
+        with the engine exactly."""
+        params = known_drum()
+        gains = np.array([mode.gain for mode in params.modes])
+        grid = self._grid()
+
+        one_at_a_time = np.stack([
+            render(DrumParams(modes=params.modes, noise=[], tension=tension),
+                   seconds=1.0, seed=0)
+            for tension in grid
+        ])
+        batched = BatchedGlideRender(
+            params.modes, gains, grid, SR, 64).render(int(1.0 * SR))
+
+        length = min(one_at_a_time.shape[1], batched.shape[1])
+        assert batched[:, :length] == pytest.approx(
+            one_at_a_time[:, :length], abs=1e-9)
+
+    def test_the_torch_path_is_the_same_arithmetic(self):
+        if DeviceChoice.torch() is None:
+            pytest.skip("torch is not installed")
+        params = known_drum()
+        gains = np.array([mode.gain for mode in params.modes])
+        grid = self._grid()
+
+        plain = BatchedGlideRender(
+            params.modes, gains, grid, SR, 64).render(int(0.6 * SR))
+        torched = BatchedGlideRender(
+            params.modes, gains, grid, SR, 64,
+            device=Device("cpu", "torch", "torch on the CPU"),
+        ).render(int(0.6 * SR))
+        assert torched == pytest.approx(plain, abs=1e-9)
+
+    def test_the_block_size_does_not_change_the_answer(self):
+        """The control period sets how often the feedback loop is evaluated.
+        Measured on a real tom, 64 and 512 pick the same k and take the same
+        time — the cost is the arithmetic, not the loop."""
+        params = known_drum()
+        gains = np.array([mode.gain for mode in params.modes])
+        grid = [Tension(k=0.13, tau=0.09)]
+        fine = BatchedGlideRender(
+            params.modes, gains, grid, SR, 64).render(int(0.5 * SR))
+        coarse = BatchedGlideRender(
+            params.modes, gains, grid, SR, 256).render(int(0.5 * SR))
+        # Not identical — the glide is quantized to the block, so a coarser
+        # period tracks the same trajectory in bigger steps and the partials
+        # drift a few cents apart over two seconds. Same drum, not the same
+        # waveform, which is why the fit picks a control period and keeps it.
+        assert float(np.corrcoef(fine[0], coarse[0])[0, 1]) > 0.99
+
+    def test_an_empty_grid_is_not_an_error(self):
+        params = known_drum()
+        gains = np.array([mode.gain for mode in params.modes])
+        assert BatchedGlideRender(
+            params.modes, gains, [], SR, 64).render(1000).shape == (0, 1000)
+
+
+class TestBatchedStageTwo:
+    def test_the_batched_sweep_finds_the_same_answer(self):
+        """Stage 2's coordinate descent probes are independent — the same
+        candidate with one number moved — so they go to the loss as one batch.
+        Both backends have to agree, because one of them is what CUDA runs."""
+        if DeviceChoice.torch() is None:
+            pytest.skip("torch is not installed")
+        params = known_drum()
+        audio = render(params, seconds=0.8, seed=2)
+        modal = ModalStage(SR, max_modes=10).run(audio, audio)
+
+        plain = ExcitationStage(SR, 64).run(
+            modal, audio, 100.0, 1.0, list(params.noise), seconds=0.8)
+        torched = ExcitationStage(
+            SR, 64, device=Device("cpu", "torch", "torch on the CPU"),
+        ).run(modal, audio, 100.0, 1.0, list(params.noise), seconds=0.8)
+
+        assert torched.loss == pytest.approx(plain.loss, abs=1e-6)
+        assert torched.gains == pytest.approx(plain.gains, rel=1e-6)
 
 
 # =============================================================================
