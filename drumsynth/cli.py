@@ -143,17 +143,19 @@ def _run_fit(args) -> int:
 
 
 def _print_progress(progress: Progress) -> None:
+    """One line, rewritten in place on a terminal and appended in a pipe."""
     best = progress.best
     percent = 100.0 * progress.done / max(progress.total, 1)
-    print(
-        f"\r  {progress.done:5d}/{progress.total} ({percent:5.1f}%) "
+    line = (
+        f"  {progress.done:5d}/{progress.total} ({percent:5.1f}%) "
         f"{progress.elapsed:6.1f}s   best: {best.quality.relative_mse:.3e} "
-        f"in {best.n_scalars:7d} numbers  {best.candidate.label():<52}",
-        end="",
-        flush=True,
+        f"in {best.n_scalars:7d} numbers  {best.candidate.label()}"
     )
-    if progress.done >= progress.total:
-        print()
+
+    if sys.stdout.isatty():
+        print(f"\r{line:<110}", end="" if progress.done < progress.total else "\n", flush=True)
+    elif progress.done >= progress.total or percent % 25 < 100.0 / progress.total:
+        print(line, flush=True)
 
 
 def _run_decode(args) -> int:
