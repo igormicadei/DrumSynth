@@ -22,7 +22,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field
-
+from typing import Any
 
 @dataclass(frozen=True)
 class GpuSample:
@@ -36,6 +36,7 @@ class GpuSample:
     temperature: float          # celsius, nan when unavailable
     power: float                # watts, nan when unavailable
     at: float = field(default_factory=time.time)
+    utilization_stale: bool = False
 
     @property
     def memory_fraction(self) -> float:
@@ -43,11 +44,16 @@ class GpuSample:
 
     def to_dict(self) -> dict:
         return {
-            "index": self.index, "name": self.name,
+            "index": self.index,
+            "name": self.name,
             "utilization": self.utilization,
-            "memory_used": self.memory_used, "memory_total": self.memory_total,
+            "utilization_stale": self.utilization_stale,
+            "memory_used": self.memory_used,
+            "memory_total": self.memory_total,
             "memory_fraction": self.memory_fraction,
-            "temperature": self.temperature, "power": self.power, "at": self.at,
+            "temperature": self.temperature,
+            "power": self.power,
+            "at": self.at,
         }
 
 
@@ -61,8 +67,9 @@ class GpuMonitor:
     """
 
     def __init__(self) -> None:
-        self._nvml = None
+        self._nvml: Any = None
         self.reason = ""
+        self._last_utilization: dict[int, float] = {}
         self._start()
 
     def _start(self) -> None:
@@ -104,25 +111,40 @@ class GpuMonitor:
                 name = nvml.nvmlDeviceGetName(handle)
                 if isinstance(name, bytes):            # older bindings
                     name = name.decode("utf-8", "replace")
-                rates = nvml.nvmlDeviceGetUtilizationRates(handle)
                 memory = nvml.nvmlDeviceGetMemoryInfo(handle)
-                out.append(GpuSample(
-                    index=index,
-                    name=str(name),
-                    utilization=float(rates.gpu),
-                    memory_used=float(memory.used),
-                    memory_total=float(memory.total),
-                    temperature=self._optional(
-                        nvml.nvmlDeviceGetTemperature, handle,
-                        nvml.NVML_TEMPERATURE_GPU),
-                    power=self._scaled(
-                        nvml.nvmlDeviceGetPowerUsage, handle, 1000.0),
-                ))
+                utilization, utilization_stale = self._utilization(nvml, handle, index)
+                out.append(
+                    GpuSample(
+                        index=index,
+                        name=str(name),
+                        utilization=utilization,
+                        memory_used=float(memory.used),
+                        memory_total=float(memory.total),
+                        temperature=self._optional(
+                            nvml.nvmlDeviceGetTemperature,
+                            handle,
+                            nvml.NVML_TEMPERATURE_GPU,
+                        ),
+                        power=self._scaled(
+                            nvml.nvmlDeviceGetPowerUsage, handle, 1000.0
+                        ),
+                        utilization_stale=utilization_stale,
+                    )
+                )
             except Exception:
                 # A device that stops answering mid-run is not worth failing a
                 # fit over; it is a readout.
                 continue
         return out
+
+    def _utilization(self, nvml, handle, index: int) -> tuple[float, bool]:
+        """Read utilization without losing the rest of a device sample."""
+        try:
+            value = float(nvml.nvmlDeviceGetUtilizationRates(handle).gpu)
+        except Exception:
+            return self._last_utilization.get(index, float("nan")), True
+        self._last_utilization[index] = value
+        return value, False
 
     @staticmethod
     def _optional(call, *args) -> float:

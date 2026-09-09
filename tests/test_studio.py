@@ -183,6 +183,10 @@ class TestPresets:
 # =============================================================================
 
 TRAINING = str(Path(__file__).resolve().parents[1] / "app_pages" / "training.py")
+PREVIOUS_RUNS = str(
+    Path(__file__).resolve().parents[1] / "app_pages" / "previous_runs.py"
+)
+RUN_PAGE = str(Path(__file__).resolve().parents[1] / "app_pages" / "run.py")
 
 
 @pytest.fixture
@@ -238,7 +242,13 @@ class TestTrainingPage:
         assert "Start training" in [b.label for b in training.button]
 
     def test_an_empty_store_says_so_rather_than_erroring(self, training):
-        assert any("no runs stored" in c.value for c in training.caption)
+        assert any(b.label == "Previous runs" for b in training.button)
+
+    def test_previous_runs_page_handles_empty_store(self, empty_store):
+        at = AppTest.from_file(PREVIOUS_RUNS, default_timeout=TIMEOUT)
+        at.run()
+        assert not at.exception
+        assert any("No runs stored" in i.value for i in at.info)
 
 
 # =============================================================================
@@ -297,11 +307,12 @@ def stored(monkeypatch, fitted_run):
     import streamlit as st
     from drumsynth.fitting.runs import RunStore
 
-    root, _ = fitted_run
+    root, directory = fitted_run
     monkeypatch.setenv(RunStore.ROOT_VARIABLE, str(root))
     st.cache_resource.clear()
     st.cache_data.clear()
-    at = AppTest.from_file(TRAINING, default_timeout=TIMEOUT)
+    at = AppTest.from_file(RUN_PAGE, default_timeout=TIMEOUT)
+    at.query_params["run"] = str(directory)
     at.run()
     assert not at.exception, at.exception[0].message if at.exception else ""
     yield at
@@ -314,7 +325,7 @@ class TestTrainingReport:
         """Every fit is kept. A run takes minutes and produces a drum you
         cannot judge in one listen, so the comparison that matters is against
         the previous run — which needs the previous run to still exist."""
-        assert any(s.label == "Open a run" for s in stored.selectbox)
+        assert [t.value for t in stored.title] == ["Run"]
 
     def test_every_result_view_renders(self, stored):
         headers = [s.value for s in stored.subheader]

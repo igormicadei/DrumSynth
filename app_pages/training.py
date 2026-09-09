@@ -141,6 +141,7 @@ def _setup() -> None:
         "Start training", icon=":material/play_arrow:", type="primary",
         disabled=disabled, width="content",
     ):
+        st.session_state.pop("training_completion_refresh", None)
         run.start(entry["manifest"], output, settings)
         st.rerun()
 
@@ -180,7 +181,15 @@ def _gpu_panel() -> None:
         with st.container(border=True):
             st.markdown(f"**{sample.name}**")
             with st.container(horizontal=True, gap="medium"):
-                st.metric("GPU", f"{sample.utilization:.0f}%")
+                if sample.utilization == sample.utilization:
+                    label = "GPU (last reading)" if sample.utilization_stale else "GPU"
+                    st.metric(label, f"{sample.utilization:.0f}%")
+                else:
+                    st.metric(
+                        "GPU",
+                        "—",
+                        help="NVML has not returned a utilization reading yet.",
+                    )
                 st.metric(
                     "VRAM",
                     f"{sample.memory_used / 1024**3:.1f} / "
@@ -188,8 +197,8 @@ def _gpu_panel() -> None:
                 )
                 if sample.temperature == sample.temperature:
                     st.metric("Temp", f"{sample.temperature:.0f} °C")
-                if sample.power == sample.power:
-                    st.metric("Power", f"{sample.power:.0f} W")
+                # if sample.power == sample.power:
+                #     st.metric("Power", f"{sample.power:.0f} W")
             st.progress(min(sample.memory_fraction, 1.0),
                         text=f"VRAM {sample.memory_fraction:.0%}")
 
@@ -198,6 +207,16 @@ def _gpu_panel() -> None:
 def _progress() -> None:
     if run.ready is None and not run.is_running and run.error is None:
         return
+
+    if run.done is not None:
+        token = (
+            run.done.get("run_directory"),
+            run.done.get("path"),
+            run.done.get("elapsed"),
+        )
+        if st.session_state.get("training_completion_refresh") != token:
+            st.session_state.training_completion_refresh = token
+            st.rerun(scope="app")
 
     with st.container(border=True):
         header = st.container(horizontal=True, gap="medium")
@@ -209,6 +228,12 @@ def _progress() -> None:
                           key="fit_stop")
 
         st.progress(run.progress_fraction(), text=" ")
+
+        for step in run.step_progress():
+            st.progress(
+                step["fraction"],
+                text=f"{step['name']} — {step['fraction']:.0%}",
+            )
 
         if run.error is not None:
             st.error(run.error.get("message", "the fit failed"),
@@ -265,7 +290,8 @@ def _progress() -> None:
                 )
 
         with right:
-            _gpu_panel()
+            if run.is_running:
+                _gpu_panel()
 
 
 # -- results ------------------------------------------------------------------
@@ -685,6 +711,22 @@ if run.result is None:
     _setup()
 
 _progress()
+
+# Reports and stored-run management live on their own pages. Keep a compact
+# handoff here so a completed fit has an obvious next action without rendering
+# the whole report a second time.
+if run.done is not None or run.result is not None:
+    st.success(
+        "Training finished. Open the stored run to see its report.",
+        icon=":material/check:",
+    )
+    if run.done and run.done.get("run_directory"):
+        st.query_params["run"] = run.done["run_directory"]
+        if st.button("Open completed run", icon=":material/description:"):
+            st.switch_page("app_pages/run.py")
+if st.button("Previous runs", icon=":material/history:"):
+    st.switch_page("app_pages/previous_runs.py")
+st.stop()
 
 # A finished run is read back from its stored directory rather than from the
 # event stream, so this is the same code path as opening an old run — and the

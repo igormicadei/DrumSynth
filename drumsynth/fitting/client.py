@@ -119,7 +119,10 @@ class TrainingRun:
             elif kind == FitEvent.GENERATION:
                 self.generations.append(message)
             elif kind == FitEvent.STAGE:
-                self.stage = message
+                # Timing markers describe the preceding stage; keeping them
+                # out of `stage` lets the progress view retain its real phase.
+                if message.get("phase") != "timing":
+                    self.stage = message
                 self.steps.append(TrainingRun._describe(message))
             elif kind == FitEvent.PROGRESS:
                 described = TrainingRun._describe(message)
@@ -182,7 +185,86 @@ class TrainingRun:
             return "scored"
         if self.result is not None:
             return "scoring"
+        if self.generations and self.stage.get("phase") in {"stage4", "stage5"}:
+            return "stage5"
         return str(self.stage.get("phase", "starting"))
+
+    def step_progress(self) -> list[dict]:
+        """Progress for each training stage and the final scoring pass."""
+        phase = self.phase
+        phases = {
+            "stage1": {
+                "stage1",
+                "stage2",
+                "stage2_done",
+                "tension",
+                "stage3",
+                "stage4",
+                "stage5",
+                "stage5_done",
+                "scoring",
+                "scored",
+                "done",
+            },
+            "stage2": {
+                "stage2",
+                "stage2_done",
+                "tension",
+                "stage3",
+                "stage4",
+                "stage5",
+                "stage5_done",
+                "scoring",
+                "scored",
+                "done",
+            },
+            "stage3": {
+                "stage3",
+                "stage4",
+                "stage5",
+                "stage5_done",
+                "scoring",
+                "scored",
+                "done",
+            },
+            "stage4": {"stage4", "stage5", "stage5_done", "scoring", "scored", "done"},
+            "stage5": {"stage5", "stage5_done", "scoring", "scored", "done"},
+            "scoring": {"scoring", "scored", "done"},
+        }
+
+        def complete(name: str) -> float:
+            if phase == "error":
+                return 0.0
+            if phase == "done":
+                return 1.0
+            if phase in phases.get(name, set()):
+                return 1.0
+            return 0.0
+
+        layer = self.stage if self.stage.get("phase") == "stage2" else {}
+        layer_of = max(int(layer.get("of", 0) or 0), 1)
+        layer_number = min(max(int(layer.get("layer", 0) or 0), 0), layer_of)
+        stage2 = layer_number / layer_of if phase == "stage2" else complete("stage2")
+
+        maximum = int((self.ready or {}).get("settings", {}).get("generations", 24))
+        generation = min(len(self.generations), max(maximum, 1))
+        stage5 = (
+            generation / max(maximum, 1) if phase == "stage5" else complete("stage5")
+        )
+
+        score_layer = self.stage if self.stage.get("phase") == "scoring" else {}
+        score_of = max(int(score_layer.get("of", 0) or 0), 1)
+        score_number = min(max(int(score_layer.get("layer", 0) or 0), 0), score_of)
+        scoring = score_number / score_of if phase == "scoring" else complete("scoring")
+
+        return [
+            {"name": "Stage 1 · modes and damping", "fraction": complete("stage1")},
+            {"name": "Stage 2 · excitation", "fraction": stage2},
+            {"name": "Stage 3 · inspection", "fraction": complete("stage3")},
+            {"name": "Stage 4 · velocity curves", "fraction": complete("stage4")},
+            {"name": "Stage 5 · joint refinement", "fraction": stage5},
+            {"name": "Scoring", "fraction": scoring},
+        ]
 
     def progress_fraction(self) -> float:
         """Rough completion, for a progress bar. Stage weights are measured
@@ -195,7 +277,8 @@ class TrainingRun:
         }
         base = weights.get(self.phase, 0.5)
         if self.phase == "stage5" and self.generations:
-            base = 0.75 + 0.15 * min(len(self.generations) / 24.0, 1.0)
+            maximum = int((self.ready or {}).get("settings", {}).get("generations", 24))
+            base = 0.75 + 0.15 * min(len(self.generations) / max(maximum, 1), 1.0)
         return float(min(max(base, 0.0), 1.0))
 
     def stderr_tail(self, lines: int = 12) -> str:

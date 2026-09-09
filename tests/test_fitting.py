@@ -42,6 +42,7 @@ from drumsynth.fitting.backend import TorchBatchLoss
 from drumsynth.fitting.comparison import Comparison
 from drumsynth.fitting.stages import ModalFit
 from drumsynth.fitting.telemetry import GpuMonitor, TorchMemory
+from drumsynth.fitting.client import TrainingRun
 from drumsynth.fitting.objective import LevelMatch
 from drumsynth.fitting.stages import ExcitationFit
 
@@ -747,6 +748,28 @@ class TestBatchedVelocityCurve:
 
 
 class TestGpuMonitor:
+
+    def test_utilization_failure_keeps_the_last_reading(self):
+        class Rates:
+            gpu = 37
+
+        class Nvml:
+            def __init__(self):
+                self.calls = 0
+
+            def nvmlDeviceGetUtilizationRates(self, handle):
+                self.calls += 1
+                if self.calls == 1:
+                    return Rates()
+                raise RuntimeError("transient NVML failure")
+
+        monitor = GpuMonitor.__new__(GpuMonitor)
+        monitor._last_utilization = {}
+        nvml = Nvml()
+
+        assert monitor._utilization(nvml, object(), 0) == (37.0, False)
+        assert monitor._utilization(nvml, object(), 0) == (37.0, True)
+
     def test_no_gpu_is_a_reason_not_an_exception(self):
         """Every failure mode ends the same way, because there is nothing a
         caller can do about the difference between "pynvml is missing" and "the
@@ -763,6 +786,38 @@ class TestGpuMonitor:
 
     def test_peak_vram_is_zero_without_cuda(self):
         assert TorchMemory.peak_bytes() >= 0.0
+
+
+class TestTrainingProgress:
+    @staticmethod
+    def _run() -> TrainingRun:
+        run = TrainingRun()
+        run.ready = {"settings": {"generations": 4}}
+        return run
+
+    def test_stage_progress_advances_from_real_events(self):
+        run = self._run()
+        run.stage = {"phase": "stage2", "layer": 2, "of": 4}
+        values = {step["name"]: step["fraction"] for step in run.step_progress()}
+        assert values["Stage 1 · modes and damping"] == 1.0
+        assert values["Stage 2 · excitation"] == pytest.approx(0.5)
+
+        run.stage = {"phase": "stage4"}
+        run.generations = [{"generation": 0}, {"generation": 1}]
+        values = {step["name"]: step["fraction"] for step in run.step_progress()}
+        assert values["Stage 1 · modes and damping"] == 1.0
+        assert values["Stage 4 · velocity curves"] == 1.0
+        assert values["Stage 5 · joint refinement"] == pytest.approx(0.5)
+
+    def test_scoring_and_completion_reach_one(self):
+        run = self._run()
+        run.stage = {"phase": "scoring", "layer": 2, "of": 4}
+        values = {step["name"]: step["fraction"] for step in run.step_progress()}
+        assert values["Scoring"] == pytest.approx(0.5)
+
+        run.done = {}
+        values = {step["name"]: step["fraction"] for step in run.step_progress()}
+        assert all(value == 1.0 for value in values.values())
 
 
 class TestRunStore:

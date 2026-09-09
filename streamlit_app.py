@@ -29,9 +29,19 @@ with st.sidebar:
 
 navigation = st.navigation(
     [
-        st.Page("app_pages/mixer.py", title="Mixer", icon=":material/tune:", default=True),
-        st.Page("app_pages/analysis.py", title="Analysis", icon=":material/monitoring:"),
+        st.Page(
+            "app_pages/mixer.py", title="Mixer", icon=":material/tune:", default=True
+        ),
+        st.Page(
+            "app_pages/analysis.py", title="Analysis", icon=":material/monitoring:"
+        ),
         st.Page("app_pages/training.py", title="Training", icon=":material/school:"),
+        st.Page(
+            "app_pages/previous_runs.py",
+            title="Previous runs",
+            icon=":material/history:",
+        ),
+        st.Page("app_pages/run.py", title="Run", icon=":material/description:"),
     ]
 )
 navigation.run()
