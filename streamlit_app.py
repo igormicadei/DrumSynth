@@ -31,6 +31,7 @@ navigation = st.navigation(
     [
         st.Page("app_pages/mixer.py", title="Mixer", icon=":material/tune:", default=True),
         st.Page("app_pages/analysis.py", title="Analysis", icon=":material/monitoring:"),
+        st.Page("app_pages/training.py", title="Training", icon=":material/school:"),
     ]
 )
 navigation.run()

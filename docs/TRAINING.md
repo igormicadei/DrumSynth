@@ -1,0 +1,225 @@
+# Training
+
+Fitting one drum's `DrumParams` to its recorded samples, following the staged
+procedure in [ARCHITECTURE.md](ARCHITECTURE.md) §8.
+
+```bash
+streamlit run streamlit_app.py     # → the Training page
+```
+
+One drum at a time, chosen from a dropdown. `f_static` and `t60` are properties
+of a specific physical drum, so there is nothing a second drum could contribute
+to a fit except a way to get them confused.
+
+---
+
+## The five stages
+
+Each stage freezes what the last one settled. Nothing later is allowed to move
+it.
+
+| stage | what it produces | how |
+|---|---|---|
+| **1 — the drum** | `f_static[]`, `t60[]` | measured, not searched |
+| **2 — the excitation** | `gain[]`, `level[]`, `contact_time`, per velocity | closed-form solve, then coordinate descent |
+| **2b — the glide** | `tension.k`, `tension.tau` | grid + refinement on the band loss |
+| **3 — the inspection** | a verdict, not parameters | **this is the experiment** |
+| **4 — the curve** | velocity → excitation, two numbers per quantity | log-log power law |
+| **5 — the refinement** | everything jointly | differential evolution |
+
+### Stage 1 is measurement
+
+Frequencies come from ESPRIT on a **soft** layer. That is not an arbitrary
+choice: `f_static` means *the drum at rest*, and a loud hit is not at rest —
+the tension feedback glides it. Measured on a synthetic drum with known
+partials, the soft layer gives a **2.3 cent** median error against **47.7
+cents** from the loudest hit. The same drum, the same estimator; only the
+excitation differs.
+
+Damping does **not** come from ESPRIT. Per-mode subspace damping estimates came
+out 56% off on the same signal, because a mode's amplitude envelope is not a
+clean exponential once neighbouring partials leak into its bin. Fitting
+`DampingCurve` through *measured band decays* instead lands at 13%.
+
+Neither of these is a search. There is no loss to descend, and no starting
+point to get wrong.
+
+### Stage 2 is a linear problem
+
+Once the modes are frozen, the render is **linear in the gains and the noise
+levels**:
+
+```
+audio = output_gain * (gains @ modal_basis + levels @ noise_basis)
+```
+
+`LinearVoiceBasis` builds the unit-gain response of every mode and every band
+once, and a candidate is then a matrix product rather than a render — measured
+at **170× faster** per evaluation. Gains are initialized by non-negative least
+squares against the reference power spectrum and polished by coordinate
+descent.
+
+The basis is built on a **frozen tension trajectory** captured from a real
+render, so it rings at the frequencies the true engine would, glide included.
+That detail is not optional: with a trajectory taken from unit gains instead,
+the *true* excitation scored 11.68 dB — worse than most wrong answers.
+Relinearizing (solve → rebuild the basis → re-solve) brings the true excitation
+to **0.07 dB**.
+
+Only the reference layer fits every gain. The others fit **two numbers**: the
+strike strength, measured from the level ratio, and the contact time. §4 says
+`contact_time` is absorbed into the gains at a single fixed velocity and
+reintroduced when velocity is added, and this split is exactly that.
+
+### Stage 2b: the glide is fitted on the spectrum
+
+The obvious way to fit a glide is to track the fundamental in both signals and
+match the curves. It was built that way first, and it does not work well
+enough. The tracked fundamental of a drum is short, noisy and partly masked;
+the comparison has to be made in cents relative to each track's *own* asymptote
+(an absolute offset would swamp the shape being fitted); and what survives all
+that is a proxy an optimizer can win against while getting `k` wrong by a
+factor of six — which then ruins every gain refitted afterwards, because the
+partials end up in the wrong place.
+
+Measured on a drum with a known glide, the **band loss** has a sharp minimum at
+the true `k` — **1.83 dB against 4.01 dB for no glide at all** — at a point
+where the pitch track returned zero. The glide moves energy between bands, so
+the loss the fit is judged on can see it directly.
+
+Two guards come with that:
+
+* **The search is bounded in musical units, not in `k`.** `Tension.max_ratio`
+  allows a doubling, and a search left to itself will take it: a huge `k` with a
+  very short `tau` pins every mode at the clamp for a few milliseconds, smearing
+  the attack across the coarse STFT frames. It scores well. It is not a drum.
+  `MAX_RATIO_SPAN` caps the grid at three semitones.
+* **A layer that cannot see a glide reports `NaN`, not zero.** "This layer says
+  nothing" and "this drum does not glide" are different claims. `ratio = 1 + k *
+  energy`, so a soft hit barely moves — that is the mechanism working, and
+  counting it as `k = 0` would drag the estimate down and fail stage 3 on every
+  drum ever fitted.
+
+`k` is taken from the **loudest** layer carrying evidence, not from a median.
+`_canonicalize` fixes the gain scale by convention on that layer, so its
+amplitude is exact by definition while every other layer's is measured.
+
+### Stage 3 is the experiment
+
+Per-velocity fitting **always** succeeds. Six velocities fitted independently
+produce six parameter sets that each match their own recording, whether or not
+the velocity model is right. So the table is the evidence, not the losses:
+
+* **Brightness must rise with velocity.** Harder hits are shorter contacts.
+  Falling brightness is the mechanism backwards.
+* **Amplitude must be monotone.** If it is not, the velocity calibration is
+  wrong and nothing below it can be read.
+* **`tension.k` must be velocity-invariant** (§8.1). The glide deepens on hard
+  hits by itself, because more energy enters the bank. A fit that wants a
+  different `k` per velocity is saying the energy feedback is wrong — *not* that
+  `k` needs a velocity term.
+
+That last check has one trap, and stage 3 now checks for it before passing
+judgement. `k` is fitted against each layer's bank energy, which goes as
+amplitude squared, so an **amplitude** off by a factor comes back as a `k` off
+by its **square**. When `k` varies but `k · amplitude²` does not, the energy
+feedback is fine and the velocity calibration is what to look at. Stage 3 says
+so in those words rather than blaming the mechanism.
+
+### Stages 4 and 5
+
+Stage 4 fits a two-parameter power law per quantity in log-log. Velocity is
+remapped onto `[MIN_STRENGTH, 1]` first: calibration puts the softest recorded
+hit at exactly 0, which is the bottom of the *observed* range, not of the
+physical one — feeding 0 to a power law makes the quietest layer silent and
+drags `log(0)` into the fit, corrupting the exponent for every other layer.
+
+Stage 5 refines everything jointly with differential evolution, scoring the
+**worst** layer rather than the mean (§8.2). Each generation is reported as it
+completes, which is what the progress chart draws.
+
+---
+
+## What the run costs
+
+Stages 1, 2 and 4 are measurement and closed-form solves; only stage 5 is a
+search. A 6-layer fit at 2.5 s per hit and 30 modes takes **1-3 minutes**.
+
+**It does not use the GPU, and adding one would not help.** Once the render is a
+matrix product against a cached basis, the work is a few thousand BLAS calls on
+matrices of roughly `30 × 110000` — memory-bandwidth bound, already
+multithreaded across the 16 cores, and small enough that a PCIe round trip per
+evaluation would cost more than the arithmetic saves. The stages that dominate
+wall time (ESPRIT, band decays, the NNLS solve) are LAPACK, not deep learning.
+A `torch` dependency here would buy nothing.
+
+---
+
+## What is verified, and what is not
+
+The sample WAVs are gitignored — 3.5 GB — so **CI has never fitted a real
+drum.** Everything below is ground-truth recovery on synthetic drums whose
+parameters are known exactly, which is the only way to ask whether a fit is
+*right* rather than merely low-loss.
+
+On a small drum (8 modes, 4 velocity layers), the fit is essentially exact:
+
+| quantity | recovered |
+|---|---|
+| mode frequency | 2.3 cents |
+| per-layer band loss | 1.14 - 1.23 dB (floor ≈ 1.10 dB) |
+| STFT loss | 0.59 dB |
+| ScoreCard total | 0.740 |
+
+On a hard one (31 modes with near-degenerate pairs, a real glide, 6 layers), it
+is partial and honestly so:
+
+| quantity | recovered | note |
+|---|---|---|
+| modes found | 29 of 31 | close pairs merge |
+| mode frequency | 13.7 cents median, 193 cents p90 | the tail is the merged pairs |
+| `t60` | 22% median | |
+| per-layer band loss | 1.2 - 3.6 dB | |
+| `tension.k` | within 10% on the layers that carry evidence | |
+
+The loss floor itself is **1.10 dB**: two renders of *identical* parameters with
+different noise seeds sit that far apart under the band loss. Any number near it
+means the fit has run out of signal, not effort.
+
+Three measured floors are worth keeping in mind when reading a fit:
+
+| baseline | band loss |
+|---|---|
+| identical parameters, different noise seed | 1.10 dB |
+| correct modes, gains fitted from scratch | 0.55 dB |
+| the true excitation, on a relinearized basis | 0.07 dB |
+| a bin-wise (not band-aggregated) loss on identical parameters | 11.7 dB |
+
+That last row is why the loss aggregates power into 64 log-spaced bands. §6.5
+is explicit that two realizations of the same noise process are uncorrelated;
+comparing them bin by bin measures the seed, and an optimizer handed that
+spends its budget chasing one noise realization.
+
+---
+
+## Reading a result
+
+The page shows, in order:
+
+1. **Live progress** — the current stage, and a per-generation loss chart once
+   stage 5 starts. Stages 1-4 have no generations to show because they are not
+   searches.
+2. **The stage 3 verdict** with its findings, pass or fail.
+3. **The velocity table** — the per-velocity excitation, which is what stage 3
+   inspected.
+4. **The report** — the project's own `DrumScorer`, not a second opinion
+   invented for the fitter, aggregated worst-component-first across every
+   velocity.
+5. **Generated against the sample**, per velocity, as audio.
+6. **Load into the live synth** — the fitted drum in the running engine, so it
+   can be struck and edited on the Mixer page while it rings.
+
+A fit that scores well and **fails stage 3** is the case to be suspicious of.
+It means the parameters match these particular recordings without the velocity
+model being right, and it will not interpolate to velocities that were not
+sampled.

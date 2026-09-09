@@ -176,3 +176,161 @@ class TestPresets:
                 button.click().run()
                 break
         assert app.session_state.params.modes[0].f_static != 500.0
+
+
+# =============================================================================
+# The training page
+# =============================================================================
+
+TRAINING = str(Path(__file__).resolve().parents[1] / "app_pages" / "training.py")
+
+
+@pytest.fixture
+def training():
+    at = AppTest.from_file(TRAINING, default_timeout=TIMEOUT)
+    at.run()
+    assert not at.exception, at.exception[0].message if at.exception else ""
+    return at
+
+
+class TestTrainingPage:
+    def test_it_runs(self, training):
+        assert [t.value for t in training.title] == ["Training"]
+
+    def test_one_drum_at_a_time(self, training):
+        """§8: f_static and t60 belong to a specific physical drum. The page
+        offers a dropdown, not a multiselect, on purpose."""
+        assert [s.label for s in training.selectbox] == ["Drum"]
+        assert not training.multiselect
+
+    def test_cymbals_are_not_offered(self, training):
+        """§9: a struck cymbal moves energy from low modes into high ones over
+        the first few hundred milliseconds. A linear modal bank cannot do that
+        at any setting, so fitting one is not a tuning problem."""
+        options = training.selectbox[0].options
+        assert options
+        assert not any(
+            word in option.lower()
+            for option in options
+            for word in ("cymbal", "crash", "ride", "hihat", "hi-hat", "splash")
+        )
+
+    def test_starts_idle(self, training):
+        assert [b.label for b in training.button] == ["Start training"]
+
+
+class _FinishedRun:
+    """A `TrainingRun` that has already finished, so the result views can be
+    driven without a subprocess or a 3.5 GB sample library."""
+
+    def __init__(self, ready: dict, result: dict, scored: dict) -> None:
+        self.ready, self.result, self.scored = ready, result, scored
+        self.done = {"elapsed": result["elapsed"]}
+        self.error = None
+        self.steps: list[str] = ["stage 1", "stage 2", "stage 5"]
+        self.generations = [
+            {"generation": g["index"], "loss": g["loss"],
+             "best_loss": g["best_loss"], "elapsed": g["elapsed"]}
+            for g in result["generations"]
+        ]
+
+    is_running = False
+    finished = True
+    phase = "done"
+
+    def progress_fraction(self) -> float:
+        return 1.0
+
+    def stop(self) -> None:
+        pass
+
+    def stderr_tail(self, lines: int = 12) -> str:
+        return ""
+
+
+@pytest.fixture(scope="module")
+def finished_fit():
+    """A real fit of a synthetic drum, serialized exactly the way the worker
+    serializes one."""
+    from tests.test_fitting import SR, known_drum, velocity_layers
+    from drumsynth.fitting import (
+        DrumTrainer, FitEvaluator, TargetBuilder, TrainingSettings,
+    )
+    from drumsynth.fitting.worker import FitWorker
+
+    hits = velocity_layers(known_drum(), velocities=(45, 90, 127))
+    target = TargetBuilder(SR, 0.8).from_audio("synthetic", hits)
+    settings = TrainingSettings(seconds=0.8, max_layers=3, max_modes=10,
+                                generations=2, population=6, noise_bands=2)
+    result = DrumTrainer(settings, SR).run(target)
+
+    worker = FitWorker(settings, SR)
+    aggregate, cards = FitEvaluator(SR).score(result, target)
+    ready = {
+        "drum": target.drum,
+        "layers": [
+            {"velocity": layer.velocity,
+             "velocity_normalized": layer.velocity_normalized,
+             "source": layer.source}
+            for layer in target.layers
+        ],
+    }
+    scored = {
+        "total": aggregate.total,
+        "stft_loss": aggregate.stft_loss,
+        "components": [c.to_dict() for c in aggregate.components],
+        "warnings": aggregate.warnings,
+        "per_layer": [{"velocity": v, "total": card.total} for v, card in cards],
+        "report": aggregate.report(),
+    }
+    return ready, worker._summarize(result), scored
+
+
+@pytest.fixture
+def finished(monkeypatch, finished_fit):
+    import streamlit as st
+    import drumsynth.fitting as fitting
+
+    monkeypatch.setattr(
+        fitting, "TrainingRun", lambda *a, **k: _FinishedRun(*finished_fit)
+    )
+    # The page holds its handle in `st.cache_resource`, which outlives an
+    # AppTest run — without this it would keep the real subprocess handle an
+    # earlier test cached and the patch would do nothing.
+    st.cache_resource.clear()
+    at = AppTest.from_file(TRAINING, default_timeout=TIMEOUT)
+    at.run()
+    assert not at.exception, at.exception[0].message if at.exception else ""
+    yield at
+    st.cache_resource.clear()
+
+
+class TestTrainingReport:
+    def test_every_result_view_renders(self, finished):
+        """The report, the velocity table, the audio comparison and the handoff
+        into the live synth — the whole tail of the page, which no unit test
+        reaches because it only exists once a fit has finished."""
+        headers = [s.value for s in finished.subheader]
+        assert "Report" in headers
+        assert "Velocity table" in headers
+        assert "Generated against the sample" in headers
+        assert "Try it" in headers
+
+    def test_setup_is_replaced_by_the_result(self, finished):
+        assert "Start training" not in [b.label for b in finished.button]
+        assert "Fit another drum" in [b.label for b in finished.button]
+
+    def test_stage_3_verdict_is_shown_either_way(self, finished):
+        text = " ".join([m.value for m in finished.success]
+                        + [m.value for m in finished.warning])
+        assert "Stage 3" in text
+
+    def test_the_fitted_drum_can_be_loaded_into_the_live_synth(self, finished):
+        for button in finished.button:
+            if button.label == "Load into the live synth":
+                button.click().run()
+                break
+        else:
+            pytest.fail("no handoff button")
+        assert not finished.exception
+        assert finished.session_state.params.modes

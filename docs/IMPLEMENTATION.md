@@ -47,12 +47,27 @@ drumsynth/
 │   ├── attribution.py     ParameterSuggestion, Attributor
 │   ├── scorer.py          DrumScorer
 │   └── report.py          ScoreReport
-└── samples/               §7
-    ├── quality.py         SampleQuality, QualityChecker
-    ├── sample.py          Sample
-    ├── calibration.py     VelocityCalibration
-    ├── sample_set.py      SampleSet
-    └── library.py         SampleLibrary
+├── samples/               §7
+│   ├── quality.py         SampleQuality, QualityChecker
+│   ├── sample.py          Sample
+│   ├── calibration.py     VelocityCalibration
+│   ├── sample_set.py      SampleSet
+│   └── library.py         SampleLibrary
+├── live/                  the always-running audio process
+│   ├── protocol.py        Command, Event
+│   ├── engine.py          LiveEngine
+│   ├── sinks.py           NullSink, WavSink, DeviceSink
+│   ├── worker.py          the subprocess entry point
+│   └── client.py          LiveSynth
+└── fitting/               §8
+    ├── targets.py         Layer, FitTarget, TargetBuilder, DrumCatalogue
+    ├── objective.py       TensionTrajectory, LinearVoiceBasis, SpectralTarget,
+    │                      LevelMatch
+    ├── stages.py          ModalStage, ExcitationStage, TensionStage,
+    │                      InspectionStage, VelocityCurveStage, JointStage
+    ├── trainer.py         DrumTrainer, FitResult, FitEvaluator
+    ├── worker.py          the subprocess entry point
+    └── client.py          TrainingRun
 ```
 
 ### The sample library is generated, not curated
@@ -196,6 +211,31 @@ A scalar says "worse", not "which of the 109 numbers".
 
 ---
 
+### Fitting is measurement first, search last
+
+Four of the five stages in `drumsynth/fitting/` never call an optimizer.
+Frequencies come from ESPRIT on a soft layer, damping from `DampingCurve`
+through measured band decays, gains from non-negative least squares against a
+linearized basis, and the velocity curve from a log-log line fit. Only stage 5
+searches.
+
+The lever that makes this affordable is that the render is **linear in the gains
+and the noise levels**, so `LinearVoiceBasis` evaluates a candidate as a matrix
+product against a cached unit-gain basis — 170× faster than rendering. The basis
+is built on a tension trajectory captured from a real render, and relinearized
+once the gains are roughly right; without that relinearization the *true*
+excitation scores 11.68 dB instead of 0.07 dB, so the fit is being asked to find
+something that is not the answer.
+
+`ModalBank.process_modes` returning per-mode rows costs the same as returning
+the mix (0.0044 s against 0.11 s before the shared `_advance` refactor), which
+is what makes building the basis cheap enough to redo.
+
+See [TRAINING.md](TRAINING.md) for the stages, the measured baselines, and the
+two places a plausible-looking fit goes wrong.
+
+---
+
 ## Performance
 
 Measured on a 4-second render at 44.1 kHz, 31 modes and 4 noise bands:
@@ -217,7 +257,7 @@ chunks regardless of `control_period`.
 
 ## Testing
 
-340 tests, ~75 s. Eight files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
+378 tests, ~4 min. Nine files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
 
 * `tests/test_synth.py` — superposition, decay accuracy, tension behaviour, and
   the `ModalBank` ↔ `ModeResonator` equivalence.
@@ -232,7 +272,11 @@ chunks regardless of `control_period`.
   `data/file_tree.txt`. Skipped when a checkout has no imported library.
 * `tests/test_live.py` — the audio process end to end against the `null` sink:
   strikes superposing, parameters changing mid-ring, monitoring, recording.
-* `tests/test_studio.py` — the Streamlit app through `AppTest`, in-process.
+* `tests/test_studio.py` — the Streamlit app through `AppTest`, in-process,
+  including the Training page's result views driven by a real fit.
+* `tests/test_fitting.py` — the fitter against synthetic drums with known
+  parameters. A fit that matches a recording it was fitted to proves nothing;
+  these ask whether it puts the modes back where they were.
 
 The tests that matter most are the ones pinning claims that are easy to break
 by accident:

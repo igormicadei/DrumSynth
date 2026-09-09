@@ -212,6 +212,28 @@ Fit against `velocity_normalized`, not `velocity`. If the calibration comes out
 non-monotone, the session has a problem — a mislabeled take, a moved mic, a drum
 retuned partway — and it should be investigated, not fitted around.
 
+## Training
+
+`drumsynth.fitting` implements ARCHITECTURE.md §8: five stages, each freezing
+what the last one settled. Stages 1, 2 and 4 are **measurement and closed-form
+solves**, not search — frequencies from ESPRIT on a soft layer (the drum at
+rest), damping from measured band decays, gains from non-negative least squares
+against a linearized basis. Only stage 5 is an optimizer.
+
+Stage 3 is the part that matters. Per-velocity fitting always succeeds, so the
+evidence that the velocity model is right is that the fitted table moves
+smoothly and in the physical direction — brighter and louder with velocity, and
+one `tension.k` for the whole drum.
+
+```bash
+streamlit run streamlit_app.py     # → the Training page
+```
+
+Pick a drum, watch the stages, read the ScoreCard against the samples, and load
+the result straight into the live synth to play it. See
+[docs/TRAINING.md](docs/TRAINING.md) for the stages, the measured baselines,
+and what has and has not been verified.
+
 ## Where the design was wrong
 
 Five things in the architecture did not survive being built. They are documented
@@ -252,14 +274,14 @@ python examples/03_check_a_library.py      # quality gates on a demo session
   how velocity is represented, and what is missing.
 * [docs/STUDIO.md](docs/STUDIO.md) — the parameter mixer and the live audio
   process behind it.
+* [docs/TRAINING.md](docs/TRAINING.md) — fitting a drum to its samples: the
+  five stages, what is measured rather than searched, and the ground-truth
+  recovery numbers.
 
 ## Not built yet
 
 * **Excitation / `contact_time`.** The seam exists; the model does not. See
   finding #1.
-* **Fitting.** The scorer tells you which parameter is wrong and by how much;
-  nothing yet drives that back into `DrumParams` automatically. The staged
-  procedure is specified in ARCHITECTURE.md §8.
 * **Snare wires.** The tom module plus one threshold-nonlinearity subsystem,
   ~5-6 parameters. `DrumPresets.snare_shell()` is the ~90% that already works.
 * **Cymbals.** A separate project. A struck cymbal cascades energy from low
