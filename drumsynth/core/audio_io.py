@@ -3,7 +3,8 @@
 One class, static methods, so that every entry point into the project reads
 audio the same way: mono float64 at a known sample rate. `soundfile` is used
 when installed (it handles 24-bit, float and compressed WAV variants); the
-stdlib `wave` module is the fallback so the package still works without it.
+stdlib `wave` module is the fallback so the package still works without it,
+in 16-bit PCM only.
 """
 
 from __future__ import annotations
@@ -23,7 +24,7 @@ except ImportError:  # pragma: no cover
 class AudioIO:
     """Load, resample and write mono audio."""
 
-    #: Written files are normalized to this peak level, leaving a little headroom.
+    #: Peak level used when a caller explicitly asks for normalization.
     WRITE_PEAK_DBFS: float = -1.0
 
     # -- reading --------------------------------------------------------------
@@ -51,11 +52,30 @@ class AudioIO:
         return signal, int(file_sr)
 
     @staticmethod
-    def _read_with_wave_module(path: Path) -> tuple[np.ndarray, int]:
-        """PCM-only fallback for when soundfile is unavailable."""
+    def read_bytes(data: bytes, sr: int | None = None) -> tuple[np.ndarray, int]:
+        """Read a WAV held in memory — an upload, say — the same way as a file."""
+        import io
+
+        buffer = io.BytesIO(data)
+        if _soundfile is not None:
+            raw, file_sr = _soundfile.read(buffer, dtype="float64", always_2d=True)
+            signal = AudioIO.to_mono(raw)
+        else:
+            signal, file_sr = AudioIO._read_with_wave_module(buffer)
+
+        if sr is not None and sr != file_sr:
+            return AudioIO.resample(signal, file_sr, sr), sr
+        return signal, int(file_sr)
+
+    @staticmethod
+    def _read_with_wave_module(source) -> tuple[np.ndarray, int]:
+        """PCM-only fallback for when soundfile is unavailable.
+
+        `source` is a path or an open binary stream; `wave` takes either.
+        """
         import wave
 
-        with wave.open(str(path), "rb") as handle:
+        with wave.open(source if hasattr(source, "read") else str(source), "rb") as handle:
             channels = handle.getnchannels()
             width = handle.getsampwidth()
             file_sr = handle.getframerate()
@@ -73,7 +93,7 @@ class AudioIO:
         elif width == 4:
             data = np.frombuffer(raw, dtype="<i4").astype(np.float64) / float(1 << 31)
         else:
-            raise ValueError(f"unsupported sample width {width * 8} bit in {path}")
+            raise ValueError(f"unsupported sample width {width * 8} bit in {source}")
 
         return AudioIO.to_mono(data.reshape(-1, channels)), file_sr
 
@@ -116,14 +136,15 @@ class AudioIO:
         path: str | Path,
         signal: np.ndarray,
         sr: int = Audio.DEFAULT_SR,
-        normalize: bool = True,
-        subtype: str = "PCM_24",
+        normalize: bool = False,
+        subtype: str = "FLOAT",
     ) -> Path:
-        """Write mono audio, normalized to WRITE_PEAK_DBFS by default.
+        """Write mono audio at the level it was handed over.
 
-        Normalization is on by default because rendered hits carry the synth's
-        absolute gain, which is rarely near full scale. Pass normalize=False
-        when the absolute level is the thing you are inspecting.
+        Normalization is off by default and the default subtype is float:
+        a reconstruction is compared against its reference sample for sample,
+        so anything that rescales or requantizes it would be measuring the
+        writer instead of the model. Pass normalize=True for listening copies.
         """
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -131,7 +152,11 @@ class AudioIO:
 
         if normalize:
             out = AudioIO.normalize_peak(out, AudioIO.WRITE_PEAK_DBFS)
-        out = np.clip(out, -1.0, 1.0)
+        if not subtype.startswith(("FLOAT", "DOUBLE")):
+            # Integer formats have nowhere to put a sample above full scale.
+            # Float ones do, and silently clipping a reconstruction would
+            # change the very thing the caller wrote it out to compare.
+            out = np.clip(out, -1.0, 1.0)
 
         if _soundfile is not None:
             _soundfile.write(str(path), out, int(sr), subtype=subtype)

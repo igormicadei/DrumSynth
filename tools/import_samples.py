@@ -2,7 +2,7 @@
 
 The source library stores its metadata in SFZ mappings. This importer keeps
 only files that exist, copies every WAV (including currently unused cymbals),
-and writes JSON manifests compatible with :mod:`drumsynth.samples`.
+and writes the JSON manifests that :mod:`drumsynth.corpus` reads.
 
 Usage::
 

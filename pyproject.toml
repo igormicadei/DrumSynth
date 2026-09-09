@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "drumsynth"
-version = "0.1.0"
-description = "Modal synthesis, scoring and sample handling for membrane drums"
+version = "0.2.0"
+description = "Spectral modelling for drum hits: fit a compact model to a recording, render it back"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "Igor Micadei" }]
-keywords = ["audio", "dsp", "modal-synthesis", "drums", "physical-modelling"]
+keywords = ["audio", "dsp", "stft", "sinusoidal-model", "drums", "audio-compression"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -19,34 +19,30 @@ classifiers = [
     "Topic :: Multimedia :: Sound/Audio :: Sound Synthesis",
 ]
 
+# numpy only. The transform, the factorizations and the search are all in it;
+# scipy is used for one thing (polyphase resampling) and has a fallback.
 dependencies = [
     "numpy>=1.24",
-    "scipy>=1.10",
 ]
 
 [project.optional-dependencies]
 # soundfile handles 24-bit, float and compressed WAV variants. Without it the
-# stdlib `wave` fallback covers plain PCM only.
+# stdlib `wave` fallback covers plain PCM only, at 16 bits.
 audio = ["soundfile>=0.12"]
+# Polyphase resampling. Without it, reading a file at a different rate falls
+# back to linear interpolation, which is audibly worse.
+resample = ["scipy>=1.10"]
+# frontier.png. The fit runs, reports and saves without it.
 plots = ["matplotlib>=3.7"]
-# Real-time output. Without it the live engine still runs its `null` sink,
-# which drives every meter and the whole command path with no sound card.
-live = ["sounddevice>=0.4"]
-# The parameter-editing UI.
-studio = ["streamlit>=1.50", "pandas>=2.0", "altair>=5.0", "sounddevice>=0.4"]
-# Stage 5 of the fit on a GPU. This extra installs whatever wheel the default
-# index offers, which on most machines is CPU-only and no faster than numpy.
-# For CUDA, install from the matching index instead:
-#     pip install torch --index-url https://download.pytorch.org/whl/cu121
-# Nothing else in the project imports torch, and the fit runs without it.
-cuda = ["torch>=2.0", "nvidia-ml-py>=12.0"]
+# The fitting UI: pick a sample, run a search, listen to what came back.
+studio = ["streamlit>=1.50", "pandas>=2.0", "soundfile>=0.12", "matplotlib>=3.7"]
 dev = [
     "pytest>=7.4",
+    "scipy>=1.10",
     "soundfile>=0.12",
     "matplotlib>=3.7",
     "streamlit>=1.50",
     "pandas>=2.0",
-    "altair>=5.0",
 ]
 
 [project.urls]
@@ -56,7 +52,7 @@ Repository = "https://github.com/igormicadei/DrumSynth"
 include = ["drumsynth*"]
 
 [project.scripts]
-drumsynth-engine = "drumsynth.live.engine:EngineCLI.main"
+drumsynth = "drumsynth.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -7,7 +7,7 @@ The DrumModalSynth library, normalized into this project's layout by
 data/
 ├── file_tree.txt          generated listing of every imported file
 ├── metadata/
-│   ├── library.json       index: drums, manifests, inventory, what is missing
+│   ├── library.json       index: every drum, every sample, the whole inventory
 │   ├── drums-<slug>.json  one manifest per physical drum
 │   └── cymbals-<slug>.json
 └── samples/
@@ -15,10 +15,10 @@ data/
     └── cymbals/<slug>/*.wav
 ```
 
-**The WAVs are not in the repository.** 3.5 GB of audio, gitignored.
-`data/file_tree.txt` is the generated record of exactly which files the import
-produced, and it is what the integrity tests check the manifests against — so
-the whole of `tests/test_data_integrity.py` runs in CI without a single WAV.
+**The WAVs are not in the repository.** 3.5 GB of audio, gitignored, with one
+exception: `data/samples/drums/toms-stereo-tom3/rr1-01-tom3-stereo-rr1.wav` is
+checked in so the tests have a real recording to fit. `data/file_tree.txt` is
+the generated record of exactly which files the import produced.
 
 To populate `data/samples/` on a machine that has the source library:
 
@@ -32,139 +32,56 @@ from an earlier naming scheme (`--prune` deletes those too).
 
 ---
 
-## What is in it
-
-3614 WAVs across 29 instruments. 3338 of them carry SFZ velocity metadata; the
-remaining 276 are copied and inventoried but not manifested.
-
-### Membrane drums — 1612 WAVs, 14 instruments
-
-| drum | samples | velocity bands | round robins | controller coverage |
-|---|---|---|---|---|
-| `kick` | 256 | 32 | 8 | v1-v127 |
-| `snare65-reg-stereo` | 272 | 34 | 8 | v1-v127 |
-| `snare65-nr-stereo` | 64 | 32 | 2 | v1-v127 |
-| `snare67-nr-stereo` | 64 | 32 | 2 | v1-v127 |
-| `smd-snr-str-hyb1` | 64 | 32 | 2 | v1-v127 |
-| `smd-snr-str-hyb2` | 64 | 32 | 2 | v1-v127 |
-| `smd-snr-str-hyb3` | 64 | 32 | 2 | v1-v127 |
-| `smd-rimshot-str-hyb1` | 64 | 32 | 2 | v1-v127 |
-| `rimshot-stereo` | 40 | 10 | 4 | v1-v127 |
-| `sidestick-stereo` | 232 | 29 | 8 | v1-v127 |
-| `toms-stereo-tom1` | 100 | 25 | 4 | v1-v122 |
-| `toms-stereo-tom2` | 104 | 26 | 4 | v1-v127 |
-| `toms-stereo-tom3` | 104 | 26 | 4 | **v1-v111** |
-| `toms-stereo-tom4` | 100 | 25 | 4 | v1-v127 |
-
-The four toms are four separate drums, and the manifests keep them that way.
-They arrive from the vendor under one `Toms_Stereo/` parent with `Tom1`..`Tom4`
-beneath it, which is easy to import as a single instrument called
-`toms-stereo` — and that is wrong in a way that matters here rather than
-cosmetically. `f_static` and `t60` are properties of one physical drum, so a
-manifest spanning four of them is a manifest the fitter must not be handed.
-`tests/test_data_integrity.py::test_one_manifest_is_one_physical_drum` checks
-every manifest for it.
-
-### Cymbals — 2002 WAVs, 15 instruments
-
-Crashes (13/15/16/17 inch, china), rides (17/20 inch plus their bells), and six
-hi-hat articulations. Stored, inventoried, and **not** fitting data: a struck
-cymbal cascades energy from low modes into high ones over the first few hundred
-milliseconds, which a linear modal bank cannot do at any setting. See
-[ARCHITECTURE.md §9](ARCHITECTURE.md#9-scope-boundary-cymbals).
-
-Every manifest carries `family`, and the filename prefix matches it, so
-selecting membrane drums is `data/metadata/drums-*.json` and nothing else.
-
----
-
-## Velocity is a range, not a label
-
-The source library maps velocity as SFZ regions, so a sample covers a *band* of
-controller values rather than sitting at one. The manifests keep the band:
-
-```json
-{
-  "path": "../samples/drums/toms-stereo-tom1/rr1-13-tom1-stereo-rr1.wav",
-  "drum": "toms-stereo-tom1",
-  "velocity": 61.0,
-  "velocity_low": 59.0,
-  "velocity_high": 63.0,
-  "velocity_is_exact": false,
-  "velocity_ranges": [[59.0, 63.0]],
-  "round_robin": 1,
-  "take": 1
-}
-```
-
-`velocity` is the band midpoint and exists only so code written against a plain
-label still works. **`velocity_is_exact` is false on every row in this library**,
-which is the part that matters: a band midpoint is not a measurement, and
-`VelocityCalibration` must not treat it as one. Fit against
-`velocity_normalized`, which is derived from measured energy — the labels here
-are doubly indirect, being controller values *and* midpoints.
-
-Round-robin layers are alternate recordings of the same velocity band, which is
-exactly what `take` means, so `round_robin` is carried through and mirrored into
-`take`.
-
----
-
-## What is missing, and why
-
-Two different failure modes, both left visible rather than papered over.
-
-### 20 SFZ regions reference files that do not exist
-
-| mapping | references | files |
-|---|---|---|
-| `smdrums_sfz_tom1.sfz` | `26_Tom1_Stereo_RR1..RR4` | 4 |
-| `smdrums_sfz_tom3.sfz` | `27..30_Tom3_Stereo_RR1..RR4` | 16 |
-
-Listed in `library.json` under `missing_mappings`. This is why Tom1 stops at
-v122 and Tom3 at v111 — those are their top velocity layers, and nothing was
-recorded for them.
-
-### 276 WAVs that no SFZ region references
-
-| instrument | files |
-|---|---|
-| `cymbals/hi-hat-clsd-2` | 256 |
-| `drums/toms-stereo-tom2` | 16 (`27..30_Tom2_Stereo_RR1..RR4`) |
-| `drums/toms-stereo-tom4` | 4 (`26_Tom4_Stereo_RR1..RR4`) |
-
-Copied and inventoried with `"mapped": false`, and deliberately absent from
-every manifest.
-
-The two lists are suggestive: Tom1 wants a layer 26 it does not have while Tom4
-has an unreferenced layer 26; Tom3 wants layers 27-30 while Tom2 has exactly
-those unreferenced. The source library looks cross-wired at the top of the tom
-range. **No remapping was applied.** Guessing which tom a file belongs to would
-put a Tom4 recording into Tom1's velocity curve, and the resulting fit would be
-wrong in a way that looks fine — exactly the class of error this project's
-validation exists to catch. If the vendor's intent can be confirmed, the fix
-belongs in the SFZ, not in the importer.
-
----
-
-## Before fitting anything
+## Reading it
 
 ```python
-from drumsynth import SampleSet
+from drumsynth import Corpus
 
-toms = SampleSet.from_manifest("data/metadata/drums-toms-stereo-tom2.json")
-for issue in toms.validate():
-    print(issue)
+corpus = Corpus.load()
+corpus.names                          # every drum
+corpus.samples("kick")                # every kick sample, described
+corpus.samples(present_only=True)     # the ones whose audio is on this machine
+signal, sr = corpus.samples("kick")[0].load()
 ```
 
-`validate()` loads the audio, so it needs `data/samples/` populated. It reports
-clipping, second hits, truncated tails, velocity coverage gaps, a set too short
-to fit the slowest decay, a drum retuned mid-session, a non-monotone velocity
-calibration, and — added for this library — a set that stops short of the
-controller range at either end, where the fitted curve extrapolates instead of
-interpolating.
+A `Sample` is a description that may or may not have a file behind it —
+`present()` is how you ask, and `present_only=True` is how you iterate over
+what is actually here. That distinction is the whole reason the class exists:
+the index describes 3,338 samples and a fresh clone has one of them.
 
-`toms-stereo-tom2` and `toms-stereo-tom4` are the complete tom sets, 104 and 100
-samples across the full v1-v127 range with four round robins each. They are the
-obvious place to start: the reference material behind the whole architecture is
-a floor tom.
+## What is in it
+
+3,614 WAVs across 29 instruments at 44.1 kHz. 3,338 carry SFZ velocity
+metadata and appear in `library.json`; the remaining 276 are copied and
+inventoried but not indexed.
+
+### Membrane drums — 1,592 indexed samples, 14 instruments
+
+`kick`, four toms, six snares and hybrids, two rimshots, a sidestick — up to 34
+velocity bands with 2 to 8 round robins each, covering v1–v127.
+
+The four toms are four separate drums and the manifests keep them that way.
+They arrive from the vendor under one `Toms_Stereo/` parent with `Tom1`..`Tom4`
+beneath it, which is easy to import as a single instrument called
+`toms-stereo`. It would be wrong: these are four physical drums with different
+sizes and tunings, and a fit is per hit.
+
+### Cymbals — 1,746 indexed samples, 15 instruments
+
+Crashes (13/15/16/17 inch, china), rides (17/20 inch plus their bells), and six
+hi-hat articulations.
+
+In 0.1 these were stored but out of scope — a modal bank cannot make a cymbal
+at any setting. The spectral model has no such boundary: a cymbal is fitted the
+same way a tom is, and the only thing that changes is which codec wins
+([FINDINGS §5](FINDINGS.md#5-which-codec-wins-is-a-property-of-the-sound)).
+They cost more, because a wash of noise has less structure to exploit than a
+struck drum, and that shows up honestly in the model size rather than as a
+scope note.
+
+## Velocity
+
+Every entry carries `velocity`, its band (`velocity_low`, `velocity_high`) and
+whether the band is exact. Nothing in this version uses it: a model is one
+recording, and there is no interpolation between models. It is kept because
+the information belongs to the recording, not to what was done with it.

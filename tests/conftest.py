@@ -1,14 +1,13 @@
-"""Shared fixtures. Kept small on purpose — most tests build their own signal."""
+"""Shared fixtures. Deliberately small — most tests build the signal they need."""
 
 from __future__ import annotations
 
 import numpy as np
 import pytest
 
-from drumsynth import DrumPresets, DrumVoice
-from drumsynth.core import Decay
+from drumsynth.corpus import Corpus
 
-SR = 44100
+SR = 22050
 
 
 @pytest.fixture(scope="session")
@@ -17,35 +16,50 @@ def sr() -> int:
 
 
 @pytest.fixture(scope="session")
-def tom_params():
-    return DrumPresets.tom()
-
-
-@pytest.fixture
-def voice(tom_params):
-    return DrumVoice(tom_params, SR, control_period=64, seed=1)
-
-
-@pytest.fixture(scope="session")
-def synthetic_modes():
-    """(freq, amplitude, t60) of a signal with exactly known content."""
+def partials() -> list[tuple[float, float, float]]:
+    """(frequency, amplitude, decay time) of a signal with known content."""
     return [
-        (92.5, 1.00, 2.30),
-        (88.0, 0.70, 2.20),  # deliberate close pair, 86 cents apart
-        (147.4, 0.45, 1.10),
-        (197.0, 0.30, 0.90),
-        (600.0, 0.12, 0.55),
-        (1900.0, 0.05, 0.31),
+        (183.0, 1.00, 0.42),
+        (297.5, 0.55, 0.30),
+        (612.0, 0.28, 0.16),
+        (1290.0, 0.11, 0.09),
     ]
 
 
 @pytest.fixture(scope="session")
-def synthetic_signal(synthetic_modes):
-    """A sum of exponentially decaying sinusoids with a -100 dB noise floor."""
-    n = int(2.5 * SR)
+def tonal_hit(partials) -> np.ndarray:
+    """A struck tonal drum: a few decaying partials, no noise.
+
+    Short on purpose. Every test that runs a search runs it on this, and a
+    search evaluates hundreds of candidates end to end.
+    """
+    n = int(0.3 * SR)
     t = np.arange(n) / SR
     signal = sum(
-        amplitude * np.exp(-Decay.t60_to_damping(t60) * t) * np.cos(2 * np.pi * freq * t)
-        for freq, amplitude, t60 in synthetic_modes
+        amplitude * np.exp(-t / decay) * np.sin(2 * np.pi * frequency * t + 0.3)
+        for frequency, amplitude, decay in partials
     )
-    return signal + 1e-5 * np.random.default_rng(0).standard_normal(n)
+    return np.asarray(signal, dtype=np.float64)
+
+
+@pytest.fixture(scope="session")
+def noisy_hit() -> np.ndarray:
+    """A decaying noise burst: the case low-rank structure cannot help with."""
+    n = int(0.3 * SR)
+    t = np.arange(n) / SR
+    rng = np.random.default_rng(7)
+    return np.exp(-t / 0.12) * rng.standard_normal(n)
+
+
+@pytest.fixture(scope="session")
+def recorded_hit() -> tuple[np.ndarray, int]:
+    """The one real recording kept in the repository, trimmed to half a second."""
+    corpus = Corpus.load()
+    present = corpus.samples(present_only=True)
+    if not present:
+        import pytest as _pytest
+
+        _pytest.skip("no sample audio checked out")
+
+    signal, rate = present[0].load()
+    return signal[: rate // 2], rate

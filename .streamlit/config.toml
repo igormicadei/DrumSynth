@@ -1,6 +1,4 @@
 [server]
-# The audio process is the thing that must not be interrupted; a browser
-# reconnect should not take it down.
 runOnSave = true
 
 [browser]

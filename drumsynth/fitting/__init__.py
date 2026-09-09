@@ -1,74 +1,40 @@
-"""Fitting a drum to recorded samples, per ARCHITECTURE.md §8.
+"""The fit: search the space of representations, measure every one, choose.
 
-Staged, and each stage freezes what the last one settled:
-
-    1. f_static and t60 — measured, not searched
-    2. excitation per velocity, independently
-    3. inspect the table. THIS is the experiment
-    4. a smooth curve through the per-velocity values
-    5. joint refinement with the mapping in place
-
-One drum at a time, deliberately: f_static and t60 belong to a specific
-physical drum, so there is nothing a second drum could contribute except a way
-to get them confused.
+    drumsynth.fitting.metrics   what "close enough" means, numerically
+    drumsynth.fitting.search    the candidate grid and the measured search
+    drumsynth.fitting.pareto    the size/error frontier and the choice policy
+    drumsynth.fitting.report    writing a run to disk
 """
 
-from .backend import BatchLoss, Device, DeviceChoice, LossBackend
-from .client import TrainingRun
-from .objective import LinearVoiceBasis, SpectralTarget, TensionTrajectory
-from .stages import (
-    ExcitationFit,
-    ExcitationStage,
-    ExcitationTiltModel,
-    Generation,
-    Inspection,
-    InspectionStage,
-    JointStage,
-    ModalFit,
-    ModalStage,
-    NoiseDecayStage,
-    ResidualModeStage,
-    TensionFit,
-    TensionStage,
-    VelocityCurve,
-    VelocityCurveStage,
+from .metrics import Quality, correlation, peak, relative_mse, rms, snr_db
+from .pareto import choose_best, pareto_frontier, preferred
+from .report import plot_frontier, report_dict, save_fit
+from .search import (
+    DEFAULT_TARGET_MSE,
+    Evaluation,
+    FitResult,
+    Progress,
+    SearchSpace,
+    fit,
 )
-from .targets import DrumCatalogue, FitTarget, Layer, TargetBuilder
-from .trainer import DrumTrainer, FitEvaluator, FitResult, TrainingSettings
-from .worker import FitEvent, FitWorker
 
 __all__ = [
-    "DrumCatalogue",
-    "TargetBuilder",
-    "FitTarget",
-    "Layer",
-    "ModalStage",
-    "NoiseDecayStage",
-    "ResidualModeStage",
-    "ModalFit",
-    "ExcitationStage",
-    "ExcitationFit",
-    "ExcitationTiltModel",
-    "TensionFit",
-    "TensionStage",
-    "InspectionStage",
-    "Inspection",
-    "VelocityCurveStage",
-    "VelocityCurve",
-    "JointStage",
-    "Generation",
-    "DrumTrainer",
-    "TrainingSettings",
+    "DEFAULT_TARGET_MSE",
+    "Evaluation",
     "FitResult",
-    "FitEvaluator",
-    "LinearVoiceBasis",
-    "SpectralTarget",
-    "TensionTrajectory",
-    "TrainingRun",
-    "Device",
-    "DeviceChoice",
-    "BatchLoss",
-    "LossBackend",
-    "FitWorker",
-    "FitEvent",
+    "Progress",
+    "Quality",
+    "SearchSpace",
+    "choose_best",
+    "correlation",
+    "fit",
+    "pareto_frontier",
+    "peak",
+    "plot_frontier",
+    "preferred",
+    "relative_mse",
+    "report_dict",
+    "rms",
+    "save_fit",
+    "snr_db",
 ]

@@ -1,159 +1,77 @@
-"""Modal drum synthesis, scoring and sample handling for membrane drums.
+"""Spectral modelling for drum hits: analyse a sound, fit it, play it back.
 
-Three subsystems, deliberately separable:
+A hit becomes a short list of FFT bins and the complex amplitude of each one
+over time — the component block — stored under whichever coding survives
+measurement for that particular sound. Nothing about the representation is
+decided in advance: the fit encodes, quantizes and *renders* every candidate,
+and compares the audio it gets back against the audio it was given.
 
-    drumsynth.synth     the synthesizer   — DrumParams in, audio out
-    drumsynth.scoring   the metric        — two signals in, a ScoreCard out
-    drumsynth.samples   the training data — a directory in, validated sets out
-
-The synthesizer does not import the scorer and the scorer does not import the
-synthesizer. Scoring takes AUDIO, always, on both sides: the reference is a WAV
-with no parameters attached, so any descriptor that cannot be extracted from
-raw audio is a descriptor that cannot be compared. `DrumParams` is an optional
-extra input used only to attribute an error back to a specific number.
+    drumsynth.spectral   the representation — audio + Candidate -> SpectralModel
+    drumsynth.fitting    the search        — audio -> the smallest model that fits
+    drumsynth.corpus     the sample library that ships with the repository
+    drumsynth.core       audio I/O and units
 
 Quick start
 -----------
-    from drumsynth import DrumPresets, DrumVoice, DrumScorer, AudioIO
+    from drumsynth import AudioIO, fit, save_fit
 
-    params = DrumPresets.tom()
-    voice = DrumVoice(params, control_period=64, seed=0)
-    AudioIO.write("tom.wav", voice.render_hit(4.0))
+    signal, sr = AudioIO.read("hit.wav")
+    result = fit(signal, sr, target_mse=1e-5)
+    print(result.summary())
+    save_fit(result, "hit_fit", reference=signal)
 
-    card = DrumScorer.for_fundamental(92.5).score(reference_audio, voice.render_hit(4.0))
-    print(card.report())
+and later, from the file alone:
+
+    from drumsynth import SpectralModel
+
+    model = SpectralModel.load("hit_fit/model.npz")
+    AudioIO.write("again.wav", model.render(), model.sample_rate)
 
 See docs/ARCHITECTURE.md for why the model is shaped this way, and
-docs/FINDINGS.md for where measurement disagreed with the design.
+docs/FINDINGS.md for the places where measurement contradicted the design.
 """
 
-from .core import (
-    DEFAULT_SR,
-    LN1000,
-    Audio,
-    AudioIO,
-    Cents,
-    Decay,
-    Decibels,
-    EnvelopeFollower,
-    FilterDesign,
-    LinearRegression,
-    SpectralPeak,
+from .core import DEFAULT_SR, TWO_PI, Audio, AudioIO, Decibels
+from .corpus import Corpus, Sample
+from .fitting import (
+    DEFAULT_TARGET_MSE,
+    Evaluation,
+    FitResult,
+    Progress,
+    Quality,
+    SearchSpace,
+    fit,
+    pareto_frontier,
+    relative_mse,
+    save_fit,
 )
-from .samples import (
-    QualityChecker,
-    Sample,
-    SampleLibrary,
-    SampleQuality,
-    SampleSet,
-    VelocityCalibration,
-)
-from .scoring import (
-    Analyzer,
-    Attributor,
-    BandDecay,
-    BandDecayAnalyzer,
-    Comparator,
-    ComponentScore,
-    DrumScorer,
-    EnvelopeAnalyzer,
-    EnvelopeCurve,
-    GlideAnalyzer,
-    GlideTrack,
-    ModalAnalyzer,
-    ModeEstimate,
-    ModeMatch,
-    ModeMatcher,
-    MultiResolutionSTFTLoss,
-    NoiseAnalyzer,
-    NoiseStats,
-    ParameterSuggestion,
-    ScoreCard,
-    ScoreReport,
-    SignalPrep,
-    SoundDescriptors,
-)
-from .synth import (
-    DampingCurve,
-    DrumKit,
-    DrumParams,
-    DrumPresets,
-    DrumSequencer,
-    DrumVoice,
-    ExcitationTilt,
-    ModalBank,
-    ModalLayout,
-    Mode,
-    ModeResonator,
-    NoiseBand,
-    NoiseBank,
-    NoiseVoice,
-    Tension,
-    TensionTracker,
-)
+from .spectral import Candidate, SpectralModel, StftSpec, analyze, encode, synthesize
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
-    # core
+    "DEFAULT_SR",
+    "DEFAULT_TARGET_MSE",
+    "TWO_PI",
     "Audio",
     "AudioIO",
-    "Cents",
-    "Decay",
+    "Candidate",
+    "Corpus",
     "Decibels",
-    "EnvelopeFollower",
-    "FilterDesign",
-    "LinearRegression",
-    "SpectralPeak",
-    "DEFAULT_SR",
-    "LN1000",
-    # synth
-    "Mode",
-    "NoiseBand",
-    "Tension",
-    "DrumParams",
-    "ModeResonator",
-    "ModalBank",
-    "TensionTracker",
-    "NoiseVoice",
-    "NoiseBank",
-    "DrumVoice",
-    "DrumKit",
-    "DrumSequencer",
-    "DrumPresets",
-    "DampingCurve",
-    "ModalLayout",
-    "ExcitationTilt",
-    # scoring
-    "ModeEstimate",
-    "BandDecay",
-    "GlideTrack",
-    "EnvelopeCurve",
-    "NoiseStats",
-    "SoundDescriptors",
-    "SignalPrep",
-    "ModalAnalyzer",
-    "BandDecayAnalyzer",
-    "GlideAnalyzer",
-    "EnvelopeAnalyzer",
-    "NoiseAnalyzer",
-    "Analyzer",
-    "ModeMatch",
-    "ModeMatcher",
-    "ComponentScore",
-    "ScoreCard",
-    "Comparator",
-    "MultiResolutionSTFTLoss",
-    "ParameterSuggestion",
-    "Attributor",
-    "DrumScorer",
-    "ScoreReport",
-    # samples
+    "Evaluation",
+    "FitResult",
+    "Progress",
+    "Quality",
     "Sample",
-    "SampleQuality",
-    "QualityChecker",
-    "VelocityCalibration",
-    "SampleSet",
-    "SampleLibrary",
+    "SearchSpace",
+    "SpectralModel",
+    "StftSpec",
     "__version__",
+    "analyze",
+    "encode",
+    "fit",
+    "pareto_frontier",
+    "relative_mse",
+    "save_fit",
+    "synthesize",
 ]

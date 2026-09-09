@@ -1,216 +1,163 @@
 # Findings
 
-Five places where the architecture as specified did not survive being built.
-Each one is a measurement, not an opinion, and each is reproducible from the
-repository. Nothing here was quietly worked around — the deviations are in the
-code with the reasoning attached, and the ones that were left alone are pinned
-by tests so they cannot be mistaken for regressions.
+Where measurement contradicted the design. Each entry is something that was
+built, measured and then changed — the changes are already in the code, and
+this file is the record of why.
+
+Unless stated otherwise the measurement is the tom that ships with the
+repository (`data/samples/drums/toms-stereo-tom3/rr1-01-tom3-stereo-rr1.wav`,
+3.5 s at 44.1 kHz), analyzed at `n_fft=2048`, `hop=1024` (151 frames), keeping
+`k=128` bins, and the error is relative waveform MSE of the rendered
+reconstruction.
 
 ---
 
-## 1. The ~10 ms envelope peak does not emerge. It cannot.
+## 1. Log envelopes lose to linear ones by two orders of magnitude
 
-**Architecture §2.2 claims:**
+The first version compressed `log(|Z|/peak + floor)`, on the usual reasoning: a
+partial decays exponentially, which is a straight line in log amplitude, so the
+log domain is where a decay is cheap to describe.
 
-> the ~10 ms peak is *emergent* from summing modes at different frequencies. It
-> is not an attack envelope. Modes are impulse-excited.
+At rank 16, phase kept per frame:
 
-**It is not, and no arrangement of modes makes it so.** Every mode is excited by
-`x += amplitude * gain` with `y` unchanged, which starts it at cosine phase —
-at its own maximum. The output is the sum of those maxima on the first sample,
-and a sum of positive numbers can only decrease. The waveform peak is at t=0 by
-construction, for any mode count, any frequency spread, any gain distribution.
+| what is factorized | relative MSE |
+|---|---|
+| linear `\|Z\|` | **9.2e-6** |
+| `log(\|Z\|/peak + 1e-2)` | 3.4e-3 |
+| `log(\|Z\|/peak + 1e-4)` | 1.7e-2 |
 
-Measured, tom preset against the reference hit:
+370x worse at the same size, and worse the lower the floor. The reason is that
+the objective is squared error on the waveform, not on a log envelope. An error
+of ε in the log domain is a *relative* error of ε everywhere, so it is spent
+mostly where the signal is loud — which is exactly where squared error is
+measured. A truncated SVD of the linear modulus, by Eckart–Young, is the best
+rank-r approximation under precisely the norm being scored.
 
-| | reference | generated |
+The log transform was removed. It would come back the moment the objective
+becomes perceptual, and that is the point: it was not wrong, it was matched to
+a different measure than the one in use.
+
+## 2. A per-component DCT never reached a frontier
+
+The DCT of each envelope, taken alone, was one of the original codecs. It never
+appeared on a Pareto frontier in any measurement, on any of three sounds, in
+either the log or the linear domain:
+
+| codec | scalars | relative MSE |
 |---|---|---|
-| envelope peak | 9.8 ms | 1.0 ms |
-| 10-90% rise | 4.40 ms | 0.00 ms |
-| crest factor | 19.7 dB | 34.0 dB |
-| energy in first 30 ms | 12.5% | 42.8% |
+| linear DCT, 32 coefficients | 23,575 | 1.4e-2 |
+| linear SVD, rank 16 | 23,943 | **9.2e-6** |
 
-Everything else about the preset matches the reference closely (see §5 below),
-which is what makes this one worth stating plainly rather than tuning around.
+A drum envelope starts with a step. A truncated cosine basis spends its
+coefficients on that discontinuity and rings around it, and it pays that cost
+once per component because nothing is shared. The SVD gets the same shapes for
+a fraction of the numbers, because all the partials of one hit want nearly the
+same curves. The codec was deleted rather than kept as an option — an axis
+that has never won costs search time and reader attention on every run.
 
-**What was done.** Nothing, deliberately. `strike()` is implemented exactly as
-specified, the disagreement is pinned by
-`tests/test_integration.py::test_the_attack_does_not_match_and_that_is_known`,
-and `Attributor.suggest_envelope_edits` reports it as
-`excitation.contact_time` rather than proposing gain changes — because scaling
-gains to chase an envelope shape is fitting around a missing mechanism, which
-is the failure mode §8.3 of the architecture warns about.
+## 3. Any approximation of phase lands near 1e-2
 
-**What would fix it.** The seam the architecture already names: `contact_time`,
-the width of the force pulse (§4, "Excitation (deferred, but the seam must
-exist)"). Two candidates, both measured on the tom preset:
+Storing phase every `s` frames and interpolating is the obvious way to halve a
+model, since phase is half of what `raw` holds. It does not work, and it does
+not work in a specific way: quality does not degrade gradually with `s`, it
+falls off a cliff between `s=1` and `s=2` and then barely moves.
 
-| excitation | peak | rise 10-90 | crest |
-|---|---|---|---|
-| impulse into `x` (as specified) | 2.0 ms | 0.00 ms | 33.9 dB |
-| impulse into `y` (velocity, not displacement) | 2.0 ms | 0.00 ms | 31.8 dB |
-| 3 ms half-sine force into `x` | 18.0 ms | 14.97 ms | 23.3 dB |
-| 8 ms half-sine force into `x` | 20.5 ms | 5.99 ms | 19.8 dB |
-| *reference* | *9.8 ms* | *4.40 ms* | *19.7 dB* |
+All with the `raw` codec, so the only thing changing is the phase:
 
-A finite force pulse reaches the right region. A pulse somewhere between 3 and
-8 ms would land close on all three numbers at once. That is a real design
-decision about the excitation model, not a parameter tweak, and it belongs with
-velocity fitting where `contact_time` gets fitted rather than guessed.
-
----
-
-## 2. A symmetric tension smoother makes the glide start backwards.
-
-**Architecture §5.2 specifies:**
-
-```
-energy_smoothed += (energy - energy_smoothed) · (1/(tau·sr))
-```
-
-Starting from zero, that smoother has to *climb* to meet the energy that
-arrived instantaneously at the strike. The frequency ratio therefore rises for
-the first few `tau`, peaks, and only then falls — a pitch **rise** over the
-first ~0.3 s. The reference (§2.3) falls monotonically from 10 ms onward:
-104.3 → 98.4 → 93.9 → 92.5 Hz.
-
-No value of `k` or `tau` fixes the direction. The shape is wrong at the start
-regardless.
-
-**What was done.** `Tension.instant_attack` (default `True`): rising energy is
-followed immediately, falling energy is smoothed with `tau`. Physically the
-head tightens the instant it is displaced; the smoothing exists to stop the
-ratio tracking the beat between close mode pairs, not to model a delay. Setting
-it `False` restores the literal symmetric one-pole, which is worth hearing once.
-
-This also makes `tau` mean what `Attributor` assumes it means. With a symmetric
-smoother, `tau` sets both the rise and the settle, so "glide depth wrong → k,
-settle time wrong → tau" (§6.3) is not separable. With instant attack it is.
-
-**Result.** The preset's glide, measured by `GlideAnalyzer`:
-102.2 → 90.0 Hz, 2.21 semitones, monotone throughout. Reference: 2.07 semitones.
-
----
-
-## 3. `control_period` had no effect on the smoothing coefficient.
-
-Following §5.3 literally — update the ratio every 32-64 samples using a
-per-sample coefficient — stretches the glide's settle time by that same factor.
-A voice at `control_period=64` would glide 64× more slowly than one at 1, which
-is the exact artifact `control_period` is supposed to be free of.
-
-**What was done.** `Tension.smoothing_coef(sr, period)` takes the update period,
-and `TensionTracker` is constructed with it. At `control_period=64` the tracked
-fundamental stays within 3.3 cents of the `control_period=1` trajectory
-everywhere.
-
-Worth noting what that 3.3 cents does to a waveform comparison: the two renders
-correlate at only 0.988, because a 3-cent difference fully decorrelates phase
-within a couple of seconds. That is the architecture's own "never null-test"
-guard rail (§6.5), demonstrated on the engine's own output, and it is why
-`tests/test_synth.py::test_control_period_is_inaudible` compares trajectories
-rather than samples.
-
----
-
-## 4. Guard rails have to be enforced across BOTH signals, not each separately.
-
-**Architecture §6.5:** *"Never score below the reference's noise floor."*
-
-Implemented per-signal, this does the opposite of what it says. A synthesized
-hit decays into digital silence and can be measured 100 dB down; a recorded
-reference flattens at its codec floor 60 dB down. Each side then gets fitted
-over a *different* range, and the difference reads as a synthesis error.
-
-Measured, scoring a clean render against a copy of itself with noise added at
--60 dB (so the two are acoustically identical):
-
-| band | fitted t60 ratio, per-signal floors | with the reference's floor on both |
+| phase | model scalars | relative MSE |
 |---|---|---|
-| 40-130 Hz | 0.957 | 1.000 |
-| 130-230 Hz | 1.045 | 0.997 |
-| 230-400 Hz | 1.028 | 0.999 |
-| 400-900 Hz | 0.975 | 1.001 |
-| **900-2000 Hz** | **3.751** | **0.996** |
+| every frame | 38,935 | **8.9e-6** |
+| every 2nd frame | 29,260 | 1.2e-2 |
+| every 4th frame | 24,487 | 3.1e-2 |
+| every 8th frame | 22,036 | 5.3e-2 |
+| degree-5 polynomial per component | 20,224 | 2.0e-2 |
+| least-squares line per component | 19,712 | 3.7e-2 |
 
-The 900-2000 Hz band sits far below the fundamental, so it is the first to
-disappear into the reference's floor — and the first to report a confident,
-fabricated 3.75× decay error.
+Between exact phase and any approximation of it there is nothing. Spending
+9,500 more numbers on phase every second frame rather than a line per component
+buys a factor of three in error, while keeping every frame — 19,000 more —
+buys three orders of magnitude.
+Once phase is wrong by a radian somewhere loud, the waveform error is
+dominated by that and the details of how it got wrong stop mattering.
 
-**What was done.** Two changes.
+Two consequences. First, a fit with a tight target will always keep phase per
+frame, so the compression has to come from somewhere else — which is what
+motivated §4. Second, the polynomial phase codec that was written to exploit
+the "phase is nearly linear" observation was deleted: at every size, something
+else was better. Striding stayed, because on noisy sounds in the lossy regime
+it does reach the frontier, and it costs one integer to offer.
 
-* `Analyzer.analyze(..., noise_floor_db=...)` takes an override, and
-  `DrumScorer.score` measures the reference's floor and passes it for **both**
-  sides, warning when the generated signal is materially cleaner.
-* `BandDecayAnalyzer` estimates a **per-band** floor as well. The broadband
-  floor is not the floor in every band: a band 50 dB below the fundamental is
-  almost entirely noise, and a fit anchored to the broadband floor never clips.
+Worth being precise about what this measures. A waveform error is brutally
+phase-sensitive and human hearing is not; a reconstruction with the right
+partials at the wrong phase can be indistinguishable and still measure 20 dB
+down. This finding is a fact about the objective as much as about the signal.
 
----
+## 4. Dividing out the bin rotation makes the block low rank, and that is the win
 
-## 5. Everything else in §2 reproduces.
+Each kept bin advances by a known constant phase per frame. Dividing that out
+first — the component block `Z` — leaves rows that move slowly, and a struck
+tonal drum turns out to be a handful of decaying complex exponentials in that
+form. A complex SVD of `Z` then stores amplitude and phase together:
 
-Stated for balance — the four findings above are the exceptions.
-
-The tom preset in `DrumPresets.tom()` is not fitted. It is the architecture's
-own claims turned into parameters: the §2.1 damping table interpolated in
-log-log space, circular-membrane Bessel ratios for the frequencies, the §2.5
-head stretch that puts the first two partials at 1.63 and 2.13, one deliberate
-close pair, and `k` set from the §2.3 glide depth. Rendered and measured back:
-
-| quantity | reference | generated |
+| model | scalars | relative MSE |
 |---|---|---|
-| 40-130 Hz t60 | 2.33 s | 2.55 s |
-| 230-400 Hz t60 | 0.75 s | 0.84 s |
-| 400-900 Hz t60 | 0.55 s | 0.61 s |
-| glide depth | 2.07 semitones | 2.21 semitones |
-| f0 asymptote | 92.5 Hz | 90.0 Hz |
+| `raw` | 38,935 | 8.9e-6 |
+| `shared` rank 16 + per-frame phase | 24,071 | 9.2e-6 |
+| `lowrank` rank 16 | **9,056** | 1.1e-5 |
 
-Within ~10% on every decay band and ~7% on the glide, with nothing fitted. The
-frequency-dependent damping curve really is most of the realism, and the
-energy-driven glide really does reproduce the measured trajectory.
+Same error, a quarter of the numbers. Run over the whole default grid with a
+1e-5 target, every point on the frontier for this tom is `lowrank`, from 248
+scalars to 105,000, and the chosen model is 40.9 kB against 141.2 kB for the
+best `raw` model the same search found at the same target.
 
-Two limits of the preset worth knowing:
+Without the drift compensation this codec is useless: each row rotates at its
+own rate, the block is full rank by construction, and rank 16 explains nothing.
+The whole gain comes from one line in `components.to_components`.
 
-* **30 modes on a 92.5 Hz drum reach ~700 Hz, not 1.5 kHz.** Mode density grows
-  as f², so §3.1's "25-35 modes, resolved to ~1.5 kHz" needs about 140 modes at
-  this fundamental. Everything above ~700 Hz is the noise bank's job, which is
-  what §3.1 actually prescribes — but it means the 900-2000 Hz band decays
-  faster than the reference's 0.31 s. The fix is more modes, never a
-  `decay_shape` parameter. `ModalLayout.ratios()` extrapolates past the
-  tabulated Bessel zeros so raising the count is a one-argument change.
-* **The tension glide makes modes non-stationary**, so `ModalAnalyzer`'s
-  exponential model is slightly misspecified on a glided render and reports
-  frequencies shifted up and t60s stretched. Both signals get the same
-  treatment, so comparison is unaffected — but a mode table read off a glided
-  hit is not a parameter table.
+## 5. Which codec wins is a property of the sound
 
----
+`lowrank` does not win everywhere, and this is why the search exists rather
+than a rule. Numbers needed to hold the same block within 1% error
+(`python examples/02_compare_codecs.py`):
 
-## Smaller things
+| | tonal hit | noise burst |
+|---|---|---|
+| `raw` | 16,705 | 16,705 |
+| `shared` | 8,771 | **14,561** |
+| `lowrank` | **3,088** | 18,528 |
 
-* **`DrumVoice.is_silent` cannot be a property with an argument.** Flagged in
-  §5.4 of the spec itself. It is a method; `silent` is the zero-argument
-  property.
-* **ESPRIT recovers the analysis filter's own transient as a mode.** The
-  bandpass rings for 124 ms in the 30-150 Hz band, which the subspace method
-  cannot distinguish from a real partial — it came back as poles 20 dB *louder*
-  than the fundamental with t60 around 30 ms. Fixed by skipping the filter's
-  measured ringdown before fitting and rejecting poles that decay faster than
-  it. Spurious modes on a six-mode test signal: 25 before, 0 after.
-* **Onsets are fast rises, not level crossings.** A drum with a deliberate close
-  pair beats by 6-8 dB well into its decay, so any threshold low enough to catch
-  a ghost note gets crossed several times per second. Level-crossing detection
-  reported every tom in a test library as a double hit.
-* **Tail truncation cannot be detected from the end level.** The noise floor is
-  estimated as a low quantile of the frame levels, and in a truncated file the
-  quietest frames *are* the cut-off tail — so the floor estimate follows the
-  truncation down and the file looks like it reached it. Detected from the
-  slope at the end of the file instead: a recording that decayed into its floor
-  has a flat tail, a cut one is still descending.
-* **`GlideAnalyzer`'s window is 150 ms, not 250 ms.** A window reports nothing
-  before its own center, and 250 ms is blind until t=125 ms — where most of the
-  glide's depth happens. At 150 ms the tracked frequency lands within 2 cents of
-  the engine's ground truth from the second frame on, against ~10 cents at
-  250 ms. Still far short of the ~500 ms needed to resolve the 88.0/92.8 Hz
-  pair, which is deliberate.
+On noise, `lowrank` is not merely beaten, it is worse than storing everything:
+a rank-48 complex factorization costs more than the block it approximates.
+Noise has no low-rank structure to find, and asking for one buys nothing at any
+rank. On a synthetic cymbal wash — 120 detuned partials with independent decays over
+a noise floor — `shared` with strided phase takes several frontier points, the
+option §3 says is nearly always a bad deal.
+
+Any of these three codecs, chosen in advance for all inputs, would be the wrong
+one for some hit in a kit by a factor of three to five in size.
+
+## 6. float32 storage is free at these targets
+
+Every model quantizes to float32 (complex64 for `lowrank`) at encode time, and
+the fit measures what that produces, so nothing is hidden. The cost is nil:
+
+| | relative MSE |
+|---|---|
+| `raw` at float64 | 8.903628926e-6 |
+| `raw` at float32 | 8.903628984e-6 |
+| quantization alone, one against the other | 9.4e-14 |
+
+Nine orders of magnitude below the tightest target anyone would set. float64
+storage would double every model for nothing, and was never worth an option.
+
+## 7. A grid axis can be silently empty
+
+The prototype this project came from searched hop sizes as ratios of `n_fft`
+(0.25, 0.375, 0.5) and skipped any that did not divide evenly. `0.375·n_fft`
+never divides `n_fft`, so a third of the grid — every candidate on that axis —
+was generated and dropped without a word, run after run.
+
+Hops are now written as integer overlaps (`n_fft // overlap`), which makes the
+invalid combinations unrepresentable rather than silently discarded, and
+`SearchSpace.candidates()` is tested for what it produces rather than trusted
+for what it looks like it produces.

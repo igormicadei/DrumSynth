@@ -1,27 +1,6 @@
-"""Units, audio I/O and DSP primitives shared by synthesis, scoring and samples."""
+"""Audio I/O and the unit conventions everything else in the package assumes."""
 
 from .audio_io import AudioIO
-from .constants import DEFAULT_SR, LN1000, TWO_PI, Audio, Cents, Decay, Decibels
-from .dsp import (
-    EnvelopeFollower,
-    FilterDesign,
-    LineFit,
-    LinearRegression,
-    SpectralPeak,
-)
+from .constants import DEFAULT_SR, TWO_PI, Audio, Decibels
 
-__all__ = [
-    "AudioIO",
-    "Audio",
-    "Cents",
-    "Decay",
-    "Decibels",
-    "EnvelopeFollower",
-    "FilterDesign",
-    "LineFit",
-    "LinearRegression",
-    "SpectralPeak",
-    "DEFAULT_SR",
-    "LN1000",
-    "TWO_PI",
-]
+__all__ = ["DEFAULT_SR", "TWO_PI", "Audio", "AudioIO", "Decibels"]
