@@ -55,7 +55,7 @@ class TrainingRun:
             "--max-modes", str(settings.get("max_modes", 34)),
             "--generations", str(settings.get("generations", 24)),
             "--population", str(settings.get("population", 12)),
-            "--workers", str(settings.get("workers", 1)),
+            "--device", str(settings.get("device", "auto")),
             "--control-period", str(settings.get("control_period", 64)),
             "--noise-bands", str(settings.get("noise_bands", 4)),
             "--seed", str(settings.get("seed", 0)),

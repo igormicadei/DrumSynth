@@ -35,6 +35,10 @@ class SampleSet:
     sr: int = Audio.DEFAULT_SR
     calibration: VelocityCalibration | None = None
 
+    #: Paths named by the manifest whose audio was not on disk, after a
+    #: `load_all(skip_missing=True)`. Empty otherwise.
+    missing: list[str] = field(default_factory=list)
+
     #: Longest decay the set is expected to support. From the reference floor
     #: tom: its slowest mode measured t60 ~= 2.3 s, and a set whose longest
     #: usable window is shorter than that cannot fit it.
@@ -145,13 +149,35 @@ class SampleSet:
 
     # -- preparation ----------------------------------------------------------
 
-    def load_all(self, unload_audio: bool = False) -> "SampleSet":
-        """Load and quality-check every sample."""
-        for sample in self.samples:
-            sample.load(self.sr)
+    def load_all(self, unload_audio: bool = False,
+                 skip_missing: bool = False) -> "SampleSet":
+        """Load and quality-check every sample.
+
+        `skip_missing` exists because a manifest and the audio it names are
+        separate things. The manifests are committed; 3.5 GB of WAV is not, and
+        a partial checkout, an interrupted copy or a single file that failed to
+        transfer are all ordinary. Raising on the first one turns "three of 104
+        samples are missing" into a stack trace and no fit at all, which is a
+        worse answer than fitting the 101 and saying so.
+        """
+        missing: list[str] = []
+        for sample in list(self.samples):
+            try:
+                sample.load(self.sr)
+            except FileNotFoundError:
+                if not skip_missing:
+                    raise
+                missing.append(str(sample.path))
+                continue
             if unload_audio:
                 # Quality and measured energy survive; the audio does not.
                 sample.unload()
+        if missing:
+            self.samples = [
+                sample for sample in self.samples
+                if str(sample.path) not in set(missing)
+            ]
+            self.missing = missing
         return self
 
     def calibrate(self, mode: str = "energy") -> VelocityCalibration:

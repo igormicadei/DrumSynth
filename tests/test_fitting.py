@@ -18,12 +18,17 @@ from drumsynth import DrumPresets, DrumVoice, Mode, NoiseBand, Tension
 from drumsynth.core.constants import Cents
 from drumsynth.synth.params import DrumParams
 from drumsynth.fitting import (
+    BatchLoss,
+    Device,
+    DeviceChoice,
     DrumTrainer,
     ExcitationStage,
     ExcitationTiltModel,
     FitEvaluator,
     InspectionStage,
+    JointStage,
     LinearVoiceBasis,
+    LossBackend,
     ModalStage,
     SpectralTarget,
     TargetBuilder,
@@ -33,6 +38,8 @@ from drumsynth.fitting import (
     VelocityCurve,
     VelocityCurveStage,
 )
+from drumsynth.fitting.backend import TorchBatchLoss
+from drumsynth.fitting.objective import LevelMatch
 from drumsynth.fitting.stages import ExcitationFit
 
 SR = 44100
@@ -411,6 +418,233 @@ class TestVelocityCurve:
         assert curve.amplitude_exponent > 0.0      # harder with velocity
         assert curve.contact_time(1.0) < curve.contact_time(0.0)
         assert curve.amplitude(1.0) > curve.amplitude(0.0)
+
+
+# =============================================================================
+# A manifest and its audio are separate things
+# =============================================================================
+
+
+class TestMissingAudio:
+    @staticmethod
+    def _set(tmp_path, present: int, named: int):
+        """A SampleSet naming `named` files of which only `present` exist."""
+        from drumsynth.core.audio_io import AudioIO
+        from drumsynth.samples.sample import Sample
+        from drumsynth.samples.sample_set import SampleSet
+
+        params = known_drum()
+        sample_set = SampleSet(drum="partial", sr=SR)
+        for index in range(named):
+            path = tmp_path / f"hit{index}.wav"
+            if index < present:
+                AudioIO.write(path, render(params, seconds=0.4,
+                                           seed=index, amplitude=0.3 + index * 0.2),
+                              SR)
+            sample_set.add(Sample(
+                path=str(path), drum="partial",
+                velocity=float(20 + index * 25), sr=SR))
+        return sample_set
+
+    def test_one_absent_wav_does_not_kill_the_load(self, tmp_path):
+        """The manifests are committed and 3.5 GB of WAV is not, so a partial
+        checkout is ordinary. Raising on the first missing file turns "three of
+        104 are missing" into a stack trace and no fit at all."""
+        sample_set = self._set(tmp_path, present=3, named=5)
+        sample_set.load_all(skip_missing=True)
+        assert len(sample_set) == 3
+        assert len(sample_set.missing) == 2
+
+    def test_it_still_raises_when_not_asked_to_skip(self, tmp_path):
+        sample_set = self._set(tmp_path, present=1, named=3)
+        with pytest.raises(FileNotFoundError):
+            sample_set.load_all()
+
+    def test_the_target_says_what_was_left_out(self, tmp_path):
+        sample_set = self._set(tmp_path, present=4, named=6)
+        target = TargetBuilder(SR, 0.4).from_sample_set(sample_set)
+        assert len(target.layers) == 4
+        assert any("not on disk" in w for w in target.warnings)
+
+    def test_too_few_layers_is_called_out(self, tmp_path):
+        """§8.2: never fit to a single hit. Per-velocity fitting always
+        succeeds, so one layer produces a confident, meaningless answer."""
+        sample_set = self._set(tmp_path, present=1, named=4)
+        target = TargetBuilder(SR, 0.4).from_sample_set(sample_set)
+        assert any("§8.2" in w for w in target.warnings)
+
+
+# =============================================================================
+# Where stage 5 runs
+# =============================================================================
+
+
+class TestDeviceChoice:
+    def test_asking_for_cuda_that_is_not_there_is_an_error(self):
+        """Silently falling back is the wrong answer for an explicit request:
+        someone who picked the GPU wants to know it did not happen. "auto" is
+        the setting that falls back."""
+        if DeviceChoice.cuda_detail() is not None:
+            pytest.skip("this machine has CUDA")
+        with pytest.raises(RuntimeError, match="CUDA"):
+            DeviceChoice.resolve(DeviceChoice.CUDA)
+
+    def test_auto_always_resolves(self):
+        device = DeviceChoice.resolve(DeviceChoice.AUTO)
+        assert device.kind in ("cpu", "cuda")
+        assert device.backend in ("numpy", "torch")
+        assert device.detail
+
+    def test_cpu_is_the_numpy_backend(self):
+        assert DeviceChoice.resolve(DeviceChoice.CPU).backend == "numpy"
+
+    def test_the_ui_is_told_what_is_actually_available(self):
+        values = [value for value, _ in DeviceChoice.options()]
+        assert values == ["auto", "cuda", "cpu"]
+        labels = dict(DeviceChoice.options())
+        assert ("not available" in labels["cuda"]) == (
+            DeviceChoice.cuda_detail() is None)
+
+
+@pytest.fixture(scope="module")
+def batch_case():
+    """A basis, a target, and a population of candidates to score against it."""
+    params = known_drum()
+    n = int(SECONDS * SR)
+    reference = render(params, seconds=SECONDS, seed=3)
+    basis = LinearVoiceBasis.build(params, n, SR, 64)
+    target = SpectralTarget(reference, SR)
+
+    rng = np.random.default_rng(0)
+    gains = np.abs(rng.normal(0.5, 0.3, (6, len(params.modes))))
+    levels = np.abs(rng.normal(0.02, 0.01, (6, len(params.noise))))
+    return basis, target, reference, gains, levels
+
+
+def _one_at_a_time(basis, target, reference, gains, levels) -> np.ndarray:
+    out = []
+    for row_gains, row_levels in zip(gains, levels):
+        candidate = basis.render(row_gains, row_levels, 1.0)
+        out.append(target.distance(
+            candidate * LevelMatch.match_rms(candidate, reference)))
+    return np.array(out)
+
+
+def _flat_curve(fit) -> VelocityCurve:
+    """A curve through one fitted layer. Stage 4 needs several velocities to
+    fit exponents; these tests only need something for stage 5 to start from."""
+    return VelocityCurve(
+        amplitude_scale=float(np.linalg.norm(fit.gains)) or 1.0,
+        amplitude_exponent=1.0,
+        contact_scale=float(fit.contact_time),
+        contact_exponent=-0.3,
+        level_scale=np.asarray(fit.levels, dtype=float),
+        level_exponent=1.2,
+    )
+
+
+class TestBatchLoss:
+    def test_the_batch_is_the_same_number_as_one_at_a_time(self, batch_case):
+        """The whole point of the backend is speed, not a different answer.
+        If these diverge, every baseline in TRAINING.md stops being comparable
+        with what stage 5 reports."""
+        basis, target, reference, gains, levels = batch_case
+        batched = BatchLoss(basis, target, reference).losses(gains, levels)
+        assert batched == pytest.approx(
+            _one_at_a_time(*batch_case), abs=1e-9)
+
+    def test_chunking_does_not_change_the_answer(self, batch_case):
+        basis, target, reference, gains, levels = batch_case
+        small = BatchLoss(basis, target, reference, chunk=1).losses(gains, levels)
+        large = BatchLoss(basis, target, reference, chunk=64).losses(gains, levels)
+        assert small == pytest.approx(large, abs=1e-9)
+
+    def test_a_silent_candidate_does_not_divide_by_zero(self, batch_case):
+        basis, target, reference, gains, levels = batch_case
+        losses = BatchLoss(basis, target, reference).losses(
+            np.zeros_like(gains), np.zeros_like(levels))
+        assert np.all(np.isfinite(losses))
+
+
+class TestTorchBackend:
+    @staticmethod
+    @pytest.fixture(scope="class")
+    def torch_device():
+        if DeviceChoice.torch() is None:
+            pytest.skip("torch is not installed")
+        # Deliberately the torch backend on the CPU. It is not a device anyone
+        # would pick, but it is the same code path CUDA takes with the dtype
+        # and the transfers left in, which is the part worth testing where
+        # there is no GPU.
+        return Device("cpu", "torch", "torch on the CPU, for testing")
+
+    def test_it_agrees_with_numpy(self, batch_case, torch_device):
+        basis, target, reference, gains, levels = batch_case
+        torched = TorchBatchLoss(
+            basis, target, reference, torch_device).losses(gains, levels)
+        assert torched == pytest.approx(
+            _one_at_a_time(*batch_case), abs=1e-9)
+
+    def test_the_backend_factory_picks_it_up(self, batch_case, torch_device):
+        basis, target, reference, gains, levels = batch_case
+        built = LossBackend.build(basis, target, reference, torch_device)
+        assert isinstance(built, TorchBatchLoss)
+        assert isinstance(
+            LossBackend.build(basis, target, reference,
+                              DeviceChoice.resolve("cpu")), BatchLoss)
+
+    def test_stage_5_runs_on_it(self, batch_case, torch_device):
+        params = known_drum()
+        audio = render(params)
+        modal = ModalStage(SR, max_modes=12).run(audio, audio)
+        fit = ExcitationStage(SR, 64).run(
+            modal, audio, 100.0, 1.0, list(params.noise))
+        curve = _flat_curve(fit)
+        shape = fit.gains / (np.linalg.norm(fit.gains) or 1.0)
+
+        refined, generations = JointStage(SR, 64).run(
+            modal, shape, curve, [(1.0, audio)], list(params.noise),
+            generations=2, population=4, device=torch_device,
+        )
+        assert generations
+        assert np.isfinite(refined.loss)
+
+
+class TestStageFiveUsesNoProcesses:
+    def test_the_population_is_evaluated_in_one_call(self):
+        """The regression this pins is a real crash, not a slowdown.
+
+        scipy's `workers=N` puts each candidate in its own process, and the
+        objective is a closure: under `spawn` — which is what Windows uses —
+        pickling it raises `Can't get local object`. The fix is not a picklable
+        objective but a vectorized one, so nothing is ever sent to a process.
+        """
+        import multiprocessing
+
+        params = known_drum()
+        audio = render(params, seconds=0.6)
+        modal = ModalStage(SR, max_modes=10).run(audio, audio)
+        fit = ExcitationStage(SR, 64).run(
+            modal, audio, 100.0, 1.0, list(params.noise), seconds=0.6)
+        curve = _flat_curve(fit)
+        shape = fit.gains / (np.linalg.norm(fit.gains) or 1.0)
+
+        original = multiprocessing.Pool
+
+        def forbidden(*args, **kwargs):
+            raise AssertionError(
+                "stage 5 started a worker pool; the objective is a closure and "
+                "this is exactly the crash on Windows")
+
+        multiprocessing.Pool = forbidden
+        try:
+            _, generations = JointStage(SR, 64).run(
+                modal, shape, curve, [(1.0, audio[: int(0.6 * SR)])],
+                list(params.noise), generations=2, population=4,
+            )
+        finally:
+            multiprocessing.Pool = original
+        assert generations
 
 
 # =============================================================================

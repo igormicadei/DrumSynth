@@ -230,7 +230,17 @@ streamlit run streamlit_app.py     # → the Training page
 ```
 
 Pick a drum, watch the stages, read the ScoreCard against the samples, and load
-the result straight into the live synth to play it. See
+the result straight into the live synth to play it.
+
+Stage 5 evaluates a whole generation in one batched call, which is what makes
+CUDA worth using for it:
+
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+```
+
+Then pick the device on the page, or pass `--device cuda` to the worker. Stages
+1-4 are LAPACK on small matrices and stay on the CPU. See
 [docs/TRAINING.md](docs/TRAINING.md) for the stages, the measured baselines,
 and what has and has not been verified.
 

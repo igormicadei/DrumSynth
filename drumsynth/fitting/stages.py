@@ -34,6 +34,7 @@ from ..scoring.prep import SignalPrep
 from ..synth.presets import DampingCurve
 from ..synth.params import DrumParams, Mode, NoiseBand, Tension
 from ..synth.voice import DrumVoice
+from .backend import Device, DeviceChoice, LossBackend
 from .objective import LevelMatch, LinearVoiceBasis, SpectralTarget
 
 Progress = Callable[[dict], None]
@@ -1264,12 +1265,13 @@ class JointStage:
         noise_bands: Sequence[NoiseBand],
         generations: int = 24,
         population: int = 12,
-        workers: int = 1,
+        device: Device | None = None,
         progress: Progress = _noop,
         seed: int = 0,
     ) -> tuple[VelocityCurve, list[Generation]]:
         import time
 
+        device = device or DeviceChoice.resolve(DeviceChoice.CPU)
         freqs = np.array([mode.f_static for mode in modal.modes])
         seed_params = DrumParams(
             modes=modal.modes, noise=list(noise_bands), tension=modal.tension,
@@ -1281,8 +1283,14 @@ class JointStage:
             basis = LinearVoiceBasis.build(
                 seed_params, len(reference), self.sr, self.control_period
             )
-            prepared.append((velocity, basis, SpectralTarget(reference, self.sr),
-                             reference))
+            prepared.append((
+                velocity,
+                LossBackend.build(
+                    basis, SpectralTarget(reference, self.sr), reference, device),
+            ))
+        progress({"stage": 5, "step": f"stage 5 on {device}",
+                  "device": device.kind, "backend": device.backend,
+                  "device_detail": device.detail})
 
         start = np.array([
             curve.amplitude_scale, curve.amplitude_exponent,
@@ -1308,16 +1316,26 @@ class JointStage:
             else np.zeros(len(noise_bands))
         )
 
-        def objective(vector: np.ndarray) -> float:
-            trial = JointStage._curve_from(vector, band_shape)
-            worst = 0.0
-            for velocity, basis, target, reference in prepared:
-                gains = trial.gains(freqs, shape, velocity)
-                levels = trial.levels(velocity)
-                candidate = basis.render(gains, levels, 1.0)
-                scale = LevelMatch.match_rms(candidate, reference)
-                worst = max(worst, target.distance(candidate * scale))
+        def population_loss(vectors: np.ndarray) -> np.ndarray:
+            """(S, 6) candidates -> (S,) losses, the WORST layer for each.
+
+            Every candidate in the generation is evaluated together: one
+            `(S, modes) @ (modes, samples)` product and one batched STFT per
+            layer, rather than S of each. That is what makes a GPU worth
+            anything here, and on the CPU it is still the faster arrangement.
+            """
+            trials = [JointStage._curve_from(row, band_shape) for row in vectors]
+            worst = np.zeros(len(vectors))
+            for velocity, loss in prepared:
+                gains = np.stack([
+                    trial.gains(freqs, shape, velocity) for trial in trials])
+                levels = np.stack([
+                    np.atleast_1d(trial.levels(velocity)) for trial in trials])
+                worst = np.maximum(worst, loss.losses(gains, levels))
             return worst
+
+        def objective(vector: np.ndarray) -> float:
+            return float(population_loss(np.atleast_2d(vector))[0])
 
         history: list[Generation] = []
         began = time.perf_counter()
@@ -1341,16 +1359,22 @@ class JointStage:
                       "elapsed": record.elapsed})
             return False
 
+        # `vectorized`, never `workers`. Handing scipy `workers=N` puts each
+        # candidate in its own process, which on Windows raises outright --
+        # `spawn` cannot pickle a closure -- and everywhere else pickles tens of
+        # megabytes of basis per task to save a few milliseconds of arithmetic.
+        # A vectorized objective evaluates the generation in one call instead,
+        # which is where the batching (and the GPU) pays off.
         result = differential_evolution(
-            objective,
+            lambda x: population_loss(np.atleast_2d(x.T)),
             bounds=bounds,
             maxiter=max(1, generations),
             popsize=max(4, population),
             tol=1e-6,
             seed=seed,
             polish=True,
-            workers=workers,
-            updating="deferred" if workers != 1 else "immediate",
+            vectorized=True,
+            updating="deferred",
             callback=on_generation,
             x0=start,
         )

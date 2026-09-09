@@ -22,6 +22,7 @@ import numpy as np
 from ..core.constants import Audio
 from ..live.protocol import Event
 from ..synth.params import DrumParams
+from .backend import DeviceChoice
 from .targets import DrumCatalogue, FitTarget, TargetBuilder
 from .trainer import DrumTrainer, FitEvaluator, FitResult, TrainingSettings
 
@@ -173,7 +174,12 @@ class WorkerCLI:
         parser.add_argument("--max-modes", type=int, default=34)
         parser.add_argument("--generations", type=int, default=24)
         parser.add_argument("--population", type=int, default=12)
-        parser.add_argument("--workers", type=int, default=1)
+        parser.add_argument(
+            "--device", default=DeviceChoice.AUTO,
+            choices=[DeviceChoice.AUTO, DeviceChoice.CUDA, DeviceChoice.CPU],
+            help="where stage 5 evaluates its population. 'auto' uses CUDA "
+                 "when torch reports a device and CPU otherwise; 'cuda' fails "
+                 "loudly rather than falling back.")
         parser.add_argument("--control-period", type=int, default=64)
         parser.add_argument("--noise-bands", type=int, default=4)
         parser.add_argument("--seed", type=int, default=0)
@@ -197,7 +203,7 @@ class WorkerCLI:
             seconds=args.seconds, max_layers=args.max_layers,
             max_modes=args.max_modes, control_period=args.control_period,
             noise_bands=args.noise_bands, generations=args.generations,
-            population=args.population, workers=args.workers,
+            population=args.population, device=args.device,
             refine_gains=not args.no_refine, seed=args.seed,
         )
         worker = FitWorker(settings, args.sr)

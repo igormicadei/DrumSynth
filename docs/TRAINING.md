@@ -150,18 +150,83 @@ evidence that the fit is good; the stage 3 verdict and the per-layer losses are.
 
 ---
 
-## What the run costs
+## What the run costs, and where it runs
 
 Stages 1, 2 and 4 are measurement and closed-form solves; only stage 5 is a
 search. A 6-layer fit at 2.5 s per hit and 30 modes takes **1-3 minutes**.
 
-**It does not use the GPU, and adding one would not help.** Once the render is a
-matrix product against a cached basis, the work is a few thousand BLAS calls on
-matrices of roughly `30 × 110000` — memory-bandwidth bound, already
-multithreaded across the 16 cores, and small enough that a PCIe round trip per
-evaluation would cost more than the arithmetic saves. The stages that dominate
-wall time (ESPRIT, band decays, the NNLS solve) are LAPACK, not deep learning.
-A `torch` dependency here would buy nothing.
+### Stage 5 evaluates a whole generation at once
+
+Not one candidate at a time, and **never with `workers > 1`**. Handing
+`differential_evolution` a process count puts each candidate in its own process,
+which:
+
+* **crashes on Windows.** The objective is a closure over the prepared bases,
+  `spawn` pickles the function to send it, and a local object cannot be pickled:
+  `AttributeError: Can't get local object 'JointStage.run.<locals>.objective'`.
+* **is slow where it does work.** Each task ships tens of megabytes of basis
+  matrices down a pipe to save a few milliseconds of arithmetic.
+
+The fix is not a picklable objective. It is a **vectorized** one: the population
+arrives as `(S, 6)`, becomes one `(S, modes) @ (modes, samples)` product and one
+batched STFT per velocity layer, and returns `S` losses. Nothing is sent to a
+process. On a 4-core container that alone took a 60-candidate generation from
+1.22 s to 0.91 s.
+
+### CUDA
+
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cu121   # your CUDA version
+```
+
+Then pick the device on the Training page, or `--device cuda` on the worker.
+`auto` uses CUDA when torch reports a device and the CPU otherwise; `cuda`
+**fails loudly** rather than falling back, because someone who picked the GPU
+wants to know if it did not happen.
+
+What moves to the GPU is stage 5 and only stage 5. The bases, band matrices and
+reference spectrograms are uploaded once and stay in VRAM for the whole run —
+for six layers of a 2.5 s hit at 30 modes that is well under a gigabyte — and
+only the `(S, modes)` candidate gains cross the bus per generation, a few
+kilobytes. CUDA computes in float32; measured against the float64 path on the
+same candidates the largest disagreement was **1e-6 dB**, against a loss floor
+of 1.1 dB.
+
+Stages 1-4 stay on the CPU. They are ESPRIT, band-decay regressions and an NNLS
+solve — LAPACK on small matrices, run once each, not something a GPU improves.
+
+> **Correcting an earlier claim.** An earlier version of this document said the
+> GPU "would not help", on the grounds that a single evaluation is a small,
+> latency-bound job where a PCIe round trip costs more than the arithmetic
+> saves. That is true of a single evaluation and it was the wrong thing to
+> measure. A generation is sixty candidates across six layers — 360 renders and
+> 1080 STFTs, all independent, all against data that never has to move. Batched,
+> it is exactly the shape CUDA is for. The unbatched design was the problem, not
+> the device.
+
+---
+
+## When the audio is not there
+
+The manifests are committed; the WAVs are not. A partial checkout, an
+interrupted copy, or one file that failed to transfer all look the same to the
+fitter, and it used to be fatal — `load_all` raised on the first missing file
+and the run died with a stack trace.
+
+It now skips them and says so:
+
+```
+103 of 104 samples named by the manifest are not on disk and were left out
+(rr2-01-tom3-stereo-rr2.wav, rr3-..., rr4-..., ...).
+```
+
+Fitting 101 of 104 samples with a warning is a better answer than fitting none
+with a traceback. Two things still stop a run: no usable sample at all, and —
+as a loud warning rather than an error — fewer than three velocity layers, at
+which point stage 3 cannot run its experiment and stage 4 is fitting
+two-parameter curves through fewer points than they have parameters. §8.2 says
+never fit to a single hit, and a one-layer fit produces a confident, meaningless
+answer.
 
 ---
 

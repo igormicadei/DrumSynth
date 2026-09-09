@@ -11,6 +11,7 @@ out/
 *.wav
 !data/metadata/**/*.json
 .DS_Store
-# Streamlit agent skills (environment-specific symlinks)
+# Streamlit agent skills (environment-specific symlinks into site-packages)
 .claude/skills/developing-with-streamlit
+.agents/skills/developing-with-streamlit
 !data/samples/drums/toms-stereo-tom3/rr1-01-tom3-stereo-rr1.wav

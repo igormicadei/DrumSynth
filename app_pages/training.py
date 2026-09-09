@@ -18,7 +18,7 @@ import pandas as pd
 import streamlit as st
 
 from drumsynth import AudioIO, DrumParams, DrumVoice
-from drumsynth.fitting import DrumCatalogue, TrainingRun
+from drumsynth.fitting import DeviceChoice, DrumCatalogue, TrainingRun
 from drumsynth.studio import Studio
 
 studio = Studio.bootstrap()
@@ -83,13 +83,19 @@ def _setup() -> None:
             help="Stage 5 only: how long the joint refinement runs.",
         )
         population = st.slider("Population", 6, 24, 10, key="fit_population")
-        workers = st.slider(
-            "Worker processes", 1, 16, 4, key="fit_workers",
+
+        options = DeviceChoice.options()
+        labels = {label: value for value, label in options}
+        device = labels[st.selectbox(
+            "Stage 5 device", list(labels), key="fit_device",
             help=(
-                "Stage 5 evaluates a population per generation, which is "
-                "embarrassingly parallel. Set this to your core count."
+                "Stage 5 evaluates a whole generation at once — one matrix "
+                "product and one batched STFT per velocity layer. On CUDA the "
+                "bases stay in VRAM for the run and only the candidate gains "
+                "cross the bus. Stages 1-4 are measurement and closed-form "
+                "solves and run on the CPU either way."
             ),
-        )
+        )]
 
     refine = st.toggle(
         "Polish every mode gain", value=True, key="fit_refine",
@@ -111,7 +117,7 @@ def _setup() -> None:
 
     settings = {
         "seconds": seconds, "max_layers": layers, "max_modes": modes,
-        "generations": generations, "population": population, "workers": workers,
+        "generations": generations, "population": population, "device": device,
         "control_period": 64, "noise_bands": 4, "seed": 0, "refine_gains": refine,
     }
 

@@ -22,6 +22,7 @@ from ..scoring.comparator import ScoreCard
 from ..scoring.scorer import DrumScorer
 from ..synth.params import DrumParams, Mode, NoiseBand, Tension
 from ..synth.voice import DrumVoice
+from .backend import DeviceChoice
 from .objective import LevelMatch
 from .stages import (
     ExcitationFit,
@@ -57,7 +58,7 @@ class TrainingSettings:
     noise_bands: int = 4
     generations: int = 24
     population: int = 12
-    workers: int = 1
+    device: str = DeviceChoice.AUTO
     refine_gains: bool = True
     seed: int = 0
 
@@ -66,7 +67,7 @@ class TrainingSettings:
             "seconds": self.seconds, "max_layers": self.max_layers,
             "max_modes": self.max_modes, "control_period": self.control_period,
             "noise_bands": self.noise_bands, "generations": self.generations,
-            "population": self.population, "workers": self.workers,
+            "population": self.population, "device": self.device,
             "refine_gains": self.refine_gains, "seed": self.seed,
         }
 
@@ -298,7 +299,7 @@ class DrumTrainer:
             bands,
             generations=settings.generations,
             population=settings.population,
-            workers=settings.workers,
+            device=DeviceChoice.resolve(settings.device),
             progress=progress,
             seed=settings.seed,
         )

@@ -200,8 +200,17 @@ class TestTrainingPage:
     def test_one_drum_at_a_time(self, training):
         """§8: f_static and t60 belong to a specific physical drum. The page
         offers a dropdown, not a multiselect, on purpose."""
-        assert [s.label for s in training.selectbox] == ["Drum"]
+        assert training.selectbox[0].label == "Drum"
         assert not training.multiselect
+
+    def test_the_device_picker_offers_what_exists(self, training):
+        """Stage 5 is the only stage that can move to a GPU, and the picker
+        says so rather than offering a device that is not there."""
+        from drumsynth.fitting import DeviceChoice
+
+        picker = [s for s in training.selectbox if s.label == "Stage 5 device"]
+        assert picker, [s.label for s in training.selectbox]
+        assert len(picker[0].options) == len(DeviceChoice.options())
 
     def test_cymbals_are_not_offered(self, training):
         """§9: a struck cymbal moves energy from low modes into high ones over

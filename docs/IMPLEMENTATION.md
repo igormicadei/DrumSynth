@@ -65,6 +65,7 @@ drumsynth/
     │                      LevelMatch
     ├── stages.py          ModalStage, ExcitationStage, TensionStage,
     │                      InspectionStage, VelocityCurveStage, JointStage
+    ├── backend.py         Device, DeviceChoice, BatchLoss, TorchBatchLoss
     ├── trainer.py         DrumTrainer, FitResult, FitEvaluator
     ├── worker.py          the subprocess entry point
     └── client.py          TrainingRun
@@ -231,6 +232,15 @@ something that is not the answer.
 the mix (0.0044 s against 0.11 s before the shared `_advance` refactor), which
 is what makes building the basis cheap enough to redo.
 
+Stage 5 is the one search, and it is vectorized rather than parallelized across
+processes. `differential_evolution(workers=N)` pickles the objective to send it
+to a worker; the objective is a closure, so under `spawn` — Windows — that
+raises outright, and where it works it ships the bases down a pipe per task. A
+vectorized objective evaluates the generation in one call instead, which needs
+no processes and is the arrangement a GPU can use: see `backend.py`, where the
+numpy and torch paths compute the same transform because `SpectralTarget` owns
+its definition and both borrow it.
+
 See [TRAINING.md](TRAINING.md) for the stages, the measured baselines, and the
 two places a plausible-looking fit goes wrong.
 
@@ -257,7 +267,7 @@ chunks regardless of `control_period`.
 
 ## Testing
 
-380 tests, ~2 min. Nine files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
+396 tests, ~3 min. Nine files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
 
 * `tests/test_synth.py` — superposition, decay accuracy, tension behaviour, and
   the `ModalBank` ↔ `ModeResonator` equivalence.

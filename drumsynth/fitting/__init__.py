@@ -13,6 +13,7 @@ physical drum, so there is nothing a second drum could contribute except a way
 to get them confused.
 """
 
+from .backend import BatchLoss, Device, DeviceChoice, LossBackend
 from .client import TrainingRun
 from .objective import LinearVoiceBasis, SpectralTarget, TensionTrajectory
 from .stages import (
@@ -60,6 +61,10 @@ __all__ = [
     "SpectralTarget",
     "TensionTrajectory",
     "TrainingRun",
+    "Device",
+    "DeviceChoice",
+    "BatchLoss",
+    "LossBackend",
     "FitWorker",
     "FitEvent",
 ]

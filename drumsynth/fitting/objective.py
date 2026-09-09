@@ -261,6 +261,33 @@ class SpectralTarget:
         banded = power @ self._banks[size]
         return 10.0 * np.log10(banded + self.log_eps)
 
+    # -- what a batched backend needs -----------------------------------------
+    #
+    # The transform is defined here and nowhere else. A GPU backend has to
+    # reproduce it exactly or its losses are not comparable with the ones every
+    # other stage reports, so it borrows these rather than reimplementing them.
+
+    HOP_DIVISOR: int = 4
+
+    @staticmethod
+    def hop(n_fft: int) -> int:
+        return n_fft // SpectralTarget.HOP_DIVISOR
+
+    def window(self, n_fft: int) -> np.ndarray:
+        return self._windows[n_fft]
+
+    def band_matrix(self, n_fft: int) -> np.ndarray:
+        """(bins, bands), summing power into log-spaced bands."""
+        return self._banks[n_fft]
+
+    def reference_bands(self, n_fft: int) -> np.ndarray:
+        """(frames, bands) of the reference, in dB."""
+        return self._reference[n_fft]
+
+    def band_weights(self, n_fft: int) -> np.ndarray:
+        """(frames, bands), 1 where the reference is above the floor."""
+        return self._weights[n_fft]
+
     def distance(self, candidate: np.ndarray) -> float:
         """Weighted mean absolute band-level distance, in dB, over all
         resolutions."""

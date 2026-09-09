@@ -95,6 +95,10 @@ class TargetBuilder:
     #: shape of the velocity curve, which is only two numbers per quantity.
     MAX_LAYERS: int = 10
 
+    #: Below this, stage 3's experiment cannot run and stage 4's two-parameter
+    #: curves are fitted through fewer points than they have parameters.
+    MIN_LAYERS: int = 3
+
     def __init__(
         self,
         sr: int = Audio.DEFAULT_SR,
@@ -112,10 +116,21 @@ class TargetBuilder:
                         progress=None) -> FitTarget:
         report = progress or (lambda _: None)
         report({"step": f"loading {len(sample_set)} samples"})
-        sample_set.load_all()
+        named = len(sample_set)
+        sample_set.load_all(skip_missing=True)
 
         usable = [s for s in sample_set if s.quality is None or s.quality.is_usable]
         warnings = []
+        if sample_set.missing:
+            examples = ", ".join(
+                Path(path).name for path in sample_set.missing[:3])
+            warnings.append(
+                f"{len(sample_set.missing)} of {named} samples named by the "
+                f"manifest are not on disk and were left out ({examples}"
+                + (", ..." if len(sample_set.missing) > 3 else "")
+                + "). The manifests are committed and the WAVs are not, so a "
+                "partial checkout looks exactly like this"
+            )
         if len(usable) < len(sample_set):
             warnings.append(
                 f"{len(sample_set) - len(usable)} of {len(sample_set)} samples are "
@@ -138,6 +153,16 @@ class TargetBuilder:
 
         chosen = self._pick_layers(usable)
         report({"step": f"prepared {len(chosen)} velocity layers"})
+        if len(chosen) < TargetBuilder.MIN_LAYERS:
+            warnings.append(
+                f"only {len(chosen)} velocity layer"
+                + ("s" if len(chosen) != 1 else "")
+                + " survived, and §8.2 says never fit to a single hit: a "
+                "parameter set tuned to one recording is tuned to that "
+                "recording. Stage 3 cannot run its experiment and stage 4 has "
+                "nothing to fit a curve through, so treat the result as a "
+                "starting point to edit by hand, not as a fitted drum"
+            )
 
         layers = [self._to_layer(sample) for sample in chosen]
         reference = self._reference_index(layers)
