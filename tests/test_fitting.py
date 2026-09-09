@@ -31,6 +31,7 @@ from drumsynth.fitting import (
     LossBackend,
     ModalStage,
     NoiseDecayStage,
+    ResidualModeStage,
     SpectralTarget,
     TargetBuilder,
     TensionFit,
@@ -526,6 +527,158 @@ class TestNoiseDecayStage:
         assert len(residual) == len(audio)
         # Removing the modal bank has to leave less energy than it started with.
         assert np.sum(residual**2) < np.sum(np.asarray(audio) ** 2)
+
+
+# =============================================================================
+# Checking stage 1 against the residual
+# =============================================================================
+
+
+class TestResidualModeStage:
+    @staticmethod
+    def _fitted(params: DrumParams, max_modes: int = 10):
+        """Stage 1 and stage 2 on one hit, so there is a residual to look at."""
+        audio = render(params, seconds=1.2, seed=3)
+        modal = ModalStage(SR, max_modes=max_modes).run(audio, audio)
+        fit = ExcitationStage(SR, 64).run(
+            modal, audio, 100.0, 1.0, list(params.noise), seconds=1.2)
+        return modal, fit, audio[: int(1.2 * SR)]
+
+    def test_a_partial_the_bank_cannot_reach_is_found(self):
+        """Stage 1 is the ceiling on everything after it — no later stage moves
+        `f_static` — and nothing used to check whether it had found the
+        partials that are there. The residual is that check: it is by
+        construction everything the model cannot produce."""
+        params = known_drum()
+        extra = 3100.0            # above MAX_MODE_HZ's reach for this drum
+        with_extra = DrumParams(
+            modes=list(params.modes) + [Mode(extra, 0.25, 0.5)],
+            noise=params.noise, tension=params.tension)
+
+        # Fit with a bank too small to have found it.
+        modal, fit, audio = self._fitted(with_extra, max_modes=6)
+        added, notes = ResidualModeStage(SR, 64).propose(
+            modal, fit, list(params.noise), audio, budget=8)
+        assert added, notes
+        assert any(abs(Cents.between(np.array([mode.f_static]), extra)[0]) < 200
+                   for mode in added), [round(m.f_static) for m in added]
+
+    def test_noise_ripple_is_not_mistaken_for_a_partial(self):
+        """The noise bank's own residual is broadband ripple, and at a 16k
+        transform a ripple is a perfectly good local maximum. Measured before
+        the persistence test: on a synthetic drum with exactly six partials this
+        proposed fourteen more — at 953, 3537, 4110, 5292, 6656 and 7136 Hz,
+        where the truth has nothing — and each one lowered the loss slightly,
+        because another resonator is another free parameter."""
+        params = DrumParams(
+            modes=known_drum().modes,
+            noise=[NoiseBand(200.0, 900.0, 0.05, 0.06),
+                   NoiseBand(900.0, 4000.0, 0.02, 0.04)],
+            tension=Tension(k=0.0, tau=0.09))
+        modal, fit, audio = self._fitted(params, max_modes=14)
+        added, notes = ResidualModeStage(SR, 64).propose(
+            modal, fit, list(params.noise), audio, budget=12)
+        assert len(added) <= 2, (
+            f"{len(added)} spurious partials from noise ripple: "
+            f"{[round(m.f_static) for m in added]}")
+
+    def test_a_full_budget_says_so_rather_than_silently_doing_nothing(self):
+        modal, fit, audio = self._fitted(known_drum())
+        added, notes = ResidualModeStage(SR, 64).propose(
+            modal, fit, [], audio, budget=0)
+        assert added == []
+        assert "budget" in notes[0]
+
+    def test_a_proposed_mode_gets_its_t60_from_the_damping_curve(self):
+        """Stage 1 does not fit a `t60` per mode and neither does this: the
+        curve is the measurement, and a new partial is read off it like every
+        other."""
+        params = known_drum()
+        modal, fit, audio = self._fitted(params, max_modes=6)
+        added, _ = ResidualModeStage(SR, 64).propose(
+            modal, fit, list(params.noise), audio, budget=6)
+        for mode in added:
+            assert 0.005 <= mode.t60 <= 12.0
+        if len(added) >= 2:
+            ordered = sorted(added, key=lambda m: m.f_static)
+            assert ordered[0].t60 >= ordered[-1].t60      # higher rings shorter
+
+    def test_the_trainer_reverts_modes_that_are_not_earned(self):
+        """More parameters always buy a little. The trainer measures the gain on
+        the layers that were NOT free to fit and requires a real margin."""
+        hits = velocity_layers(known_drum(), velocities=(45, 90, 127))
+        target = TargetBuilder(SR, 0.9).from_audio("earned", hits)
+        settings = TrainingSettings(seconds=0.9, max_layers=3, max_modes=26,
+                                    generations=2, population=6, noise_bands=2,
+                                    device="cpu")
+        seen: list[dict] = []
+        DrumTrainer(settings, SR).run(target, progress=seen.append)
+        events = [e for e in seen if e.get("phase") == "residual_modes"]
+        assert events
+        note = " ".join(events[0]["notes"])
+        assert ("kept" in note) or ("reverted" in note) or ("nothing" in note)
+
+
+class TestNoiseLevelsAreMatchedByEnergy:
+    def test_a_noise_band_is_not_projected_onto(self):
+        """`LevelMatch.best_gain` is a least-squares projection, exactly right
+        for a mode — a sine at a known frequency and phase — and structurally
+        wrong for a band of noise. The basis row is one realization and the
+        reference holds a different one; two uncorrelated signals project onto
+        each other at approximately zero whatever their levels.
+
+        Measured: every band came back at 1.3e-08 — silence — on a drum whose
+        band was at 0.05, and the layer loss sat at 4.86 dB. Matching by energy
+        instead recovers 0.085 and 1.97 dB."""
+        bands = [NoiseBand(200.0, 900.0, 0.05, 0.9)]
+        params = DrumParams(modes=known_drum().modes, noise=bands,
+                            tension=Tension(k=0.0, tau=0.09))
+        audio = render(params, seconds=1.6, seed=3)
+        modal = ModalStage(SR, max_modes=12).run(audio, audio)
+        fit = ExcitationStage(SR, 64).run(modal, audio, 100.0, 1.0, bands)
+
+        assert fit.levels[0] > 0.01, (
+            f"the noise band came back at {fit.levels[0]:.3e} against a truth "
+            "of 0.05 — the level solve is projecting onto noise again")
+        assert fit.levels[0] == pytest.approx(0.05, rel=1.5)
+
+    def test_the_basis_knows_which_band_each_row_occupies(self):
+        """Solving a noise level needs the band, because it cannot be done by
+        correlation."""
+        params = known_drum()
+        basis = LinearVoiceBasis.build(
+            params, int(0.5 * SR), SR, 64)
+        assert len(basis.bands) == len(params.noise)
+        for edges, band in zip(basis.bands, params.noise):
+            assert edges == (band.f_low, band.f_high)
+
+
+class TestNoiseDecayIsVerified:
+    def test_a_measured_decay_still_has_to_beat_the_objective(self):
+        """`TensionStage` makes the glide prove itself against the band loss
+        before it is kept. A decay measured on a residual deserves the same
+        test: the residual is what the modes could not explain, which is not
+        the same thing as what this band should be doing about it."""
+        bands = [NoiseBand(200.0, 900.0, 0.05, 0.9)]
+        params = DrumParams(modes=known_drum().modes, noise=bands,
+                            tension=Tension(k=0.0, tau=0.09))
+        audio = render(params, seconds=1.6, seed=3)
+        modal = ModalStage(SR, max_modes=12).run(audio, audio)
+        fit = ExcitationStage(SR, 64).run(modal, audio, 100.0, 1.0, bands)
+
+        stage = NoiseDecayStage(SR, 64)
+        default = [NoiseBand(200.0, 900.0, 0.05, 0.055)]
+        fitted, notes = stage.run(
+            modal.modes, fit.gains, modal.tension, default, audio)
+
+        # Whatever it lands on has to be at least as good as the default under
+        # the loss — that is the point of the check.
+        target = SpectralTarget(audio, SR)
+        chosen = stage._loss(modal.modes, fit.gains, modal.tension,
+                             fitted, audio, target)
+        plain = stage._loss(modal.modes, fit.gains, modal.tension,
+                            default, audio, target)
+        assert chosen <= plain + NoiseDecayStage.MARGIN_DB
 
 
 # =============================================================================

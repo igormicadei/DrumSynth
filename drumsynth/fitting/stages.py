@@ -639,14 +639,39 @@ class ExcitationStage:
     @staticmethod
     def _initial_levels(basis: LinearVoiceBasis, target: SpectralTarget,
                         gains: np.ndarray) -> np.ndarray:
-        """Noise levels from the residual the modes could not explain."""
+        """Noise levels from the residual the modes could not explain.
+
+        Matched by ENERGY, not by correlation. `LevelMatch.best_gain` is a
+        least-squares projection of the residual onto the candidate, which is
+        exactly right for a mode — a sine at a known frequency and phase — and
+        structurally wrong for a band of noise. The basis row is one realization
+        of a random process and the reference contains a different one; two
+        uncorrelated signals project onto each other at approximately zero,
+        whatever their levels. Measured: every band came back at 1.3e-08, which
+        is silence, on a drum whose noise band was at 0.05.
+
+        Energy is the quantity that survives the realizations being different,
+        which is the same reason §6.5 says the loss has to aggregate into bands
+        before comparing. So each band's level is the ratio of the residual's
+        energy inside that band to the row's own.
+        """
         if basis.n_bands == 0:
             return np.zeros(0)
         residual = target.raw[: basis.n_samples] - gains @ basis.modal
+        spectrum = np.abs(np.fft.rfft(residual)) ** 2
+        freqs = np.fft.rfftfreq(len(residual), 1.0 / basis.sr)
+
         levels = []
-        for row in basis.noise:
-            scale = LevelMatch.best_gain(row, residual)
-            levels.append(max(scale, 0.0))
+        for row, band in zip(basis.noise, basis.bands):
+            inside = (freqs >= band[0]) & (freqs < band[1])
+            if not inside.any():
+                levels.append(0.0)
+                continue
+            row_power = float(
+                np.sum(np.abs(np.fft.rfft(row))[inside] ** 2))
+            residual_power = float(np.sum(spectrum[inside]))
+            levels.append(
+                float(np.sqrt(residual_power / row_power)) if row_power > 0 else 0.0)
         return np.array(levels)
 
     # -- polish ---------------------------------------------------------------
@@ -916,6 +941,216 @@ class InspectionStage:
 
 
 @dataclass
+class ResidualModeStage:
+    """Partials stage 1 missed, found in what stage 2 could not explain.
+
+    Stage 1 is a measurement and it is the ceiling on everything after it: no
+    later stage touches `f_static`, so a partial ESPRIT did not report is a
+    partial the drum will never have. Until now nothing checked whether it had
+    reported them all — the fit simply inherited whatever came out and spent
+    the rest of its budget arranging gains around it.
+
+    The check is the residual. Subtract the fitted model from the reference and
+    what remains is, by construction, everything the model cannot produce. A
+    peak standing proud of that residual at a frequency no mode covers is a
+    partial with nowhere to go, and it is visible whether or not anyone knew to
+    look for it.
+
+    Two things keep this from being a licence to add modes until the loss goes
+    down. It only proposes peaks that are **prominent** — a local maximum six
+    decibels above its own neighbourhood, not a bump in the noise — and the
+    trainer **re-fits and keeps the result only if the loss actually improves**,
+    reverting otherwise. Adding a resonator always gives the gain solve another
+    degree of freedom; the question is whether it uses it on the drum.
+    """
+
+    #: A peak has to stand this far above its own surroundings to be a partial
+    #: rather than a ripple in the residual's floor.
+    MIN_PROMINENCE_DB: float = 6.0
+
+    #: Closer than this to a mode that already exists and it is that mode,
+    #: mis-placed — which is stage 1's problem to have got wrong, not a new
+    #: partial. The same threshold `_merge_close` uses, widened a little because
+    #: here the comparison is against a fitted mode rather than another estimate.
+    NEAR_CENTS: float = 60.0
+
+    #: Below the fundamental there is nothing to find, and above this the
+    #: architecture hands over to the noise bank (§4).
+    RANGE: tuple[float, float] = (30.0, 8000.0)
+
+    #: Resolution of the spectrum peaks are picked from. Long, because two
+    #: partials a quarter-tone apart at 200 Hz are 12 Hz apart.
+    N_FFT: int = 16384
+
+    def __init__(self, sr: int = Audio.DEFAULT_SR, control_period: int = 64) -> None:
+        self.sr = int(sr)
+        self.control_period = int(control_period)
+
+    def propose(self, modal: ModalFit, fit: "ExcitationFit",
+                bands: Sequence[NoiseBand], reference: np.ndarray,
+                budget: int, progress: Progress = _noop) -> tuple[list[Mode], list[str]]:
+        """Modes to add, and why. Empty when the residual has nothing in it."""
+        if budget <= 0:
+            return [], ["the mode budget is full — raise `max modes` to let "
+                        "stage 1 be checked against the residual"]
+
+        progress({"stage": "residual", "step": "looking for partials the modes missed"})
+        residual = self.residual(modal, fit, bands, reference)
+        peaks = self._persistent_peaks(residual)
+
+        existing = np.array([mode.f_static for mode in modal.modes])
+        damping = DampingCurve(tuple(modal.damping_anchors)) if modal.damping_anchors \
+            else DampingCurve()
+
+        chosen: list[Mode] = []
+        for freq, prominence in peaks:
+            if existing.size and np.min(np.abs(
+                    Cents.between(existing, freq))) < ResidualModeStage.NEAR_CENTS:
+                continue
+            chosen.append(Mode(float(freq), 1e-6,
+                               float(np.clip(damping(freq), 0.005, 12.0))))
+            if len(chosen) >= budget:
+                break
+
+        notes = []
+        if chosen:
+            shown = ", ".join(f"{mode.f_static:.0f} Hz" for mode in chosen[:6])
+            notes.append(
+                f"{len(chosen)} partial{'s' if len(chosen) != 1 else ''} stand "
+                f"clear of the residual at frequencies no mode covers ({shown}"
+                + (", ..." if len(chosen) > 6 else "")
+                + "). Stage 1 did not report them; they are proposed here and "
+                "kept only if re-fitting with them actually lowers the loss"
+            )
+        else:
+            notes.append(
+                "nothing stands clear of the residual — stage 1 found the "
+                "partials that are there, and what is left is broadband, which "
+                "is the noise bank's job rather than another resonator's"
+            )
+        progress({"stage": "residual", "proposed": len(chosen),
+                  "frequencies": [mode.f_static for mode in chosen]})
+        return chosen, notes
+
+    # -- the pieces -----------------------------------------------------------
+
+    def residual(self, modal: ModalFit, fit: "ExcitationFit",
+                 bands: Sequence[NoiseBand], reference: np.ndarray) -> np.ndarray:
+        """The reference minus the whole fitted model, least-squares scaled."""
+        params = DrumParams(
+            modes=[
+                Mode(mode.f_static, float(max(gain, 1e-12)), mode.t60)
+                for mode, gain in zip(modal.modes, fit.gains)
+            ],
+            noise=[
+                NoiseBand(band.f_low, band.f_high, float(max(level, 0.0)), band.t60)
+                for band, level in zip(bands, np.atleast_1d(fit.levels))
+            ],
+            tension=modal.tension, output_gain=1.0,
+        )
+        model = DrumVoice(params, self.sr, self.control_period, seed=0).render_hit(
+            len(reference) / self.sr)
+        length = min(len(model), len(reference))
+        model, reference = model[:length], reference[:length]
+        scale = float(np.dot(model, reference)) / max(float(np.dot(model, model)), 1e-30)
+        return reference - model * scale
+
+    def _spectrum(self, signal: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        """(Hz, dB) averaged over the hit.
+
+        Averaged rather than taken from one frame, for the reason §6.5 gives:
+        a single frame samples the noise as much as the signal, and a peak that
+        only exists in one frame is the noise.
+        """
+        n_fft = ResidualModeStage.N_FFT
+        signal = np.asarray(signal, dtype=np.float64)
+        if len(signal) < n_fft:
+            signal = np.pad(signal, (0, n_fft - len(signal)))
+        window = np.hanning(n_fft)
+        frames = np.lib.stride_tricks.sliding_window_view(
+            signal, n_fft)[:: n_fft // 4]
+        magnitude = np.abs(np.fft.rfft(frames * window, axis=-1)).mean(axis=0)
+        freqs = np.fft.rfftfreq(n_fft, 1.0 / self.sr)
+        return freqs, Decibels.from_amplitude(np.maximum(magnitude, 1e-15))
+
+    #: The residual is split into this many spans, and a peak has to be
+    #: prominent in at least `MIN_SPANS` of them.
+    SPANS: int = 3
+    MIN_SPANS: int = 2
+
+    def _persistent_peaks(self, residual: np.ndarray) -> list[tuple[float, float]]:
+        """Peaks that are still there later — the ones that RING.
+
+        Averaging over the hit is not enough on its own. The noise bank's own
+        residual has broadband ripple, and at a 16k transform a ripple is a
+        perfectly good local maximum; adding a resonator to chase one always
+        lowers the loss a little, because it is another free parameter fitting
+        one realization of noise. Measured: on a synthetic drum with exactly six
+        partials this proposed fourteen more, at 953, 3537, 4110, 5292, 6656 and
+        7136 Hz, where the truth has nothing.
+
+        A real partial is an exponential. It is prominent at the start of the
+        hit and still prominent later. A noise ripple is prominent in whichever
+        span happened to produce it. So the residual is cut into spans and a
+        peak has to survive most of them — which is the difference between
+        "there is energy here" and "something is ringing here".
+        """
+        spans = np.array_split(np.asarray(residual, dtype=np.float64),
+                               ResidualModeStage.SPANS)
+        per_span: list[dict[int, float]] = []
+        freqs = None
+        for span in spans:
+            if len(span) < 64:
+                continue
+            freqs, levels = self._spectrum(span)
+            found = {}
+            for hz, prominence in ResidualModeStage._peaks(freqs, levels):
+                found[int(round(hz))] = prominence
+            per_span.append(found)
+
+        if freqs is None or len(per_span) < ResidualModeStage.MIN_SPANS:
+            return []
+
+        # A peak in one span and its neighbour in the next are the same partial
+        # if they land within a bin or two of each other.
+        tolerance = max(2.0, float(freqs[1] - freqs[0]) * 2.0)
+        survivors: list[tuple[float, float]] = []
+        for hz, prominence in sorted(per_span[0].items(), key=lambda item: -item[1]):
+            seen, strength = 1, prominence
+            for later in per_span[1:]:
+                near = [value for other, value in later.items()
+                        if abs(other - hz) <= tolerance]
+                if near:
+                    seen += 1
+                    strength = min(strength, max(near))
+            if seen >= ResidualModeStage.MIN_SPANS:
+                survivors.append((float(hz), strength))
+        survivors.sort(key=lambda item: -item[1])
+        return survivors
+
+    @staticmethod
+    def _peaks(freqs: np.ndarray, levels: np.ndarray) -> list[tuple[float, float]]:
+        """(Hz, prominence dB), strongest first, inside the modal range."""
+        from scipy.signal import find_peaks
+
+        low, high = ResidualModeStage.RANGE
+        inside = (freqs >= low) & (freqs <= high)
+        if inside.sum() < 8:
+            return []
+        band_freqs, band_levels = freqs[inside], levels[inside]
+
+        found, properties = find_peaks(
+            band_levels, prominence=ResidualModeStage.MIN_PROMINENCE_DB)
+        if not len(found):
+            return []
+        order = np.argsort(-properties["prominences"])
+        return [
+            (float(band_freqs[found[index]]),
+             float(properties["prominences"][index]))
+            for index in order
+        ]
+
+
 class NoiseDecayStage:
     """The transient bank's decays, measured from what the modes leave behind.
 
@@ -974,13 +1209,14 @@ class NoiseDecayStage:
             (decay.level_db for decay in BandDecayAnalyzer(self.sr).analyze(reference)),
             default=0.0,
         )
-        measured = BandDecayAnalyzer(
+        band_decays = BandDecayAnalyzer(
             self.sr, bands=[(band.f_low, band.f_high) for band in bands]
         ).analyze(residual)
 
         out: list[NoiseBand] = []
         notes: list[str] = []
-        for band, decay in zip(bands, measured):
+        measured: set[int] = set()
+        for band, decay in zip(bands, band_decays):
             trusted = (
                 decay.is_valid
                 and decay.r_squared >= NoiseDecayStage.MIN_R_SQUARED
@@ -996,6 +1232,7 @@ class NoiseDecayStage:
                     f"{decay.level_db - peak:.0f} dB below peak) — measured, "
                     f"against the {band.t60 * 1000:.0f} ms default"
                 )
+                measured.add(len(out) - 1)
             else:
                 out.append(band)
                 notes.append(
@@ -1004,9 +1241,111 @@ class NoiseDecayStage:
                     f"{decay.level_db - peak:.0f} dB below peak with r^2 "
                     f"{decay.r_squared:.2f}, which is a noise floor, not a decay"
                 )
+        # A measurement is a proposal, not a result. `TensionStage` makes the
+        # glide prove itself against the band loss before it is kept, and a
+        # decay measured on a residual deserves exactly the same test: the
+        # residual is what the modes could not explain, which is not the same
+        # thing as what this band should be doing about it.
+        out, refined = self.refine(modes, gains, tension, out, bands,
+                                   reference, measured, progress)
+        notes.extend(refined)
+
         progress({"stage": "noise", "decays": [band.t60 for band in out],
                   "notes": notes})
         return out, notes
+
+    #: Multiples of the measured decay tried against the objective. The
+    #: measurement is the middle of the range, not the answer.
+    SCALES: tuple[float, ...] = (0.5, 0.71, 1.0, 1.41, 2.0)
+
+    #: A scaling has to beat the measurement by this much band-dB to displace
+    #: it, and the default has to be beaten by this much to be displaced at all.
+    MARGIN_DB: float = 0.02
+
+    def refine(self, modes: list[Mode], gains: np.ndarray, tension: Tension,
+               bands: list[NoiseBand], defaults: Sequence[NoiseBand],
+               reference: np.ndarray, measured: set[int],
+               progress: Progress = _noop) -> tuple[list[NoiseBand], list[str]]:
+        """Test each measured decay against the loss, and around it.
+
+        Cheap enough to be worth doing: the level solve is a closed form, so a
+        candidate decay costs one basis build and one non-negative solve rather
+        than a search.
+        """
+        if not measured:
+            return bands, []
+
+        target = SpectralTarget(reference, self.sr)
+        notes: list[str] = []
+        out = list(bands)
+
+        for index in sorted(measured):
+            candidates = [(defaults[index].t60, "the default")]
+            for scale in NoiseDecayStage.SCALES:
+                t60 = float(np.clip(out[index].t60 * scale,
+                                    *NoiseDecayStage.RANGE))
+                candidates.append((t60, f"{scale:.2f}x the measurement"))
+
+            best_t60, best_loss, best_label = None, float("inf"), ""
+            for t60, label in candidates:
+                trial = list(out)
+                trial[index] = NoiseBand(out[index].f_low, out[index].f_high,
+                                         out[index].level, t60)
+                loss = self._loss(modes, gains, tension, trial, reference, target)
+                if loss < best_loss - NoiseDecayStage.MARGIN_DB:
+                    best_t60, best_loss, best_label = t60, loss, label
+
+            if best_t60 is None:
+                continue
+            was = out[index].t60
+            out[index] = NoiseBand(out[index].f_low, out[index].f_high,
+                                   out[index].level, best_t60)
+            if abs(best_t60 - was) > 1e-9:
+                notes.append(
+                    f"{out[index].f_low:.0f}-{out[index].f_high:.0f} Hz: the "
+                    f"objective preferred {best_t60 * 1000:.0f} ms "
+                    f"({best_label}) over the measured {was * 1000:.0f} ms, "
+                    f"at {best_loss:.3f} dB"
+                )
+        return out, notes
+
+    #: Level multipliers tried per candidate decay. A least-squares projection
+    #: onto the band is only a starting point; the loss is a log-magnitude
+    #: distance and its optimum is not the projection's.
+    LEVEL_PROBES: tuple[float, ...] = (0.25, 0.5, 1.0, 2.0, 4.0)
+
+    def _loss(self, modes: list[Mode], gains: np.ndarray, tension: Tension,
+              bands: Sequence[NoiseBand], reference: np.ndarray,
+              target: SpectralTarget) -> float:
+        """Band loss with these decays, at the best level each one can manage.
+
+        Re-solving the level is not optional and neither is scanning around it.
+        A band that rings thirty times longer needs a far lower level for the
+        same energy, so comparing decays at a fixed level compares loudness
+        instead — and a single least-squares projection is not the optimum of a
+        log-magnitude loss either. Measured while building this: without the
+        scan the objective "preferred" a 55 ms default over a 1035 ms
+        measurement on a drum whose band genuinely rang for 900 ms, because the
+        projection happened to suit the short decay better.
+        """
+        params = DrumParams(
+            modes=[
+                Mode(mode.f_static, float(max(gain, 1e-12)), mode.t60)
+                for mode, gain in zip(modes, gains)
+            ],
+            noise=list(bands), tension=tension, output_gain=1.0,
+        )
+        basis = LinearVoiceBasis.build(
+            params, len(reference), self.sr, self.control_period)
+        unit_gains = np.asarray(gains, dtype=float)
+        start = ExcitationStage._initial_levels(basis, target, unit_gains)
+
+        best = float("inf")
+        for probe in NoiseDecayStage.LEVEL_PROBES:
+            candidate = basis.render(unit_gains, start * probe, 1.0)
+            best = min(best, target.distance(
+                candidate * LevelMatch.match_rms(candidate, reference)))
+        return best
 
     def residual(self, modes: list[Mode], gains: np.ndarray, tension: Tension,
                  reference: np.ndarray) -> np.ndarray:

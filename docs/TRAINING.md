@@ -442,6 +442,76 @@ the modal bank could not do — and then checks it. A band passes only with r² 
 A band that fails keeps the architecture's default, and the run says which ones
 did and why.
 
+A measurement is a proposal, not a result. `TensionStage` makes the glide prove
+itself against the band loss before it is kept, and a decay deserves the same
+test: the residual is what the modes could not explain, which is not the same
+thing as what this band should be doing about it. So each measured decay is
+scored against the objective alongside the default and a few multiples of
+itself, with the band's level re-solved and scanned for every candidate —
+without that scan the comparison is between loudnesses rather than decays, and
+it "preferred" a 55 ms default over a 1035 ms measurement on a drum whose band
+genuinely rang for 900 ms.
+
+**What the transients get, in full:** their `level` is fitted twice — closed
+form plus coordinate descent in stage 2, then two of stage 5's six differential
+evolution parameters (`level_scale`, `level_exponent`) so it tracks velocity.
+Their `t60` is measured on the residual and verified against the objective.
+Their band edges are fixed by §4 and are not fitted.
+
+### The noise levels were being solved by correlation, and noise does not correlate
+
+`_initial_levels` gave every noise band its starting level by least-squares
+projection of the residual onto that band's basis row. That is exactly right
+for a mode — a sine at a known frequency and phase — and structurally wrong for
+a band of noise: the basis row is one realization of a random process and the
+reference holds a different one, and two uncorrelated signals project onto each
+other at approximately zero **whatever their levels**.
+
+Measured on a synthetic drum whose noise band was at 0.05: the solve returned
+**1.3e-08**, which is silence, and the layer sat at 4.86 dB. Matching by
+**energy inside the band** instead — the quantity that survives the
+realizations being different, which is the same reason §6.5 says the loss has
+to aggregate into bands before comparing — returns 0.085 and **1.97 dB**.
+
+On the real tom this is the difference between two of four transient bands
+reading `5.9e-09` and all four carrying real levels.
+
+### Stage 1 is now checked against the residual
+
+Stage 1 is the ceiling on everything after it — no later stage moves
+`f_static` — and nothing used to check whether it had found the partials that
+are there.
+
+The check is the residual: subtract the fitted model from the reference and
+what remains is, by construction, everything the model cannot produce. A peak
+standing clear of it at a frequency no mode covers is a partial with nowhere to
+go. `ResidualModeStage` proposes those, the trainer re-fits with them, and
+keeps the result only if it earns its place.
+
+Two guards, and the first one was learned the hard way. **Proposing on the
+average spectrum alone is not enough**: the noise bank's own residual is
+broadband ripple, and at a 16k transform a ripple is a perfectly good local
+maximum. On a synthetic drum with exactly six partials it proposed fourteen
+more — at 953, 3537, 4110, 5292, 6656 and 7136 Hz, where the truth has nothing
+— and every one of them lowered the loss slightly, because another resonator is
+another free parameter. A real partial is an exponential: prominent at the
+start of the hit and **still prominent later**. The residual is now cut into
+spans and a peak has to survive most of them, which is the difference between
+"there is energy here" and "something is ringing here". With that in place the
+same drum proposes nothing.
+
+**And the acceptance is measured on held-out layers.** The reference layer's
+gains are all free, so adding resonators can only improve it; every other layer
+inherits the same frozen shape and fits two numbers, which makes it a genuine
+test of whether the new modes describe the drum or one recording. The gain also
+has to clear 0.10 dB — two renders of identical parameters differ by about
+0.03, so anything under that is not a measurement.
+
+On the real tom, with the noise levels fixed, the seventeen proposed partials
+are now **reverted**: the held-out layers gained 0.083 dB, which is not worth
+seventeen resonators. That is the system working — the transient bank now
+explains what they were chasing.
+
 ### Two smaller ones from the same fit
 
 **Stage 1 was spending slots on partials that were not there.** ESPRIT reported

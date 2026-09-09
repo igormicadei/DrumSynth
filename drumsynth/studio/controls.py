@@ -42,11 +42,17 @@ class ModeStrip:
                 f":gray[×{ratio:.3f}]"
             )
 
+            # Every value below is CLAMPED into its widget's range rather
+            # than trusted. These numbers arrive from a fit or from a
+            # hand-edited JSON, and `st.number_input` raises on an
+            # out-of-range value — which takes the whole page down before it
+            # draws anything. A fitted mode 73 dB below the loudest is a real
+            # thing the solver produces; crashing on it is not.
             st.number_input(
                 "Hz",
                 min_value=ModeStrip.F_RANGE[0],
                 max_value=ModeStrip.F_RANGE[1],
-                value=float(mode.f_static),
+                value=float(np.clip(mode.f_static, *ModeStrip.F_RANGE)),
                 step=0.5,
                 format="%.2f",
                 key=f"mode_{index}_f",
@@ -57,7 +63,8 @@ class ModeStrip:
                 "dB",
                 min_value=Studio.GAIN_RANGE_DB[0],
                 max_value=Studio.GAIN_RANGE_DB[1],
-                value=Studio.to_db(mode.gain),
+                value=float(np.clip(Studio.to_db(mode.gain),
+                                    *Studio.GAIN_RANGE_DB)),
                 step=0.5,
                 format="%.1f",
                 key=f"mode_{index}_gain",
@@ -68,7 +75,7 @@ class ModeStrip:
                 "t60 s",
                 min_value=ModeStrip.T60_RANGE[0],
                 max_value=ModeStrip.T60_RANGE[1],
-                value=float(mode.t60),
+                value=float(np.clip(mode.t60, *ModeStrip.T60_RANGE)),
                 step=0.01,
                 format="%.3f",
                 key=f"mode_{index}_t60",
@@ -143,13 +150,15 @@ class BandStrip:
 
             st.number_input(
                 "low Hz", min_value=BandStrip.F_RANGE[0], max_value=BandStrip.F_RANGE[1],
-                value=float(band.f_low), step=10.0, format="%.0f",
+                value=float(np.clip(band.f_low, *BandStrip.F_RANGE)),
+                step=10.0, format="%.0f",
                 key=f"band_{index}_low",
                 on_change=BandStrip._commit, args=(studio, index),
             )
             st.number_input(
                 "high Hz", min_value=BandStrip.F_RANGE[0], max_value=BandStrip.F_RANGE[1],
-                value=float(band.f_high), step=10.0, format="%.0f",
+                value=float(np.clip(band.f_high, *BandStrip.F_RANGE)),
+                step=10.0, format="%.0f",
                 key=f"band_{index}_high",
                 on_change=BandStrip._commit, args=(studio, index),
             )

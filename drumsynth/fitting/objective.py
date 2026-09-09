@@ -84,6 +84,11 @@ class LinearVoiceBasis:
     sr: int
     trajectory: TensionTrajectory
 
+    #: (f_low, f_high) per noise row. Kept because a noise row cannot be
+    #: matched by projecting onto it — the realizations differ — so anything
+    #: solving for its level has to work in the band it occupies.
+    bands: tuple[tuple[float, float], ...] = ()
+
     @classmethod
     def build(
         cls,
@@ -124,7 +129,10 @@ class LinearVoiceBasis:
         else:
             noise = np.zeros((0, n_samples), dtype=np.float64)
 
-        return cls(modal=modal, noise=noise, sr=sr, trajectory=trajectory)
+        return cls(
+            modal=modal, noise=noise, sr=sr, trajectory=trajectory,
+            bands=tuple((band.f_low, band.f_high) for band in params.noise),
+        )
 
     # -- rendering ------------------------------------------------------------
 

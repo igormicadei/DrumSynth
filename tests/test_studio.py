@@ -175,6 +175,21 @@ class TestOutOfRangeParameters:
         assert not app.exception, (
             app.exception[0].message if app.exception else "")
 
+    def test_a_very_quiet_mode_does_not_crash_the_strip(self, app):
+        """A fit routinely produces modes 70-plus dB below the loudest, and one
+        at the 1e-9 floor reads as -180. The strip capped at -72."""
+        from drumsynth import DrumParams, Mode, NoiseBand, Tension
+
+        app.session_state.params = DrumParams(
+            modes=[Mode(90.0, 1.0, 1.8), Mode(430.0, 2.1e-4, 0.6),
+                   Mode(1200.0, 1e-9, 0.3)],
+            noise=[NoiseBand(200.0, 800.0, 0.05, 0.9)],
+            tension=Tension(k=0.0, tau=0.12), name="fitted",
+        )
+        app.run()
+        assert not app.exception, (
+            app.exception[0].message if app.exception else "")
+
     def test_values_past_the_editor_range_are_clamped_not_raised(self, app):
         """These numbers can arrive from a hand-edited JSON as easily as from a
         fit, and a widget that raises takes the whole page with it."""

@@ -270,7 +270,7 @@ chunks regardless of `control_period`.
 
 ## Testing
 
-430 tests, ~3 min. Nine files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
+439 tests, ~3 min. Nine files (`test_data_integrity.py` is heavily parametrized — one case per manifest per check):
 
 * `tests/test_synth.py` — superposition, decay accuracy, tension behaviour, and
   the `ModalBank` ↔ `ModeResonator` equivalence.

@@ -207,6 +207,7 @@ class FitWorker:
             ],
             "stage5_loss": result.curve.loss,
             "noise_notes": result.noise_notes,
+            "residual_notes": result.residual_notes,
             "seconds": self.settings.seconds,
             "mode_table": [
                 {"f_static": mode.f_static, "gain": mode.gain, "t60": mode.t60}

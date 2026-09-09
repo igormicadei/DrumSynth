@@ -292,6 +292,17 @@ def model(result: dict) -> None:
         for note in result.get("noise_notes", []):
             st.markdown(f"- {note}")
 
+    st.markdown("**Stage 1, checked against the residual**")
+    st.caption(
+        "Stage 1 is the ceiling on everything after it — no later stage moves "
+        "`f_static` — so the residual, which is by construction everything the "
+        "model cannot produce, is where a missed partial shows up. Peaks that "
+        "ring are proposed as modes and kept only if re-fitting earns it on "
+        "the layers that were not free to fit."
+    )
+    for note in result.get("residual_notes", []) or ["(not recorded for this run)"]:
+        st.markdown(f"- {note}")
+
     with envelopes:
         st.altair_chart(
             plots.bank_envelope_chart(params, result.get("seconds", 2.5)),

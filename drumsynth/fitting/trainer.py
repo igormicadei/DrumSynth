@@ -35,6 +35,7 @@ from .stages import (
     ModalFit,
     ModalStage,
     NoiseDecayStage,
+    ResidualModeStage,
     TensionStage,
     VelocityCurve,
     VelocityCurveStage,
@@ -89,6 +90,7 @@ class FitResult:
     elapsed: float = 0.0
     timings: dict = field(default_factory=dict)     # seconds per stage
     noise_notes: list[str] = field(default_factory=list)
+    residual_notes: list[str] = field(default_factory=list)
     settings: TrainingSettings = field(default_factory=TrainingSettings)
     warnings: list[str] = field(default_factory=list)
 
@@ -127,6 +129,12 @@ class DrumTrainer:
 
     #: Noise bands are not measured from scratch — the architecture fixes their
     #: shape (§4) and only their levels are fitted.
+    #: How much band-dB the held-out layers have to gain before a batch of
+    #: added resonators is kept. Two renders of identical parameters differ by
+    #: about 0.03 dB, so anything under this is not a measurement — and on a
+    #: synthetic drum with six partials, fourteen spurious modes bought 0.07 dB.
+    MIN_MODE_GAIN_DB: float = 0.10
+
     DEFAULT_BANDS: tuple[tuple[float, float, float], ...] = (
         (200.0, 800.0, 0.055),
         (800.0, 2000.0, 0.028),
@@ -272,6 +280,65 @@ class DrumTrainer:
 
         mark("stage 2 — excitation, pass 1")
 
+        # --- stage 1b: partials stage 1 missed, found in the residual --------
+        # Stage 1 is the ceiling on everything after it and nothing used to
+        # check it. The residual — the reference minus the fitted model — is by
+        # construction everything the model cannot produce, so a prominent peak
+        # in it at a frequency no mode covers is a partial with nowhere to go.
+        #
+        # Proposing is cheap and wrong-headed on its own: another resonator is
+        # another degree of freedom and the gain solve will always find a use
+        # for it. So the modes are added, the excitation is re-fitted, and the
+        # result is kept ONLY if the reference layer's loss actually improved.
+        added_count = 0
+        added, residual_notes = ResidualModeStage(
+            self.sr, settings.control_period
+        ).propose(
+            modal, fits[reference_position], bands, reference.audio,
+            budget=settings.max_modes - len(modal.modes), progress=progress,
+        )
+        added_count = len(added)
+        if added:
+            # Judged on the layers that were NOT free to fit. The reference
+            # layer's gains are all free, so adding resonators can only improve
+            # it — that is what a degree of freedom does, and measuring there
+            # would accept anything. Every other layer inherits the same frozen
+            # shape and fits two numbers, so it is a held-out test of whether
+            # the new modes describe the DRUM or one recording.
+            def held_out(candidates) -> float:
+                others = [fit.loss for index, fit in enumerate(candidates)
+                          if index != reference_position]
+                return float(np.mean(others)) if others else candidates[
+                    reference_position].loss
+
+            before = held_out(fits)
+            candidate = ModalFit(
+                modes=sorted(modal.modes + added, key=lambda m: m.f_static),
+                tension=modal.tension, descriptors=modal.descriptors,
+                notes=modal.notes, damping_anchors=modal.damping_anchors,
+            )
+            trial_fits, trial_shape = fit_layers(candidate, "with added modes")
+            self._canonicalize(trial_fits)
+            after = held_out(trial_fits)
+
+            if after < before - DrumTrainer.MIN_MODE_GAIN_DB:
+                modal, fits, shape = candidate, trial_fits, trial_shape
+                residual_notes.append(
+                    f"kept: the held-out layers went from {before:.3f} to "
+                    f"{after:.3f} dB with {len(added)} more resonators"
+                )
+            else:
+                added = []
+                residual_notes.append(
+                    f"reverted: the held-out layers went from {before:.3f} to "
+                    f"{after:.3f} dB, which is not worth {added_count} "
+                    "more resonators — more parameters always buy a little, and "
+                    "a little is what this was"
+                )
+        progress({"phase": "residual_modes", "added": len(added),
+                  "modes": len(modal.modes), "notes": residual_notes})
+        mark("stage 1b — partials found in the residual")
+
         # --- the transient bank's decays, measured on the residual -----------
         # The noise bank's job is what the modal bank could not do, so its
         # decay is measured on exactly that: the reference minus the modes.
@@ -312,7 +379,7 @@ class DrumTrainer:
         # it. The glide is one such change; so is a measured transient decay,
         # because the levels in pass 1 were solved against bands that rang for
         # 55 ms and now ring for a second and a half.
-        if tension.k > 0 or decays_changed:
+        if tension.k > 0 or decays_changed or added:
             fits, shape = fit_layers(modal, "second", seed_fits=fits)
             self._canonicalize(fits)
             mark("stage 2 — excitation, pass 2")
@@ -360,6 +427,7 @@ class DrumTrainer:
             shape=shape, reference_velocity=reference.velocity_normalized,
             elapsed=time.perf_counter() - started, settings=settings,
             warnings=warnings, timings=timings, noise_notes=noise_notes,
+            residual_notes=residual_notes,
         )
         progress({"phase": "done", "elapsed": result.elapsed})
         return result
