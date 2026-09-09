@@ -305,13 +305,31 @@ class ModalBank:
         """
         if n <= 0:
             return np.zeros(0, dtype=np.float64)
+        return self._advance(int(n), ratio, mix=True)
+
+    def process_modes(self, n: int, ratio: float | None = None) -> np.ndarray:
+        """Same as `process` but one row per mode, unmixed.
+
+        Two uses. The obvious one is listening to a single partial, to decide
+        whether a band's curvature is one mode or three.
+
+        The other is fitting. A strike's contribution is LINEAR in `gain`, so a
+        matrix of unit-gain mode responses turns "render this candidate" into
+        one matrix product — microseconds instead of the 0.2 s a full render
+        costs. These rows are exactly what `process` sums internally, so
+        getting them unmixed costs no more than getting the mix.
+        """
+        if n <= 0:
+            return np.zeros((len(self), 0), dtype=np.float64)
+        return self._advance(int(n), ratio, mix=False)
+
+    def _advance(self, n: int, ratio: float | None, mix: bool) -> np.ndarray:
+        """The closed form, shared by the mixed and unmixed paths."""
         if ratio is not None:
             self.set_ratio(ratio)
 
-        n = int(n)
-        if n <= ModalBank.DIRECT_LIMIT:
+        if n <= ModalBank.DIRECT_LIMIT and mix:
             return np.array([self.step() for _ in range(n)], dtype=np.float64)
-
 
         r, eps = self.r, self._eps
         cos_w, sin_w = self._cos_w, self._sin_w
@@ -340,30 +358,9 @@ class ModalBank:
         self.x = decay_last * (a_x * cos_last + b_x * sin_last)
         self.y = decay_last * (a_y * cos_last + b_y * sin_last)
 
-        return (
-            out.sum(axis=0)
-            if self.is_monitoring_all
-            else self.monitor_mask @ out
-        )
-
-    def process_modes(self, n: int, ratio: float | None = None) -> np.ndarray:
-        """Same as `process` but returns one row per mode, without mixing.
-
-        Diagnostic only: this is how you listen to a single partial to decide
-        whether a band's curvature is one mode or three.
-        """
-        if n <= 0:
-            return np.zeros((len(self), 0), dtype=np.float64)
-        rows = np.empty((len(self), int(n)), dtype=np.float64)
-        saved_x, saved_y = self.x.copy(), self.y.copy()
-        for index in range(len(self)):
-            self.x = np.zeros_like(saved_x)
-            self.y = np.zeros_like(saved_y)
-            self.x[index], self.y[index] = saved_x[index], saved_y[index]
-            rows[index] = self.process(n, ratio)
-        self.x, self.y = saved_x, saved_y
-        self.process(n, ratio)
-        return rows
+        if not mix:
+            return out * self.monitor_mask[:, None]
+        return out.sum(axis=0) if self.is_monitoring_all else self.monitor_mask @ out
 
     # -- inspection -----------------------------------------------------------
 
