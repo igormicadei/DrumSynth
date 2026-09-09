@@ -34,6 +34,7 @@ from .stages import (
     JointStage,
     ModalFit,
     ModalStage,
+    NoiseDecayStage,
     TensionStage,
     VelocityCurve,
     VelocityCurveStage,
@@ -87,6 +88,7 @@ class FitResult:
     reference_velocity: float
     elapsed: float = 0.0
     timings: dict = field(default_factory=dict)     # seconds per stage
+    noise_notes: list[str] = field(default_factory=list)
     settings: TrainingSettings = field(default_factory=TrainingSettings)
     warnings: list[str] = field(default_factory=list)
 
@@ -270,6 +272,25 @@ class DrumTrainer:
 
         mark("stage 2 — excitation, pass 1")
 
+        # --- the transient bank's decays, measured on the residual -----------
+        # The noise bank's job is what the modal bank could not do, so its
+        # decay is measured on exactly that: the reference minus the modes.
+        before = [band.t60 for band in bands]
+        bands, noise_notes = NoiseDecayStage(
+            self.sr, settings.control_period
+        ).run(modal.modes, fits[reference_position].gains, modal.tension,
+              bands, reference.audio, progress=progress)
+        warnings.extend(
+            note for note in noise_notes if "keeping the" in note and "noise floor" in note
+        )
+        progress({"phase": "noise", "bands": [
+            {"f_low": band.f_low, "f_high": band.f_high, "t60": band.t60}
+            for band in bands
+        ], "notes": noise_notes})
+        decays_changed = any(
+            abs(band.t60 - was) > 1e-9 for band, was in zip(bands, before))
+        mark("transients — measuring the decays")
+
         # --- the glide, now that the excitation scale is known ---------------
         tension_stage = TensionStage(self.sr, settings.control_period)
         tension, per_layer_k, tension_notes = tension_stage.run(
@@ -287,7 +308,11 @@ class DrumTrainer:
 
         mark("stage 2b — the glide")
 
-        if tension.k > 0:
+        # Pass 2 re-solves the excitation against whatever changed underneath
+        # it. The glide is one such change; so is a measured transient decay,
+        # because the levels in pass 1 were solved against bands that rang for
+        # 55 ms and now ring for a second and a half.
+        if tension.k > 0 or decays_changed:
             fits, shape = fit_layers(modal, "second", seed_fits=fits)
             self._canonicalize(fits)
             mark("stage 2 — excitation, pass 2")
@@ -334,7 +359,7 @@ class DrumTrainer:
             inspection=inspection, curve=curve, generations=generations,
             shape=shape, reference_velocity=reference.velocity_normalized,
             elapsed=time.perf_counter() - started, settings=settings,
-            warnings=warnings, timings=timings,
+            warnings=warnings, timings=timings, noise_notes=noise_notes,
         )
         progress({"phase": "done", "elapsed": result.elapsed})
         return result

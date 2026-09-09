@@ -73,6 +73,10 @@ class ExcitationTiltModel:
         cut = ExcitationTiltModel.cutoff(contact_time)
         return 1.0 / (1.0 + (np.asarray(freqs, dtype=float) / cut) ** 2)
 
+    #: Below this a mode has been switched off by the gain solve rather than
+    #: fitted quiet. Ten octaves under the softest gain any real fit produces.
+    LIVE_GAIN: float = 1e-8
+
     #: Contact time assigned to the reference layer. The gain ratio between two
     #: layers determines their contact times only RELATIVE to each other, so one
     #: of them has to be pinned; the middle of §4's 0.3-3 ms range is the
@@ -126,9 +130,19 @@ class ExcitationTiltModel:
         they do not.
         """
         freqs = np.asarray(freqs, dtype=float)
-        gains = np.maximum(np.asarray(gains, dtype=float), 1e-12)
-        if len(freqs) < 3:
+        gains = np.asarray(gains, dtype=float)
+
+        # A mode the gain solve switched off is not a quiet mode, it is a mode
+        # that is not there — and at the 1e-9 floor it reads as -180 dB, which
+        # a straight line through log-frequency cannot ignore. Measured on a
+        # real fit: three dead modes clustered at the bottom of the range turned
+        # a genuine -40 dB/decade tilt into +70, and stage 3 read that as the
+        # excitation getting BRIGHTER with frequency. Fit the line through the
+        # modes that are actually sounding.
+        alive = gains > ExcitationTiltModel.LIVE_GAIN
+        if alive.sum() < 3:
             return 0.0
+        freqs, gains = freqs[alive], gains[alive]
         return float(
             np.polyfit(np.log10(freqs), Decibels.from_amplitude(gains), 1)[0]
         )
@@ -259,11 +273,20 @@ class ModalStage:
 
         loudest = max(estimate.amplitude for estimate in estimates)
         threshold = loudest * Decibels.to_amplitude(ModalStage.MIN_MODE_DB)
-        kept = sorted(
-            (item for item in estimates if item.amplitude >= threshold),
-            key=lambda item: -item.amplitude,
-        )[: self.max_modes]
-        kept.sort(key=lambda item: item.freq)
+        survivors = [item for item in estimates if item.amplitude >= threshold]
+
+        merged, splits = ModalStage._merge_close(survivors)
+        if splits:
+            notes.append(
+                f"{splits} partial{'s' if splits != 1 else ''} had been split "
+                f"into two or more estimates less than {ModalStage.MERGE_CENTS:.0f} "
+                "cents apart and were merged. A subspace estimator does this when "
+                "a mode is not quite a pure exponential, and each copy costs a "
+                "slot the bank could have spent on a partial that is really there"
+            )
+
+        kept = sorted(merged, key=lambda item: -item[1])[: self.max_modes]
+        kept.sort(key=lambda item: item[0])
 
         if len(kept) < 8:
             notes.append(
@@ -278,9 +301,46 @@ class ModalStage:
             )
 
         return (
-            np.array([item.freq for item in kept]),
-            np.array([item.amplitude for item in kept]),
+            np.array([freq for freq, _ in kept]),
+            np.array([amplitude for _, amplitude in kept]),
         )
+
+    #: Two estimates closer than this are one partial the estimator split.
+    #: Well under the 86 cents of the closest genuine pair in the test fixtures,
+    #: and well over the 15-30 cents a split produces.
+    MERGE_CENTS: float = 40.0
+
+    @staticmethod
+    def _merge_close(estimates) -> tuple[list[tuple[float, float]], int]:
+        """Collapse runs of near-identical frequencies into one partial each.
+
+        Measured on a real fit: four estimates at 92.97, 93.94, 94.80 and
+        96.04 Hz — one partial, reported four times, spending four of the
+        thirty-odd slots the bank has. Three of the four then came back from the
+        gain solve at the 1e-9 floor, which is the solve saying the same thing.
+
+        The survivor sits at the amplitude-weighted centroid and carries the
+        summed amplitude, because the split shared one partial's energy out
+        between the copies.
+        """
+        ordered = sorted(estimates, key=lambda item: item.freq)
+        groups: list[list] = []
+        for item in ordered:
+            if groups and abs(Cents.between(
+                    np.array([item.freq]), groups[-1][-1].freq)[0]
+            ) < ModalStage.MERGE_CENTS:
+                groups[-1].append(item)
+            else:
+                groups.append([item])
+
+        out: list[tuple[float, float]] = []
+        for group in groups:
+            weights = np.array([item.amplitude for item in group], dtype=float)
+            freqs = np.array([item.freq for item in group], dtype=float)
+            total = float(weights.sum())
+            centre = float(np.dot(freqs, weights) / total) if total > 0 else freqs[0]
+            out.append((centre, total))
+        return out, sum(1 for group in groups if len(group) > 1)
 
     # -- damping --------------------------------------------------------------
 
@@ -853,6 +913,122 @@ class InspectionStage:
         if np.std(rank_a) == 0 or np.std(rank_b) == 0:
             return 0.0
         return float(np.corrcoef(rank_a, rank_b)[0, 1])
+
+
+@dataclass
+class NoiseDecayStage:
+    """The transient bank's decays, measured from what the modes leave behind.
+
+    §4 fixes the noise bank's SHAPE — four bands, fixed edges — and the fit was
+    only ever allowed to move their levels. Their `t60` values came from the
+    architecture's defaults: 55, 28, 14 and 7 ms. That is a click, and a click
+    is not what a drum's unresolved content sounds like.
+
+    Measured on a real tom: subtract the modal bank's own render from the
+    sample, and the 200-800 Hz residual decays over **1645 ms with an r-squared
+    of 0.98**, at only 28 dB below the sample's peak. That is a large, clean,
+    well-determined signal the modal bank cannot represent — twenty-odd
+    resolved partials do not cover a membrane's dense high-order content — and
+    the band that should have carried it was pinned at 55 ms. With a decay 30
+    times too short it cannot help at any level, so the gain solve switched it
+    off: `level` came back at 5.9e-09, which is silence.
+
+    So the decay is measured rather than assumed, on the residual rather than
+    on the sample, because the noise bank's job is exactly what the modal bank
+    could not do.
+
+    It is measured and then CHECKED. Above 800 Hz that same tom's residual
+    reports decays of 2.9 to 5.3 seconds — at 66 to 76 dB below peak, with
+    r-squared around 0.55. Those are not decays; they are a flat noise floor
+    fitted with a confident straight line. A band that fails the check keeps
+    the architecture's default, and the fit says which ones did.
+    """
+
+    #: Straightness of the log-level regression. A real decay is a line; a
+    #: noise floor is flat with a slope the fit invents.
+    MIN_R_SQUARED: float = 0.80
+
+    #: How far above the recording's own floor a band has to sit before its
+    #: decay is a measurement of the drum.
+    MIN_LEVEL_DB: float = -55.0
+
+    #: Nothing shorter than the architecture's own default, and nothing longer
+    #: than a drum: a band claiming to ring for four seconds is measuring a room.
+    RANGE: tuple[float, float] = (0.005, 2.5)
+
+    def __init__(self, sr: int = Audio.DEFAULT_SR, control_period: int = 64) -> None:
+        self.sr = int(sr)
+        self.control_period = int(control_period)
+
+    def run(self, modes: list[Mode], gains: np.ndarray, tension: Tension,
+            bands: Sequence[NoiseBand], reference: np.ndarray,
+            progress: Progress = _noop) -> tuple[list[NoiseBand], list[str]]:
+        """Bands with measured decays where the evidence supports one."""
+        if not len(bands):
+            return list(bands), []
+
+        progress({"stage": "noise", "step": "measuring the transient decays"})
+        residual = self.residual(modes, gains, tension, reference)
+
+        peak = max(
+            (decay.level_db for decay in BandDecayAnalyzer(self.sr).analyze(reference)),
+            default=0.0,
+        )
+        measured = BandDecayAnalyzer(
+            self.sr, bands=[(band.f_low, band.f_high) for band in bands]
+        ).analyze(residual)
+
+        out: list[NoiseBand] = []
+        notes: list[str] = []
+        for band, decay in zip(bands, measured):
+            trusted = (
+                decay.is_valid
+                and decay.r_squared >= NoiseDecayStage.MIN_R_SQUARED
+                and (decay.level_db - peak) >= NoiseDecayStage.MIN_LEVEL_DB
+                and NoiseDecayStage.RANGE[0] <= decay.t60 <= NoiseDecayStage.RANGE[1]
+            )
+            if trusted:
+                out.append(NoiseBand(band.f_low, band.f_high, band.level,
+                                     float(decay.t60)))
+                notes.append(
+                    f"{band.f_low:.0f}-{band.f_high:.0f} Hz: the residual decays "
+                    f"over {decay.t60 * 1000:.0f} ms (r^2 {decay.r_squared:.2f}, "
+                    f"{decay.level_db - peak:.0f} dB below peak) — measured, "
+                    f"against the {band.t60 * 1000:.0f} ms default"
+                )
+            else:
+                out.append(band)
+                notes.append(
+                    f"{band.f_low:.0f}-{band.f_high:.0f} Hz: keeping the "
+                    f"{band.t60 * 1000:.0f} ms default — the residual there is "
+                    f"{decay.level_db - peak:.0f} dB below peak with r^2 "
+                    f"{decay.r_squared:.2f}, which is a noise floor, not a decay"
+                )
+        progress({"stage": "noise", "decays": [band.t60 for band in out],
+                  "notes": notes})
+        return out, notes
+
+    def residual(self, modes: list[Mode], gains: np.ndarray, tension: Tension,
+                 reference: np.ndarray) -> np.ndarray:
+        """The reference minus the modal bank's best least-squares fit to it.
+
+        Least squares rather than RMS matching, because what is wanted here is
+        the part of the signal the modes cannot reach — and that is what is left
+        after removing as much of them as possible.
+        """
+        params = DrumParams(
+            modes=[
+                Mode(mode.f_static, float(max(gain, 1e-12)), mode.t60)
+                for mode, gain in zip(modes, gains)
+            ],
+            noise=[], tension=tension, output_gain=1.0,
+        )
+        modal = DrumVoice(params, self.sr, self.control_period, seed=0).render_hit(
+            len(reference) / self.sr)
+        length = min(len(modal), len(reference))
+        modal, reference = modal[:length], reference[:length]
+        scale = float(np.dot(modal, reference)) / max(float(np.dot(modal, modal)), 1e-30)
+        return reference - modal * scale
 
 
 @dataclass

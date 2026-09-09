@@ -158,6 +158,38 @@ class TestBandStrips:
         assert band.f_low < band.f_high
 
 
+class TestOutOfRangeParameters:
+    def test_a_long_transient_decay_does_not_crash_the_strip(self, app):
+        """A transient band used to be a click, and the strip capped its `t60`
+        at one second. The fit now measures each band's decay on the residual —
+        a real tom's 200-800 Hz band came back at 1.7 s — and loading that fit
+        raised StreamlitValueAboveMaxError before the page drew anything."""
+        from drumsynth import DrumParams, Mode, NoiseBand, Tension
+
+        app.session_state.params = DrumParams(
+            modes=[Mode(90.0, 1.0, 1.8)],
+            noise=[NoiseBand(200.0, 800.0, 0.05, 1.72)],
+            tension=Tension(k=0.0, tau=0.12), name="fitted",
+        )
+        app.run()
+        assert not app.exception, (
+            app.exception[0].message if app.exception else "")
+
+    def test_values_past_the_editor_range_are_clamped_not_raised(self, app):
+        """These numbers can arrive from a hand-edited JSON as easily as from a
+        fit, and a widget that raises takes the whole page with it."""
+        from drumsynth import DrumParams, Mode, NoiseBand, Tension
+
+        app.session_state.params = DrumParams(
+            modes=[Mode(90.0, 1.0, 1.8)],
+            noise=[NoiseBand(200.0, 800.0, 40.0, 90.0)],
+            tension=Tension(k=0.0, tau=0.12), name="absurd",
+        )
+        app.run()
+        assert not app.exception, (
+            app.exception[0].message if app.exception else "")
+
+
 class TestPresets:
     def test_loading_a_preset_replaces_the_parameters(self, app):
         app.selectbox(key="preset_pick").set_value("Kick").run()

@@ -187,6 +187,126 @@ def timings(result: dict) -> None:
 
 
 @st.cache_data(show_spinner=False, max_entries=32)
+def model(result: dict) -> None:
+    """The fitted drum itself: every resonator, every transient band, and what
+    each of them does in time.
+
+    The ScoreCard says how far off the fit is. This says WHAT IT IS — the
+    numbers a person would have to type into the Mixer to reproduce it, and the
+    two or three of them that explain most of what you hear.
+    """
+    st.subheader("The fitted model")
+    params = result.get("params") or {}
+    modes = params.get("modes", [])
+    bands = params.get("noise", [])
+    if not modes:
+        st.caption(":gray[this run stored no parameters]")
+        return
+
+    live = [mode for mode in modes if mode["gain"] > 1e-8]
+    silenced = len(modes) - len(live)
+    loud = max(live, key=lambda mode: mode["gain"]) if live else None
+    tension = params.get("tension", {})
+
+    with st.container(horizontal=True, gap="medium"):
+        st.metric("Resonators", f"{len(live)}", border=True,
+                  delta=f"{silenced} silenced" if silenced else None,
+                  delta_color="off",
+                  help="A mode the gain solve pinned at the 1e-9 floor is a "
+                       "slot stage 1 spent on a partial that was not there.")
+        if loud:
+            st.metric("Fundamental", f"{loud['f_static']:.1f} Hz", border=True,
+                      help="The loudest resonator, not the lowest.")
+            st.metric("Longest ring", f"{max(m['t60'] for m in live):.2f} s",
+                      border=True)
+        st.metric("Transient bands",
+                  f"{sum(1 for band in bands if band['level'] > 1e-8)} of {len(bands)}",
+                  border=True,
+                  help="Bands the level solve kept. A band whose decay is far "
+                       "too short cannot help at any level, so it gets "
+                       "switched off — which is what used to happen to all of "
+                       "them.")
+        st.metric("Glide",
+                  f"{12 * np.log2(1 + tension.get('k', 0.0)):.2f} st"
+                  if tension.get("k", 0.0) > 0 else "off", border=True)
+        st.metric("Output gain", f"{params.get('output_gain', 1.0):.3f}",
+                  border=True)
+
+    bank, transients, envelopes, raw = st.tabs(
+        ["Resonator bank", "Transients", "Envelopes", "JSON"])
+
+    with bank:
+        st.altair_chart(plots.mode_chart(modes), width="stretch")
+        st.caption(
+            "One bar per resonator: frequency on a log axis, `gain` as height, "
+            "`t60` as colour. Faded bars are modes the gain solve switched off."
+        )
+        st.markdown("**The damping curve**")
+        st.altair_chart(
+            plots.damping_chart(modes, result.get("damping_anchors")),
+            width="stretch")
+        st.caption(
+            "Stage 1 does not fit a `t60` per mode — per-mode subspace damping "
+            "measured 56% wrong. It fits ONE curve through measured band decays "
+            "(the circles) and reads every mode off it."
+        )
+        st.dataframe(
+            pd.DataFrame([
+                {"f_static (Hz)": mode["f_static"], "gain": mode["gain"],
+                 "gain (dB)": 20 * np.log10(max(mode["gain"], 1e-12)),
+                 "t60 (s)": mode["t60"],
+                 "": "silenced" if mode["gain"] <= 1e-8 else ""}
+                for mode in sorted(modes, key=lambda m: m["f_static"])
+            ]),
+            width="stretch", hide_index=True,
+            column_config={
+                "f_static (Hz)": st.column_config.NumberColumn(format="%.2f"),
+                "gain": st.column_config.NumberColumn(format="%.3e"),
+                "gain (dB)": st.column_config.NumberColumn(format="%.1f"),
+                "t60 (s)": st.column_config.NumberColumn(format="%.3f"),
+            },
+        )
+
+    with transients:
+        st.caption(
+            "§4 fixes the band edges; the fit moves each band's level, and its "
+            "decay where the residual — the reference minus the modal bank — "
+            "actually shows one."
+        )
+        st.dataframe(
+            pd.DataFrame([
+                {"band": f"{band['f_low']:.0f}-{band['f_high']:.0f} Hz",
+                 "level": band["level"],
+                 "level (dB)": 20 * np.log10(max(band["level"], 1e-12)),
+                 "t60 (ms)": band["t60"] * 1000.0,
+                 "": "off" if band["level"] <= 1e-8 else ""}
+                for band in bands
+            ]),
+            width="stretch", hide_index=True,
+            column_config={
+                "level": st.column_config.NumberColumn(format="%.3e"),
+                "level (dB)": st.column_config.NumberColumn(format="%.1f"),
+                "t60 (ms)": st.column_config.NumberColumn(format="%.0f"),
+            },
+        )
+        for note in result.get("noise_notes", []):
+            st.markdown(f"- {note}")
+
+    with envelopes:
+        st.altair_chart(
+            plots.bank_envelope_chart(params, result.get("seconds", 2.5)),
+            width="stretch")
+        st.caption(
+            "Every part's own decay, before anything is summed — the drum as a "
+            "set of exponentials. A transient band whose line falls off the "
+            "bottom in the first few milliseconds while the resonators ring for "
+            "two seconds is a click, not a strike."
+        )
+
+    with raw:
+        st.code(json.dumps(params, indent=2), language="json")
+
+
 def comparison_data(directory: str, velocity: float, sr: int) -> dict | None:
     record = RunStore().read(directory)
     if record is None:
@@ -327,6 +447,8 @@ def render(record) -> None:
         "with f_static and t60 already frozen."
     )
     velocity_table(result)
+    st.divider()
+    model(result)
     if scored:
         st.divider()
         score_report(result, scored)

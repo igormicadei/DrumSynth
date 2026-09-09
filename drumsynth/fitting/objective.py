@@ -237,8 +237,50 @@ class SpectralTarget:
         }
         self._weights = {}
         for size, spectrogram in self._reference.items():
-            alive = spectrogram > (np.max(spectrogram) + self.floor_db)
-            self._weights[size] = alive.astype(np.float64)
+            self._weights[size] = self._alive(spectrogram)
+
+    #: A band is only carrying the drum while it is this far above ITS OWN
+    #: quiet level. See `_alive` — this is the number that stops the fit being
+    #: paid to imitate a recording's noise floor.
+    BAND_MARGIN_DB: float = 9.0
+
+    #: The quantile of a band's own frame levels taken as that band's floor.
+    #: The same convention `BandDecayAnalyzer` uses for the same reason.
+    BAND_FLOOR_QUANTILE: float = 0.25
+
+    def _alive(self, spectrogram: np.ndarray) -> np.ndarray:
+        """Which (frame, band) cells carry information about the DRUM.
+
+        Two conditions, and the second one is the one that was missing.
+
+        **Globally**, a band more than `floor_db` below the loudest band
+        anywhere is the recording, not the drum (§6.5). That alone drops a band
+        that never rises above the hiss.
+
+        **Per band**, a cell has to be above that band's own quiet level too.
+        Without this, every band that IS above the global floor contributes its
+        entire sustained tail — which for a real recording is the room and the
+        preamp, decaying at nothing, for seconds.
+
+        Measured on a real tom sample: 77% of the total loss was coming from
+        cells 40 to 80 dB below the reference's peak, and adding plain broadband
+        hiss at -30 dB to the model *improved* the loss by 1.5 dB. A fit scored
+        that way is being paid to reproduce the noise floor, and it pays with
+        the gains — which is what the 18.9 dB mode-amplitude error on that fit
+        was. With the per-band floor, hiss makes the loss worse, as it must.
+
+        It costs nothing where there is no noise floor to reject: on a synthetic
+        drum, two renders of identical parameters score 0.046 dB against 0.025
+        before, and a drum detuned by a major third still sits 7.0 dB away.
+        """
+        global_floor = np.max(spectrogram) + self.floor_db
+        band_floor = np.quantile(
+            spectrogram, SpectralTarget.BAND_FLOOR_QUANTILE, axis=0)
+        alive = (
+            (spectrogram > global_floor)
+            & (spectrogram > (band_floor + SpectralTarget.BAND_MARGIN_DB)[None, :])
+        )
+        return alive.astype(np.float64)
 
     def _band_matrix(self, n_fft: int, n_bands: int) -> np.ndarray:
         """(bins, bands) summing matrix over log-spaced edges."""

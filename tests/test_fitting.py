@@ -30,6 +30,7 @@ from drumsynth.fitting import (
     LinearVoiceBasis,
     LossBackend,
     ModalStage,
+    NoiseDecayStage,
     SpectralTarget,
     TargetBuilder,
     TensionFit,
@@ -422,6 +423,165 @@ class TestVelocityCurve:
         assert curve.amplitude_exponent > 0.0      # harder with velocity
         assert curve.contact_time(1.0) < curve.contact_time(0.0)
         assert curve.amplitude(1.0) > curve.amplitude(0.0)
+
+
+# =============================================================================
+# The loss must not pay for imitating a noise floor
+# =============================================================================
+
+
+class TestNoiseFloorRejection:
+    @staticmethod
+    def _hiss(signal: np.ndarray, db: float) -> np.ndarray:
+        rng = np.random.default_rng(0)
+        noise = rng.normal(0.0, 1.0, len(signal))
+        return noise * (np.sqrt(np.mean(signal**2)) * 10 ** (db / 20)
+                        / np.sqrt(np.mean(noise**2)))
+
+    def test_adding_hiss_never_improves_the_loss(self):
+        """Measured on a real tom fit: 77% of the loss came from cells 40 to 80
+        dB below the reference's peak — the recording, not the drum — and
+        adding plain broadband hiss at -30 dB *improved* it by 1.5 dB. A fit
+        scored that way is paid to reproduce the noise floor, and it pays with
+        the mode gains."""
+        params = known_drum()
+        reference = render(params, seed=1) + self._hiss(render(params, seed=1), -55)
+        target = SpectralTarget(reference, SR)
+        candidate = render(params, seed=2)
+        clean = target.distance(candidate)
+        for db in (-25, -30, -40):
+            noisy = target.distance(candidate + self._hiss(candidate, db))
+            assert noisy >= clean - 1e-9, f"hiss at {db} dB improved the loss"
+
+    def test_the_floor_costs_nothing_when_there_is_no_noise(self):
+        """Two renders of identical parameters still score at the floor, and a
+        detuned drum is still far away. The per-band cut has to be free where
+        there is nothing to reject."""
+        params = known_drum()
+        target = SpectralTarget(render(params, seed=1), SR)
+        assert target.distance(render(params, seed=2)) < 1.5
+
+        detuned = DrumParams(
+            modes=[Mode(m.f_static * 1.25, m.gain, m.t60) for m in params.modes],
+            noise=params.noise, tension=params.tension)
+        assert target.distance(render(detuned, seed=2)) > 5.0
+
+    def test_a_band_that_is_only_floor_is_dropped_entirely(self):
+        params = known_drum()
+        quiet = render(params, seed=1)
+        target = SpectralTarget(quiet, SR)
+        for size in target.fft_sizes:
+            weights = target.band_weights(size)
+            assert weights.min() == 0.0        # something is always excluded
+            assert weights.max() == 1.0
+
+
+# =============================================================================
+# The transient bank's decays
+# =============================================================================
+
+
+class TestNoiseDecayStage:
+    @staticmethod
+    def _setup(band_t60: float):
+        """A drum whose noise band rings far longer than the architecture's
+        default, so the measurement has something to find."""
+        bands = [NoiseBand(200.0, 900.0, 0.05, band_t60)]
+        params = DrumParams(
+            modes=known_drum().modes, noise=bands,
+            tension=Tension(k=0.0, tau=0.09))
+        audio = render(params, seconds=1.6, seed=3)
+        modal = ModalStage(SR, max_modes=12).run(audio, audio)
+        fit = ExcitationStage(SR, 64).run(modal, audio, 100.0, 1.0, bands)
+        return modal, fit, audio
+
+    def test_a_real_decay_is_measured_not_assumed(self):
+        """§4 fixes the band edges and the fit used to be allowed only their
+        levels — their `t60` came from the architecture's 55/28/14/7 ms
+        defaults. On a real tom the 200-800 Hz residual decays over 1645 ms
+        with r-squared 0.98, and a band pinned at 55 ms cannot help at any
+        level, so the solve switched it off."""
+        modal, fit, audio = self._setup(band_t60=0.9)
+        default = [NoiseBand(200.0, 900.0, 0.05, 0.055)]
+        fitted, notes = NoiseDecayStage(SR, 64).run(
+            modal.modes, fit.gains, modal.tension, default, audio)
+        assert fitted[0].t60 > 0.3, notes
+        assert "measured" in notes[0]
+
+    def test_a_noise_floor_keeps_the_default_and_says_so(self):
+        """Above 800 Hz that same tom reports decays of 2.9 to 5.3 seconds at
+        66 to 76 dB below peak with r-squared around 0.55. Those are not
+        decays; they are a flat floor fitted with a confident line."""
+        modal, fit, audio = self._setup(band_t60=0.9)
+        silent = [NoiseBand(9000.0, 15000.0, 0.0, 0.007)]
+        fitted, notes = NoiseDecayStage(SR, 64).run(
+            modal.modes, fit.gains, modal.tension, silent, audio)
+        assert fitted[0].t60 == pytest.approx(0.007)
+        assert "default" in notes[0]
+
+    def test_the_residual_is_what_the_modes_could_not_reach(self):
+        modal, fit, audio = self._setup(band_t60=0.9)
+        residual = NoiseDecayStage(SR, 64).residual(
+            modal.modes, fit.gains, modal.tension, audio)
+        assert len(residual) == len(audio)
+        # Removing the modal bank has to leave less energy than it started with.
+        assert np.sum(residual**2) < np.sum(np.asarray(audio) ** 2)
+
+
+# =============================================================================
+# Stage 1 spending its slots on partials that are really there
+# =============================================================================
+
+
+class TestModeMerging:
+    def test_a_split_partial_becomes_one_mode(self):
+        """Measured on a real fit: four estimates at 92.97, 93.94, 94.80 and
+        96.04 Hz — one partial reported four times, spending four of the thirty
+        slots the bank has. Three of the four then came back from the gain solve
+        at the 1e-9 floor, which is the solve saying the same thing."""
+        from dataclasses import dataclass
+
+        @dataclass
+        class Estimate:
+            freq: float
+            amplitude: float
+
+        split = [Estimate(92.97, 0.4), Estimate(93.94, 0.5),
+                 Estimate(94.80, 0.6), Estimate(96.04, 1.0)]
+        merged, count = ModalStage._merge_close(split)
+        assert len(merged) == 1 and count == 1
+        assert 93.0 < merged[0][0] < 96.5
+        assert merged[0][1] == pytest.approx(2.5)   # the energy is kept
+
+    def test_a_genuine_close_pair_survives(self):
+        """The test fixtures carry a deliberate pair 86 cents apart. Merging
+        that would be losing a mode, not saving a slot."""
+        from dataclasses import dataclass
+
+        @dataclass
+        class Estimate:
+            freq: float
+            amplitude: float
+
+        merged, count = ModalStage._merge_close(
+            [Estimate(88.0, 0.7), Estimate(92.5, 1.0)])
+        assert len(merged) == 2 and count == 0
+
+
+class TestBrightnessIgnoresDeadModes:
+    def test_a_silenced_mode_does_not_flip_the_slope(self):
+        """A mode at the 1e-9 floor reads as -180 dB. Measured on a real fit:
+        three dead modes at the bottom of the range turned a -12 dB/decade tilt
+        into +70, and stage 3 read that as the excitation getting BRIGHTER with
+        frequency — which is the opposite of what it says it is checking."""
+        freqs = np.array([93.0, 94.0, 95.0, 96.0, 158.0, 190.0, 245.0, 313.0,
+                          540.0, 850.0, 1297.0, 2497.0])
+        gains = np.array([1e-9, 1e-9, 1e-9, 0.306, 0.0151, 0.0327, 0.0043,
+                          0.0087, 0.0116, 0.0126, 0.0139, 0.0082])
+        naive = float(np.polyfit(
+            np.log10(freqs), 20 * np.log10(np.maximum(gains, 1e-12)), 1)[0])
+        assert naive > 50.0                                  # the bug
+        assert ExcitationTiltModel.brightness_db(freqs, gains) < 0.0
 
 
 # =============================================================================

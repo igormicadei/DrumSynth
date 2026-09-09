@@ -126,7 +126,13 @@ class BandStrip:
     """
 
     F_RANGE = (20.0, 20000.0)
-    T60_RANGE = (0.001, 1.0)
+
+    #: A transient band used to be a click and this capped at one second. The
+    #: fit now MEASURES each band's decay on the residual, and a real tom's
+    #: 200-800 Hz residual came back at 1.7 s — loading that fit crashed the
+    #: strip. The ceiling covers what `NoiseDecayStage` can produce, with room
+    #: to hand-edit past it.
+    T60_RANGE = (0.001, 4.0)
 
     @staticmethod
     def render(studio: Studio, index: int) -> None:
@@ -149,13 +155,18 @@ class BandStrip:
             )
             st.number_input(
                 "dB", min_value=Studio.LEVEL_RANGE_DB[0], max_value=Studio.LEVEL_RANGE_DB[1],
-                value=Studio.to_db(band.level), step=0.5, format="%.1f",
+                value=float(np.clip(Studio.to_db(band.level), *Studio.LEVEL_RANGE_DB)),
+                step=0.5, format="%.1f",
                 key=f"band_{index}_level",
                 on_change=BandStrip._commit, args=(studio, index),
             )
             st.number_input(
                 "t60 s", min_value=BandStrip.T60_RANGE[0], max_value=BandStrip.T60_RANGE[1],
-                value=float(band.t60), step=0.002, format="%.3f",
+                # Clamped, not trusted: these numbers can arrive from a fit or
+                # from a hand-edited JSON, and a widget that raises on an
+                # out-of-range value takes the whole page down with it.
+                value=float(np.clip(band.t60, *BandStrip.T60_RANGE)),
+                step=0.002, format="%.3f",
                 key=f"band_{index}_t60",
                 on_change=BandStrip._commit, args=(studio, index),
             )

@@ -376,6 +376,92 @@ spends its budget chasing one noise realization.
 
 ---
 
+## Two things the fit was being paid to get wrong
+
+Both were found by taking a real fit apart rather than by looking at the code.
+
+### The loss was rewarding a good impression of the noise floor
+
+Decomposing a real tom fit's 7.6 dB band loss by how far below the reference's
+peak each cell sat:
+
+| reference level | share of the cells | share of the LOSS |
+|---|---|---|
+| 0 to -20 dB | 22% | 10% |
+| -20 to -40 dB | 22% | 13% |
+| -40 to -60 dB | 40% | **47%** |
+| -60 to -80 dB | 16% | **30%** |
+
+**77% of the loss came from cells 40 to 80 dB below the peak** — a region that
+on a real recording is the room and the preamp, not the drum. And the fit knew
+it: adding plain broadband hiss at -30 dB to the model *improved* the loss from
+7.63 dB to 6.15 dB. Anything scored that way spends its gains buying a noise
+floor, which is what that fit's 18.9 dB mode-amplitude error was.
+
+`SpectralTarget.FLOOR_DB` was already meant to stop this, but one global
+threshold cannot: a drum has more than 70 dB between its fundamental and its
+own floor, so a cut at -70 dB relative to the loudest band anywhere lands *on*
+the floor rather than above it. There is now a second condition — a cell also
+has to be above **its own band's** quiet level, the same per-band convention
+`BandDecayAnalyzer` uses. Hiss now makes the loss worse, as it must.
+
+It costs nothing where there is no floor to reject. On a synthetic drum, two
+renders of identical parameters score 0.030 dB (against 0.025 before) and a
+drum detuned by a major third still sits 7.3 dB away.
+
+### The transient bank was a click, and the fit switched it off
+
+§4 fixes the noise bank's shape — four bands, fixed edges — and the fit was
+only ever allowed to move their **levels**. Their decays came from the
+architecture's defaults: 55, 28, 14 and 7 ms.
+
+Subtract the modal bank's own render from a real tom sample and measure what is
+left:
+
+| band | default `t60` | the residual's actual `t60` | r² | level |
+|---|---|---|---|---|
+| 200-800 Hz | 55 ms | **1645 ms** | 0.98 | -28 dB |
+| 800-2000 Hz | 28 ms | 2900 ms | 0.58 | -66 dB |
+| 2000-6000 Hz | 14 ms | 4674 ms | 0.52 | -72 dB |
+| 6000-15000 Hz | 7 ms | 5252 ms | 0.60 | -76 dB |
+
+The first row is a large, clean, well-determined signal — twenty-odd resolved
+partials do not cover a membrane's dense high-order content — and the band that
+should have carried it was pinned at 55 ms. With a decay thirty times too short
+it cannot help at any level, so the gain solve switched it off: that band's
+fitted `level` came back at 5.9e-09, which is silence.
+
+The other three rows are what a flat noise floor looks like when a straight
+line is fitted to it: 66 to 76 dB down, r² around 0.55, "decays" of three to
+five seconds.
+
+So `NoiseDecayStage` measures each band's decay **on the residual** — the
+reference minus the modal bank, because the noise bank's job is exactly what
+the modal bank could not do — and then checks it. A band passes only with r² ≥
+0.80, a level within 55 dB of the peak, and a `t60` inside a drum's range.
+A band that fails keeps the architecture's default, and the run says which ones
+did and why.
+
+### Two smaller ones from the same fit
+
+**Stage 1 was spending slots on partials that were not there.** ESPRIT reported
+four estimates at 92.97, 93.94, 94.80 and 96.04 Hz — one partial, four times,
+four of the thirty slots the bank has. Three of the four then came back from
+the gain solve at the 1e-9 floor. Estimates closer than 40 cents are now merged
+into one at the amplitude-weighted centroid (the closest genuine pair in the
+test fixtures is 86 cents apart). On the real tom this took `mode_completeness`
+from 0.69 to 0.98.
+
+**Stage 3 was reading the brightness backwards.** A mode at the 1e-9 floor
+reads as -180 dB, and the brightness slope is a straight line through gain
+against log frequency. Three dead modes at the bottom of the range turned a
+genuine **-12 dB/decade** tilt into **+70**, and the whole velocity table
+reported +70 to +89 dB/decade — which stage 3 read as the excitation getting
+brighter, the check it thinks it is performing. The line is now fitted through
+the modes that are actually sounding.
+
+---
+
 ## Every run is kept
 
 A fit takes minutes and produces a drum you cannot judge in one listen. The

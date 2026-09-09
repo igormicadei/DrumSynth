@@ -206,6 +206,8 @@ class FitWorker:
                 for g in result.generations
             ],
             "stage5_loss": result.curve.loss,
+            "noise_notes": result.noise_notes,
+            "seconds": self.settings.seconds,
             "mode_table": [
                 {"f_static": mode.f_static, "gain": mode.gain, "t60": mode.t60}
                 for mode in result.params.sorted_modes()

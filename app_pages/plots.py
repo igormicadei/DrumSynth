@@ -219,3 +219,139 @@ def spectrograms(comparison: Comparison) -> dict:
         "low_hz": float(grams.freqs[0]) if len(grams.freqs) else 0.0,
         "high_hz": float(grams.freqs[-1]) if len(grams.freqs) else 0.0,
     }
+
+
+# =============================================================================
+# The model itself
+# =============================================================================
+
+
+def mode_chart(modes: list[dict], live_floor: float = 1e-8,
+               height: int = 300) -> alt.Chart:
+    """Every resonator: where it sits, how loud it is, how long it rings.
+
+    Frequency on a log axis, gain in dB as the bar, `t60` as the colour. A mode
+    the gain solve switched off is drawn at the floor and marked, because a bank
+    where a third of the slots came back silent is a bank that spent them on
+    partials that were not there.
+    """
+    frame = pd.DataFrame([
+        {
+            "Hz": mode["f_static"],
+            "dB": 20 * np.log10(max(mode["gain"], 1e-12)),
+            "t60": mode["t60"],
+            "state": "silenced" if mode["gain"] <= live_floor else "sounding",
+        }
+        for mode in modes
+    ])
+    if frame.empty:
+        return alt.Chart(frame)
+
+    live = frame[frame["state"] == "sounding"]
+    bottom = float(live["dB"].min()) - 6 if len(live) else -80.0
+
+    return (
+        alt.Chart(frame.assign(dB=frame["dB"].clip(lower=bottom)))
+        .mark_bar(width=3)
+        .encode(
+            x=alt.X("Hz:Q", title="frequency (Hz)", scale=alt.Scale(type="log")),
+            y=alt.Y("dB:Q", title="gain (dB)",
+                    scale=alt.Scale(domain=[bottom, float(frame["dB"].max()) + 3])),
+            color=alt.Color("t60:Q", title="t60 (s)",
+                            scale=alt.Scale(scheme="inferno")),
+            opacity=alt.Opacity(
+                "state:N", legend=None,
+                scale=alt.Scale(domain=["sounding", "silenced"], range=[1.0, 0.25])),
+            tooltip=[alt.Tooltip("Hz:Q", format=".1f"),
+                     alt.Tooltip("dB:Q", format=".1f"),
+                     alt.Tooltip("t60:Q", format=".3f"), "state:N"],
+        )
+        .properties(height=height)
+    )
+
+
+def damping_chart(modes: list[dict], anchors: list | None = None,
+                  height: int = 240) -> alt.Chart:
+    """`t60` against frequency — the damping curve, and the band decays it was
+    fitted through.
+
+    Stage 1 does not fit a `t60` per mode. It fits ONE curve through measured
+    band decays and reads each mode off it, because per-mode subspace damping
+    came out 56% wrong. This is that curve, with its anchors.
+    """
+    frame = pd.DataFrame([
+        {"Hz": mode["f_static"], "t60": mode["t60"], "series": "modes"}
+        for mode in modes
+    ])
+    chart = (
+        alt.Chart(frame)
+        .mark_line(point=alt.OverlayMarkDef(size=28), strokeWidth=2, color=GENERATED)
+        .encode(
+            x=alt.X("Hz:Q", title="frequency (Hz)", scale=alt.Scale(type="log")),
+            y=alt.Y("t60:Q", title="t60 (s)", scale=alt.Scale(type="log")),
+            tooltip=[alt.Tooltip("Hz:Q", format=".1f"),
+                     alt.Tooltip("t60:Q", format=".3f")],
+        )
+        .properties(height=height)
+    )
+    if not anchors:
+        return chart
+    measured = pd.DataFrame(
+        [{"Hz": float(hz), "t60": float(t60)} for hz, t60 in anchors])
+    return chart + (
+        alt.Chart(measured)
+        .mark_point(size=140, filled=False, strokeWidth=2, color=REFERENCE)
+        .encode(x="Hz:Q", y="t60:Q",
+                tooltip=[alt.Tooltip("Hz:Q", format=".0f"),
+                         alt.Tooltip("t60:Q", format=".3f")])
+    )
+
+
+def bank_envelope_chart(params: dict, seconds: float = 2.5,
+                        height: int = 260) -> alt.Chart:
+    """Every resonator's own decay envelope, plus the noise bands'.
+
+    This is the drum as a set of exponentials — what the parameters *mean* in
+    time, before any of them are summed. A band whose line stops at 10 ms next
+    to modes that ring for two seconds is the transient model being a click.
+    """
+    rows = []
+    times = np.linspace(0.0, seconds, 220)
+    for mode in params.get("modes", []):
+        if mode["gain"] <= 1e-8:
+            continue
+        level = 20 * np.log10(mode["gain"]) - 60.0 * times / max(mode["t60"], 1e-6)
+        rows.append(pd.DataFrame({
+            "seconds": times, "dB": level, "part": "resonator",
+            "name": f"{mode['f_static']:.0f} Hz",
+        }))
+    for band in params.get("noise", []):
+        if band["level"] <= 1e-8:
+            continue
+        level = 20 * np.log10(band["level"]) - 60.0 * times / max(band["t60"], 1e-6)
+        rows.append(pd.DataFrame({
+            "seconds": times, "dB": level, "part": "transient",
+            "name": f"{band['f_low']:.0f}-{band['f_high']:.0f} Hz",
+        }))
+    if not rows:
+        return alt.Chart(pd.DataFrame({"seconds": [], "dB": [], "part": []}))
+
+    frame = pd.concat(rows, ignore_index=True)
+    top = float(frame["dB"].max())
+    frame = frame[frame["dB"] > top - 90]
+    return (
+        alt.Chart(frame)
+        .mark_line(strokeWidth=1.4, opacity=0.85)
+        .encode(
+            x=alt.X("seconds:Q", title="seconds"),
+            y=alt.Y("dB:Q", title="level (dB)",
+                    scale=alt.Scale(domain=[top - 90, top + 3])),
+            color=alt.Color(
+                "part:N", title=None,
+                scale=alt.Scale(domain=["resonator", "transient"],
+                                range=[REFERENCE, GENERATED])),
+            detail="name:N",
+            tooltip=["name:N", "part:N", alt.Tooltip("dB:Q", format=".1f")],
+        )
+        .properties(height=height)
+    )
