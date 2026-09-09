@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from drumsynth import AudioIO, DrumParams
+from drumsynth import DrumParams
 from drumsynth.fitting.comparison import Comparison
 from drumsynth.fitting.runs import RunStore
 from drumsynth.studio import Studio
@@ -341,6 +341,13 @@ def comparison_data(directory: str, velocity: float, sr: int) -> dict | None:
     }
 
 
+def _shared_scale(*signals: np.ndarray, peak_dbfs: float = -1.0) -> float:
+    """The one gain that puts the loudest of `signals` at `peak_dbfs`."""
+    peak = max((float(np.max(np.abs(x))) for x in signals if np.size(x)),
+               default=0.0)
+    return (10.0 ** (peak_dbfs / 20.0) / peak) if peak > 0.0 else 1.0
+
+
 def comparison(record) -> None:
     st.subheader("Generated against the sample")
     st.caption(
@@ -374,13 +381,18 @@ def comparison(record) -> None:
         st.metric("Crest (generated)", f"{data['crest'][1]:.1f} dB", border=True)
         st.metric("Peak at (sample)", f"{data['peak_ms'][0]:.1f} ms", border=True)
         st.metric("Peak at (generated)", f"{data['peak_ms'][1]:.1f} ms", border=True)
+    # ONE scale for both players. Normalizing each to its own peak makes the
+    # louder-sounding one whichever has the lower crest factor, which is a
+    # property of the crest factor and not of the fit — and this A/B is how
+    # anyone actually decides whether a drum sounds right.
+    playback = _shared_scale(data["reference"], data["generated"])
     left, right = st.columns(2, gap="medium")
     with left:
         st.markdown("**Sample**")
-        st.audio(AudioIO.normalize_peak(data["reference"], -1.0), sample_rate=sr)
+        st.audio(data["reference"] * playback, sample_rate=sr)
     with right:
         st.markdown("**Generated**")
-        st.audio(AudioIO.normalize_peak(data["generated"], -1.0), sample_rate=sr)
+        st.audio(data["generated"] * playback, sample_rate=sr)
     waveform, spectrum, decay, spectrogram = st.tabs(
         ["Waveform", "Spectrum", "Decay", "Spectrogram"]
     )

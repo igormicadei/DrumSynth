@@ -150,6 +150,64 @@ class TestSpectralTarget:
         assert target.distance(render(detuned, seed=2)) > floor + 3.0
 
 
+class TestBandBankHasNoDuplicateBands:
+    """The bug that made the objective near-blind above the fundamental.
+
+    Log-spaced bands are narrower than one FFT bin below `spacing / width`, and
+    the old bank snapped each empty band onto its nearest bin. That does not
+    add resolution — it counts one bin many times. Measured on a real fit at
+    n_fft=256: eleven bands all read bin 0 (DC, outside every one of them) and
+    eleven more all read bin 1, pooling 60% of the loss weight below 210 Hz and
+    leaving 1.8% above 2 kHz.
+    """
+
+    def test_no_two_bands_read_the_same_bins(self):
+        target = SpectralTarget(render(known_drum()), SR)
+        for size in target.fft_sizes:
+            bank = target.band_matrix(size)
+            supports = {tuple(np.flatnonzero(bank[:, j]).tolist())
+                        for j in range(bank.shape[1])}
+            assert len(supports) == bank.shape[1], (
+                f"n_fft={size} has duplicate bands")
+
+    def test_every_band_holds_at_least_one_bin_of_its_own_range(self):
+        target = SpectralTarget(render(known_drum()), SR)
+        for size in target.fft_sizes:
+            bank = target.band_matrix(size)
+            edges = target.band_edges(size)
+            freqs = np.fft.rfftfreq(size, 1.0 / SR)
+            assert bank.shape[1] == len(edges)
+            for j, (low, high) in enumerate(edges):
+                inside = freqs[bank[:, j] > 0]
+                assert inside.size >= 1
+                assert inside.min() >= low and inside.max() < high
+
+    def test_bins_are_never_shared_between_bands(self):
+        """Disjoint supports, so no part of the spectrum is weighted twice."""
+        target = SpectralTarget(render(known_drum()), SR)
+        for size in target.fft_sizes:
+            bank = target.band_matrix(size)
+            assert bank.sum(axis=1).max() <= 1.0
+
+    def test_a_coarse_resolution_keeps_fewer_bands_than_a_fine_one(self):
+        target = SpectralTarget(render(known_drum()), SR)
+        counts = [target.band_matrix(size).shape[1] for size in target.fft_sizes]
+        assert counts == sorted(counts)
+        assert counts[0] < SpectralTarget.N_BANDS
+
+    def test_the_midrange_carries_real_weight(self):
+        """The point of the fix. Before it, 600-2000 Hz was 11% of the loss
+        weight on a real tom and everything above 2 kHz was 1.8%."""
+        target = SpectralTarget(render(known_drum()), SR)
+        total, midrange = 0.0, 0.0
+        for size in target.fft_sizes:
+            weight = target.band_weights(size).sum(axis=0)
+            centres = target.band_centres(size)
+            total += weight.sum()
+            midrange += weight[(centres >= 600.0) & (centres < 2000.0)].sum()
+        assert midrange / total > 0.15
+
+
 class TestLinearVoiceBasis:
     @staticmethod
     def _relative_error(rebuilt: np.ndarray, direct: np.ndarray) -> float:
@@ -641,7 +699,38 @@ class TestNoiseLevelsAreMatchedByEnergy:
         assert fit.levels[0] > 0.01, (
             f"the noise band came back at {fit.levels[0]:.3e} against a truth "
             "of 0.05 — the level solve is projecting onto noise again")
-        assert fit.levels[0] == pytest.approx(0.05, rel=1.5)
+        # Not pinned near 0.05, and the reason is worth stating. A 12-mode bank
+        # fitted to this drum is short of mid-band energy, and the noise band
+        # is the only free knob that can supply it — so the objective's minimum
+        # for THIS bank really is around 3x the truth (measured: 0.05 scores
+        # 5.65 dB against 3.28 dB at 0.15). The sweep is right about the model
+        # it was handed. What this test is for is the failure it was written
+        # for: a level that comes back as silence.
+        assert 0.02 < fit.levels[0] < 0.5
+
+    def test_the_objective_puts_the_minimum_at_the_true_level(self):
+        """The unconfounded version of the test above.
+
+        Given the TRUE modes, so the noise band has nothing to compensate for,
+        sweeping its level has to bottom out at the level the drum was rendered
+        with. If it does not, the band loss itself is biased about noise and
+        every fitted level inherits that."""
+        truth = 0.05
+        params = DrumParams(
+            modes=known_drum().modes,
+            noise=[NoiseBand(200.0, 900.0, truth, 0.9)],
+            tension=Tension(k=0.0, tau=0.09))
+        target = SpectralTarget(render(params, seconds=1.6, seed=3), SR)
+
+        levels = np.array([0.02, 0.035, 0.05, 0.07, 0.1, 0.15])
+        losses = []
+        for level in levels:
+            candidate = DrumParams(
+                modes=known_drum().modes,
+                noise=[NoiseBand(200.0, 900.0, float(level), 0.9)],
+                tension=Tension(k=0.0, tau=0.09))
+            losses.append(target.distance(render(candidate, seconds=1.6, seed=7)))
+        assert levels[int(np.argmin(losses))] == pytest.approx(truth)
 
     def test_the_basis_knows_which_band_each_row_occupies(self):
         """Solving a noise level needs the band, because it cannot be done by
@@ -1240,6 +1329,47 @@ class TestRunStore:
             layers=[{"velocity": 90.0, "generated": audio, "reference": audio}],
             sr=SR, when=when,
         )
+
+    def test_the_stored_pair_keeps_its_relative_level(self, tmp_path):
+        """`AudioIO.write` peak-normalizes by default, and normalizing the two
+        files separately makes the louder-sounding one whichever has the lower
+        crest factor. Measured on a real fit, the pair was written 4.4 dB apart
+        in RMS — and the report page's two audio players read those files."""
+        from drumsynth.fitting.runs import RunStore
+
+        params = known_drum()
+        reference = render(params, seconds=0.4)
+        # Same drum, half the level and a deliberately different crest factor,
+        # so separate peak normalization cannot help but change the ratio.
+        generated = reference * 0.5
+        generated[0] = float(np.max(np.abs(reference)))
+
+        store = RunStore(tmp_path)
+        directory = store.save(
+            drum="demo", summary={}, params=params,
+            layers=[{"velocity": 90.0, "generated": generated,
+                     "reference": reference}], sr=SR)
+
+        written_generated, written_reference = store.read(directory).audio(90.0, SR)
+        before = np.sqrt(np.mean(generated**2)) / np.sqrt(np.mean(reference**2))
+        after = (np.sqrt(np.mean(written_generated**2))
+                 / np.sqrt(np.mean(written_reference**2)))
+        assert after == pytest.approx(before, rel=0.01)
+
+    def test_the_stored_pair_still_fits_in_the_file(self, tmp_path):
+        """Preserving the ratio must not clip, whichever side is louder."""
+        from drumsynth.fitting.runs import RunStore
+
+        params = known_drum()
+        reference = render(params, seconds=0.4)
+        for scale in (0.25, 4.0):
+            store = RunStore(tmp_path / f"s{scale}")
+            directory = store.save(
+                drum="demo", summary={}, params=params,
+                layers=[{"velocity": 90.0, "generated": reference * scale,
+                         "reference": reference}], sr=SR)
+            for written in store.read(directory).audio(90.0, SR):
+                assert np.max(np.abs(written)) <= 1.0
 
     def test_a_run_round_trips(self, tmp_path):
         from drumsynth.fitting.runs import RunStore

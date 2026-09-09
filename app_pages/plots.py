@@ -3,8 +3,9 @@
 Altair rather than matplotlib for anything with axes, because the app is a
 Streamlit app and Vega charts are interactive, themed and readable at any width
 without a figure size guess. The one exception is the spectrogram: it is an
-image, and 96 bands by 250 frames is 24 000 rectangles that Vega would draw one
-at a time — so it is rendered straight to RGB and shown with `st.image`.
+image, and sixty-odd bands by 250 frames is fifteen thousand rectangles that
+Vega would draw one at a time — so it is rendered straight to RGB and shown
+with `st.image`.
 
 Every chart here takes a `Comparison` and draws both signals on one pair of
 axes. Two charts side by side, each auto-scaled, is the most common way to make

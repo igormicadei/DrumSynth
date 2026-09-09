@@ -213,6 +213,9 @@ class SpectralTarget:
     """
 
     #: Bands from the lowest mode a membrane drum has to the top of hearing.
+    #: `N_BANDS` is what is ASKED for; each resolution keeps only the bands that
+    #: hold at least one of its bins, so the coarse transforms keep fewer. See
+    #: `log_band_bank`.
     BAND_RANGE: tuple[float, float] = (30.0, 16000.0)
     N_BANDS: int = 64
 
@@ -237,9 +240,9 @@ class SpectralTarget:
         self.length = len(self.raw)
 
         self._windows = {size: np.hanning(size) for size in self.fft_sizes}
-        self._banks = {
-            size: self._band_matrix(size, n_bands) for size in self.fft_sizes
-        }
+        self._banks, self._edges = {}, {}
+        for size in self.fft_sizes:
+            self._banks[size], self._edges[size] = self._band_matrix(size, n_bands)
         self._reference = {
             size: self._band_spectrogram(self.raw, size) for size in self.fft_sizes
         }
@@ -290,20 +293,68 @@ class SpectralTarget:
         )
         return alive.astype(np.float64)
 
-    def _band_matrix(self, n_fft: int, n_bands: int) -> np.ndarray:
-        """(bins, bands) summing matrix over log-spaced edges."""
-        freqs = np.fft.rfftfreq(n_fft, 1.0 / self.sr)
-        low, high = SpectralTarget.BAND_RANGE
-        edges = np.geomspace(low, min(high, self.sr / 2 * 0.99), n_bands + 1)
-        matrix = np.zeros((len(freqs), n_bands))
-        for index in range(n_bands):
+    @staticmethod
+    def log_band_bank(
+        freqs: np.ndarray,
+        band_range: tuple[float, float],
+        n_bands: int,
+    ) -> tuple[np.ndarray, np.ndarray]:
+        """(bins, bands) summing matrix over log-spaced edges, plus the edges.
+
+        **A band narrower than one bin is dropped, not snapped to the nearest
+        one.** That sounds like a detail and it was the single largest bias in
+        the whole objective.
+
+        Log-spaced bands from 30 Hz are about 10% wide, so below `bin_spacing /
+        0.1` there is no bin to put in them. Snapping each empty band onto its
+        nearest bin — which is what this used to do — does not invent
+        resolution, it makes N copies of one bin and then counts that bin N
+        times. Measured on the 256-point resolution of a real fit: 64 bands
+        collapsed onto 33 distinct bins, with **eleven bands all reading bin 0**
+        (DC, which is not even inside any of them) and eleven more all reading
+        bin 1. A third of that resolution's loss was one number, repeated.
+
+        Pooled over all three resolutions the effect was that **60% of the loss
+        weight sat below 210 Hz and 1.8% above 2 kHz** — so the fit was
+        near-blind to everything above the fundamental, which is exactly where
+        it was leaving holes. Dropping the empty bands is the honest answer: a
+        256-point FFT genuinely cannot say anything about 90 Hz, and that
+        resolution is in the set for its time resolution, not its frequency
+        resolution. The 4096-point one covers the low end.
+
+        The kept bands still tile without overlap — the intervals are half-open
+        and disjoint, so every bin lands in exactly one band and no band can be
+        a duplicate of another.
+        """
+        freqs = np.asarray(freqs, dtype=float)
+        edges = np.geomspace(band_range[0], band_range[1], int(n_bands) + 1)
+        columns, kept = [], []
+        for index in range(int(n_bands)):
             inside = (freqs >= edges[index]) & (freqs < edges[index + 1])
             if not inside.any():
-                # Narrower than one bin at this resolution: take the nearest.
-                inside = np.zeros_like(freqs, dtype=bool)
-                inside[int(np.argmin(np.abs(freqs - edges[index])))] = True
-            matrix[inside, index] = 1.0
-        return matrix
+                continue
+            columns.append(inside.astype(float))
+            kept.append(index)
+
+        if not columns:
+            # No resolution at all in range. One band over everything is a
+            # worse measurement than the caller wanted but a defined one.
+            inside = (freqs >= band_range[0]) & (freqs < band_range[1])
+            columns, kept = [inside.astype(float)], [0]
+
+        matrix = np.stack(columns, axis=1)
+        kept_edges = np.array(
+            [(edges[index], edges[index + 1]) for index in kept], dtype=float)
+        return matrix, kept_edges
+
+    def _band_matrix(self, n_fft: int, n_bands: int) -> tuple[np.ndarray, np.ndarray]:
+        """(bins, bands) summing matrix for one resolution, plus its edges."""
+        low, high = SpectralTarget.BAND_RANGE
+        return SpectralTarget.log_band_bank(
+            np.fft.rfftfreq(n_fft, 1.0 / self.sr),
+            (low, min(high, self.sr / 2 * 0.99)),
+            n_bands,
+        )
 
     def _band_spectrogram(self, signal: np.ndarray, size: int) -> np.ndarray:
         frames = _frame(np.asarray(signal, dtype=np.float64), size, size // 4)
@@ -337,6 +388,19 @@ class SpectralTarget:
     def band_weights(self, n_fft: int) -> np.ndarray:
         """(frames, bands), 1 where the reference is above the floor."""
         return self._weights[n_fft]
+
+    def band_edges(self, n_fft: int) -> np.ndarray:
+        """(bands, 2) of the low and high edge each surviving band covers.
+
+        Not every resolution keeps every band — see `log_band_bank` — so this
+        is the only way to say what a band index at one resolution means.
+        """
+        return self._edges[n_fft]
+
+    def band_centres(self, n_fft: int) -> np.ndarray:
+        """Geometric centre of each surviving band, in Hz."""
+        edges = self._edges[n_fft]
+        return np.sqrt(edges[:, 0] * edges[:, 1])
 
     def distance(self, candidate: np.ndarray) -> float:
         """Weighted mean absolute band-level distance, in dB, over all

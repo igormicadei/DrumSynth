@@ -208,11 +208,16 @@ class RunStore:
                 velocity = float(layer["velocity"])
                 name = f"v{velocity:06.2f}".replace(".", "-") + ".wav"
                 entry = {"velocity": velocity, "generated": f"audio/{name}"}
-                AudioIO.write(directory / "audio" / name,
-                              np.asarray(layer["generated"]), sr)
-                if layer.get("reference") is not None:
+                generated = np.asarray(layer["generated"])
+                reference = layer.get("reference")
+                reference = None if reference is None else np.asarray(reference)
+
+                scale = RunStore._pair_scale(generated, reference)
+                AudioIO.write(directory / "audio" / name, generated * scale, sr,
+                              normalize=False)
+                if reference is not None:
                     AudioIO.write(directory / "reference" / name,
-                                  np.asarray(layer["reference"]), sr)
+                                  reference * scale, sr, normalize=False)
                     entry["reference"] = f"reference/{name}"
                 stored.append(entry)
 
@@ -238,6 +243,41 @@ class RunStore:
             return False
         shutil.rmtree(directory)
         return True
+
+    #: Headroom the written pair is scaled to. Same convention as
+    #: `AudioIO.WRITE_PEAK_DBFS`; it is restated here because what is being
+    #: normalized is the PAIR, not either file.
+    WRITE_PEAK_DBFS: float = -1.0
+
+    @staticmethod
+    def _pair_scale(generated: np.ndarray,
+                    reference: np.ndarray | None) -> float:
+        """ONE scale for both files, so their relative level survives the write.
+
+        `AudioIO.write` normalizes to a peak by default, and normalizing the
+        two files SEPARATELY throws away the only thing the pair is for. The
+        generated hit and the recording have different crest factors, so equal
+        peaks mean unequal loudness: measured on a real fit, the pair came out
+        4.4 dB apart in RMS.
+
+        What that costs depends on the reader. `ScoreCard` is unharmed — it
+        RMS-normalizes both sides — and so are the report's charts, which go
+        through `Comparison` and do the same. What is harmed is everything that
+        reads the files as written: the report page's two audio players, which
+        is how anyone actually judges a fit, and any level-sensitive
+        measurement. Scoring a run stored before this fix under the band
+        objective gives 7.83 dB, against the 4.76 dB the same parameters score
+        rendered and level-matched — three decibels of pure bookkeeping.
+
+        Dividing by the louder peak keeps the ratio exactly and cannot clip.
+        """
+        peaks = [float(np.max(np.abs(generated))) if generated.size else 0.0]
+        if reference is not None and reference.size:
+            peaks.append(float(np.max(np.abs(reference))))
+        peak = max(peaks)
+        if peak <= 0.0:
+            return 1.0
+        return 10.0 ** (RunStore.WRITE_PEAK_DBFS / 20.0) / peak
 
     @staticmethod
     def _plain(value):

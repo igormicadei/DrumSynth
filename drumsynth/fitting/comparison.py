@@ -204,14 +204,14 @@ class Comparison:
         """
         hop = n_fft // 4
         bins = np.fft.rfftfreq(n_fft, 1.0 / self.sr)
-        edges = np.geomspace(30.0, min(16000.0, self.sr / 2 * 0.99), n_bands + 1)
-        bank = np.zeros((len(bins), n_bands))
-        for index in range(n_bands):
-            inside = (bins >= edges[index]) & (bins < edges[index + 1])
-            if not inside.any():
-                inside = np.zeros_like(bins, dtype=bool)
-                inside[int(np.argmin(np.abs(bins - edges[index])))] = True
-            bank[inside, index] = 1.0
+        # Bands with no bin in them are DROPPED, not snapped onto the nearest
+        # bin. At 1024 points a 6.7%-wide band holds no bin below ~640 Hz, and
+        # snapping drew the bottom third of this picture as thirty-odd copies
+        # of a handful of bins — a smear that looked like content in both
+        # images and hid the difference between them. See `log_band_bank`.
+        bank, edges = SpectralTarget.log_band_bank(
+            bins, (30.0, min(16000.0, self.sr / 2 * 0.99)), n_bands
+        )
 
         def image(signal: np.ndarray) -> np.ndarray:
             power = _stft(signal, n_fft, hop) ** 2
@@ -225,7 +225,7 @@ class Comparison:
         vmax = float(max(reference.max(), generated.max()))
         return Spectrograms(
             times=np.arange(rows) * hop / self.sr,
-            freqs=np.sqrt(edges[:-1] * edges[1:]),
+            freqs=np.sqrt(edges[:, 0] * edges[:, 1]),
             reference_db=reference,
             generated_db=generated,
             difference_db=generated - reference,

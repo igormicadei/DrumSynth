@@ -440,7 +440,7 @@ spends its budget chasing one noise realization.
 
 ---
 
-## Two things the fit was being paid to get wrong
+## Three things the fit was being paid to get wrong
 
 Both were found by taking a real fit apart rather than by looking at the code.
 
@@ -575,6 +575,86 @@ On the real tom, with the noise levels fixed, the seventeen proposed partials
 are now **reverted**: the held-out layers gained 0.083 dB, which is not worth
 seventeen resonators. That is the system working — the transient bank now
 explains what they were chasing.
+
+### The loss was nearly blind above the fundamental
+
+The third one is the largest, and it explains why the two above helped less
+than they should have: **the objective was not really looking at most of the
+spectrum.**
+
+The loss sums FFT power into 64 log-spaced bands, at three resolutions. A
+log-spaced band from 30 Hz is about 10% wide, so below `bin_spacing / 0.1`
+there is no bin to put in one — and the old bank handled that by snapping each
+empty band onto its **nearest bin**. That does not add resolution. It makes N
+copies of one bin and then counts that bin N times.
+
+Measured on a real tom fit:
+
+| resolution | bin spacing | 64 bands became | worst duplication |
+|---|---|---|---|
+| 256 | 172 Hz | 33 distinct bins | **11 bands all reading bin 0** |
+| 1024 | 43 Hz | 46 distinct bins | 8 bands all reading bin 1 |
+| 4096 | 11 Hz | 58 distinct bins | 3 bands |
+
+Bin 0 at a 256-point transform is **DC**, which is not inside any of the eleven
+bands that were reading it. A third of that resolution's loss was one number,
+repeated.
+
+Pooled over all three resolutions, the weight the loss placed on each region:
+
+| region | before | after |
+|---|---|---|
+| below 210 Hz | **60.1%** | 27.1% |
+| 210 - 600 Hz | 27.2% | 30.6% |
+| 600 - 2000 Hz | 11.0% | **32.4%** |
+| above 2 kHz | **1.8%** | 9.8% |
+
+So the fit was near-blind everywhere except the fundamental — which is exactly
+where it was leaving holes, and exactly why nothing the model could do about
+them ever paid. On the real tom: the 350-500 Hz region, visibly empty in the
+generated spectrum against continuous content in the sample, carried 3% of the
+loss weight. Closing it with noise bought **0.07 dB of a 3.68 dB loss**. And
+deleting 24 of the fit's 40 modes — everything above 1 kHz, the region that
+makes a tom sound like a struck bell — cost **0.26 dB**. Sixty percent of the
+bank was buying seven percent of the loss.
+
+The fix is to **drop bands with no bin in them rather than snap them**. A
+256-point FFT genuinely cannot say anything about 90 Hz; that resolution is in
+the set for its time resolution, and the 4096-point one covers the low end. The
+surviving bands still tile without overlap, so no part of the spectrum is
+weighted twice.
+
+The same measurements, after:
+
+| | before | after |
+|---|---|---|
+| narrow noise bands closing the 350-500 Hz hole | -0.07 dB | **-0.37 dB** |
+| cost of deleting every mode above 1 kHz | +0.26 dB | **+1.18 dB** |
+
+Five times the incentive to fill the hole, four times the value on the modes
+that were being wasted. The loss floors move with it: two renders of identical
+parameters with different seeds sit 0.19 dB apart (was 0.03), a drum detuned by
+a major third sits **9.05 dB** away (was 7.3), and broadband hiss at -30 dB
+still makes the loss worse, as it must.
+
+The report's spectrogram had the identical defect — 96 bands at 1024 points,
+of which the bottom 32 were duplicates — so the bottom third of the picture
+people were reading a fit from was a smear of repeated rows.
+
+### The run was storing a pair it had not scored
+
+`AudioIO.write` peak-normalizes by default, and a run wrote its generated hit
+and its reference **separately**. The two have different crest factors, so
+equal peaks mean unequal loudness: measured on a real fit, the stored pair came
+out **4.4 dB apart in RMS**.
+
+The `ScoreCard` was unharmed — it RMS-normalizes both sides — and so were the
+report's charts, which go through `Comparison` and do the same. What was harmed
+was everything reading the files as written, including **the report page's two
+audio players**, which is how anyone actually decides whether a drum sounds
+right. Those normalized each side again, separately, on playback. A run is now
+written with one scale for the pair, taken from the louder peak so the ratio is
+exact and nothing clips, and the players share one gain.
 
 ### Two smaller ones from the same fit
 
