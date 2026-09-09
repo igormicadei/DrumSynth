@@ -61,7 +61,10 @@ class FitWorker:
         if isinstance(value, np.ndarray):
             return FitWorker._plain(value.tolist())
         if isinstance(value, (np.floating, np.integer)):
-            return value.item()
+            value = value.item()
+        # NaN and inf are legal in Python's json but not in JSON, and a NaN k
+        # is meaningful here: it means the layer's glide was too small to
+        # measure. Send it as null so the reader gets a value it can test.
         if isinstance(value, float) and not np.isfinite(value):
             return None
         return value

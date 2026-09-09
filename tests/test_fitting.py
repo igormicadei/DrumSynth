@@ -414,6 +414,34 @@ class TestVelocityCurve:
 
 
 # =============================================================================
+# The wire between the fit and the UI
+# =============================================================================
+
+
+class TestWorkerSerialization:
+    def test_an_unmeasurable_k_survives_the_pipe_as_null(self):
+        """A NaN k is meaningful: the layer's glide was too small to measure.
+        Python's json will happily write a bare `NaN`, which is not JSON and
+        which a reader cannot distinguish from a number until it tries to use
+        it. Send null, which every reader can test."""
+        from drumsynth.fitting.worker import FitWorker
+
+        plain = FitWorker._plain(
+            {"per_layer": [0.12, float("nan"), np.float64("nan"),
+                           np.float64(0.13), float("inf")]}
+        )
+        assert plain["per_layer"] == [0.12, None, None, pytest.approx(0.13), None]
+
+    def test_numpy_does_not_reach_the_pipe(self):
+        from drumsynth.fitting.worker import FitWorker
+
+        plain = FitWorker._plain(
+            {"gains": np.array([1.0, 2.0]), "modes": np.int64(7)})
+        assert plain == {"gains": [1.0, 2.0], "modes": 7}
+        assert isinstance(plain["modes"], int)
+
+
+# =============================================================================
 # End to end
 # =============================================================================
 

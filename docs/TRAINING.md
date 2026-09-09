@@ -134,9 +134,19 @@ hit at exactly 0, which is the bottom of the *observed* range, not of the
 physical one — feeding 0 to a power law makes the quietest layer silent and
 drags `log(0)` into the fit, corrupting the exponent for every other layer.
 
-Stage 5 refines everything jointly with differential evolution, scoring the
-**worst** layer rather than the mean (§8.2). Each generation is reported as it
-completes, which is what the progress chart draws.
+Stage 5 refines the **velocity mapping** with differential evolution — six
+numbers, the two-parameter laws for amplitude, contact time and noise level —
+scoring the **worst** layer rather than the mean (§8.2). Each generation is
+reported as it completes, which is what the progress chart draws.
+
+It is worth being precise about what stage 5 does *not* touch: `f_static`,
+`t60` and the per-mode gain shape are frozen. On a drum where stage 1 already
+recovered the modes, six parameters over a dozen generations converges in
+seconds and the chart is nearly flat because stage 4 already landed on the
+optimum. On a hard drum, the chart is *also* nearly flat — but for the opposite
+reason. The remaining error lives in the modes and the shape, and no setting of
+the velocity mapping can reach it. A flat generation chart is therefore not
+evidence that the fit is good; the stage 3 verdict and the per-layer losses are.
 
 ---
 
