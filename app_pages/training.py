@@ -157,7 +157,10 @@ def _progress() -> None:
             st.error(run.error.get("message", "the fit failed"),
                      icon=":material/error:")
             with st.expander("Traceback"):
-                st.code(run.error.get("traceback", "") or run.stderr_tail())
+                st.code(
+                    run.error.get("traceback", "") or run.stderr_tail(100),
+                    language="text",
+                )
             return
 
         steps = list(run.steps)[-6:]
