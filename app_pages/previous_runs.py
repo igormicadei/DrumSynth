@@ -40,6 +40,7 @@ selected = labels[selected_label]
 
 with st.container(horizontal=True, gap="small"):
     if st.button("Open run", icon=":material/open_in_new:", type="primary"):
+        st.session_state["selected_run_path"] = str(selected.directory)
         st.query_params["run"] = str(selected.directory)
         st.switch_page("app_pages/run.py")
 

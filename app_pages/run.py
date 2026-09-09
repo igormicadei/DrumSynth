@@ -6,11 +6,11 @@ import streamlit as st
 
 from drumsynth.fitting.runs import RunStore
 
-from app_pages.run_report import render
+from app_pages import run_report
 
 st.title("Run")
 
-run_path = st.query_params.get("run")
+run_path = st.query_params.get("run") or st.session_state.get("selected_run_path")
 record = RunStore().read(run_path) if run_path else None
 
 with st.container(horizontal=True, gap="small"):
@@ -26,4 +26,4 @@ if record is None:
     )
 else:
     st.subheader(f"{record.drum} · {record.started.replace('T', ' ')}")
-    render(record)
+    run_report.render(record)
