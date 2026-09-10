@@ -32,12 +32,17 @@ def test_fit_writes_a_run_and_decode_plays_it_back(hit, tmp_path, capsys):
     assert relative_mse(signal, decoded) <= 1e-3
 
 
-def test_fit_defaults_the_output_directory_next_to_the_input(hit, capsys):
+def test_fit_keeps_the_run_in_the_store_by_default(hit, tmp_path, monkeypatch):
     path, _, _ = hit
+    monkeypatch.setenv("DRUMSYNTH_RUNS", str(tmp_path / "runs"))
 
     main(["fit", str(path), "--space", "quick", "--target-mse", "1e-2", "-q", "--no-plot"])
 
-    assert (path.parent / "hit_fit" / "model.npz").exists()
+    from drumsynth.runs import RunStore
+
+    kept = RunStore.default().runs("hit", kind="hit")
+    assert len(kept) == 1
+    assert kept[0].model_path.exists()
 
 
 def test_fit_reports_a_target_it_could_not_reach(hit, capsys):
@@ -164,3 +169,53 @@ def test_playing_outside_the_recorded_range_says_so(tmp_path, capsys):
     main(["play", str(out / "instrument.npz"), str(tmp_path / "x.wav"), "--velocity", "127"])
 
     assert "outside the recorded range" in capsys.readouterr().err
+
+
+# -- runs and benchmarks ------------------------------------------------------
+
+
+def test_runs_lists_what_was_kept(hit, tmp_path, monkeypatch, capsys):
+    path, _, _ = hit
+    monkeypatch.setenv("DRUMSYNTH_RUNS", str(tmp_path / "runs"))
+    main(["fit", str(path), "--space", "quick", "--target-mse", "1e-2", "-q", "--no-plot"])
+    capsys.readouterr()
+
+    assert main(["runs", "--kind", "hit"]) == 0
+
+    printed = capsys.readouterr().out
+    assert "hit" in printed
+    assert "representation" in printed
+
+
+def test_runs_says_so_when_there_are_none(tmp_path, capsys):
+    assert main(["runs", "--runs", str(tmp_path / "empty")]) == 0
+
+    assert "no instrument runs" in capsys.readouterr().out
+
+
+def test_bench_measures_a_saved_model(hit, tmp_path, monkeypatch, capsys):
+    path, _, _ = hit
+    monkeypatch.setenv("DRUMSYNTH_RUNS", str(tmp_path / "runs"))
+    main(["fit", str(path), "--space", "quick", "--target-mse", "1e-2", "-q", "--no-plot"])
+    from drumsynth.runs import RunStore
+
+    model = RunStore.default().runs("hit", kind="hit")[0].model_path
+    capsys.readouterr()
+
+    assert main(["bench", str(model), "--block", "128", "--voices", "1", "4"]) == 0
+
+    printed = capsys.readouterr().out
+    assert "per block" in printed
+    assert "voices" in printed
+
+
+def test_bench_reads_a_velocity_model_too(tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv("DRUMSYNTH_RUNS", str(tmp_path / "runs"))
+    main(["fit-drum", "toms-stereo-tom3", "--space", "quick", "-q", "--no-plot"])
+    from drumsynth.runs import RunStore
+
+    model = RunStore.default().runs("toms-stereo-tom3")[0].model_path
+    capsys.readouterr()
+
+    assert main(["bench", str(model), "--voices"]) == 0
+    assert "trigger" in capsys.readouterr().out

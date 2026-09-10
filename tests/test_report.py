@@ -28,9 +28,18 @@ def test_every_artefact_is_written(written):
     _, paths, out = written
 
     assert set(paths) >= {"model", "metadata", "reconstruction", "residual", "report", "evaluations"}
-    for path in paths.values():
+    for name, path in paths.items():
         assert path.exists() and path.stat().st_size > 0
-        assert path.parent == out
+        assert path.parent == (out / "figures" if name.startswith("figure.") else out)
+
+
+def test_the_figures_are_written_beside_the_run(written):
+    _, paths, out = written
+
+    figures = {name for name in paths if name.startswith("figure.")}
+
+    assert {"figure.waveform", "figure.spectrogram", "figure.envelopes"} <= figures
+    assert (out / "figures").is_dir()
 
 
 def test_the_reconstruction_on_disk_is_the_model_s_own(written, sr):

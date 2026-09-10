@@ -312,3 +312,24 @@ A fit optimizes reconstruction, so it will pick the fine framing. If what you
 want is an instrument to play rather than a codec for a grid of WAVs, the
 coarser framing is the better model and the report's interpolation number is
 where that shows.
+
+## 14. What a model costs to play has nothing to do with how good it is
+
+Playing a model is an inverse FFT per frame, and an inverse FFT costs the same
+whether the model filled 32 of its bins or 512:
+
+| partials kept | per audio block | fraction of one core |
+|---|---|---|
+| 32 | 0.025 ms | 0.43% |
+| 128 | 0.024 ms | 0.41% |
+| 512 | 0.024 ms | 0.41% |
+
+Accuracy is nearly free to play. What the partial count actually buys is a
+longer trigger — 0.33 ms at 32 partials, 2.89 ms at 512 — and more memory per
+sounding voice, both linear in the count.
+
+That is the opposite of the trade a bank of oscillators makes, where every
+partial is a per-sample cost for as long as it rings, and it is worth knowing
+which side of it a design is on before optimizing anything: here the number to
+watch is not the model's size but *when* its work happens. The whole
+measurement, and what does cost something, is in [LIVE.md](LIVE.md).

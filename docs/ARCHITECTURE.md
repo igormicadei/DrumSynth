@@ -199,15 +199,24 @@ drumsynth/
 │   ├── model.py    InstrumentCandidate, InstrumentAnalysis, InstrumentModel
 │   ├── fit.py      the search, and the three things it measures
 │   └── report.py   writing a velocity fit to disk
+├── streaming.py    a triggered voice, read out a block at a time
+├── bench.py        what that costs: trigger, per block, polyphony, memory
+├── plots.py        every figure, from arrays or from a model
+├── runs.py         the run store: fits kept rather than overwritten
 ├── corpus.py       the shipped sample library, as data
-└── cli.py          fit, fit-drum, decode, play, inspect
+└── cli.py          fit, fit-drum, runs, decode, play, bench, inspect
 ```
 
 `spectral` never chooses and `fitting` never invents a representation. The
 codecs are measured by something that has no stake in them, which is the only
 reason their claims mean anything.
 
-Two more boundaries worth stating:
+Three more boundaries worth stating:
+
+* **Streaming and rendering produce the same samples.** `Voice` exists because
+  a callback cannot afford a whole hit at once, not because playback is a
+  different computation; the tests hold the two to bit-for-bit equality, so a
+  measured error is also a heard error ([LIVE.md](LIVE.md)).
 
 * **A model file is self-contained.** One `.npz` holds the arrays and the
   metadata; playing it back needs the package and nothing from the session that

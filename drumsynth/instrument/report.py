@@ -36,6 +36,15 @@ def sweep(model: InstrumentModel, velocities: np.ndarray, gap: float = SWEEP_GAP
     )
 
 
+def sweep_slice(
+    audio: np.ndarray, index: int, n_samples: int, sample_rate: int, gap: float = SWEEP_GAP
+) -> np.ndarray:
+    """Pull one hit back out of a sweep, given where it sits in the ladder."""
+    stride = n_samples + int(round(gap * sample_rate))
+    start = index * stride
+    return np.asarray(audio)[start : start + n_samples]
+
+
 def between(velocities: np.ndarray) -> np.ndarray:
     """The midpoints of a velocity ladder — the hits nobody recorded."""
     velocities = np.asarray(velocities, dtype=np.float64)
@@ -121,9 +130,22 @@ def save_instrument_fit(
     if plot:
         figure = plot_layers(result, out / "velocity.png")
         if figure is not None:
-            written["plot"] = figure
+            written["velocity"] = figure
+        written.update(_figures(result.model, layers, take, out / "figures"))
 
     return written
+
+
+def _figures(model, layers, take: int, out_dir) -> dict[str, Path]:
+    """The full set of diagnostic figures, when matplotlib is installed."""
+    try:
+        from ..plots import save_instrument_figures
+    except ImportError:  # pragma: no cover - depends on the environment
+        return {}
+    return {
+        f"figure.{name}": path
+        for name, path in save_instrument_figures(model, layers, take, out_dir).items()
+    }
 
 
 def _write_json(path: Path, payload: dict) -> Path:

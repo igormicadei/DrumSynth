@@ -6,10 +6,16 @@
 
     drumsynth drums                           # what the sample library holds
     drumsynth fit-drum toms-stereo-tom3       # every velocity of one drum, one model
-    drumsynth play toms-stereo-tom3_fit/instrument.npz --velocity 96
+    drumsynth runs                            # every fit that has been kept
+    drumsynth play runs/instrument/toms-stereo-tom3/<run>/instrument.npz out.wav -v 96
 
     drumsynth decode hit_fit/model.npz out.wav
     drumsynth inspect hit_fit/model.npz
+    drumsynth bench hit_fit/model.npz         # what it costs to play live
+
+Fits are kept in the run store (`runs/`, or $DRUMSYNTH_RUNS) unless `-o` says
+where to put them, so a drum searched at three targets is three runs to compare
+rather than one directory overwritten twice.
 """
 
 from __future__ import annotations
@@ -27,6 +33,7 @@ from .instrument.fit import InstrumentSearchSpace, fit_instrument
 from .instrument.layers import VelocityLayers
 from .instrument.model import InstrumentModel
 from .instrument.report import save_instrument_fit
+from .runs import RunStore, store_hit_fit, store_instrument_fit
 from .spectral.model import SpectralModel
 
 SPACES = {
@@ -64,7 +71,7 @@ def _parser() -> argparse.ArgumentParser:
         "--out",
         type=Path,
         default=None,
-        help="output directory (default: <input>_fit next to each input)",
+        help="write here instead of keeping the run in the store",
     )
     fit_command.add_argument(
         "--target-mse",
@@ -97,7 +104,10 @@ def _parser() -> argparse.ArgumentParser:
         help="resample the input to this rate before fitting",
     )
     fit_command.add_argument(
-        "--no-plot", action="store_true", help="skip frontier.png"
+        "--runs", type=Path, default=None, help="a run store other than the default"
+    )
+    fit_command.add_argument(
+        "--no-plot", action="store_true", help="skip every figure"
     )
     fit_command.add_argument(
         "-q", "--quiet", action="store_true", help="only print the final summary"
@@ -116,7 +126,13 @@ def _parser() -> argparse.ArgumentParser:
         help="fit every velocity of one drum in the sample library to a single model",
     )
     drum_command.add_argument("drum", help="a name from `drumsynth drums`")
-    drum_command.add_argument("-o", "--out", type=Path, default=None)
+    drum_command.add_argument(
+        "-o",
+        "--out",
+        type=Path,
+        default=None,
+        help="write here instead of keeping the run in the store",
+    )
     drum_command.add_argument(
         "--target-mse",
         type=float,
@@ -160,6 +176,9 @@ def _parser() -> argparse.ArgumentParser:
     drum_command.add_argument(
         "--max-duration", type=float, default=None, help="trim every recording to this"
     )
+    drum_command.add_argument(
+        "--runs", type=Path, default=None, help="a run store other than the default"
+    )
     drum_command.add_argument("--no-plot", action="store_true")
     drum_command.add_argument("-q", "--quiet", action="store_true")
     drum_command.set_defaults(run=_run_fit_drum)
@@ -176,9 +195,40 @@ def _parser() -> argparse.ArgumentParser:
     play_command.add_argument("model", type=Path)
     play_command.add_argument("output", type=Path, nargs="?", default=None)
     play_command.add_argument(
-        "--velocity", type=float, required=True, help="1-127, anywhere in the range"
+        "-v", "--velocity", type=float, required=True, help="anywhere in the recorded range"
     )
     play_command.set_defaults(run=_run_play)
+
+    runs_command = commands.add_parser(
+        "runs", help="list the fits that have been kept"
+    )
+    runs_command.add_argument(
+        "name", nargs="?", default=None, help="only this instrument or hit"
+    )
+    runs_command.add_argument(
+        "--kind", choices=["instrument", "hit"], default="instrument"
+    )
+    runs_command.add_argument("--runs", dest="root", type=Path, default=None)
+    runs_command.set_defaults(run=_run_runs)
+
+    bench_command = commands.add_parser(
+        "bench", help="measure what a model costs to play live"
+    )
+    bench_command.add_argument("model", type=Path)
+    bench_command.add_argument(
+        "-v", "--velocity", type=float, default=None, help="for a velocity model"
+    )
+    bench_command.add_argument(
+        "--block", type=int, default=256, help="audio callback size (default: 256)"
+    )
+    bench_command.add_argument(
+        "--voices",
+        type=int,
+        nargs="*",
+        default=[1, 4, 8, 16, 32],
+        help="polyphony levels to measure",
+    )
+    bench_command.set_defaults(run=_run_bench)
 
     inspect_command = commands.add_parser(
         "inspect", help="print what a saved model contains"
@@ -192,7 +242,6 @@ def _parser() -> argparse.ArgumentParser:
 def _run_fit(args) -> int:
     for path in args.inputs:
         signal, sample_rate = AudioIO.read(path, sr=args.sample_rate)
-        out_dir = (args.out / path.stem) if args.out else path.with_name(f"{path.stem}_fit")
 
         print(f"{path}  {len(signal) / sample_rate:.3f} s at {sample_rate} Hz")
         result = fit(
@@ -205,18 +254,25 @@ def _run_fit(args) -> int:
             progress=None if args.quiet else _print_progress,
         )
 
-        written = save_fit(
-            result,
-            out_dir,
-            reference=signal,
-            input_path=path,
-            plot=not args.no_plot,
-        )
+        if args.out:
+            out_dir = args.out / path.stem
+            written = save_fit(
+                result, out_dir, reference=signal, input_path=path, plot=not args.no_plot
+            )
+        else:
+            run = store_hit_fit(
+                result,
+                path.stem,
+                reference=signal,
+                store=RunStore(args.runs) if args.runs else None,
+                plot=not args.no_plot,
+            )
+            out_dir = run.path
+            written = {p.name: p for p in run.files()}
 
         print(result.summary())
         print(f"written to       {out_dir}/")
-        for name, target in written.items():
-            print(f"  {name:14s} {target.name}")
+        print(f"  {len(written)} files" + (", figures/" if not args.no_plot else ""))
         print()
 
         if not result.target_reached:
@@ -266,8 +322,6 @@ def _run_fit_drum(args) -> int:
         sample_rate=args.sample_rate,
         max_duration=args.max_duration,
     )
-    out_dir = args.out or Path(f"{args.drum}_fit")
-
     print(
         f"{layers.name}: {layers.n_recordings} recordings, {layers.n_layers} velocities, "
         f"{layers.duration:.3f} s at {layers.sample_rate} Hz"
@@ -283,14 +337,25 @@ def _run_fit_drum(args) -> int:
         progress=None if args.quiet else _print_progress,
     )
 
-    written = save_instrument_fit(
-        result, out_dir, layers=layers, take=args.take, plot=not args.no_plot
-    )
+    if args.out:
+        out_dir = args.out
+        written = save_instrument_fit(
+            result, out_dir, layers=layers, take=args.take, plot=not args.no_plot
+        )
+    else:
+        run = store_instrument_fit(
+            result,
+            layers,
+            store=RunStore(args.runs) if args.runs else None,
+            take=args.take,
+            plot=not args.no_plot,
+        )
+        out_dir = run.path
+        written = {p.name: p for p in run.files()}
 
     print(result.summary())
     print(f"written to       {out_dir}/")
-    for name, target in written.items():
-        print(f"  {name:16s} {target.name}")
+    print(f"  {len(written)} files" + (", figures/" if not args.no_plot else ""))
     print()
 
     if not result.target_reached:
@@ -300,6 +365,61 @@ def _run_fit_drum(args) -> int:
             file=sys.stderr,
         )
     return 0
+
+
+def _run_runs(args) -> int:
+    store = RunStore(args.root) if args.root else RunStore.default()
+    runs = store.runs(args.name, kind=args.kind)
+
+    if not runs:
+        where = f" for {args.name}" if args.name else ""
+        print(f"no {args.kind} runs{where} in {store.root}/")
+        return 0
+
+    print(f"{'when':17s} {'name':26s} {'error':>10s} {'size':>9s}  representation")
+    for run in runs:
+        error = run.metadata.get("reconstruction_mse", run.metadata.get("relative_mse"))
+        print(
+            f"{run.created.strftime('%Y-%m-%d %H:%M'):17s} {run.name:26s} "
+            f"{error if error is None else f'{error:10.3e}'} "
+            f"{run.metadata.get('bytes', 0) / 1024:8.1f}k  {run.summary}"
+        )
+    return 0
+
+
+def _run_bench(args) -> int:
+    from .bench import measure_live, measure_polyphony
+
+    model = _load_model(args.model)
+    velocity = args.velocity
+    if velocity is None and isinstance(model, InstrumentModel):
+        low, high = model.velocity_range
+        velocity = 0.5 * (low + high)
+
+    cost = measure_live(model, velocity, block=args.block)
+    print(cost.report())
+
+    if args.voices:
+        print()
+        print(
+            f"{'voices':>7s} {'mean ms':>9s} {'p95 ms':>9s} {'max ms':>9s} "
+            f"{'worst block':>12s}"
+        )
+        for count in args.voices:
+            measured = measure_polyphony(model, velocity, block=args.block, voices=count)
+            print(
+                f"{count:7d} {measured['mean_ms']:9.3f} {measured['p95_ms']:9.3f} "
+                f"{measured['max_ms']:9.3f} {100 * measured['worst_load']:11.1f}%"
+            )
+    return 0
+
+
+def _load_model(path: Path):
+    """Whichever kind of model is in the file."""
+    try:
+        return InstrumentModel.load(path)
+    except ValueError:
+        return SpectralModel.load(path)
 
 
 def _run_play(args) -> int:

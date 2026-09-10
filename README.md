@@ -191,6 +191,28 @@ hit = result.model.render(velocity=96)   # anywhere in the recorded range
 AudioIO.write("tom3-96.wav", hit, result.model.sample_rate)
 ```
 
+## Runs are kept
+
+A fit is expensive and worth going back to, so every one is written to a run
+store — `runs/`, or `$DRUMSYNTH_RUNS` — instead of overwriting the last:
+
+```
+runs/instrument/toms-stereo-tom3/20260910-004530/
+├── instrument.npz        the model
+├── report.json           every measurement, and the frontier
+├── layers.csv            per-velocity errors
+├── *_sweep.wav           the recordings, the model, and between the two
+└── figures/              fourteen plots of what it kept and what it missed
+```
+
+```bash
+drumsynth runs                     # every drum that has been fitted, and when
+drumsynth runs toms-stereo-tom3    # every training of one of them
+drumsynth bench runs/.../instrument.npz
+```
+
+`-o DIR` on either fit command writes there instead, for one-off work.
+
 ## The studio
 
 ```bash
@@ -198,14 +220,19 @@ pip install -e ".[studio]"
 streamlit run streamlit_app.py
 ```
 
-**Fit** takes a sample or a dropped-in WAV, runs a search, and lets you listen
-to three things: the input, the reconstruction, and the residual. The frontier
-is on the same page, so the cost of the last 10 dB is visible while you decide
-whether you wanted it.
+**Instruments** lists what has been fitted and every training each one has had,
+newest first, with the error and size of each. Pick one and it opens in
 
-**Instrument** fits a whole drum across its velocities and gives you a velocity
-slider — including the positions between the recordings, which is the point.
-Everything the pages do lives in the library; the CLI does the same job.
+**Report**, which is everything measurable about a model on one page: what it
+kept (bins, envelopes, decay per partial, the spectrum of the envelopes),
+what it sounds like against the recording (waveform, spectrogram, spectrum,
+error through the hit, error by band), how it moves with velocity, and what it
+costs to play — memory, trigger time, per-block load and polyphony, measured
+live. A velocity slider and a resonator count let you hear the model rebuild
+itself while the figures follow.
+
+**Hit** and **Drum** are the two fits: one WAV, or a whole drum. Everything the
+pages do lives in the library; the CLI does the same job.
 
 ## What is where
 
@@ -213,9 +240,13 @@ Everything the pages do lives in the library; the CLI does the same job.
 drumsynth/spectral     the representation — audio + Candidate -> SpectralModel
 drumsynth/fitting      the search        — audio -> the smallest model that fits
 drumsynth/instrument   one drum across every velocity, as one model
+drumsynth/streaming    playing a model a block at a time, the way a sampler does
+drumsynth/bench        what that costs: trigger, per block, polyphony, memory
+drumsynth/plots        every figure the report is made of
+drumsynth/runs         where fits are kept afterwards
 drumsynth/corpus       the sample library that ships with the repo
 drumsynth/core         audio I/O and units
-drumsynth/cli          fit, fit-drum, decode, play, inspect
+drumsynth/cli          fit, fit-drum, runs, decode, play, bench, inspect
 ```
 
 `spectral` never chooses a candidate and `fitting` never invents a
@@ -232,6 +263,7 @@ either.
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — why the model is shaped this way
 - [docs/FINDINGS.md](docs/FINDINGS.md) — where measurement contradicted the design
 - [docs/FORMAT.md](docs/FORMAT.md) — what a `.npz` model holds, hit and drum
+- [docs/LIVE.md](docs/LIVE.md) — what playing a model costs, measured
 - [docs/DATA.md](docs/DATA.md) — the sample library and how it was imported
 
 ## Version 0.2

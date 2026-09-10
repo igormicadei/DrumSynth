@@ -44,32 +44,84 @@ def test_fitting_a_sample_reports_a_model_and_a_reconstruction():
     assert app.download_button
 
 
-def test_the_model_page_says_so_when_there_is_no_file():
-    app = run("model.py")
+def test_the_report_page_waits_for_a_model():
+    app = run("report.py")
 
     assert not app.exception
-    assert app.error
+    assert app.info
 
 
-def test_the_model_page_opens_a_saved_model(tonal_hit, sr, tmp_path):
+def test_the_report_page_opens_a_model_file(tonal_hit, sr, tmp_path):
     from drumsynth.spectral import Candidate, encode
 
     path = encode(tonal_hit, sr, Candidate(512, 256, 32, "lowrank", 8)).save(
         tmp_path / "model.npz"
     )
 
-    app = open_page("model.py")
+    app = open_page("report.py")
+    app.session_state["run_path"] = str(path)
     app.run()
-    app.text_input[0].set_value(str(path)).run()
 
     assert not app.exception
     assert not app.error
-    assert len(app.metric) == 3  # representation, size, audio
-    assert len(app.dataframe) == 2  # the arrays, and the kept bins
+    assert len(app.metric) >= 8  # what it is, and what it costs to play
+    assert app.get("image")  # the figures
+
+
+def test_the_report_page_opens_a_stored_run(velocity_layers, tmp_path, monkeypatch):
+    from drumsynth.instrument import InstrumentSearchSpace, fit_instrument
+    from drumsynth.runs import RunStore, store_instrument_fit
+
+    space = InstrumentSearchSpace(
+        n_ffts=(512,), overlaps=(2,), components=(32,), field_ranks=(4,),
+        pattern_ranks=(8,), donor_ranks=(8,),
+    )
+    store = RunStore(tmp_path / "runs")
+    kept = store_instrument_fit(
+        fit_instrument(velocity_layers, target_mse=1e-2, space=space),
+        velocity_layers,
+        store=store,
+        plot=False,
+    )
+    monkeypatch.setenv("DRUMSYNTH_RUNS", str(store.root))
+
+    app = open_page("report.py")
+    app.session_state["run_path"] = str(kept.path)
+    app.run()
+
+    assert not app.exception
+    assert app.slider  # a velocity to play it at
+    assert len(app.tabs) == 3
+
+
+def test_the_instruments_page_lists_trainings(velocity_layers, tmp_path, monkeypatch):
+    from drumsynth.instrument import InstrumentSearchSpace, fit_instrument
+    from drumsynth.runs import RunStore, store_instrument_fit
+
+    space = InstrumentSearchSpace(
+        n_ffts=(512,), overlaps=(2,), components=(32,), field_ranks=(4,),
+        pattern_ranks=(8,), donor_ranks=(8,),
+    )
+    store = RunStore(tmp_path / "runs")
+    for target in (1e-1, 1e-3):
+        store_instrument_fit(
+            fit_instrument(velocity_layers, target_mse=target, space=space),
+            store=store,
+            plot=False,
+        )
+    monkeypatch.setenv("DRUMSYNTH_RUNS", str(store.root))
+
+    app = open_page("instruments.py")
+    app.run()
+
+    assert not app.exception
+    assert app.selectbox[0].value == "synthetic-drum"
+    assert len(app.dataframe) == 2  # the catalogue, and this one's history
+    assert "Open the full report" in [button.label for button in app.button]
 
 
 def test_the_instrument_page_lists_drums_whose_audio_is_here():
-    app = run("instrument.py")
+    app = run("fit_drum.py")
 
     assert not app.exception
     assert app.title[0].value == "Instrument"
@@ -77,7 +129,7 @@ def test_the_instrument_page_lists_drums_whose_audio_is_here():
 
 
 def test_fitting_a_drum_from_the_page_reports_and_plays_it():
-    app = run("instrument.py")
+    app = run("fit_drum.py")
 
     app.sidebar.select_slider[0].set_value(1e-2).run()
     app.sidebar.button[0].click().run()

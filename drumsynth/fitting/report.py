@@ -8,7 +8,9 @@ A run leaves six files behind:
     residual.wav       reference minus reconstruction: what the model missed
     report.json        the chosen candidate, the target, the Pareto frontier
     evaluations.csv    every candidate that was measured, one row each
-    frontier.png       size against error, if matplotlib is installed
+    frontier.png       size against error
+    figures/           waveform, spectrogram, spectrum, envelopes, decay times,
+                       error by band — the ten figures of drumsynth.plots
 
 `residual.wav` is there to be listened to. A relative MSE of 1e-5 says the
 error is 50 dB down; it does not say whether what is left is broadband hiss or
@@ -114,9 +116,20 @@ def save_fit(
     if plot:
         figure = plot_frontier(result, out / "frontier.png")
         if figure is not None:
-            written["plot"] = figure
+            written["frontier"] = figure
+        if reference is not None:
+            written.update(_figures(result.model, reference, out / "figures"))
 
     return written
+
+
+def _figures(model, reference, out_dir) -> dict[str, Path]:
+    """The full set of diagnostic figures, when matplotlib is installed."""
+    try:
+        from ..plots import save_hit_figures
+    except ImportError:  # pragma: no cover - depends on the environment
+        return {}
+    return {f"figure.{name}": path for name, path in save_hit_figures(model, reference, out_dir).items()}
 
 
 def _write_json(path: Path, payload: dict) -> Path:
