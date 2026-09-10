@@ -63,6 +63,72 @@ structure, `lowrank` collapses, and the codec that keeps every phase wins. No
 formula picks between those two cases from the outside, which is why this
 project searches instead of deciding.
 
+## A whole drum, every velocity
+
+A drum in the library is a grid: 26 velocity bands for tom 3, four round robins
+in each, 104 recordings of the same object hit harder and harder. Fitting them
+one at a time gives 26 models with nothing between them. Fitting them together
+gives one model that plays at any velocity, including the ones nobody recorded.
+
+```bash
+drumsynth drums                             # what the library holds
+drumsynth fit-drum toms-stereo-tom3         # every velocity, one model
+drumsynth play toms-stereo-tom3_fit/instrument.npz out.wav --velocity 96
+```
+
+The model is two things that behave completely differently:
+
+```
+magnitude field      how the spectrum changes with velocity — modelled,
+                     compressed across the velocity axis, interpolated
+
+phase donors         one strike's phase per layer — stored, and borrowed
+                     whole by whatever velocity is nearest
+```
+
+Phase is not interpolated because phase does not interpolate: two strikes of
+the same drum are two different sets of initial phases, and crossfading them
+cancels instead of blending. Magnitude, on the other hand, moves smoothly with
+how hard a drum is hit, which is exactly what makes a velocity axis modellable
+at all.
+
+```
+instrument       toms-stereo-tom3
+velocities       26 layers, 2.5 to 110, from 104 recordings
+representation   separable rank=12 pattern=8 +lowrank rank=16 donors=all n_fft=4096 hop=2048 k=64
+model            130348 numbers, 498.7 kB, 15.7x smaller than the 26 recordings it holds
+reconstruction   8.962e-04 mean, 3.526e-03 at velocity 2.5 — target 1.0e-03 reached
+generalization   1.313e-02 against strikes the model never saw
+interpolation    1.770e-02 at held-out velocities
+searched         1323 candidates in 47.5 s
+```
+
+*(A drum-shaped synthetic: the library's audio is not in the repository, so the
+numbers a real tom gives will differ — `python examples/04_velocity_interpolation.py`
+builds the same drum this came from.)*
+
+A velocity fit reports three numbers, because it is answering three questions
+and only one of them can be asked with a waveform comparison:
+
+| | what it asks | measured on |
+|---|---|---|
+| reconstruction | does it reproduce the recording it was built from? | the waveform |
+| generalization | does it predict a *different* strike at that velocity? | magnitude |
+| interpolation | does it predict velocities held out of the fit? | magnitude |
+
+The last two are magnitude-only on purpose: a different strike has unrelated
+phase, so a sample-by-sample comparison would be measuring noise. Interpolation
+landing near strike-to-strike variation is the bar: a velocity the model invents
+should be no further from the truth than one real hit is from the next
+([FINDINGS §8](docs/FINDINGS.md#8-velocity-interpolates-and-it-interpolates-linearly)).
+
+`--average-takes` builds each velocity from all of its round robins instead of
+one, which predicts the next strike better and reproduces no particular
+recording exactly. `--donors N` stores fewer phase fields — smaller, and by the
+waveform metric a total loss at every velocity in between, which is worth
+understanding before using it
+([FINDINGS §10](docs/FINDINGS.md#10-phase-does-not-travel-across-velocity-either)).
+
 ## Using it
 
 ```bash
@@ -92,6 +158,10 @@ hit_fit/
 └── frontier.png        size against error
 ```
 
+A drum fit writes the model, three sweeps to listen to — the recordings, the
+model at those same velocities, and the model *between* them — plus the report
+and a per-velocity table.
+
 From Python:
 
 ```python
@@ -106,6 +176,21 @@ model = SpectralModel.load("hit_fit/model.npz")
 AudioIO.write("again.wav", model.render(), model.sample_rate)
 ```
 
+and for a whole drum:
+
+```python
+from drumsynth import AudioIO
+from drumsynth.instrument import VelocityLayers, fit_instrument, save_instrument_fit
+
+layers = VelocityLayers.from_corpus("toms-stereo-tom3")
+result = fit_instrument(layers, target_mse=1e-4)
+print(result.summary())
+save_instrument_fit(result, "tom3_fit", layers=layers)
+
+hit = result.model.render(velocity=96)   # anywhere in the recorded range
+AudioIO.write("tom3-96.wav", hit, result.model.sample_rate)
+```
+
 ## The studio
 
 ```bash
@@ -113,19 +198,24 @@ pip install -e ".[studio]"
 streamlit run streamlit_app.py
 ```
 
-Pick a sample or drop in a WAV, run a search, and listen to three things: the
-input, the reconstruction, and the residual. The frontier is on the same page,
-so the cost of the last 10 dB is visible while you decide whether you wanted
-it. Everything the pages do lives in the library; the CLI does the same job.
+**Fit** takes a sample or a dropped-in WAV, runs a search, and lets you listen
+to three things: the input, the reconstruction, and the residual. The frontier
+is on the same page, so the cost of the last 10 dB is visible while you decide
+whether you wanted it.
+
+**Instrument** fits a whole drum across its velocities and gives you a velocity
+slider — including the positions between the recordings, which is the point.
+Everything the pages do lives in the library; the CLI does the same job.
 
 ## What is where
 
 ```
-drumsynth/spectral   the representation — audio + Candidate -> SpectralModel
-drumsynth/fitting    the search        — audio -> the smallest model that fits
-drumsynth/corpus     the sample library that ships with the repo
-drumsynth/core       audio I/O and units
-drumsynth/cli        fit, decode, inspect
+drumsynth/spectral     the representation — audio + Candidate -> SpectralModel
+drumsynth/fitting      the search        — audio -> the smallest model that fits
+drumsynth/instrument   one drum across every velocity, as one model
+drumsynth/corpus       the sample library that ships with the repo
+drumsynth/core         audio I/O and units
+drumsynth/cli          fit, fit-drum, decode, play, inspect
 ```
 
 `spectral` never chooses a candidate and `fitting` never invents a
@@ -141,7 +231,7 @@ either.
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — why the model is shaped this way
 - [docs/FINDINGS.md](docs/FINDINGS.md) — where measurement contradicted the design
-- [docs/FORMAT.md](docs/FORMAT.md) — what a `.npz` model holds
+- [docs/FORMAT.md](docs/FORMAT.md) — what a `.npz` model holds, hit and drum
 - [docs/DATA.md](docs/DATA.md) — the sample library and how it was imported
 
 ## Version 0.2

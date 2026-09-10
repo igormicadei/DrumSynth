@@ -106,7 +106,76 @@ That policy lives in one function (`fitting.pareto.preferred`) and is applied
 both incrementally during the search and in batch afterwards, so "best so far"
 and "best" cannot drift apart.
 
-## 5. Layout
+## 5. One drum, every velocity
+
+A drum in the library is not one recording, it is a grid: 26 velocity bands for
+tom 3, four round robins in each. Fitting them one at a time gives 26 unrelated
+models and nothing in between them. A velocity model is one object that plays
+at any velocity in the recorded range.
+
+```
+recordings ──> align onsets ──> layers[velocity][take]
+                                      │
+                    ┌─────────────────┴─────────────────┐
+                    │                                   │
+            magnitude field                       phase donors
+    M[v] ≈ Σ weights[v,r]·patterns[r]      one strike's phase per layer
+    modelled, compressed, interpolated      stored whole, borrowed whole
+                    │                                   │
+                    └────────────► render(v) ◄──────────┘
+```
+
+**Why the split.** Magnitude varies smoothly with how hard a drum is hit —
+louder, brighter, ringing longer — which is exactly the kind of thing a
+factorization across the velocity axis can hold and interpolate. Phase does
+not vary smoothly with anything: it is set by one strike, and crossfading two
+strikes cancels rather than blends. So phase is never interpolated. It is
+borrowed, whole, from the layer nearest in velocity.
+
+**Alignment first.** Recordings arrive with different lead-ins, and two hits
+whose transients are 2 ms apart cannot be compared, averaged or interpolated —
+every layer is shifted so its onset sits at the same place before anything else
+happens.
+
+**One take per layer.** A model is built from one round robin of each velocity,
+not from an average of them. Averaging four strike positions produces a hit
+nobody played, and — because the phase can still only come from one of them —
+puts an error into every number the fit reports that nothing can remove. The
+other takes are not wasted: they are what generalization is measured against.
+
+**Three codecs for the field**, on the same ladder as the per-hit ones:
+`full` keeps every layer, `velocity` factorizes across velocity, `separable`
+factorizes the resulting patterns again into spectral and temporal parts.
+**Three for the donors**: `exact` phase, the argument of a complex low-rank
+block, or a factorization of the phase itself.
+
+### What a velocity fit measures
+
+Three questions, and only one of them can be asked with a waveform:
+
+| | asks | measured on |
+|---|---|---|
+| reconstruction | does it reproduce the recording it was built from? | waveform |
+| generalization | does it predict a different strike at that velocity? | magnitude |
+| interpolation | does it predict velocities held out of the fit? | magnitude |
+
+The last two are magnitude-only because a different strike has unrelated phase;
+a sample-by-sample comparison there would be measuring noise and reporting it
+as failure. Reconstruction is the search target, since it is the one the model
+can actually be held to.
+
+Two departures from the per-hit search, both deliberate:
+
+* candidates are rendered at a **spread of velocities**, not all of them, and
+  the winner is then measured at every one. A full-size drum is 26 layers and
+  the search is over a thousand candidates.
+* the **number of donors is a setting, not a search axis**. Every layer
+  donating is what reproduces every recorded velocity; fewer is a decision to
+  accept that velocities far from a donor play one strike's phase under another
+  strike's spectrum. That is a judgement about what the model is for, and the
+  fit should not make it quietly on size grounds.
+
+## 6. Layout
 
 ```
 drumsynth/
@@ -123,8 +192,15 @@ drumsynth/
 │   ├── search.py   the grid, the grouping, the measured search
 │   ├── pareto.py   the frontier and the one selection policy
 │   └── report.py   writing a run to disk
+├── instrument/
+│   ├── layers.py   recordings in, aligned velocity layers out
+│   ├── field.py    how magnitude changes with velocity
+│   ├── donors.py   where a rendered hit borrows its phase
+│   ├── model.py    InstrumentCandidate, InstrumentAnalysis, InstrumentModel
+│   ├── fit.py      the search, and the three things it measures
+│   └── report.py   writing a velocity fit to disk
 ├── corpus.py       the shipped sample library, as data
-└── cli.py          fit, decode, inspect
+└── cli.py          fit, fit-drum, decode, play, inspect
 ```
 
 `spectral` never chooses and `fitting` never invents a representation. The
@@ -139,7 +215,7 @@ Two more boundaries worth stating:
 * **The UI holds no logic.** `app_pages/` calls the same functions the CLI
   calls. Deleting it removes a way to look at a fit, not a way to run one.
 
-## 6. Limits
+## 7. Limits
 
 * **The objective is a waveform error, and waveforms are phase-sensitive in a
   way that hearing is not.** A reconstruction with the right partials at the
@@ -148,9 +224,15 @@ Two more boundaries worth stating:
   perceptual target would need a different metric, not a different codec.
 * **Nothing here is real time.** A model renders through an inverse STFT of the
   whole signal.
-* **A model is one hit at one velocity.** There is no interpolation between
-  models, no velocity axis, no parameter with a physical meaning. This is a
-  coder for recordings, not a synthesizer of new ones.
+* **A velocity model is one drum at one articulation.** It interpolates
+  velocity and nothing else: no tuning, no damping, no strike position, and no
+  round-robin variation at render time — a given velocity always plays the same
+  hit. Nothing in it has a physical meaning; it is a coder for a grid of
+  recordings, not a physical model of the drum that made them.
+* **Phase is borrowed, so a rendered velocity carries its donor's detuning.**
+  A drum bends pitch when struck harder; the magnitude field follows that, and
+  the borrowed phase does not. With every layer donating, the error is confined
+  to velocities between recordings. With sparse donors it is not.
 * **The search is a grid.** It reports the best point it evaluated, which is
   not the best point that exists; `--space full` widens the grid when the
   answer sits against a limit.

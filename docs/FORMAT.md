@@ -1,4 +1,11 @@
-# The model file
+# The model files
+
+Two formats: one hit, and one drum across every velocity. Both are a single
+`.npz` holding the arrays and the metadata that describes them.
+
+---
+
+# A single hit
 
 One `.npz` per model. It holds the arrays and the metadata that describes them,
 so playing a model back needs this package and nothing else — no sidecar JSON,
@@ -83,3 +90,71 @@ writing it to memory, and `compression_ratio()` compares that against 16-bit
 PCM of the same audio. `n_scalars` counts stored numbers instead, with a
 complex value counting as two; it is what the search ranks candidates by,
 because it does not depend on how well a particular block happens to zip.
+
+---
+
+# A whole drum
+
+`drumsynth.instrument/1`, written by `drumsynth fit-drum`. One file holds every
+velocity of one drum and the velocities between them.
+
+```python
+from drumsynth import AudioIO
+from drumsynth.instrument import InstrumentModel
+
+model = InstrumentModel.load("tom3_fit/instrument.npz")
+AudioIO.write("tom3-96.wav", model.render(velocity=96), model.sample_rate)
+```
+
+or `drumsynth play tom3_fit/instrument.npz out.wav --velocity 96`.
+
+## What is inside
+
+| key | dtype | shape | meaning |
+|---|---|---|---|
+| `meta` | str | scalar | the JSON below |
+| `bins` | int32 | (k,) | which FFT bins the model keeps |
+| `velocities` | float32 | (V,) | the velocities that were recorded |
+| `donor_velocities` | float32 | (D,) | which of them donate phase |
+| `field__*` | codec's | codec's | the magnitude field |
+| `donor<i>__*` | codec's | codec's | one phase field per donor |
+
+The magnitude field always decodes to `weights (V, r)` and `patterns
+(r, bins, frames)`, whatever stored it:
+
+| field codec | arrays |
+|---|---|
+| `full` | `patterns` (float32, V×k×T); the weights are the identity |
+| `velocity` | `weights` (float32, V×r), `patterns` (float32, r×k×T) |
+| `separable` | `weights` (float32, V×r), `pattern_weights` (r×k×p), `pattern_basis` (r×p×T) |
+
+and each donor stores a phase field:
+
+| donor codec | arrays |
+|---|---|
+| `exact` | `phase` (float32, k×T) |
+| `lowrank` | `weights` (complex64, k×r), `basis` (complex64, r×T) — the argument of the product is the phase |
+| `phase` | `weights` (float32, k×r), `basis` (float32, r×T) |
+
+## The metadata
+
+```json
+{
+  "format": "drumsynth.instrument/1",
+  "name": "toms-stereo-tom3",
+  "candidate": {
+    "n_fft": 2048, "hop": 1024, "n_components": 256,
+    "field_codec": "separable", "field_rank": 6, "pattern_rank": 16,
+    "donor_codec": "lowrank", "donor_rank": 16, "n_donors": 0
+  },
+  "sample_rate": 44100, "n_samples": 154350, "n_frames": 151,
+  "n_layers": 26, "velocity_range": [2.5, 109.5], "n_donors": 26
+}
+```
+
+`n_donors` in `candidate` is the *setting* (0 meaning every layer); the
+top-level `n_donors` is how many there turned out to be.
+
+Rendering outside `velocity_range` clamps to the nearest end rather than
+extrapolating. The model knows what the drum did between 2.5 and 109.5 because
+it was shown that; what it would do at 127 is a guess, and it does not make it.

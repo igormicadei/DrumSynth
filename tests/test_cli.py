@@ -98,3 +98,69 @@ def test_several_inputs_get_one_directory_each(hit, tmp_path):
 
     assert (tmp_path / "run" / "hit" / "model.npz").exists()
     assert (tmp_path / "run" / "other" / "model.npz").exists()
+
+
+# -- a whole drum -------------------------------------------------------------
+
+
+def test_drums_lists_the_library(capsys):
+    assert main(["drums"]) == 0
+
+    printed = capsys.readouterr().out
+    assert "toms-stereo-tom3" in printed
+    assert "on disk" in printed
+
+
+def test_fitting_a_drum_writes_an_instrument_that_plays_back(tmp_path, capsys):
+    out = tmp_path / "run"
+
+    assert (
+        main(
+            [
+                "fit-drum", "toms-stereo-tom3", "-o", str(out),
+                "--space", "quick", "--target-mse", "1e-2", "-q", "--no-plot",
+            ]
+        )
+        == 0
+    )
+
+    model = out / "instrument.npz"
+    assert model.exists()
+    assert "reconstruction" in capsys.readouterr().out
+
+    assert main(["play", str(model), str(tmp_path / "hit.wav"), "--velocity", "2.5"]) == 0
+    played, rate = AudioIO.read(tmp_path / "hit.wav")
+    assert rate == 44100
+    assert played.size > rate
+
+
+def test_inspecting_an_instrument_describes_its_velocities(tmp_path, capsys):
+    out = tmp_path / "run"
+    main(
+        [
+            "fit-drum", "toms-stereo-tom3", "-o", str(out),
+            "--space", "quick", "--target-mse", "1e-2", "-q", "--no-plot",
+        ]
+    )
+    capsys.readouterr()
+
+    assert main(["inspect", str(out / "instrument.npz")]) == 0
+
+    printed = capsys.readouterr().out
+    assert "instrument" in printed
+    assert "donating phase" in printed
+
+
+def test_playing_outside_the_recorded_range_says_so(tmp_path, capsys):
+    out = tmp_path / "run"
+    main(
+        [
+            "fit-drum", "toms-stereo-tom3", "-o", str(out),
+            "--space", "quick", "--target-mse", "1e-2", "-q", "--no-plot",
+        ]
+    )
+    capsys.readouterr()
+
+    main(["play", str(out / "instrument.npz"), str(tmp_path / "x.wav"), "--velocity", "127"])
+
+    assert "outside the recorded range" in capsys.readouterr().err

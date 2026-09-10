@@ -1,5 +1,10 @@
 """Which candidates are worth reporting, and which one to hand back.
 
+Anything with `n_scalars`, `relative_mse` and `n_frames` can be ranked here —
+a single hit or a whole instrument. The policy is the same either way, and
+keeping it in one place is what stops "best so far" and "best" from drifting
+apart.
+
 Two numbers describe every evaluated candidate — how big the model is and how
 wrong it is — and they trade against each other. The frontier is the set of
 candidates that nothing else beats on both counts; everything else is strictly
@@ -26,15 +31,15 @@ def preferred(a, b, target_mse: float):
     smallest model wins, ties broken by accuracy and then by frame count;
     among candidates that miss it, accuracy is all that matters.
     """
-    a_ok = a.quality.relative_mse <= target_mse
-    b_ok = b.quality.relative_mse <= target_mse
+    a_ok = a.relative_mse <= target_mse
+    b_ok = b.relative_mse <= target_mse
 
     if a_ok != b_ok:
         return a if a_ok else b
     if not a_ok:
-        return a if a.quality.relative_mse <= b.quality.relative_mse else b
+        return a if a.relative_mse <= b.relative_mse else b
 
-    key = lambda e: (e.n_scalars, e.quality.relative_mse, e.n_frames)  # noqa: E731
+    key = lambda e: (e.n_scalars, e.relative_mse, e.n_frames)  # noqa: E731
     return a if key(a) <= key(b) else b
 
 
@@ -53,14 +58,14 @@ def pareto_frontier(evaluations: Iterable) -> list:
     so one sweep with a running minimum is enough.
     """
     ordered = sorted(
-        (e for e in evaluations if math.isfinite(e.quality.relative_mse)),
-        key=lambda e: (e.n_scalars, e.quality.relative_mse),
+        (e for e in evaluations if math.isfinite(e.relative_mse)),
+        key=lambda e: (e.n_scalars, e.relative_mse),
     )
 
     frontier: list = []
     best_error = math.inf
     for evaluation in ordered:
-        if evaluation.quality.relative_mse < best_error:
+        if evaluation.relative_mse < best_error:
             frontier.append(evaluation)
-            best_error = evaluation.quality.relative_mse
+            best_error = evaluation.relative_mse
     return frontier

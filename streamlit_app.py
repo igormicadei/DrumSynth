@@ -2,10 +2,11 @@
 
     streamlit run streamlit_app.py
 
-Two pages. **Fit** runs a search on a sample and shows the size/error frontier
-it found; **Model** opens a model file on its own and plays it back. Both are
-thin: everything they do is in `drumsynth.fitting` and `drumsynth.spectral`,
-and nothing here is needed to run a fit — the CLI does the same job.
+Three pages. **Fit** runs a search on one sample and shows the size/error
+frontier it found; **Instrument** fits a whole drum across its velocities and
+plays it back at any of them; **Model** opens a model file on its own. All
+three are thin: everything they do is in the library, and nothing here is
+needed to run a fit — the CLI does the same job.
 """
 
 from __future__ import annotations
@@ -22,6 +23,9 @@ st.set_page_config(
 navigation = st.navigation(
     [
         st.Page("app_pages/fit.py", title="Fit", icon=":material/search:", default=True),
+        st.Page(
+            "app_pages/instrument.py", title="Instrument", icon=":material/graphic_eq:"
+        ),
         st.Page("app_pages/model.py", title="Model", icon=":material/piano:"),
     ]
 )

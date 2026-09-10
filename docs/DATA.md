@@ -82,6 +82,16 @@ scope note.
 ## Velocity
 
 Every entry carries `velocity`, its band (`velocity_low`, `velocity_high`) and
-whether the band is exact. Nothing in this version uses it: a model is one
-recording, and there is no interpolation between models. It is kept because
-the information belongs to the recording, not to what was done with it.
+whether the band is exact. That grid is what `drumsynth fit-drum` fits: one
+model per drum, covering every velocity that was recorded and the ones between
+them.
+
+```bash
+drumsynth drums                       # what is indexed, and what is on disk
+drumsynth fit-drum toms-stereo-tom3   # 104 recordings -> one model
+```
+
+The four round robins of each velocity are not four velocities. One of them
+anchors each layer and the rest are what the fit measures generalization
+against, unless `--average-takes` says otherwise
+([FINDINGS §11](FINDINGS.md#11-the-mean-of-four-strikes-predicts-the-fifth-it-just-is-not-any-of-them)).

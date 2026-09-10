@@ -142,6 +142,10 @@ class Evaluation:
     n_scalars: int
     n_frames: int
 
+    @property
+    def relative_mse(self) -> float:
+        return self.quality.relative_mse
+
     def to_dict(self) -> dict:
         return {
             "candidate": self.candidate.to_dict(),

@@ -66,3 +66,23 @@ def test_the_model_page_opens_a_saved_model(tonal_hit, sr, tmp_path):
     assert not app.error
     assert len(app.metric) == 3  # representation, size, audio
     assert len(app.dataframe) == 2  # the arrays, and the kept bins
+
+
+def test_the_instrument_page_lists_drums_whose_audio_is_here():
+    app = run("instrument.py")
+
+    assert not app.exception
+    assert app.title[0].value == "Instrument"
+    assert any("toms-stereo-tom3" in option for option in app.sidebar.selectbox[0].options)
+
+
+def test_fitting_a_drum_from_the_page_reports_and_plays_it():
+    app = run("instrument.py")
+
+    app.sidebar.select_slider[0].set_value(1e-2).run()
+    app.sidebar.button[0].click().run()
+
+    assert not app.exception
+    assert len(app.metric) == 3  # reconstruction, size, interpolation
+    assert "velocities" in app.code[0].value
+    assert app.dataframe  # the per-velocity table
