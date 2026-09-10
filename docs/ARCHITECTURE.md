@@ -164,6 +164,28 @@ a sample-by-sample comparison there would be measuring noise and reporting it
 as failure. Reconstruction is the search target, since it is the one the model
 can actually be held to.
 
+### Where the time goes
+
+A search is one operation repeated: code a block, inverse transform it, overlap
+and add, compare. Everything else — the analyses, the factorizations, the
+decodes — is shared between the candidates that have it in common, so what is
+left per candidate is that operation and nothing else.
+
+It is shared at three levels. One STFT per framing serves every candidate that
+uses it; one factorization per codec serves every rank that slices it; and
+within a group, each field setting is decoded once for the probe velocities and
+each donor setting once, so a candidate is the product of two things that were
+already computed. What remains is the transform, which is genuinely its own.
+
+That last part is what runs in parallel. `jobs` threads it — threads, not
+processes, because the work happens inside numpy, which drops the GIL, and
+because a drum's recordings are a hundred megabytes that processes would each
+want a copy of. `device` chooses what does the arithmetic: numpy in float64,
+or torch on a GPU in float32, batched. Both are in
+[`drumsynth/backend.py`](../drumsynth/backend.py); they agree to about 1e-6,
+and the numpy one is bit-for-bit what `model.render()` produces, which is what
+keeps a searched number and a played sound the same thing.
+
 Two departures from the per-hit search, both deliberate:
 
 * candidates are rendered at a **spread of velocities**, not all of them, and
@@ -199,6 +221,8 @@ drumsynth/
 │   ├── model.py    InstrumentCandidate, InstrumentAnalysis, InstrumentModel
 │   ├── fit.py      the search, and the three things it measures
 │   └── report.py   writing a velocity fit to disk
+├── backend.py      the search's arithmetic: numpy in float64, or a GPU
+├── parallel.py     threads, and how many of them
 ├── streaming.py    a triggered voice, read out a block at a time
 ├── bench.py        what that costs: trigger, per block, polyphony, memory
 ├── plots.py        every figure, from arrays or from a model

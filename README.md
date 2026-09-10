@@ -140,9 +140,26 @@ drumsynth inspect hit_fit/model.npz
 ```
 
 `--space` picks how much of the grid to search: `quick` is around a hundred
-candidates (seconds), `default` a few thousand (a minute or two on four cores),
-`full` tens of thousands — worth it when the chosen model sits against an edge
-of the default ranges. `--jobs` defaults to one process per core.
+candidates (seconds), `default` a few thousand, `full` tens of thousands —
+worth it when the chosen model sits against an edge of the default ranges.
+
+`--jobs` threads the rendering and defaults to one per core. `--device` decides
+what does the arithmetic — `numpy` (exact, the default), `cuda` (batched onto a
+GPU), `cpu` (torch on the processor), or `auto` (a GPU if there is one). Which
+is fastest depends on the machine, so measure yours:
+
+```bash
+drumsynth devices --benchmark
+```
+
+On a four-core CPU, threaded numpy beat batched torch by two to one; on a GPU
+the balance should tip the other way. Whatever the search runs on, the model it
+picks is rebuilt and re-measured in float64 before anything is reported.
+
+Installing `threadpoolctl` is worth it: numpy ships a threaded BLAS that tries
+to use every core from inside each worker thread, and that package is how the
+search tells it not to. Without it, `OPENBLAS_NUM_THREADS=1` in the environment
+does the same job.
 
 A run writes the model, what it renders to, what it missed, and how it was
 chosen:
@@ -240,6 +257,8 @@ pages do lives in the library; the CLI does the same job.
 drumsynth/spectral     the representation — audio + Candidate -> SpectralModel
 drumsynth/fitting      the search        — audio -> the smallest model that fits
 drumsynth/instrument   one drum across every velocity, as one model
+drumsynth/backend      what does the search arithmetic: numpy, or a GPU
+drumsynth/parallel     threads, and how many of them
 drumsynth/streaming    playing a model a block at a time, the way a sampler does
 drumsynth/bench        what that costs: trigger, per block, polyphony, memory
 drumsynth/plots        every figure the report is made of

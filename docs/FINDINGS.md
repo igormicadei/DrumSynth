@@ -333,3 +333,53 @@ partial is a per-sample cost for as long as it rings, and it is worth knowing
 which side of it a design is on before optimizing anything: here the number to
 watch is not the model's size but *when* its work happens. The whole
 measurement, and what does cost something, is in [LIVE.md](LIVE.md).
+
+## 15. The search was using one core, and the transform was not the problem
+
+A full-space fit of one drum — 51,874 candidates — took hours, with the CPU
+mostly idle and no GPU work at all, because `fit_instrument` had no parallelism
+in it and there was no device code in the project. Fixing that turned out to be
+four separate things, and the ones that mattered were not the ones that looked
+expensive.
+
+Per candidate, on the heaviest group of a full-space search (n_fft 8192,
+512 bins, 26 velocities, 3.5 s recordings):
+
+| | ms per candidate | |
+|---|---|---|
+| as it was | 62.5 | |
+| decode each field and donor once per group, not once per candidate | 43.7 | −30% |
+| build the spectrogram frames-major, in a buffer the thread keeps | 33.2 | −24% |
+| four threads | **12.9** | −61% |
+
+**5x**, of which threads are half. End to end, that full-space fit went from an
+afternoon to **20 minutes** on four cores. The frames-major change is the one worth
+remembering: `np.fft.irfft` along the last axis of a transposed view copies the
+whole array first, and the copy costs more than the transform. In torch the
+same mistake cost three times the transform.
+
+Threads work here because the loop is numpy — inverse FFTs and reductions over
+long arrays, all of which drop the GIL. Processes would have worked too, and
+would also have handed every worker its own copy of a hundred megabytes of
+recordings, which on Windows (no fork) is paid in full at startup.
+
+There is a second thread pool underneath, and it was part of why the machine
+looked idle. numpy's BLAS is threaded, so the factorizations were already using
+every core while the transforms — most of the work — used one. Once the
+transforms are threaded too, the two pools start fighting: threading *across*
+groups, where each group does its own factorization, measured **slower** than
+one thread (29.5 s against 25.5 s on a hit search), and the fix is to keep BLAS
+to one thread inside a worker rather than to add more workers.
+
+**A GPU is not obviously the answer.** Batching the same work onto torch was
+*slower* than threaded numpy on this machine — 27 ms against 13 — because the
+batch is bandwidth-bound and a CPU has none to spare. On a GPU the arithmetic
+is the same and the bandwidth is ten times larger, so it should win, but that
+is a prediction: there was no CUDA device to measure. `drumsynth devices
+--benchmark` runs both on the machine in front of you and prints which is
+faster, which is the only honest way to answer it.
+
+The general shape: before reaching for a different processor, check what
+fraction of the work is genuinely per-candidate. Two thirds of this search was
+recomputing things every candidate had in common, and no device would have
+fixed that.

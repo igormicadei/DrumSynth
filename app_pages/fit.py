@@ -9,6 +9,8 @@ import pandas as pd
 import streamlit as st
 
 from drumsynth import AudioIO, Corpus
+from drumsynth.backend import available_devices
+from drumsynth.parallel import resolve_jobs
 from drumsynth.fitting import SearchSpace, fit, save_fit
 
 SPACES = {"quick": SearchSpace.quick, "default": SearchSpace, "full": SearchSpace.full}
@@ -74,7 +76,10 @@ target = st.sidebar.select_slider(
     format_func=lambda v: f"{v:.0e}  ({-10 * np.log10(v):.0f} dB)",
 )
 space = st.sidebar.radio("Search space", list(SPACES), index=0, horizontal=True)
-jobs = st.sidebar.slider("Processes", 1, 8, 4)
+jobs = st.sidebar.slider("Threads", 1, 32, resolve_jobs(0))
+device = st.sidebar.selectbox(
+    "Device", available_devices(), help="numpy is exact; torch devices are float32"
+)
 
 st.sidebar.write(f"{len(SPACES[space]().candidates(signal.size))} candidates")
 st.audio(signal, sample_rate=sample_rate)
@@ -89,6 +94,7 @@ result = fit(
     target_mse=target,
     space=SPACES[space](),
     jobs=jobs,
+    device=device,
     progress=lambda p: bar.progress(
         p.done / max(p.total, 1),
         text=f"{p.done}/{p.total} — best {p.best.quality.relative_mse:.2e} "

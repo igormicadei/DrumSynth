@@ -448,3 +448,52 @@ def test_averaging_uses_every_recording(velocity_layers):
 
     assert np.allclose(averaged, 0.5 * (first + second))
     assert np.allclose(np.abs(blocks), first)  # phase still comes from one strike
+
+
+# -- how the search is run ----------------------------------------------------
+
+
+def test_threads_do_not_change_what_a_search_finds(velocity_layers):
+    serial = fit_instrument(velocity_layers, target_mse=1e-2, space=SMALL, jobs=1)
+    threaded = fit_instrument(velocity_layers, target_mse=1e-2, space=SMALL, jobs=4)
+
+    assert threaded.candidate == serial.candidate
+    assert [e.relative_mse for e in threaded.evaluations] == [
+        e.relative_mse for e in serial.evaluations
+    ]
+
+
+def test_the_search_measures_what_the_model_renders(velocity_layers):
+    """The group evaluation shares its work; it must not change the arithmetic."""
+    from drumsynth.backend import renderer
+    from drumsynth.fitting.metrics import relative_mse
+    from drumsynth.instrument.fit import _analyse, _evaluate_group, _grouped, _probe_layers
+
+    spec, k, group = _grouped(SMALL.candidates(velocity_layers))[0]
+    analysis = _analyse(velocity_layers, spec, k, 0)
+    probes = _probe_layers(velocity_layers.n_layers, 6)
+    references = np.stack([velocity_layers.audio(index, 0) for index in probes])
+    engine = renderer(spec, analysis.bins, velocity_layers.n_samples, references)
+
+    for evaluation in _evaluate_group(analysis, group, probes, engine):
+        model = analysis.build(evaluation.candidate)
+        rendered = [
+            relative_mse(references[at], model.render(velocity_layers.velocities[index]))
+            for at, index in enumerate(probes)
+        ]
+
+        assert float(np.mean(rendered)) == evaluation.relative_mse
+        assert model.n_scalars == evaluation.n_scalars
+
+
+@pytest.mark.skipif(
+    "cpu" not in __import__("drumsynth.backend", fromlist=["x"]).available_devices(),
+    reason="torch is not installed",
+)
+def test_a_device_search_finds_what_the_exact_one_finds(velocity_layers):
+    exact = fit_instrument(velocity_layers, target_mse=1e-2, space=SMALL)
+    device = fit_instrument(velocity_layers, target_mse=1e-2, space=SMALL, device="cpu")
+
+    assert device.candidate == exact.candidate
+    # The winner is re-measured in float64 either way, so the report is identical.
+    assert device.reconstruction_mse == pytest.approx(exact.reconstruction_mse, rel=1e-12)

@@ -34,11 +34,19 @@ audio = ["soundfile>=0.12"]
 resample = ["scipy>=1.10"]
 # frontier.png. The fit runs, reports and saves without it.
 plots = ["matplotlib>=3.7"]
+# Searching on a GPU (`--device cuda`). This installs whatever wheel the
+# default index offers, which is usually CPU-only; for CUDA, install from the
+# matching index instead:
+#     pip install torch --index-url https://download.pytorch.org/whl/cu121
+# Nothing outside drumsynth.backend imports torch, and every search runs
+# without it.
+cuda = ["torch>=2.0"]
 # The fitting UI: pick a sample, run a search, listen to what came back.
 studio = ["streamlit>=1.50", "pandas>=2.0", "soundfile>=0.12", "matplotlib>=3.7"]
 dev = [
     "pytest>=7.4",
     "scipy>=1.10",
+    "threadpoolctl>=3.0",
     "soundfile>=0.12",
     "matplotlib>=3.7",
     "streamlit>=1.50",

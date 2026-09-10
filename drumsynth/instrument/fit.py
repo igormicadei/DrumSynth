@@ -32,9 +32,12 @@ from typing import Callable, Iterator, Sequence
 
 import numpy as np
 
+from ..backend import DEFAULT_BUDGET, Renderer, renderer
+from ..parallel import map_workers
 from ..fitting.metrics import relative_mse
 from ..fitting.pareto import pareto_frontier, preferred
 from ..spectral.stft import StftSpec
+from . import donors as donor_codecs
 from . import field as field_codecs
 from .layers import VelocityLayers
 from .model import InstrumentAnalysis, InstrumentCandidate, InstrumentModel
@@ -305,6 +308,9 @@ def fit_instrument(
     take: int = 0,
     average: bool = False,
     n_donors: int = 0,
+    jobs: int = 0,
+    device: str = "numpy",
+    budget: int = DEFAULT_BUDGET,
     progress: Callable[[Progress], None] | None = None,
     max_candidates: int | None = None,
 ) -> InstrumentFitResult:
@@ -323,6 +329,12 @@ def fit_instrument(
     numbers are optimistic — but every candidate shares the same donor layout,
     so the comparison between them holds, and the model that wins is then
     measured at every recorded velocity.
+
+    `jobs` threads the rendering (0, the default, means one per core) and
+    `device` decides what does the arithmetic: "numpy" is exact, "cuda" batches
+    it onto a GPU, "auto" takes a GPU if there is one. Whatever the search ran
+    on, the model it chooses is rebuilt and re-measured in float64 before
+    anything is reported.
     """
     space = space or InstrumentSearchSpace()
     candidates = space.candidates(layers, n_donors)
@@ -338,28 +350,20 @@ def fit_instrument(
 
     for spec, k, group_candidates in _grouped(candidates):
         analysis = _analyse(layers, spec, k, take, average)
-        references = [layers.audio(index, take) for index in probes]
+        references = np.stack([layers.audio(index, take) for index in probes])
+        engine = renderer(
+            spec,
+            analysis.bins,
+            layers.n_samples,
+            references,
+            device=device,
+            jobs=jobs,
+            budget=budget,
+        )
 
-        for candidate in group_candidates:
-            model = analysis.build(candidate)
-            errors = [
-                relative_mse(reference, model.render(layers.velocities[index]))
-                for index, reference in zip(probes, references)
-            ]
-            evaluations.append(
-                InstrumentEvaluation(
-                    candidate=candidate,
-                    relative_mse=float(np.mean(errors)),
-                    worst_mse=float(np.max(errors)),
-                    n_scalars=model.n_scalars,
-                    n_frames=model.n_frames,
-                )
-            )
-            best = (
-                evaluations[-1]
-                if best is None
-                else preferred(best, evaluations[-1], target_mse)
-            )
+        for evaluation in _evaluate_group(analysis, group_candidates, probes, engine):
+            evaluations.append(evaluation)
+            best = evaluation if best is None else preferred(best, evaluation, target_mse)
 
         if progress is not None:
             assert best is not None
@@ -409,6 +413,87 @@ def _grouped(
     for candidate in candidates:
         groups.setdefault((candidate.spec, candidate.n_components), []).append(candidate)
     return [(spec, k, group) for (spec, k), group in groups.items()]
+
+
+def _evaluate_group(
+    analysis: InstrumentAnalysis,
+    candidates: Sequence[InstrumentCandidate],
+    probes: Sequence[int],
+    engine: Renderer,
+) -> Iterator[InstrumentEvaluation]:
+    """Measure every candidate of one group, sharing everything they share.
+
+    Within a group, a candidate is a choice of field setting and a choice of
+    donor setting. Two candidates with the same field decode to the same
+    magnitudes, and two with the same donor to the same phases, so the loop is
+    nested rather than flat: each field is decoded once for the probe
+    velocities, each donor once, and a candidate is the product of the two.
+    That leaves one inverse transform per render as the only work that is
+    genuinely its own, which is what goes to the renderer in batches.
+    """
+    velocities = analysis.velocities[list(probes)]
+    donor_index = [
+        donor_codecs.nearest(analysis.velocities[analysis.donors(candidates[0])], velocity)
+        for velocity in velocities
+    ]
+    units: dict[tuple[str, int], np.ndarray] = {}
+
+    for field_setting, group in _by_field(candidates):
+        magnitudes = analysis.magnitudes_at(field_setting, velocities)
+
+        for start in range(0, len(group), engine.batch):
+            chunk = group[start : start + engine.batch]
+            # Decode each donor setting this chunk needs, once, then compose
+            # the blocks in parallel: a complex multiply per probe is small
+            # next to a render, but not small enough to leave one thread doing
+            # it while the others wait.
+            for candidate in chunk:
+                _donor_units(analysis, candidate, donor_index, units)
+
+            blocks = np.stack(
+                map_workers(
+                    lambda candidate: magnitudes
+                    * units[(candidate.donor_codec, candidate.donor_rank)],
+                    chunk,
+                    engine.jobs,
+                )
+            )
+            stats = engine.measure(blocks)
+
+            for candidate, errors in zip(chunk, stats[..., 0]):
+                yield InstrumentEvaluation(
+                    candidate=candidate,
+                    relative_mse=float(np.mean(errors)),
+                    worst_mse=float(np.max(errors)),
+                    n_scalars=candidate.n_scalars(
+                        analysis.n_layers, analysis.n_frames, len(analysis.donors(candidate))
+                    ),
+                    n_frames=analysis.n_frames,
+                )
+
+
+def _by_field(
+    candidates: Sequence[InstrumentCandidate],
+) -> list[tuple[tuple[str, int, int], list[InstrumentCandidate]]]:
+    """Candidates grouped by the field they share, in the order they arrived."""
+    grouped: dict[tuple[str, int, int], list[InstrumentCandidate]] = {}
+    for candidate in candidates:
+        key = (candidate.field_codec, candidate.field_rank, candidate.pattern_rank)
+        grouped.setdefault(key, []).append(candidate)
+    return list(grouped.items())
+
+
+def _donor_units(
+    analysis: InstrumentAnalysis,
+    candidate: InstrumentCandidate,
+    donor_index: Sequence[int],
+    cache: dict,
+) -> np.ndarray:
+    """exp(i·phase) at each probe, for this candidate's donor setting."""
+    key = (candidate.donor_codec, candidate.donor_rank)
+    if key not in cache:
+        cache[key] = analysis.phase_units(key[0], key[1], donor_index)
+    return cache[key]
 
 
 def _analyse(

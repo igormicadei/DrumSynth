@@ -134,17 +134,14 @@ def voice_for(model, velocity: float | None = None) -> Voice:
     decode happens here, and every block after it is transform and add.
     """
     from .instrument.model import InstrumentModel
-    from .spectral.components import from_components
 
     if isinstance(model, InstrumentModel):
         if velocity is None:
             raise ValueError("an instrument needs a velocity to be triggered")
         low, high = model.velocity_range
-        rows = model.field.at(float(np.clip(velocity, low, high))) * np.exp(
-            1j * (model.phase(velocity) + model._drift())
-        )
+        rows = model.rows(float(np.clip(velocity, low, high)))
     else:
-        rows = from_components(model.components(), model.bins, model.candidate.spec)
+        rows = model.rows()
 
     return Voice(
         rows=rows,

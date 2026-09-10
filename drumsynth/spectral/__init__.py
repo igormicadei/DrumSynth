@@ -25,7 +25,7 @@ from .components import (
 )
 from .encode import encode
 from .model import FORMAT, Candidate, SpectralModel
-from .stft import StftSpec, analyze, synthesize
+from .stft import StftSpec, analyze, synthesize, synthesize_frames
 
 __all__ = [
     "CODECS",
@@ -46,5 +46,6 @@ __all__ = [
     "from_components",
     "select_bins",
     "synthesize",
+    "synthesize_frames",
     "to_components",
 ]

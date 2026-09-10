@@ -7,6 +7,8 @@ import pandas as pd
 import streamlit as st
 
 from drumsynth import Corpus
+from drumsynth.backend import available_devices
+from drumsynth.parallel import resolve_jobs
 from drumsynth.instrument import (
     InstrumentSearchSpace,
     VelocityLayers,
@@ -69,6 +71,10 @@ space = st.sidebar.radio("Search space", list(SPACES), index=0, horizontal=True)
 donors = st.sidebar.number_input(
     "Velocities donating phase (0 = all)", min_value=0, max_value=64, value=0
 )
+jobs = st.sidebar.slider("Threads", 1, 32, resolve_jobs(0))
+device = st.sidebar.selectbox(
+    "Device", available_devices(), help="numpy is exact; torch devices are float32"
+)
 max_duration = st.sidebar.number_input(
     "Trim recordings to (s, 0 = full length)", min_value=0.0, max_value=10.0, value=0.0
 )
@@ -87,6 +93,8 @@ if st.sidebar.button("Fit", type="primary", width="stretch"):
         target_mse=target,
         space=SPACES[space](),
         n_donors=int(donors),
+        jobs=jobs,
+        device=device,
         progress=lambda p: bar.progress(
             p.done / max(p.total, 1),
             text=f"{p.done}/{p.total} — best {p.best.relative_mse:.2e} "

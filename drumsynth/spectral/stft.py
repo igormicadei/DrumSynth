@@ -95,9 +95,22 @@ def analyze(signal: np.ndarray, spec: StftSpec) -> np.ndarray:
 
 
 def synthesize(spectrogram: np.ndarray, spec: StftSpec, n_samples: int) -> np.ndarray:
-    """Weighted overlap-add back to `n_samples` samples of audio."""
-    n_frames = spectrogram.shape[1]
-    frames = np.fft.irfft(spectrogram.T, n=spec.n_fft, axis=1) * spec.window
+    """Weighted overlap-add back to `n_samples` samples of audio.
+
+    `spectrogram` is (bins, frames), the shape everything else here speaks in.
+    """
+    return synthesize_frames(spectrogram.T, spec, n_samples)
+
+
+def synthesize_frames(spectrogram: np.ndarray, spec: StftSpec, n_samples: int) -> np.ndarray:
+    """The same thing, taking (frames, bins) — the layout the transform wants.
+
+    The inverse transform runs along the last axis, so a caller that can build
+    its spectrogram frames-major hands over a contiguous array and saves the
+    copy that transposing one costs. The samples are identical either way.
+    """
+    n_frames = spectrogram.shape[0]
+    frames = np.fft.irfft(spectrogram, n=spec.n_fft, axis=1) * spec.window
 
     signal = _overlap_add(frames, spec.hop)
     power = _window_power(spec, n_frames)

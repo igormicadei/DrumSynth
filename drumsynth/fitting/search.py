@@ -19,20 +19,20 @@ comparison — the part that genuinely differs.
 
 from __future__ import annotations
 
-import os
 import time
-from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from typing import Callable, Iterator, Sequence
 
 import numpy as np
 
+from ..backend import DEFAULT_BUDGET, renderer
+from ..parallel import map_workers
 from ..spectral.bins import energy_order
-from ..spectral.components import codec_for, from_components, to_components
+from ..spectral.components import codec_for, to_components
 from ..spectral.encode import encode
 from ..spectral.model import Candidate, SpectralModel
-from ..spectral.stft import StftSpec, analyze, synthesize
-from .metrics import Quality
+from ..spectral.stft import StftSpec, analyze
+from .metrics import Quality, snr_db
 from .pareto import pareto_frontier, preferred
 
 #: Default quality target: relative waveform MSE, i.e. 50 dB signal to noise.
@@ -219,13 +219,17 @@ def fit(
     space: SearchSpace | None = None,
     progress: Callable[[Progress], None] | None = None,
     max_candidates: int | None = None,
-    jobs: int = 1,
+    jobs: int = 0,
+    device: str = "numpy",
+    budget: int = DEFAULT_BUDGET,
 ) -> FitResult:
     """Search `space` for the smallest model of `signal` that stays within `target_mse`.
 
-    `jobs` splits the search across processes; each process takes whole groups
-    of candidates that share an analysis, so nothing is analyzed twice. Pass 0
-    for one process per core.
+    `jobs` threads the rendering (0, the default, means one per core) and
+    `device` decides what does the arithmetic: "numpy" is exact, "cuda" batches
+    it onto a GPU, "auto" takes a GPU if there is one. The chosen model is
+    always rebuilt and re-measured in float64 afterwards, so the device a
+    search ran on never reaches the numbers a run is judged by.
     """
     x = np.asarray(signal, dtype=np.float64).ravel()
     if x.size == 0:
@@ -245,7 +249,10 @@ def fit(
     evaluations: list[Evaluation] = []
     best: Evaluation | None = None
 
-    for group in _run_groups(x, _group(candidates), jobs):
+    for spec, k, group_candidates in _group(candidates):
+        group = evaluate_group(
+            x, spec, k, group_candidates, device=device, jobs=jobs, budget=budget
+        )
         evaluations.extend(group)
         for evaluation in group:
             best = evaluation if best is None else preferred(best, evaluation, target_mse)
@@ -288,29 +295,21 @@ def _group(candidates: Sequence[Candidate]) -> list[tuple[StftSpec, int, list[Ca
     return [(spec, k, group) for (spec, k), group in groups.items()]
 
 
-def _run_groups(x, groups, jobs: int) -> Iterator[list[Evaluation]]:
-    if jobs == 1:
-        for spec, k, group in groups:
-            yield evaluate_group(x, spec, k, group)
-        return
-
-    workers = jobs if jobs > 0 else (os.cpu_count() or 1)
-    # Longest groups first, so the tail of the search is not one slow task.
-    ordered = sorted(groups, key=lambda g: -len(g[2]))
-    with ProcessPoolExecutor(max_workers=workers) as pool:
-        futures = [pool.submit(evaluate_group, x, spec, k, group) for spec, k, group in ordered]
-        for future in as_completed(futures):
-            yield future.result()
-
-
 def evaluate_group(
-    x: np.ndarray, spec: StftSpec, n_components: int, candidates: Sequence[Candidate]
+    x: np.ndarray,
+    spec: StftSpec,
+    n_components: int,
+    candidates: Sequence[Candidate],
+    device: str = "numpy",
+    jobs: int = 1,
+    budget: int = DEFAULT_BUDGET,
 ) -> list[Evaluation]:
     """Measure every candidate that shares this analysis and this bin set.
 
     The analysis, the bin selection and each codec's factorization are done
     once here and then reused; what is left per candidate is coding the block
-    at one setting, the inverse transform, and the comparison.
+    at one setting, the inverse transform, and the comparison. The last two go
+    to the renderer in batches, on whichever device it was given.
     """
     spectrogram = analyze(x, spec)
     n_frames = spectrogram.shape[1]
@@ -319,23 +318,44 @@ def evaluate_group(
     block = to_components(spectrogram, bins, spec)
     prepared = {name: codec_for(name).prepare(block) for name in {c.codec for c in candidates}}
 
-    model_spectrogram = np.zeros((spec.n_bins, n_frames), dtype=np.complex128)
-    evaluations = []
-    for candidate in candidates:
-        codec = candidate.codec_class
-        arrays = codec.encode(
-            prepared[candidate.codec], candidate.codec_param, candidate.phase_stride
-        )
-        model_spectrogram[bins] = from_components(
-            codec.decode(arrays, n_frames), bins, spec
-        )
+    engine = renderer(spec, bins, x.size, x[None, :], device=device, jobs=jobs, budget=budget)
+    reference_rms = float(np.sqrt(np.mean(x * x)))
+    reference_peak = float(np.max(np.abs(x))) if x.size else 0.0
 
-        evaluations.append(
-            Evaluation(
-                candidate=candidate,
-                quality=Quality.measure(x, synthesize(model_spectrogram, spec, x.size)),
-                n_scalars=candidate.n_scalars(n_frames),
-                n_frames=n_frames,
+    evaluations: list[Evaluation] = []
+    for start in range(0, len(candidates), engine.batch):
+        chunk = candidates[start : start + engine.batch]
+        # Coding a block is a factorization slice and a matrix product: not the
+        # expensive half, but big enough that leaving it on one thread while
+        # the rest render would cap the whole search.
+        blocks = np.stack(
+            map_workers(lambda c: _decode(prepared, c, n_frames), chunk, jobs)
+        )[:, None]
+
+        for candidate, (error, correlation, rms, peak) in zip(chunk, engine.measure(blocks)[:, 0]):
+            evaluations.append(
+                Evaluation(
+                    candidate=candidate,
+                    quality=Quality(
+                        relative_mse=float(error),
+                        snr_db=snr_db(float(error)),
+                        correlation=float(correlation),
+                        reference_rms=reference_rms,
+                        estimate_rms=float(rms),
+                        reference_peak=reference_peak,
+                        estimate_peak=float(peak),
+                    ),
+                    n_scalars=candidate.n_scalars(n_frames),
+                    n_frames=n_frames,
+                )
             )
-        )
     return evaluations
+
+
+def _decode(prepared: dict, candidate: Candidate, n_frames: int) -> np.ndarray:
+    """The component block one candidate stores, encoded and decoded back."""
+    codec = candidate.codec_class
+    arrays = codec.encode(
+        prepared[candidate.codec], candidate.codec_param, candidate.phase_stride
+    )
+    return codec.decode(arrays, n_frames)

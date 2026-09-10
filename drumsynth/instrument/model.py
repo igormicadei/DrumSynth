@@ -21,6 +21,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass, field as dataclass_field
 from pathlib import Path
+from typing import Sequence
 
 import numpy as np
 
@@ -133,23 +134,30 @@ class InstrumentModel:
         """The component block this drum has at `velocity`."""
         return self.field.at(velocity) * np.exp(1j * self.phase(velocity))
 
-    def _drift(self) -> np.ndarray:
-        """The per-bin rotation, which is the same for every render this model does."""
-        if self._drift_cache is None:
-            self._drift_cache = drift(self.bins, self.candidate.spec, self.n_frames)
-        return self._drift_cache
+    def rotation(self) -> np.ndarray:
+        """exp(i · drift): the bin's own turn, the same for every render."""
+        if self._rotation is None:
+            self._rotation = np.exp(
+                1j * drift(self.bins, self.candidate.spec, self.n_frames)
+            )
+        return self._rotation
 
-    _drift_cache: np.ndarray | None = dataclass_field(default=None, repr=False)
+    _rotation: np.ndarray | None = dataclass_field(default=None, repr=False)
+
+    def rows(self, velocity: float) -> np.ndarray:
+        """The spectrogram rows of the kept bins at `velocity`.
+
+        One expression, used by rendering, by streaming and by the search, so
+        that all three produce the same samples rather than nearly the same
+        ones.
+        """
+        return self.components(velocity) * self.rotation()
 
     def render(self, velocity: float) -> np.ndarray:
         """Synthesize a hit at `velocity`, clamped to the recorded range."""
         spec = self.candidate.spec
         spectrogram = np.zeros((spec.n_bins, self.n_frames), dtype=np.complex128)
-        # One exponential rather than two: the borrowed phase and the bin's own
-        # rotation go on together.
-        spectrogram[self.bins] = self.field.at(velocity) * np.exp(
-            1j * (self.phase(velocity) + self._drift())
-        )
+        spectrogram[self.bins] = self.rows(velocity)
         return synthesize(spectrogram, spec, self.n_samples)
 
     def frequencies(self) -> np.ndarray:
@@ -321,6 +329,34 @@ class InstrumentAnalysis:
         if key not in self._donors:
             self._donors[key] = donor_codecs.codec_for(codec).prepare(self.blocks[layer])
         return self._donors[key]
+
+    def donors(self, candidate: InstrumentCandidate) -> np.ndarray:
+        """Which layers donate phase, for this candidate's donor count."""
+        return donor_codecs.choose(self.velocities, candidate.n_donors)
+
+    def magnitudes_at(
+        self, field_setting: tuple[str, int, int], velocities: np.ndarray
+    ) -> np.ndarray:
+        """The magnitude block one field setting gives at each of `velocities`."""
+        codec_name, rank, pattern_rank = field_setting
+        codec = field_codec_for(codec_name)
+        arrays = codec.encode(self.field_state(codec_name), rank, pattern_rank)
+        field = MagnitudeField.from_arrays(self.velocities, codec_name, arrays)
+        return np.stack([field.at(velocity) for velocity in velocities])
+
+    def phase_units(self, codec_name: str, rank: int, layers: Sequence[int]) -> np.ndarray:
+        """exp(i·phase) of one donor setting, at each of `layers`.
+
+        The exponential rather than the phase, because that is what a rendered
+        block is multiplied by and a search does it tens of thousands of times.
+        """
+        codec = donor_codecs.codec_for(codec_name)
+        return np.stack(
+            [
+                np.exp(1j * codec.decode(codec.encode(self.donor_state(codec_name, layer), rank)))
+                for layer in layers
+            ]
+        )
 
     def build(self, candidate: InstrumentCandidate) -> InstrumentModel:
         """Assemble one candidate's model from the shared factorizations."""

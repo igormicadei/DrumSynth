@@ -114,13 +114,32 @@ def test_progress_is_reported_once_per_group_and_ends_complete(tonal_hit, sr):
     assert [p.done for p in seen] == sorted(p.done for p in seen)
 
 
-def test_parallel_and_serial_searches_agree(tonal_hit, sr):
+def test_threads_do_not_change_what_a_search_finds(tonal_hit, sr):
     serial = fit(tonal_hit, sr, space=SMALL, jobs=1)
-    parallel = fit(tonal_hit, sr, space=SMALL, jobs=2)
+    parallel = fit(tonal_hit, sr, space=SMALL, jobs=4)
 
     assert parallel.candidate == serial.candidate
-    assert len(parallel.evaluations) == len(serial.evaluations)
-    assert parallel.quality.relative_mse == pytest.approx(serial.quality.relative_mse)
+    assert [e.relative_mse for e in parallel.evaluations] == [
+        e.relative_mse for e in serial.evaluations
+    ]
+
+
+def test_a_search_on_a_device_finds_what_the_exact_one_finds(tonal_hit, sr):
+    from drumsynth.backend import available_devices
+
+    exact = fit(tonal_hit, sr, space=SMALL)
+    for device in available_devices():
+        found = fit(tonal_hit, sr, space=SMALL, device=device)
+
+        assert found.candidate == exact.candidate
+        # The winner is re-measured in float64 whatever ran the search.
+        assert found.quality.relative_mse == pytest.approx(
+            exact.quality.relative_mse, rel=1e-12
+        )
+
+
+def test_auto_runs_wherever_it_lands(tonal_hit, sr):
+    assert fit(tonal_hit, sr, space=SMALL, device="auto").target_reached is not None
 
 
 def test_the_space_never_offers_a_model_bigger_than_the_waveform(sr):

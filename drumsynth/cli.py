@@ -24,6 +24,7 @@ import argparse
 import sys
 from pathlib import Path
 
+from .backend import available_devices, describe_device
 from .core.audio_io import AudioIO
 from .corpus import Corpus
 from .fitting.report import save_fit
@@ -89,7 +90,16 @@ def _parser() -> argparse.ArgumentParser:
         "--jobs",
         type=int,
         default=0,
-        help="processes to search with; 0 for one per core (the default)",
+        help="threads to render with; 0 for one per core (the default)",
+    )
+    fit_command.add_argument(
+        "--device",
+        default="numpy",
+        help=(
+            "what does the arithmetic: numpy (exact, default), cuda (a GPU), "
+            "cpu (torch on the CPU), auto (a GPU if there is one). "
+            "See `drumsynth devices`"
+        ),
     )
     fit_command.add_argument(
         "--max-candidates",
@@ -177,6 +187,17 @@ def _parser() -> argparse.ArgumentParser:
         "--max-duration", type=float, default=None, help="trim every recording to this"
     )
     drum_command.add_argument(
+        "--jobs",
+        type=int,
+        default=0,
+        help="threads to render with; 0 for one per core (the default)",
+    )
+    drum_command.add_argument(
+        "--device",
+        default="numpy",
+        help="numpy (exact, default), cuda, cpu, or auto. See `drumsynth devices`",
+    )
+    drum_command.add_argument(
         "--runs", type=Path, default=None, help="a run store other than the default"
     )
     drum_command.add_argument("--no-plot", action="store_true")
@@ -198,6 +219,17 @@ def _parser() -> argparse.ArgumentParser:
         "-v", "--velocity", type=float, required=True, help="anywhere in the recorded range"
     )
     play_command.set_defaults(run=_run_play)
+
+    devices_command = commands.add_parser(
+        "devices", help="what can run a search here, and how fast"
+    )
+    devices_command.add_argument(
+        "--benchmark",
+        action="store_true",
+        help="time each device on the same work rather than only listing them",
+    )
+    devices_command.add_argument("--jobs", type=int, default=0)
+    devices_command.set_defaults(run=_run_devices)
 
     runs_command = commands.add_parser(
         "runs", help="list the fits that have been kept"
@@ -244,12 +276,14 @@ def _run_fit(args) -> int:
         signal, sample_rate = AudioIO.read(path, sr=args.sample_rate)
 
         print(f"{path}  {len(signal) / sample_rate:.3f} s at {sample_rate} Hz")
+        print(f"  {describe_device(_device(args.device))}, {_workers(args.jobs)} threads")
         result = fit(
             signal,
             sample_rate,
             target_mse=args.target_mse,
             space=SPACES[args.space](),
             jobs=args.jobs,
+            device=args.device,
             max_candidates=args.max_candidates,
             progress=None if args.quiet else _print_progress,
         )
@@ -326,6 +360,7 @@ def _run_fit_drum(args) -> int:
         f"{layers.name}: {layers.n_recordings} recordings, {layers.n_layers} velocities, "
         f"{layers.duration:.3f} s at {layers.sample_rate} Hz"
     )
+    print(f"  {describe_device(_device(args.device))}, {_workers(args.jobs)} threads")
 
     result = fit_instrument(
         layers,
@@ -334,6 +369,8 @@ def _run_fit_drum(args) -> int:
         take=args.take,
         average=args.average_takes,
         n_donors=args.donors,
+        jobs=args.jobs,
+        device=args.device,
         progress=None if args.quiet else _print_progress,
     )
 
@@ -364,6 +401,44 @@ def _run_fit_drum(args) -> int:
             "try --space full, or a looser --target-mse",
             file=sys.stderr,
         )
+    return 0
+
+
+def _device(name: str) -> str:
+    """Resolve `auto` for printing, without doing the work twice."""
+    if name != "auto":
+        return name
+    return "cuda" if "cuda" in available_devices() else "numpy"
+
+
+def _workers(jobs: int) -> int:
+    from .parallel import resolve_jobs
+
+    return resolve_jobs(jobs)
+
+
+def _run_devices(args) -> int:
+    devices = available_devices()
+    for device in devices:
+        print(f"  {device:8s} {describe_device(device)}")
+    if "cuda" not in devices:
+        print(
+            "\nNo CUDA device here. `pip install torch` gives you 'cpu'; a CUDA "
+            "build of torch gives you 'cuda'."
+        )
+    if not args.benchmark:
+        print("\nAdd --benchmark to time them on the same work.")
+        return 0
+
+    from .backend import benchmark_devices
+
+    print()
+    print(f"{'device':>8s} {'ms/render':>10s} {'relative':>9s}")
+    results = benchmark_devices(devices, jobs=args.jobs)
+    best = min(results.values())
+    for device, milliseconds in results.items():
+        print(f"{device:>8s} {milliseconds:10.2f} {best / milliseconds:8.2f}x")
+    print("\nnumpy is exact; the torch devices are float32 and agree to about 1e-6.")
     return 0
 
 

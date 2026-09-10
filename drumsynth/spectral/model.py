@@ -109,11 +109,15 @@ class SpectralModel:
         """Amplitude envelope per kept bin, one value per frame."""
         return np.abs(self.components())
 
+    def rows(self) -> np.ndarray:
+        """The spectrogram rows of the kept bins — the bin's own turn put back on."""
+        return from_components(self.components(), self.bins, self.candidate.spec)
+
     def spectrogram(self) -> np.ndarray:
         """The full complex spectrogram the model stands for — zero off the kept bins."""
         spec = self.candidate.spec
         full = np.zeros((spec.n_bins, self.n_frames), dtype=np.complex128)
-        full[self.bins] = from_components(self.components(), self.bins, spec)
+        full[self.bins] = self.rows()
         return full
 
     def render(self) -> np.ndarray:
